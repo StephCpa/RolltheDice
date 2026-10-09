@@ -1,0 +1,9 @@
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 29422.55it/s]
+[transformers] The new embeddings will be initialized from a multivariate normal distribution that has old embeddings' mean and covariance. As described in this article: https://nlp.stanford.edu/~johnhew/vocab-expansion.html. To disable this, use `mean_resizing=False`
+{"arm": "ntp_fixed", "task": "circle", "data_dir": "data/circle.10.9.10.10000", "steps": 10000, "bs": 64, "lr": 0.0001, "seed": 42, "m": 4, "groups_per_step": 16, "model": "gpt2", "n_train_examples": 10000, "vocab_size": 50273, "torch": "2.6.0+cu124", "device": "NVIDIA GeForce RTX 2080 Ti", "started": "2026-10-09 12:34:25"}
+[transformers] `loss_type=None` was set in the config but it is unrecognized. Using the default loss: `ForCausalLMLoss`.
+E:\KM\meta-method\P6-Roll_the_dice\env312\Lib\site-packages\torch\optim\lr_scheduler.py:227: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn(
+step 250 loss 7.9832 sec/step 0.138
+step 500 loss 2.2197 sec/step 0.140
+step 750 loss 1.9926 sec/step 0.141

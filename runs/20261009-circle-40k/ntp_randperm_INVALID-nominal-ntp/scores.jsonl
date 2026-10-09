@@ -1,0 +1,9 @@
+{"train_memorization": 0.0, "test_seen": 0.0, "test_validity": 0.0, "test_unseen": 0.0, "n_unique_valid": 0, "n_unique_valid_novel": 0, "step": 5000}
+{"train_memorization": 0.0, "test_seen": 0.0, "test_validity": 0.0078125, "test_unseen": 0.0078125, "n_unique_valid": 1, "n_unique_valid_novel": 1, "step": 10000}
+{"train_memorization": 0.65625, "test_seen": 0.0390625, "test_validity": 0.1875, "test_unseen": 0.1484375, "n_unique_valid": 24, "n_unique_valid_novel": 19, "step": 15000}
+{"train_memorization": 1.0, "test_seen": 0.03125, "test_validity": 0.171875, "test_unseen": 0.140625, "n_unique_valid": 22, "n_unique_valid_novel": 18, "step": 20000}
+{"train_memorization": 0.9921875, "test_seen": 0.078125, "test_validity": 0.2109375, "test_unseen": 0.1328125, "n_unique_valid": 27, "n_unique_valid_novel": 17, "step": 25000}
+{"train_memorization": 0.9921875, "test_seen": 0.0546875, "test_validity": 0.1953125, "test_unseen": 0.140625, "n_unique_valid": 25, "n_unique_valid_novel": 18, "step": 30000}
+{"train_memorization": 1.0, "test_seen": 0.078125, "test_validity": 0.234375, "test_unseen": 0.15625, "n_unique_valid": 30, "n_unique_valid_novel": 20, "step": 35000}
+{"train_memorization": 1.0, "test_seen": 0.0390625, "test_validity": 0.1484375, "test_unseen": 0.109375, "n_unique_valid": 19, "n_unique_valid_novel": 14, "step": 40000}
+{"train_memorization": 1.0, "test_seen": 0.0390625, "test_validity": 0.1484375, "test_unseen": 0.109375, "n_unique_valid": 19, "n_unique_valid_novel": 14, "step": 40000}

@@ -1,0 +1,26 @@
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 19823.62it/s]
+[transformers] The new embeddings will be initialized from a multivariate normal distribution that has old embeddings' mean and covariance. As described in this article: https://nlp.stanford.edu/~johnhew/vocab-expansion.html. To disable this, use `mean_resizing=False`
+{"arm": "tl_hybrid", "task": "circle", "data_dir": "data/circle_hybrid.10.9.10.10000", "steps": 40000, "bs": 64, "lr": 0.0001, "seed": 42, "m": 4, "groups_per_step": 16, "model": "gpt2", "n_train_examples": 40000, "vocab_size": 50273, "torch": "2.6.0+cu124", "device": "NVIDIA GeForce RTX 2080 Ti", "started": "2026-10-09 23:58:14"}
+[transformers] `loss_type=None` was set in the config but it is unrecognized. Using the default loss: `ForCausalLMLoss`.
+E:\KM\meta-method\P6-Roll_the_dice\env312\Lib\site-packages\torch\optim\lr_scheduler.py:227: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn(
+step 1000 loss 1.9786 sec/step 0.134
+step 2000 loss 1.5412 sec/step 0.140
+step 3000 loss 1.5399 sec/step 0.137
+step 4000 loss 1.5369 sec/step 0.136
+step 5000 loss 1.5399 sec/step 0.137
+[eval] 5000 {"train_memorization": 0.0, "test_seen": 0.0, "test_validity": 0.0, "test_unseen": 0.0, "n_unique_valid": 0, "n_unique_valid_novel": 0, "step": 5000}
+step 6000 loss 1.5352 sec/step 0.137
+step 7000 loss 1.5368 sec/step 0.137
+step 8000 loss 1.5403 sec/step 0.134
+step 9000 loss 1.5348 sec/step 0.137
+step 10000 loss 1.5315 sec/step 0.134
+[eval] 10000 {"train_memorization": 0.0, "test_seen": 0.0, "test_validity": 0.0, "test_unseen": 0.0, "n_unique_valid": 0, "n_unique_valid_novel": 0, "step": 10000}
+step 11000 loss 1.4950 sec/step 0.135
+step 12000 loss 1.3699 sec/step 0.135
+step 13000 loss 1.2175 sec/step 0.146
+step 14000 loss 1.0515 sec/step 0.147
+step 15000 loss 0.9528 sec/step 0.148
+[eval] 15000 {"train_memorization": 0.0, "test_seen": 0.015625, "test_validity": 0.09375, "test_unseen": 0.078125, "n_unique_valid": 12, "n_unique_valid_novel": 10, "step": 15000}
+step 16000 loss 0.8459 sec/step 0.153
+step 17000 loss 0.6708 sec/step 0.150

@@ -1,0 +1,59 @@
+{
+  "n_groups": 60,
+  "mean_visits_per_group": 40.0,
+  "mean_cayley": 0.9653846153846154,
+  "traj": [
+    {
+      "steps_range": [
+        10,
+        90
+      ],
+      "mean_cayley": 0.668,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        90,
+        170
+      ],
+      "mean_cayley": 0.62,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        170,
+        250
+      ],
+      "mean_cayley": 1.12,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        260,
+        340
+      ],
+      "mean_cayley": 1.286,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        340,
+        390
+      ],
+      "mean_cayley": 1.2117647058823529,
+      "n": 340
+    }
+  ],
+  "identity_frac": [
+    {
+      "window_step": 0,
+      "identity_frac": 0.013333333333333334,
+      "n": 1200
+    },
+    {
+      "window_step": 200,
+      "identity_frac": 0.0225,
+      "n": 1200
+    }
+  ]
+}

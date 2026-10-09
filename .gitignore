@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+data/
+env312/
+external/
+final_model/
+*.tar.gz
+ac.zip

@@ -1,0 +1,17 @@
+{
+  "arm": "tl_hybrid",
+  "task": "circle",
+  "data_dir": "data/circle_hybrid.10.9.10.10000",
+  "steps": 100,
+  "bs": 64,
+  "lr": 0.0001,
+  "seed": 42,
+  "m": 4,
+  "groups_per_step": 16,
+  "model": "gpt2",
+  "n_train_examples": 40000,
+  "vocab_size": 50273,
+  "torch": "2.6.0+cu124",
+  "device": "NVIDIA GeForce RTX 2080 Ti",
+  "started": "2026-10-09 12:06:26"
+}

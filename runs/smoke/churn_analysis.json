@@ -1,0 +1,13 @@
+{
+  "n_groups": 1600,
+  "mean_visits_per_group": 1.0,
+  "mean_cayley": NaN,
+  "traj": [],
+  "identity_frac": [
+    {
+      "window_step": 0,
+      "identity_frac": 0.045625,
+      "n": 1600
+    }
+  ]
+}

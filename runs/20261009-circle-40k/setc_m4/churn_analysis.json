@@ -1,0 +1,11161 @@
+{
+  "n_groups": 2500,
+  "mean_visits_per_group": 254.7808,
+  "mean_cayley": 0.3808893344177337,
+  "traj": [
+    {
+      "steps_range": [
+        157,
+        188
+      ],
+      "mean_cayley": 0.836,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        188,
+        219
+      ],
+      "mean_cayley": 0.946,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        219,
+        250
+      ],
+      "mean_cayley": 0.952,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        250,
+        281
+      ],
+      "mean_cayley": 1.124,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        282,
+        313
+      ],
+      "mean_cayley": 1.11,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        314,
+        345
+      ],
+      "mean_cayley": 1.548,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        345,
+        376
+      ],
+      "mean_cayley": 1.69,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        376,
+        407
+      ],
+      "mean_cayley": 1.858,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        407,
+        438
+      ],
+      "mean_cayley": 1.952,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        439,
+        470
+      ],
+      "mean_cayley": 1.924,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        471,
+        502
+      ],
+      "mean_cayley": 2.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        502,
+        533
+      ],
+      "mean_cayley": 1.912,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        533,
+        564
+      ],
+      "mean_cayley": 1.916,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        564,
+        595
+      ],
+      "mean_cayley": 1.858,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        596,
+        627
+      ],
+      "mean_cayley": 1.904,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        628,
+        659
+      ],
+      "mean_cayley": 1.888,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        659,
+        690
+      ],
+      "mean_cayley": 1.946,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        690,
+        721
+      ],
+      "mean_cayley": 1.86,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        721,
+        752
+      ],
+      "mean_cayley": 1.886,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        753,
+        784
+      ],
+      "mean_cayley": 1.89,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        785,
+        816
+      ],
+      "mean_cayley": 1.93,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        816,
+        847
+      ],
+      "mean_cayley": 1.878,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        847,
+        878
+      ],
+      "mean_cayley": 1.896,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        878,
+        909
+      ],
+      "mean_cayley": 1.992,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        910,
+        941
+      ],
+      "mean_cayley": 1.938,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        942,
+        973
+      ],
+      "mean_cayley": 1.874,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        973,
+        1004
+      ],
+      "mean_cayley": 1.89,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1004,
+        1035
+      ],
+      "mean_cayley": 1.944,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1035,
+        1066
+      ],
+      "mean_cayley": 1.824,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1067,
+        1098
+      ],
+      "mean_cayley": 1.89,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1099,
+        1130
+      ],
+      "mean_cayley": 1.936,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1130,
+        1161
+      ],
+      "mean_cayley": 1.924,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1161,
+        1192
+      ],
+      "mean_cayley": 1.91,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1192,
+        1223
+      ],
+      "mean_cayley": 1.79,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1224,
+        1255
+      ],
+      "mean_cayley": 1.928,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1256,
+        1287
+      ],
+      "mean_cayley": 1.888,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1287,
+        1318
+      ],
+      "mean_cayley": 1.888,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1318,
+        1349
+      ],
+      "mean_cayley": 1.874,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1349,
+        1380
+      ],
+      "mean_cayley": 1.906,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1381,
+        1412
+      ],
+      "mean_cayley": 1.92,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1413,
+        1444
+      ],
+      "mean_cayley": 1.892,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1444,
+        1475
+      ],
+      "mean_cayley": 1.946,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1475,
+        1506
+      ],
+      "mean_cayley": 1.968,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1506,
+        1537
+      ],
+      "mean_cayley": 1.852,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1538,
+        1569
+      ],
+      "mean_cayley": 1.88,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1570,
+        1601
+      ],
+      "mean_cayley": 1.93,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1601,
+        1632
+      ],
+      "mean_cayley": 1.876,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1632,
+        1663
+      ],
+      "mean_cayley": 1.942,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1663,
+        1694
+      ],
+      "mean_cayley": 1.93,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1695,
+        1726
+      ],
+      "mean_cayley": 1.926,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1727,
+        1758
+      ],
+      "mean_cayley": 1.872,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1758,
+        1789
+      ],
+      "mean_cayley": 1.916,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1789,
+        1820
+      ],
+      "mean_cayley": 1.9,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1820,
+        1851
+      ],
+      "mean_cayley": 1.936,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1852,
+        1883
+      ],
+      "mean_cayley": 1.958,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1884,
+        1915
+      ],
+      "mean_cayley": 1.904,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1915,
+        1946
+      ],
+      "mean_cayley": 1.906,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1946,
+        1977
+      ],
+      "mean_cayley": 1.9,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        1977,
+        2008
+      ],
+      "mean_cayley": 1.946,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2009,
+        2040
+      ],
+      "mean_cayley": 1.902,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2041,
+        2072
+      ],
+      "mean_cayley": 1.89,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2072,
+        2103
+      ],
+      "mean_cayley": 1.958,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2103,
+        2134
+      ],
+      "mean_cayley": 1.972,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2134,
+        2165
+      ],
+      "mean_cayley": 1.894,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2166,
+        2197
+      ],
+      "mean_cayley": 1.91,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2198,
+        2229
+      ],
+      "mean_cayley": 1.89,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2229,
+        2260
+      ],
+      "mean_cayley": 1.914,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2260,
+        2291
+      ],
+      "mean_cayley": 1.878,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2291,
+        2322
+      ],
+      "mean_cayley": 1.892,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2323,
+        2354
+      ],
+      "mean_cayley": 1.916,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2355,
+        2386
+      ],
+      "mean_cayley": 1.914,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2386,
+        2417
+      ],
+      "mean_cayley": 1.928,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2417,
+        2448
+      ],
+      "mean_cayley": 1.872,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2448,
+        2479
+      ],
+      "mean_cayley": 1.84,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2480,
+        2511
+      ],
+      "mean_cayley": 1.868,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2512,
+        2543
+      ],
+      "mean_cayley": 1.856,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2543,
+        2574
+      ],
+      "mean_cayley": 1.848,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2574,
+        2605
+      ],
+      "mean_cayley": 1.888,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2605,
+        2636
+      ],
+      "mean_cayley": 1.836,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2637,
+        2668
+      ],
+      "mean_cayley": 1.904,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2669,
+        2700
+      ],
+      "mean_cayley": 1.878,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2700,
+        2731
+      ],
+      "mean_cayley": 1.74,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2731,
+        2762
+      ],
+      "mean_cayley": 1.804,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2762,
+        2793
+      ],
+      "mean_cayley": 1.802,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2794,
+        2825
+      ],
+      "mean_cayley": 1.804,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2826,
+        2857
+      ],
+      "mean_cayley": 1.73,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2857,
+        2888
+      ],
+      "mean_cayley": 1.706,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2888,
+        2919
+      ],
+      "mean_cayley": 1.77,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2919,
+        2950
+      ],
+      "mean_cayley": 1.716,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2951,
+        2982
+      ],
+      "mean_cayley": 1.734,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        2983,
+        3014
+      ],
+      "mean_cayley": 1.684,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3014,
+        3045
+      ],
+      "mean_cayley": 1.814,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3045,
+        3076
+      ],
+      "mean_cayley": 1.706,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3076,
+        3107
+      ],
+      "mean_cayley": 1.702,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3108,
+        3139
+      ],
+      "mean_cayley": 1.702,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3140,
+        3171
+      ],
+      "mean_cayley": 1.724,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3171,
+        3202
+      ],
+      "mean_cayley": 1.6,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3202,
+        3233
+      ],
+      "mean_cayley": 1.598,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3233,
+        3264
+      ],
+      "mean_cayley": 1.742,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3265,
+        3296
+      ],
+      "mean_cayley": 1.636,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3297,
+        3328
+      ],
+      "mean_cayley": 1.578,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3328,
+        3359
+      ],
+      "mean_cayley": 1.682,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3359,
+        3390
+      ],
+      "mean_cayley": 1.602,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3390,
+        3421
+      ],
+      "mean_cayley": 1.614,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3422,
+        3453
+      ],
+      "mean_cayley": 1.612,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3454,
+        3485
+      ],
+      "mean_cayley": 1.664,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3485,
+        3516
+      ],
+      "mean_cayley": 1.658,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3516,
+        3547
+      ],
+      "mean_cayley": 1.634,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3547,
+        3578
+      ],
+      "mean_cayley": 1.57,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3579,
+        3610
+      ],
+      "mean_cayley": 1.518,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3611,
+        3642
+      ],
+      "mean_cayley": 1.572,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3642,
+        3673
+      ],
+      "mean_cayley": 1.578,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3673,
+        3704
+      ],
+      "mean_cayley": 1.572,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3704,
+        3735
+      ],
+      "mean_cayley": 1.61,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3736,
+        3767
+      ],
+      "mean_cayley": 1.594,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3768,
+        3799
+      ],
+      "mean_cayley": 1.492,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3799,
+        3830
+      ],
+      "mean_cayley": 1.52,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3830,
+        3861
+      ],
+      "mean_cayley": 1.556,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3861,
+        3892
+      ],
+      "mean_cayley": 1.504,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3893,
+        3924
+      ],
+      "mean_cayley": 1.556,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3925,
+        3956
+      ],
+      "mean_cayley": 1.5,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3956,
+        3987
+      ],
+      "mean_cayley": 1.482,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        3987,
+        4018
+      ],
+      "mean_cayley": 1.48,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4018,
+        4049
+      ],
+      "mean_cayley": 1.486,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4050,
+        4081
+      ],
+      "mean_cayley": 1.544,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4082,
+        4113
+      ],
+      "mean_cayley": 1.504,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4113,
+        4144
+      ],
+      "mean_cayley": 1.474,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4144,
+        4175
+      ],
+      "mean_cayley": 1.404,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4175,
+        4206
+      ],
+      "mean_cayley": 1.554,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4207,
+        4238
+      ],
+      "mean_cayley": 1.508,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4239,
+        4270
+      ],
+      "mean_cayley": 1.46,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4270,
+        4301
+      ],
+      "mean_cayley": 1.49,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4301,
+        4332
+      ],
+      "mean_cayley": 1.49,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4332,
+        4363
+      ],
+      "mean_cayley": 1.54,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4364,
+        4395
+      ],
+      "mean_cayley": 1.498,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4396,
+        4427
+      ],
+      "mean_cayley": 1.412,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4427,
+        4458
+      ],
+      "mean_cayley": 1.512,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4458,
+        4489
+      ],
+      "mean_cayley": 1.45,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4489,
+        4520
+      ],
+      "mean_cayley": 1.524,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4521,
+        4552
+      ],
+      "mean_cayley": 1.538,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4553,
+        4584
+      ],
+      "mean_cayley": 1.334,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4584,
+        4615
+      ],
+      "mean_cayley": 1.422,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4615,
+        4646
+      ],
+      "mean_cayley": 1.356,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4646,
+        4677
+      ],
+      "mean_cayley": 1.472,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4678,
+        4709
+      ],
+      "mean_cayley": 1.472,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4710,
+        4741
+      ],
+      "mean_cayley": 1.48,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4741,
+        4772
+      ],
+      "mean_cayley": 1.416,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4772,
+        4803
+      ],
+      "mean_cayley": 1.48,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4803,
+        4834
+      ],
+      "mean_cayley": 1.402,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4835,
+        4866
+      ],
+      "mean_cayley": 1.42,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4867,
+        4898
+      ],
+      "mean_cayley": 1.36,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4898,
+        4929
+      ],
+      "mean_cayley": 1.398,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4929,
+        4960
+      ],
+      "mean_cayley": 1.44,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4960,
+        4991
+      ],
+      "mean_cayley": 1.474,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        4992,
+        5023
+      ],
+      "mean_cayley": 1.502,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5024,
+        5055
+      ],
+      "mean_cayley": 1.37,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5055,
+        5086
+      ],
+      "mean_cayley": 1.418,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5086,
+        5117
+      ],
+      "mean_cayley": 1.306,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5117,
+        5148
+      ],
+      "mean_cayley": 1.406,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5149,
+        5180
+      ],
+      "mean_cayley": 1.378,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5181,
+        5212
+      ],
+      "mean_cayley": 1.342,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5212,
+        5243
+      ],
+      "mean_cayley": 1.414,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5243,
+        5274
+      ],
+      "mean_cayley": 1.354,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5274,
+        5305
+      ],
+      "mean_cayley": 1.316,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5306,
+        5337
+      ],
+      "mean_cayley": 1.352,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5338,
+        5369
+      ],
+      "mean_cayley": 1.32,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5369,
+        5400
+      ],
+      "mean_cayley": 1.232,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5400,
+        5431
+      ],
+      "mean_cayley": 1.344,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5431,
+        5462
+      ],
+      "mean_cayley": 1.332,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5463,
+        5494
+      ],
+      "mean_cayley": 1.312,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5495,
+        5526
+      ],
+      "mean_cayley": 1.298,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5526,
+        5557
+      ],
+      "mean_cayley": 1.286,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5557,
+        5588
+      ],
+      "mean_cayley": 1.294,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5588,
+        5619
+      ],
+      "mean_cayley": 1.446,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5620,
+        5651
+      ],
+      "mean_cayley": 1.296,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5652,
+        5683
+      ],
+      "mean_cayley": 1.274,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5683,
+        5714
+      ],
+      "mean_cayley": 1.304,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5714,
+        5745
+      ],
+      "mean_cayley": 1.274,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5745,
+        5776
+      ],
+      "mean_cayley": 1.324,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5777,
+        5808
+      ],
+      "mean_cayley": 1.37,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5809,
+        5840
+      ],
+      "mean_cayley": 1.314,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5840,
+        5871
+      ],
+      "mean_cayley": 1.374,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5871,
+        5902
+      ],
+      "mean_cayley": 1.368,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5902,
+        5933
+      ],
+      "mean_cayley": 1.316,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5934,
+        5965
+      ],
+      "mean_cayley": 1.378,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5966,
+        5997
+      ],
+      "mean_cayley": 1.428,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        5997,
+        6028
+      ],
+      "mean_cayley": 1.368,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6028,
+        6059
+      ],
+      "mean_cayley": 1.3,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6059,
+        6090
+      ],
+      "mean_cayley": 1.362,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6091,
+        6122
+      ],
+      "mean_cayley": 1.358,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6123,
+        6154
+      ],
+      "mean_cayley": 1.406,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6154,
+        6185
+      ],
+      "mean_cayley": 1.306,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6185,
+        6216
+      ],
+      "mean_cayley": 1.36,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6216,
+        6247
+      ],
+      "mean_cayley": 1.356,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6248,
+        6279
+      ],
+      "mean_cayley": 1.396,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6280,
+        6311
+      ],
+      "mean_cayley": 1.29,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6311,
+        6342
+      ],
+      "mean_cayley": 1.348,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6342,
+        6373
+      ],
+      "mean_cayley": 1.216,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6373,
+        6404
+      ],
+      "mean_cayley": 1.398,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6405,
+        6436
+      ],
+      "mean_cayley": 1.264,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6437,
+        6468
+      ],
+      "mean_cayley": 1.344,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6468,
+        6499
+      ],
+      "mean_cayley": 1.298,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6499,
+        6530
+      ],
+      "mean_cayley": 1.252,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6530,
+        6561
+      ],
+      "mean_cayley": 1.318,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6562,
+        6593
+      ],
+      "mean_cayley": 1.3,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6594,
+        6625
+      ],
+      "mean_cayley": 1.246,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6625,
+        6656
+      ],
+      "mean_cayley": 1.338,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6656,
+        6687
+      ],
+      "mean_cayley": 1.23,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6687,
+        6718
+      ],
+      "mean_cayley": 1.268,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6719,
+        6750
+      ],
+      "mean_cayley": 1.376,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6751,
+        6782
+      ],
+      "mean_cayley": 1.306,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6782,
+        6813
+      ],
+      "mean_cayley": 1.342,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6813,
+        6844
+      ],
+      "mean_cayley": 1.35,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6844,
+        6875
+      ],
+      "mean_cayley": 1.376,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6876,
+        6907
+      ],
+      "mean_cayley": 1.436,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6908,
+        6939
+      ],
+      "mean_cayley": 1.38,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6939,
+        6970
+      ],
+      "mean_cayley": 1.34,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        6970,
+        7001
+      ],
+      "mean_cayley": 1.294,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7001,
+        7032
+      ],
+      "mean_cayley": 1.434,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7033,
+        7064
+      ],
+      "mean_cayley": 1.32,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7065,
+        7096
+      ],
+      "mean_cayley": 1.364,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7096,
+        7127
+      ],
+      "mean_cayley": 1.344,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7127,
+        7158
+      ],
+      "mean_cayley": 1.308,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7158,
+        7189
+      ],
+      "mean_cayley": 1.28,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7190,
+        7221
+      ],
+      "mean_cayley": 1.282,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7222,
+        7253
+      ],
+      "mean_cayley": 1.304,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7253,
+        7284
+      ],
+      "mean_cayley": 1.264,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7284,
+        7315
+      ],
+      "mean_cayley": 1.278,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7315,
+        7346
+      ],
+      "mean_cayley": 1.33,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7347,
+        7378
+      ],
+      "mean_cayley": 1.27,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7379,
+        7410
+      ],
+      "mean_cayley": 1.212,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7410,
+        7441
+      ],
+      "mean_cayley": 1.268,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7441,
+        7472
+      ],
+      "mean_cayley": 1.284,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7472,
+        7503
+      ],
+      "mean_cayley": 1.224,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7504,
+        7535
+      ],
+      "mean_cayley": 1.27,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7536,
+        7567
+      ],
+      "mean_cayley": 1.24,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7567,
+        7598
+      ],
+      "mean_cayley": 1.24,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7598,
+        7629
+      ],
+      "mean_cayley": 1.254,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7629,
+        7660
+      ],
+      "mean_cayley": 1.234,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7661,
+        7692
+      ],
+      "mean_cayley": 1.186,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7693,
+        7724
+      ],
+      "mean_cayley": 1.188,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7724,
+        7755
+      ],
+      "mean_cayley": 1.272,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7755,
+        7786
+      ],
+      "mean_cayley": 1.272,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7786,
+        7817
+      ],
+      "mean_cayley": 1.182,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7818,
+        7849
+      ],
+      "mean_cayley": 1.274,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7850,
+        7881
+      ],
+      "mean_cayley": 1.188,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7881,
+        7912
+      ],
+      "mean_cayley": 1.248,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7912,
+        7943
+      ],
+      "mean_cayley": 1.236,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7943,
+        7974
+      ],
+      "mean_cayley": 1.292,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        7975,
+        8006
+      ],
+      "mean_cayley": 1.22,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8007,
+        8038
+      ],
+      "mean_cayley": 1.216,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8038,
+        8069
+      ],
+      "mean_cayley": 1.234,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8069,
+        8100
+      ],
+      "mean_cayley": 1.256,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8100,
+        8131
+      ],
+      "mean_cayley": 1.212,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8132,
+        8163
+      ],
+      "mean_cayley": 1.234,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8164,
+        8195
+      ],
+      "mean_cayley": 1.16,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8195,
+        8226
+      ],
+      "mean_cayley": 1.152,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8226,
+        8257
+      ],
+      "mean_cayley": 1.262,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8257,
+        8288
+      ],
+      "mean_cayley": 1.198,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8289,
+        8320
+      ],
+      "mean_cayley": 1.272,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8321,
+        8352
+      ],
+      "mean_cayley": 1.158,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8352,
+        8383
+      ],
+      "mean_cayley": 1.192,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8383,
+        8414
+      ],
+      "mean_cayley": 1.066,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8414,
+        8445
+      ],
+      "mean_cayley": 1.126,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8446,
+        8477
+      ],
+      "mean_cayley": 1.192,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8478,
+        8509
+      ],
+      "mean_cayley": 1.122,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8509,
+        8540
+      ],
+      "mean_cayley": 1.136,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8540,
+        8571
+      ],
+      "mean_cayley": 1.132,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8571,
+        8602
+      ],
+      "mean_cayley": 1.14,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8603,
+        8634
+      ],
+      "mean_cayley": 1.122,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8635,
+        8666
+      ],
+      "mean_cayley": 1.068,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8666,
+        8697
+      ],
+      "mean_cayley": 1.136,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8697,
+        8728
+      ],
+      "mean_cayley": 1.186,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8728,
+        8759
+      ],
+      "mean_cayley": 1.242,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8760,
+        8791
+      ],
+      "mean_cayley": 1.208,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8792,
+        8823
+      ],
+      "mean_cayley": 1.222,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8823,
+        8854
+      ],
+      "mean_cayley": 1.166,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8854,
+        8885
+      ],
+      "mean_cayley": 1.116,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8885,
+        8916
+      ],
+      "mean_cayley": 1.248,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8917,
+        8948
+      ],
+      "mean_cayley": 1.252,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8949,
+        8980
+      ],
+      "mean_cayley": 1.248,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        8980,
+        9011
+      ],
+      "mean_cayley": 1.178,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9011,
+        9042
+      ],
+      "mean_cayley": 1.186,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9042,
+        9073
+      ],
+      "mean_cayley": 1.194,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9074,
+        9105
+      ],
+      "mean_cayley": 1.18,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9106,
+        9137
+      ],
+      "mean_cayley": 1.028,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9137,
+        9168
+      ],
+      "mean_cayley": 1.038,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9168,
+        9199
+      ],
+      "mean_cayley": 1.02,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9199,
+        9230
+      ],
+      "mean_cayley": 1.144,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9231,
+        9262
+      ],
+      "mean_cayley": 1.092,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9263,
+        9294
+      ],
+      "mean_cayley": 1.026,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9294,
+        9325
+      ],
+      "mean_cayley": 1.034,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9325,
+        9356
+      ],
+      "mean_cayley": 1.106,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9356,
+        9387
+      ],
+      "mean_cayley": 1.052,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9388,
+        9419
+      ],
+      "mean_cayley": 1.1,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9420,
+        9451
+      ],
+      "mean_cayley": 1.02,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9451,
+        9482
+      ],
+      "mean_cayley": 1.016,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9482,
+        9513
+      ],
+      "mean_cayley": 1.1,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9513,
+        9544
+      ],
+      "mean_cayley": 1.114,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9545,
+        9576
+      ],
+      "mean_cayley": 1.05,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9577,
+        9608
+      ],
+      "mean_cayley": 0.908,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9608,
+        9639
+      ],
+      "mean_cayley": 0.934,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9639,
+        9670
+      ],
+      "mean_cayley": 0.984,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9670,
+        9701
+      ],
+      "mean_cayley": 0.948,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9702,
+        9733
+      ],
+      "mean_cayley": 0.972,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9734,
+        9765
+      ],
+      "mean_cayley": 0.856,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9765,
+        9796
+      ],
+      "mean_cayley": 0.886,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9796,
+        9827
+      ],
+      "mean_cayley": 0.92,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9827,
+        9858
+      ],
+      "mean_cayley": 0.86,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9859,
+        9890
+      ],
+      "mean_cayley": 0.874,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9891,
+        9922
+      ],
+      "mean_cayley": 0.828,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9922,
+        9953
+      ],
+      "mean_cayley": 0.844,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9953,
+        9984
+      ],
+      "mean_cayley": 0.82,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        9984,
+        10015
+      ],
+      "mean_cayley": 0.762,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10016,
+        10047
+      ],
+      "mean_cayley": 0.78,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10048,
+        10079
+      ],
+      "mean_cayley": 0.74,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10079,
+        10110
+      ],
+      "mean_cayley": 0.772,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10110,
+        10141
+      ],
+      "mean_cayley": 0.71,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10141,
+        10172
+      ],
+      "mean_cayley": 0.804,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10173,
+        10204
+      ],
+      "mean_cayley": 0.76,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10205,
+        10236
+      ],
+      "mean_cayley": 0.702,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10236,
+        10267
+      ],
+      "mean_cayley": 0.678,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10267,
+        10298
+      ],
+      "mean_cayley": 0.682,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10298,
+        10329
+      ],
+      "mean_cayley": 0.774,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10330,
+        10361
+      ],
+      "mean_cayley": 0.69,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10362,
+        10393
+      ],
+      "mean_cayley": 0.612,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10393,
+        10424
+      ],
+      "mean_cayley": 0.608,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10424,
+        10455
+      ],
+      "mean_cayley": 0.57,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10455,
+        10486
+      ],
+      "mean_cayley": 0.686,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10487,
+        10518
+      ],
+      "mean_cayley": 0.638,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10519,
+        10550
+      ],
+      "mean_cayley": 0.466,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10550,
+        10581
+      ],
+      "mean_cayley": 0.544,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10581,
+        10612
+      ],
+      "mean_cayley": 0.524,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10612,
+        10643
+      ],
+      "mean_cayley": 0.518,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10644,
+        10675
+      ],
+      "mean_cayley": 0.53,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10676,
+        10707
+      ],
+      "mean_cayley": 0.404,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10707,
+        10738
+      ],
+      "mean_cayley": 0.354,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10738,
+        10769
+      ],
+      "mean_cayley": 0.468,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10769,
+        10800
+      ],
+      "mean_cayley": 0.462,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10801,
+        10832
+      ],
+      "mean_cayley": 0.46,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10833,
+        10864
+      ],
+      "mean_cayley": 0.378,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10864,
+        10895
+      ],
+      "mean_cayley": 0.4,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10895,
+        10926
+      ],
+      "mean_cayley": 0.436,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10926,
+        10957
+      ],
+      "mean_cayley": 0.44,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10958,
+        10989
+      ],
+      "mean_cayley": 0.402,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        10990,
+        11021
+      ],
+      "mean_cayley": 0.3,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11021,
+        11052
+      ],
+      "mean_cayley": 0.354,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11052,
+        11083
+      ],
+      "mean_cayley": 0.31,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11083,
+        11114
+      ],
+      "mean_cayley": 0.354,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11115,
+        11146
+      ],
+      "mean_cayley": 0.354,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11147,
+        11178
+      ],
+      "mean_cayley": 0.208,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11178,
+        11209
+      ],
+      "mean_cayley": 0.246,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11209,
+        11240
+      ],
+      "mean_cayley": 0.246,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11240,
+        11271
+      ],
+      "mean_cayley": 0.22,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11272,
+        11303
+      ],
+      "mean_cayley": 0.276,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11304,
+        11335
+      ],
+      "mean_cayley": 0.178,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11335,
+        11366
+      ],
+      "mean_cayley": 0.176,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11366,
+        11397
+      ],
+      "mean_cayley": 0.204,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11397,
+        11428
+      ],
+      "mean_cayley": 0.21,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11429,
+        11460
+      ],
+      "mean_cayley": 0.188,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11461,
+        11492
+      ],
+      "mean_cayley": 0.156,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11492,
+        11523
+      ],
+      "mean_cayley": 0.122,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11523,
+        11554
+      ],
+      "mean_cayley": 0.126,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11554,
+        11585
+      ],
+      "mean_cayley": 0.15,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11586,
+        11617
+      ],
+      "mean_cayley": 0.152,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11618,
+        11649
+      ],
+      "mean_cayley": 0.092,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11649,
+        11680
+      ],
+      "mean_cayley": 0.104,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11680,
+        11711
+      ],
+      "mean_cayley": 0.086,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11711,
+        11742
+      ],
+      "mean_cayley": 0.14,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11743,
+        11774
+      ],
+      "mean_cayley": 0.09,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11775,
+        11806
+      ],
+      "mean_cayley": 0.074,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11806,
+        11837
+      ],
+      "mean_cayley": 0.062,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11837,
+        11868
+      ],
+      "mean_cayley": 0.084,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11868,
+        11899
+      ],
+      "mean_cayley": 0.074,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11900,
+        11931
+      ],
+      "mean_cayley": 0.09,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11932,
+        11963
+      ],
+      "mean_cayley": 0.042,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11963,
+        11994
+      ],
+      "mean_cayley": 0.056,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        11994,
+        12025
+      ],
+      "mean_cayley": 0.036,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12025,
+        12056
+      ],
+      "mean_cayley": 0.05,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12057,
+        12088
+      ],
+      "mean_cayley": 0.056,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12089,
+        12120
+      ],
+      "mean_cayley": 0.022,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12120,
+        12151
+      ],
+      "mean_cayley": 0.042,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12151,
+        12182
+      ],
+      "mean_cayley": 0.028,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12182,
+        12213
+      ],
+      "mean_cayley": 0.038,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12214,
+        12245
+      ],
+      "mean_cayley": 0.03,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12246,
+        12277
+      ],
+      "mean_cayley": 0.018,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12277,
+        12308
+      ],
+      "mean_cayley": 0.05,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12308,
+        12339
+      ],
+      "mean_cayley": 0.012,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12339,
+        12370
+      ],
+      "mean_cayley": 0.04,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12371,
+        12402
+      ],
+      "mean_cayley": 0.024,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12403,
+        12434
+      ],
+      "mean_cayley": 0.01,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12434,
+        12465
+      ],
+      "mean_cayley": 0.02,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12465,
+        12496
+      ],
+      "mean_cayley": 0.022,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12496,
+        12527
+      ],
+      "mean_cayley": 0.034,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12528,
+        12559
+      ],
+      "mean_cayley": 0.014,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12560,
+        12591
+      ],
+      "mean_cayley": 0.012,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12591,
+        12622
+      ],
+      "mean_cayley": 0.004,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12622,
+        12653
+      ],
+      "mean_cayley": 0.002,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12653,
+        12684
+      ],
+      "mean_cayley": 0.012,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12685,
+        12716
+      ],
+      "mean_cayley": 0.024,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12717,
+        12748
+      ],
+      "mean_cayley": 0.006,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12748,
+        12779
+      ],
+      "mean_cayley": 0.002,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12779,
+        12810
+      ],
+      "mean_cayley": 0.01,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12810,
+        12841
+      ],
+      "mean_cayley": 0.012,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12842,
+        12873
+      ],
+      "mean_cayley": 0.008,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12874,
+        12905
+      ],
+      "mean_cayley": 0.006,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12905,
+        12936
+      ],
+      "mean_cayley": 0.002,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12936,
+        12967
+      ],
+      "mean_cayley": 0.002,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12967,
+        12998
+      ],
+      "mean_cayley": 0.008,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        12999,
+        13030
+      ],
+      "mean_cayley": 0.004,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13031,
+        13062
+      ],
+      "mean_cayley": 0.004,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13062,
+        13093
+      ],
+      "mean_cayley": 0.002,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13093,
+        13124
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13124,
+        13155
+      ],
+      "mean_cayley": 0.002,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13156,
+        13187
+      ],
+      "mean_cayley": 0.008,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13188,
+        13219
+      ],
+      "mean_cayley": 0.006,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13219,
+        13250
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13250,
+        13281
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13281,
+        13312
+      ],
+      "mean_cayley": 0.002,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13313,
+        13344
+      ],
+      "mean_cayley": 0.002,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13345,
+        13376
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13376,
+        13407
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13407,
+        13438
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13438,
+        13469
+      ],
+      "mean_cayley": 0.002,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13470,
+        13501
+      ],
+      "mean_cayley": 0.004,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13502,
+        13533
+      ],
+      "mean_cayley": 0.002,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13533,
+        13564
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13564,
+        13595
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13595,
+        13626
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13627,
+        13658
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13659,
+        13690
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13690,
+        13721
+      ],
+      "mean_cayley": 0.002,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13721,
+        13752
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13752,
+        13783
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13784,
+        13815
+      ],
+      "mean_cayley": 0.002,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13816,
+        13847
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13847,
+        13878
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13878,
+        13909
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13909,
+        13940
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13941,
+        13972
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        13973,
+        14004
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14004,
+        14035
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14035,
+        14066
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14066,
+        14097
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14098,
+        14129
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14130,
+        14161
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14161,
+        14192
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14192,
+        14223
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14223,
+        14254
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14255,
+        14286
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14287,
+        14318
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14318,
+        14349
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14349,
+        14380
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14380,
+        14411
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14412,
+        14443
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14444,
+        14475
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14475,
+        14506
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14506,
+        14537
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14537,
+        14568
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14569,
+        14600
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14601,
+        14632
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14632,
+        14663
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14663,
+        14694
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14694,
+        14725
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14726,
+        14757
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14758,
+        14789
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14789,
+        14820
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14820,
+        14851
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14851,
+        14882
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14883,
+        14914
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14915,
+        14946
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14946,
+        14977
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        14977,
+        15008
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15008,
+        15039
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15040,
+        15071
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15072,
+        15103
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15103,
+        15134
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15134,
+        15165
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15165,
+        15196
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15197,
+        15228
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15229,
+        15260
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15260,
+        15291
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15291,
+        15322
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15322,
+        15353
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15354,
+        15385
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15386,
+        15417
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15417,
+        15448
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15448,
+        15479
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15479,
+        15510
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15511,
+        15542
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15543,
+        15574
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15574,
+        15605
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15605,
+        15636
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15636,
+        15667
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15668,
+        15699
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15700,
+        15731
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15731,
+        15762
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15762,
+        15793
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15793,
+        15824
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15825,
+        15856
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15857,
+        15888
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15888,
+        15919
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15919,
+        15950
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15950,
+        15981
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        15982,
+        16013
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16014,
+        16045
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16045,
+        16076
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16076,
+        16107
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16107,
+        16138
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16139,
+        16170
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16171,
+        16202
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16202,
+        16233
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16233,
+        16264
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16264,
+        16295
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16296,
+        16327
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16328,
+        16359
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16359,
+        16390
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16390,
+        16421
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16421,
+        16452
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16453,
+        16484
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16485,
+        16516
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16516,
+        16547
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16547,
+        16578
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16578,
+        16609
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16610,
+        16641
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16642,
+        16673
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16673,
+        16704
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16704,
+        16735
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16735,
+        16766
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16767,
+        16798
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16799,
+        16830
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16830,
+        16861
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16861,
+        16892
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16892,
+        16923
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16924,
+        16955
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16956,
+        16987
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        16987,
+        17018
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17018,
+        17049
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17049,
+        17080
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17081,
+        17112
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17113,
+        17144
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17144,
+        17175
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17175,
+        17206
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17206,
+        17237
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17238,
+        17269
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17270,
+        17301
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17301,
+        17332
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17332,
+        17363
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17363,
+        17394
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17395,
+        17426
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17427,
+        17458
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17458,
+        17489
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17489,
+        17520
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17520,
+        17551
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17552,
+        17583
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17584,
+        17615
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17615,
+        17646
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17646,
+        17677
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17677,
+        17708
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17709,
+        17740
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17741,
+        17772
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17772,
+        17803
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17803,
+        17834
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17834,
+        17865
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17866,
+        17897
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17898,
+        17929
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17929,
+        17960
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17960,
+        17991
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        17991,
+        18022
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18023,
+        18054
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18055,
+        18086
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18086,
+        18117
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18117,
+        18148
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18148,
+        18179
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18180,
+        18211
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18212,
+        18243
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18243,
+        18274
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18274,
+        18305
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18305,
+        18336
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18337,
+        18368
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18369,
+        18400
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18400,
+        18431
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18431,
+        18462
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18462,
+        18493
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18494,
+        18525
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18526,
+        18557
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18557,
+        18588
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18588,
+        18619
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18619,
+        18650
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18651,
+        18682
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18683,
+        18714
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18714,
+        18745
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18745,
+        18776
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18776,
+        18807
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18808,
+        18839
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18840,
+        18871
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18871,
+        18902
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18902,
+        18933
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18933,
+        18964
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18965,
+        18996
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        18997,
+        19028
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19028,
+        19059
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19059,
+        19090
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19090,
+        19121
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19122,
+        19153
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19154,
+        19185
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19185,
+        19216
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19216,
+        19247
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19247,
+        19278
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19279,
+        19310
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19311,
+        19342
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19342,
+        19373
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19373,
+        19404
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19404,
+        19435
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19436,
+        19467
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19468,
+        19499
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19499,
+        19530
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19530,
+        19561
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19561,
+        19592
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19593,
+        19624
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19625,
+        19656
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19656,
+        19687
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19687,
+        19718
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19718,
+        19749
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19750,
+        19781
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19782,
+        19813
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19813,
+        19844
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19844,
+        19875
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19875,
+        19906
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19907,
+        19938
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19939,
+        19970
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        19970,
+        20001
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20001,
+        20032
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20032,
+        20063
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20064,
+        20095
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20096,
+        20127
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20127,
+        20158
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20158,
+        20189
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20189,
+        20220
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20221,
+        20252
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20253,
+        20284
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20284,
+        20315
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20315,
+        20346
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20346,
+        20377
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20378,
+        20409
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20410,
+        20441
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20441,
+        20472
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20472,
+        20503
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20503,
+        20534
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20535,
+        20566
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20567,
+        20598
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20598,
+        20629
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20629,
+        20660
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20660,
+        20691
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20692,
+        20723
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20724,
+        20755
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20755,
+        20786
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20786,
+        20817
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20817,
+        20848
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20849,
+        20880
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20881,
+        20912
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20912,
+        20943
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20943,
+        20974
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        20974,
+        21005
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21006,
+        21037
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21038,
+        21069
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21069,
+        21100
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21100,
+        21131
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21131,
+        21162
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21163,
+        21194
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21195,
+        21226
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21226,
+        21257
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21257,
+        21288
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21288,
+        21319
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21320,
+        21351
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21352,
+        21383
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21383,
+        21414
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21414,
+        21445
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21445,
+        21476
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21477,
+        21508
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21509,
+        21540
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21540,
+        21571
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21571,
+        21602
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21602,
+        21633
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21634,
+        21665
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21666,
+        21697
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21697,
+        21728
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21728,
+        21759
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21759,
+        21790
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21791,
+        21822
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21823,
+        21854
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21854,
+        21885
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21885,
+        21916
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21916,
+        21947
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21948,
+        21979
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        21980,
+        22011
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22011,
+        22042
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22042,
+        22073
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22073,
+        22104
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22105,
+        22136
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22137,
+        22168
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22168,
+        22199
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22199,
+        22230
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22230,
+        22261
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22262,
+        22293
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22294,
+        22325
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22325,
+        22356
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22356,
+        22387
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22387,
+        22418
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22419,
+        22450
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22451,
+        22482
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22482,
+        22513
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22513,
+        22544
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22544,
+        22575
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22576,
+        22607
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22608,
+        22639
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22639,
+        22670
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22670,
+        22701
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22701,
+        22732
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22733,
+        22764
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22765,
+        22796
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22796,
+        22827
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22827,
+        22858
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22858,
+        22889
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22890,
+        22921
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22922,
+        22953
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22953,
+        22984
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        22984,
+        23015
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23015,
+        23046
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23047,
+        23078
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23079,
+        23110
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23110,
+        23141
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23141,
+        23172
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23172,
+        23203
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23204,
+        23235
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23236,
+        23267
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23267,
+        23298
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23298,
+        23329
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23329,
+        23360
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23361,
+        23392
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23393,
+        23424
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23424,
+        23455
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23455,
+        23486
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23486,
+        23517
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23518,
+        23549
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23550,
+        23581
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23581,
+        23612
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23612,
+        23643
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23643,
+        23674
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23675,
+        23706
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23707,
+        23738
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23738,
+        23769
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23769,
+        23800
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23800,
+        23831
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23832,
+        23863
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23864,
+        23895
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23895,
+        23926
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23926,
+        23957
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23957,
+        23988
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        23989,
+        24020
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24021,
+        24052
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24052,
+        24083
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24083,
+        24114
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24114,
+        24145
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24146,
+        24177
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24178,
+        24209
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24209,
+        24240
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24240,
+        24271
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24271,
+        24302
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24303,
+        24334
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24335,
+        24366
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24366,
+        24397
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24397,
+        24428
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24428,
+        24459
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24460,
+        24491
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24492,
+        24523
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24523,
+        24554
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24554,
+        24585
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24585,
+        24616
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24617,
+        24648
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24649,
+        24680
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24680,
+        24711
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24711,
+        24742
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24742,
+        24773
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24774,
+        24805
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24806,
+        24837
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24837,
+        24868
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24868,
+        24899
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24899,
+        24930
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24931,
+        24962
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24963,
+        24994
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        24994,
+        25025
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25025,
+        25056
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25056,
+        25087
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25088,
+        25119
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25120,
+        25151
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25151,
+        25182
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25182,
+        25213
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25213,
+        25244
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25245,
+        25276
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25277,
+        25308
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25308,
+        25339
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25339,
+        25370
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25370,
+        25401
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25402,
+        25433
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25434,
+        25465
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25465,
+        25496
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25496,
+        25527
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25527,
+        25558
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25559,
+        25590
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25591,
+        25622
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25622,
+        25653
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25653,
+        25684
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25684,
+        25715
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25716,
+        25747
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25748,
+        25779
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25779,
+        25810
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25810,
+        25841
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25841,
+        25872
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25873,
+        25904
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25905,
+        25936
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25936,
+        25967
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25967,
+        25998
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        25998,
+        26029
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26030,
+        26061
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26062,
+        26093
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26093,
+        26124
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26124,
+        26155
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26155,
+        26186
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26187,
+        26218
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26219,
+        26250
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26250,
+        26281
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26281,
+        26312
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26312,
+        26343
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26344,
+        26375
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26376,
+        26407
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26407,
+        26438
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26438,
+        26469
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26469,
+        26500
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26501,
+        26532
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26533,
+        26564
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26564,
+        26595
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26595,
+        26626
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26626,
+        26657
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26658,
+        26689
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26690,
+        26721
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26721,
+        26752
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26752,
+        26783
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26783,
+        26814
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26815,
+        26846
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26847,
+        26878
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26878,
+        26909
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26909,
+        26940
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26940,
+        26971
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        26972,
+        27003
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27004,
+        27035
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27035,
+        27066
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27066,
+        27097
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27097,
+        27128
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27129,
+        27160
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27161,
+        27192
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27192,
+        27223
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27223,
+        27254
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27254,
+        27285
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27286,
+        27317
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27318,
+        27349
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27349,
+        27380
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27380,
+        27411
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27411,
+        27442
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27443,
+        27474
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27475,
+        27506
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27506,
+        27537
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27537,
+        27568
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27568,
+        27599
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27600,
+        27631
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27632,
+        27663
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27663,
+        27694
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27694,
+        27725
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27725,
+        27756
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27757,
+        27788
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27789,
+        27820
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27820,
+        27851
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27851,
+        27882
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27882,
+        27913
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27914,
+        27945
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27946,
+        27977
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        27977,
+        28008
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28008,
+        28039
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28039,
+        28070
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28071,
+        28102
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28103,
+        28134
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28134,
+        28165
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28165,
+        28196
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28196,
+        28227
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28228,
+        28259
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28260,
+        28291
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28291,
+        28322
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28322,
+        28353
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28353,
+        28384
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28385,
+        28416
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28417,
+        28448
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28448,
+        28479
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28479,
+        28510
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28510,
+        28541
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28542,
+        28573
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28574,
+        28605
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28605,
+        28636
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28636,
+        28667
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28667,
+        28698
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28699,
+        28730
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28731,
+        28762
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28762,
+        28793
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28793,
+        28824
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28824,
+        28855
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28856,
+        28887
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28888,
+        28919
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28919,
+        28950
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28950,
+        28981
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        28981,
+        29012
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29013,
+        29044
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29045,
+        29076
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29076,
+        29107
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29107,
+        29138
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29138,
+        29169
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29170,
+        29201
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29202,
+        29233
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29233,
+        29264
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29264,
+        29295
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29295,
+        29326
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29327,
+        29358
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29359,
+        29390
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29390,
+        29421
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29421,
+        29452
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29452,
+        29483
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29484,
+        29515
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29516,
+        29547
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29547,
+        29578
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29578,
+        29609
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29609,
+        29640
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29641,
+        29672
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29673,
+        29704
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29704,
+        29735
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29735,
+        29766
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29766,
+        29797
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29798,
+        29829
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29830,
+        29861
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29861,
+        29892
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29892,
+        29923
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29923,
+        29954
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29955,
+        29986
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        29987,
+        30018
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30018,
+        30049
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30049,
+        30080
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30080,
+        30111
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30112,
+        30143
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30144,
+        30175
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30175,
+        30206
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30206,
+        30237
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30237,
+        30268
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30269,
+        30300
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30301,
+        30332
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30332,
+        30363
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30363,
+        30394
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30394,
+        30425
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30426,
+        30457
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30458,
+        30489
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30489,
+        30520
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30520,
+        30551
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30551,
+        30582
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30583,
+        30614
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30615,
+        30646
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30646,
+        30677
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30677,
+        30708
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30708,
+        30739
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30740,
+        30771
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30772,
+        30803
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30803,
+        30834
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30834,
+        30865
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30865,
+        30896
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30897,
+        30928
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30929,
+        30960
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30960,
+        30991
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        30991,
+        31022
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31022,
+        31053
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31054,
+        31085
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31086,
+        31117
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31117,
+        31148
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31148,
+        31179
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31179,
+        31210
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31211,
+        31242
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31243,
+        31274
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31274,
+        31305
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31305,
+        31336
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31336,
+        31367
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31368,
+        31399
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31400,
+        31431
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31431,
+        31462
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31462,
+        31493
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31493,
+        31524
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31525,
+        31556
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31557,
+        31588
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31588,
+        31619
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31619,
+        31650
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31650,
+        31681
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31682,
+        31713
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31714,
+        31745
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31745,
+        31776
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31776,
+        31807
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31807,
+        31838
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31839,
+        31870
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31871,
+        31902
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31902,
+        31933
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31933,
+        31964
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31964,
+        31995
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        31996,
+        32027
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32028,
+        32059
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32059,
+        32090
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32090,
+        32121
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32121,
+        32152
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32153,
+        32184
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32185,
+        32216
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32216,
+        32247
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32247,
+        32278
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32278,
+        32309
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32310,
+        32341
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32342,
+        32373
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32373,
+        32404
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32404,
+        32435
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32435,
+        32466
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32467,
+        32498
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32499,
+        32530
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32530,
+        32561
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32561,
+        32592
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32592,
+        32623
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32624,
+        32655
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32656,
+        32687
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32687,
+        32718
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32718,
+        32749
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32749,
+        32780
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32781,
+        32812
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32813,
+        32844
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32844,
+        32875
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32875,
+        32906
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32906,
+        32937
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32938,
+        32969
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        32970,
+        33001
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33001,
+        33032
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33032,
+        33063
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33063,
+        33094
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33095,
+        33126
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33127,
+        33158
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33158,
+        33189
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33189,
+        33220
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33220,
+        33251
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33252,
+        33283
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33284,
+        33315
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33315,
+        33346
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33346,
+        33377
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33377,
+        33408
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33409,
+        33440
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33441,
+        33472
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33472,
+        33503
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33503,
+        33534
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33534,
+        33565
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33566,
+        33597
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33598,
+        33629
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33629,
+        33660
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33660,
+        33691
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33691,
+        33722
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33723,
+        33754
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33755,
+        33786
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33786,
+        33817
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33817,
+        33848
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33848,
+        33879
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33880,
+        33911
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33912,
+        33943
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33943,
+        33974
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        33974,
+        34005
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34005,
+        34036
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34037,
+        34068
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34069,
+        34100
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34100,
+        34131
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34131,
+        34162
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34162,
+        34193
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34194,
+        34225
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34226,
+        34257
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34257,
+        34288
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34288,
+        34319
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34319,
+        34350
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34351,
+        34382
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34383,
+        34414
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34414,
+        34445
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34445,
+        34476
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34476,
+        34507
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34508,
+        34539
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34540,
+        34571
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34571,
+        34602
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34602,
+        34633
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34633,
+        34664
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34665,
+        34696
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34697,
+        34728
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34728,
+        34759
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34759,
+        34790
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34790,
+        34821
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34822,
+        34853
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34854,
+        34885
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34885,
+        34916
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34916,
+        34947
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34947,
+        34978
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        34979,
+        35010
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35011,
+        35042
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35042,
+        35073
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35073,
+        35104
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35104,
+        35135
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35136,
+        35167
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35168,
+        35199
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35199,
+        35230
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35230,
+        35261
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35261,
+        35292
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35293,
+        35324
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35325,
+        35356
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35356,
+        35387
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35387,
+        35418
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35418,
+        35449
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35450,
+        35481
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35482,
+        35513
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35513,
+        35544
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35544,
+        35575
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35575,
+        35606
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35607,
+        35638
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35639,
+        35670
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35670,
+        35701
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35701,
+        35732
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35732,
+        35763
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35764,
+        35795
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35796,
+        35827
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35827,
+        35858
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35858,
+        35889
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35889,
+        35920
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35921,
+        35952
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35953,
+        35984
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        35984,
+        36015
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36015,
+        36046
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36046,
+        36077
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36078,
+        36109
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36110,
+        36141
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36141,
+        36172
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36172,
+        36203
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36203,
+        36234
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36235,
+        36266
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36267,
+        36298
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36298,
+        36329
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36329,
+        36360
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36360,
+        36391
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36392,
+        36423
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36424,
+        36455
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36455,
+        36486
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36486,
+        36517
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36517,
+        36548
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36549,
+        36580
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36581,
+        36612
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36612,
+        36643
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36643,
+        36674
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36674,
+        36705
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36706,
+        36737
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36738,
+        36769
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36769,
+        36800
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36800,
+        36831
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36831,
+        36862
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36863,
+        36894
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36895,
+        36926
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36926,
+        36957
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36957,
+        36988
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        36988,
+        37019
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37020,
+        37051
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37052,
+        37083
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37083,
+        37114
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37114,
+        37145
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37145,
+        37176
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37177,
+        37208
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37209,
+        37240
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37240,
+        37271
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37271,
+        37302
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37302,
+        37333
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37334,
+        37365
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37366,
+        37397
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37397,
+        37428
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37428,
+        37459
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37459,
+        37490
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37491,
+        37522
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37523,
+        37554
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37554,
+        37585
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37585,
+        37616
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37616,
+        37647
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37648,
+        37679
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37680,
+        37711
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37711,
+        37742
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37742,
+        37773
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37773,
+        37804
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37805,
+        37836
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37837,
+        37868
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37868,
+        37899
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37899,
+        37930
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37930,
+        37961
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37962,
+        37993
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        37994,
+        38025
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38025,
+        38056
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38056,
+        38087
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38087,
+        38118
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38119,
+        38150
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38151,
+        38182
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38182,
+        38213
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38213,
+        38244
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38244,
+        38275
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38276,
+        38307
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38308,
+        38339
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38339,
+        38370
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38370,
+        38401
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38401,
+        38432
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38433,
+        38464
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38465,
+        38496
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38496,
+        38527
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38527,
+        38558
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38558,
+        38589
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38590,
+        38621
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38622,
+        38653
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38653,
+        38684
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38684,
+        38715
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38715,
+        38746
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38747,
+        38778
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38779,
+        38810
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38810,
+        38841
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38841,
+        38872
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38872,
+        38903
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38904,
+        38935
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38936,
+        38967
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38967,
+        38998
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        38998,
+        39029
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39029,
+        39060
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39061,
+        39092
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39093,
+        39124
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39124,
+        39155
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39155,
+        39186
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39186,
+        39217
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39218,
+        39249
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39250,
+        39281
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39281,
+        39312
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39312,
+        39343
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39343,
+        39374
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39375,
+        39406
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39407,
+        39438
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39438,
+        39469
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39469,
+        39500
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39500,
+        39531
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39532,
+        39563
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39564,
+        39595
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39595,
+        39626
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39626,
+        39657
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39657,
+        39688
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39689,
+        39720
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39721,
+        39752
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39752,
+        39783
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39783,
+        39814
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39814,
+        39845
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39846,
+        39877
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39878,
+        39909
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39909,
+        39940
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39940,
+        39971
+      ],
+      "mean_cayley": 0.0,
+      "n": 500
+    },
+    {
+      "steps_range": [
+        39971,
+        39999
+      ],
+      "mean_cayley": 0.0,
+      "n": 452
+    }
+  ],
+  "identity_frac": [
+    {
+      "window_step": 0,
+      "identity_frac": 0.7352572145545797,
+      "n": 3188
+    },
+    {
+      "window_step": 200,
+      "identity_frac": 0.34441656210790467,
+      "n": 3188
+    },
+    {
+      "window_step": 400,
+      "identity_frac": 0.039523212045169384,
+      "n": 3188
+    },
+    {
+      "window_step": 600,
+      "identity_frac": 0.04785894206549118,
+      "n": 3176
+    },
+    {
+      "window_step": 800,
+      "identity_frac": 0.049247176913425346,
+      "n": 3188
+    },
+    {
+      "window_step": 1000,
+      "identity_frac": 0.04611041405269762,
+      "n": 3188
+    },
+    {
+      "window_step": 1200,
+      "identity_frac": 0.04799247176913425,
+      "n": 3188
+    },
+    {
+      "window_step": 1400,
+      "identity_frac": 0.04534005037783375,
+      "n": 3176
+    },
+    {
+      "window_step": 1600,
+      "identity_frac": 0.04767879548306148,
+      "n": 3188
+    },
+    {
+      "window_step": 1800,
+      "identity_frac": 0.04234629861982434,
+      "n": 3188
+    },
+    {
+      "window_step": 2000,
+      "identity_frac": 0.04376574307304786,
+      "n": 3176
+    },
+    {
+      "window_step": 2200,
+      "identity_frac": 0.0486198243412798,
+      "n": 3188
+    },
+    {
+      "window_step": 2400,
+      "identity_frac": 0.04234629861982434,
+      "n": 3188
+    },
+    {
+      "window_step": 2600,
+      "identity_frac": 0.04705144291091593,
+      "n": 3188
+    },
+    {
+      "window_step": 2800,
+      "identity_frac": 0.0371536523929471,
+      "n": 3176
+    },
+    {
+      "window_step": 3000,
+      "identity_frac": 0.04265997490589712,
+      "n": 3188
+    },
+    {
+      "window_step": 3200,
+      "identity_frac": 0.04109159347553325,
+      "n": 3188
+    },
+    {
+      "window_step": 3400,
+      "identity_frac": 0.04548306148055207,
+      "n": 3188
+    },
+    {
+      "window_step": 3600,
+      "identity_frac": 0.03841309823677582,
+      "n": 3176
+    },
+    {
+      "window_step": 3800,
+      "identity_frac": 0.04360100376411543,
+      "n": 3188
+    },
+    {
+      "window_step": 4000,
+      "identity_frac": 0.04454203262233375,
+      "n": 3188
+    },
+    {
+      "window_step": 4200,
+      "identity_frac": 0.036838790931989926,
+      "n": 3176
+    },
+    {
+      "window_step": 4400,
+      "identity_frac": 0.043914680050188205,
+      "n": 3188
+    },
+    {
+      "window_step": 4600,
+      "identity_frac": 0.04611041405269762,
+      "n": 3188
+    },
+    {
+      "window_step": 4800,
+      "identity_frac": 0.04548306148055207,
+      "n": 3188
+    },
+    {
+      "window_step": 5000,
+      "identity_frac": 0.04376574307304786,
+      "n": 3176
+    },
+    {
+      "window_step": 5200,
+      "identity_frac": 0.04328732747804266,
+      "n": 3188
+    },
+    {
+      "window_step": 5400,
+      "identity_frac": 0.04328732747804266,
+      "n": 3188
+    },
+    {
+      "window_step": 5600,
+      "identity_frac": 0.04736511919698871,
+      "n": 3188
+    },
+    {
+      "window_step": 5800,
+      "identity_frac": 0.04219143576826197,
+      "n": 3176
+    },
+    {
+      "window_step": 6000,
+      "identity_frac": 0.043914680050188205,
+      "n": 3188
+    },
+    {
+      "window_step": 6200,
+      "identity_frac": 0.04015056461731493,
+      "n": 3188
+    },
+    {
+      "window_step": 6400,
+      "identity_frac": 0.045969773299748114,
+      "n": 3176
+    },
+    {
+      "window_step": 6600,
+      "identity_frac": 0.0417189460476788,
+      "n": 3188
+    },
+    {
+      "window_step": 6800,
+      "identity_frac": 0.04736511919698871,
+      "n": 3188
+    },
+    {
+      "window_step": 7000,
+      "identity_frac": 0.04548306148055207,
+      "n": 3188
+    },
+    {
+      "window_step": 7200,
+      "identity_frac": 0.04030226700251889,
+      "n": 3176
+    },
+    {
+      "window_step": 7400,
+      "identity_frac": 0.043914680050188205,
+      "n": 3188
+    },
+    {
+      "window_step": 7600,
+      "identity_frac": 0.04548306148055207,
+      "n": 3188
+    },
+    {
+      "window_step": 7800,
+      "identity_frac": 0.038268506900878296,
+      "n": 3188
+    },
+    {
+      "window_step": 8000,
+      "identity_frac": 0.03904282115869018,
+      "n": 3176
+    },
+    {
+      "window_step": 8200,
+      "identity_frac": 0.04109159347553325,
+      "n": 3188
+    },
+    {
+      "window_step": 8400,
+      "identity_frac": 0.04328732747804266,
+      "n": 3188
+    },
+    {
+      "window_step": 8600,
+      "identity_frac": 0.044710327455919394,
+      "n": 3176
+    },
+    {
+      "window_step": 8800,
+      "identity_frac": 0.04705144291091593,
+      "n": 3188
+    },
+    {
+      "window_step": 9000,
+      "identity_frac": 0.04140526976160602,
+      "n": 3188
+    },
+    {
+      "window_step": 9200,
+      "identity_frac": 0.04736511919698871,
+      "n": 3188
+    },
+    {
+      "window_step": 9400,
+      "identity_frac": 0.05258186397984887,
+      "n": 3176
+    },
+    {
+      "window_step": 9600,
+      "identity_frac": 0.05081555834378921,
+      "n": 3188
+    },
+    {
+      "window_step": 9800,
+      "identity_frac": 0.05771643663739021,
+      "n": 3188
+    },
+    {
+      "window_step": 10000,
+      "identity_frac": 0.06304893350062735,
+      "n": 3188
+    },
+    {
+      "window_step": 10200,
+      "identity_frac": 0.06423173803526448,
+      "n": 3176
+    },
+    {
+      "window_step": 10400,
+      "identity_frac": 0.07245922208281054,
+      "n": 3188
+    },
+    {
+      "window_step": 10600,
+      "identity_frac": 0.07089084065244668,
+      "n": 3188
+    },
+    {
+      "window_step": 10800,
+      "identity_frac": 0.0743073047858942,
+      "n": 3176
+    },
+    {
+      "window_step": 11000,
+      "identity_frac": 0.07183186951066499,
+      "n": 3188
+    },
+    {
+      "window_step": 11200,
+      "identity_frac": 0.07465495608531995,
+      "n": 3188
+    },
+    {
+      "window_step": 11400,
+      "identity_frac": 0.07716436637390213,
+      "n": 3188
+    },
+    {
+      "window_step": 11600,
+      "identity_frac": 0.07367758186397985,
+      "n": 3176
+    },
+    {
+      "window_step": 11800,
+      "identity_frac": 0.07841907151819323,
+      "n": 3188
+    },
+    {
+      "window_step": 12000,
+      "identity_frac": 0.0740276035131744,
+      "n": 3188
+    },
+    {
+      "window_step": 12200,
+      "identity_frac": 0.0834378920953576,
+      "n": 3188
+    },
+    {
+      "window_step": 12400,
+      "identity_frac": 0.07619647355163728,
+      "n": 3176
+    },
+    {
+      "window_step": 12600,
+      "identity_frac": 0.08186951066499373,
+      "n": 3188
+    },
+    {
+      "window_step": 12800,
+      "identity_frac": 0.07622333751568382,
+      "n": 3188
+    },
+    {
+      "window_step": 13000,
+      "identity_frac": 0.07840050377833753,
+      "n": 3176
+    },
+    {
+      "window_step": 13200,
+      "identity_frac": 0.07841907151819323,
+      "n": 3188
+    },
+    {
+      "window_step": 13400,
+      "identity_frac": 0.07779171894604768,
+      "n": 3188
+    },
+    {
+      "window_step": 13600,
+      "identity_frac": 0.07496863237139273,
+      "n": 3188
+    },
+    {
+      "window_step": 13800,
+      "identity_frac": 0.0790302267002519,
+      "n": 3176
+    },
+    {
+      "window_step": 14000,
+      "identity_frac": 0.07496863237139273,
+      "n": 3188
+    },
+    {
+      "window_step": 14200,
+      "identity_frac": 0.08281053952321205,
+      "n": 3188
+    },
+    {
+      "window_step": 14400,
+      "identity_frac": 0.07653701380175659,
+      "n": 3188
+    },
+    {
+      "window_step": 14600,
+      "identity_frac": 0.07840050377833753,
+      "n": 3176
+    },
+    {
+      "window_step": 14800,
+      "identity_frac": 0.08030112923462986,
+      "n": 3188
+    },
+    {
+      "window_step": 15000,
+      "identity_frac": 0.0774780426599749,
+      "n": 3188
+    },
+    {
+      "window_step": 15200,
+      "identity_frac": 0.0758816120906801,
+      "n": 3176
+    },
+    {
+      "window_step": 15400,
+      "identity_frac": 0.07653701380175659,
+      "n": 3188
+    },
+    {
+      "window_step": 15600,
+      "identity_frac": 0.07810539523212046,
+      "n": 3188
+    },
+    {
+      "window_step": 15800,
+      "identity_frac": 0.07936010037641154,
+      "n": 3188
+    },
+    {
+      "window_step": 16000,
+      "identity_frac": 0.07619647355163728,
+      "n": 3176
+    },
+    {
+      "window_step": 16200,
+      "identity_frac": 0.0821831869510665,
+      "n": 3188
+    },
+    {
+      "window_step": 16400,
+      "identity_frac": 0.08061480552070263,
+      "n": 3188
+    },
+    {
+      "window_step": 16600,
+      "identity_frac": 0.07241813602015114,
+      "n": 3176
+    },
+    {
+      "window_step": 16800,
+      "identity_frac": 0.07434127979924718,
+      "n": 3188
+    },
+    {
+      "window_step": 17000,
+      "identity_frac": 0.08281053952321205,
+      "n": 3188
+    },
+    {
+      "window_step": 17200,
+      "identity_frac": 0.0740276035131744,
+      "n": 3188
+    },
+    {
+      "window_step": 17400,
+      "identity_frac": 0.08217884130982368,
+      "n": 3176
+    },
+    {
+      "window_step": 17600,
+      "identity_frac": 0.07465495608531995,
+      "n": 3188
+    },
+    {
+      "window_step": 17800,
+      "identity_frac": 0.08186951066499373,
+      "n": 3188
+    },
+    {
+      "window_step": 18000,
+      "identity_frac": 0.07685069008782935,
+      "n": 3188
+    },
+    {
+      "window_step": 18200,
+      "identity_frac": 0.08091939546599496,
+      "n": 3176
+    },
+    {
+      "window_step": 18400,
+      "identity_frac": 0.07810539523212046,
+      "n": 3188
+    },
+    {
+      "window_step": 18600,
+      "identity_frac": 0.07622333751568382,
+      "n": 3188
+    },
+    {
+      "window_step": 18800,
+      "identity_frac": 0.07619647355163728,
+      "n": 3176
+    },
+    {
+      "window_step": 19000,
+      "identity_frac": 0.07810539523212046,
+      "n": 3188
+    },
+    {
+      "window_step": 19200,
+      "identity_frac": 0.08061480552070263,
+      "n": 3188
+    },
+    {
+      "window_step": 19400,
+      "identity_frac": 0.07308657465495609,
+      "n": 3188
+    },
+    {
+      "window_step": 19600,
+      "identity_frac": 0.07934508816120907,
+      "n": 3176
+    },
+    {
+      "window_step": 19800,
+      "identity_frac": 0.08155583437892096,
+      "n": 3188
+    },
+    {
+      "window_step": 20000,
+      "identity_frac": 0.07590966122961104,
+      "n": 3188
+    },
+    {
+      "window_step": 20200,
+      "identity_frac": 0.07716436637390213,
+      "n": 3188
+    },
+    {
+      "window_step": 20400,
+      "identity_frac": 0.0790302267002519,
+      "n": 3176
+    },
+    {
+      "window_step": 20600,
+      "identity_frac": 0.07653701380175659,
+      "n": 3188
+    },
+    {
+      "window_step": 20800,
+      "identity_frac": 0.07716436637390213,
+      "n": 3188
+    },
+    {
+      "window_step": 21000,
+      "identity_frac": 0.07965994962216624,
+      "n": 3176
+    },
+    {
+      "window_step": 21200,
+      "identity_frac": 0.07685069008782935,
+      "n": 3188
+    },
+    {
+      "window_step": 21400,
+      "identity_frac": 0.08281053952321205,
+      "n": 3188
+    },
+    {
+      "window_step": 21600,
+      "identity_frac": 0.0740276035131744,
+      "n": 3188
+    },
+    {
+      "window_step": 21800,
+      "identity_frac": 0.07682619647355164,
+      "n": 3176
+    },
+    {
+      "window_step": 22000,
+      "identity_frac": 0.0821831869510665,
+      "n": 3188
+    },
+    {
+      "window_step": 22200,
+      "identity_frac": 0.07528230865746549,
+      "n": 3188
+    },
+    {
+      "window_step": 22400,
+      "identity_frac": 0.07810539523212046,
+      "n": 3188
+    },
+    {
+      "window_step": 22600,
+      "identity_frac": 0.07840050377833753,
+      "n": 3176
+    },
+    {
+      "window_step": 22800,
+      "identity_frac": 0.07590966122961104,
+      "n": 3188
+    },
+    {
+      "window_step": 23000,
+      "identity_frac": 0.07779171894604768,
+      "n": 3188
+    },
+    {
+      "window_step": 23200,
+      "identity_frac": 0.07934508816120907,
+      "n": 3176
+    },
+    {
+      "window_step": 23400,
+      "identity_frac": 0.08061480552070263,
+      "n": 3188
+    },
+    {
+      "window_step": 23600,
+      "identity_frac": 0.07779171894604768,
+      "n": 3188
+    },
+    {
+      "window_step": 23800,
+      "identity_frac": 0.07716436637390213,
+      "n": 3188
+    },
+    {
+      "window_step": 24000,
+      "identity_frac": 0.0743073047858942,
+      "n": 3176
+    },
+    {
+      "window_step": 24200,
+      "identity_frac": 0.08312421580928482,
+      "n": 3188
+    },
+    {
+      "window_step": 24400,
+      "identity_frac": 0.07308657465495609,
+      "n": 3188
+    },
+    {
+      "window_step": 24600,
+      "identity_frac": 0.08030112923462986,
+      "n": 3188
+    },
+    {
+      "window_step": 24800,
+      "identity_frac": 0.0790302267002519,
+      "n": 3176
+    },
+    {
+      "window_step": 25000,
+      "identity_frac": 0.07590966122961104,
+      "n": 3188
+    },
+    {
+      "window_step": 25200,
+      "identity_frac": 0.07936010037641154,
+      "n": 3188
+    },
+    {
+      "window_step": 25400,
+      "identity_frac": 0.07682619647355164,
+      "n": 3176
+    },
+    {
+      "window_step": 25600,
+      "identity_frac": 0.07936010037641154,
+      "n": 3188
+    },
+    {
+      "window_step": 25800,
+      "identity_frac": 0.07653701380175659,
+      "n": 3188
+    },
+    {
+      "window_step": 26000,
+      "identity_frac": 0.08030112923462986,
+      "n": 3188
+    },
+    {
+      "window_step": 26200,
+      "identity_frac": 0.07651133501259445,
+      "n": 3176
+    },
+    {
+      "window_step": 26400,
+      "identity_frac": 0.08469259723964868,
+      "n": 3188
+    },
+    {
+      "window_step": 26600,
+      "identity_frac": 0.07340025094102885,
+      "n": 3188
+    },
+    {
+      "window_step": 26800,
+      "identity_frac": 0.07716436637390213,
+      "n": 3188
+    },
+    {
+      "window_step": 27000,
+      "identity_frac": 0.07651133501259445,
+      "n": 3176
+    },
+    {
+      "window_step": 27200,
+      "identity_frac": 0.07685069008782935,
+      "n": 3188
+    },
+    {
+      "window_step": 27400,
+      "identity_frac": 0.07904642409033877,
+      "n": 3188
+    },
+    {
+      "window_step": 27600,
+      "identity_frac": 0.07808564231738035,
+      "n": 3176
+    },
+    {
+      "window_step": 27800,
+      "identity_frac": 0.0774780426599749,
+      "n": 3188
+    },
+    {
+      "window_step": 28000,
+      "identity_frac": 0.07904642409033877,
+      "n": 3188
+    },
+    {
+      "window_step": 28200,
+      "identity_frac": 0.07779171894604768,
+      "n": 3188
+    },
+    {
+      "window_step": 28400,
+      "identity_frac": 0.0790302267002519,
+      "n": 3176
+    },
+    {
+      "window_step": 28600,
+      "identity_frac": 0.07904642409033877,
+      "n": 3188
+    },
+    {
+      "window_step": 28800,
+      "identity_frac": 0.07810539523212046,
+      "n": 3188
+    },
+    {
+      "window_step": 29000,
+      "identity_frac": 0.07653701380175659,
+      "n": 3188
+    },
+    {
+      "window_step": 29200,
+      "identity_frac": 0.07840050377833753,
+      "n": 3176
+    },
+    {
+      "window_step": 29400,
+      "identity_frac": 0.07716436637390213,
+      "n": 3188
+    },
+    {
+      "window_step": 29600,
+      "identity_frac": 0.08030112923462986,
+      "n": 3188
+    },
+    {
+      "window_step": 29800,
+      "identity_frac": 0.07525188916876574,
+      "n": 3176
+    },
+    {
+      "window_step": 30000,
+      "identity_frac": 0.07936010037641154,
+      "n": 3188
+    },
+    {
+      "window_step": 30200,
+      "identity_frac": 0.0740276035131744,
+      "n": 3188
+    },
+    {
+      "window_step": 30400,
+      "identity_frac": 0.0821831869510665,
+      "n": 3188
+    },
+    {
+      "window_step": 30600,
+      "identity_frac": 0.07682619647355164,
+      "n": 3176
+    },
+    {
+      "window_step": 30800,
+      "identity_frac": 0.07967377666248432,
+      "n": 3188
+    },
+    {
+      "window_step": 31000,
+      "identity_frac": 0.07936010037641154,
+      "n": 3188
+    },
+    {
+      "window_step": 31200,
+      "identity_frac": 0.07493702770780857,
+      "n": 3176
+    },
+    {
+      "window_step": 31400,
+      "identity_frac": 0.0774780426599749,
+      "n": 3188
+    },
+    {
+      "window_step": 31600,
+      "identity_frac": 0.07716436637390213,
+      "n": 3188
+    },
+    {
+      "window_step": 31800,
+      "identity_frac": 0.08155583437892096,
+      "n": 3188
+    },
+    {
+      "window_step": 32000,
+      "identity_frac": 0.07619647355163728,
+      "n": 3176
+    },
+    {
+      "window_step": 32200,
+      "identity_frac": 0.07967377666248432,
+      "n": 3188
+    },
+    {
+      "window_step": 32400,
+      "identity_frac": 0.07622333751568382,
+      "n": 3188
+    },
+    {
+      "window_step": 32600,
+      "identity_frac": 0.07810539523212046,
+      "n": 3188
+    },
+    {
+      "window_step": 32800,
+      "identity_frac": 0.08123425692695214,
+      "n": 3176
+    },
+    {
+      "window_step": 33000,
+      "identity_frac": 0.07434127979924718,
+      "n": 3188
+    },
+    {
+      "window_step": 33200,
+      "identity_frac": 0.07716436637390213,
+      "n": 3188
+    },
+    {
+      "window_step": 33400,
+      "identity_frac": 0.0790302267002519,
+      "n": 3176
+    },
+    {
+      "window_step": 33600,
+      "identity_frac": 0.07810539523212046,
+      "n": 3188
+    },
+    {
+      "window_step": 33800,
+      "identity_frac": 0.07841907151819323,
+      "n": 3188
+    },
+    {
+      "window_step": 34000,
+      "identity_frac": 0.07496863237139273,
+      "n": 3188
+    },
+    {
+      "window_step": 34200,
+      "identity_frac": 0.07808564231738035,
+      "n": 3176
+    },
+    {
+      "window_step": 34400,
+      "identity_frac": 0.07559598494353827,
+      "n": 3188
+    },
+    {
+      "window_step": 34600,
+      "identity_frac": 0.08720200752823086,
+      "n": 3188
+    },
+    {
+      "window_step": 34800,
+      "identity_frac": 0.07371392722710163,
+      "n": 3188
+    },
+    {
+      "window_step": 35000,
+      "identity_frac": 0.07745591939546599,
+      "n": 3176
+    },
+    {
+      "window_step": 35200,
+      "identity_frac": 0.07936010037641154,
+      "n": 3188
+    },
+    {
+      "window_step": 35400,
+      "identity_frac": 0.07496863237139273,
+      "n": 3188
+    },
+    {
+      "window_step": 35600,
+      "identity_frac": 0.08060453400503778,
+      "n": 3176
+    },
+    {
+      "window_step": 35800,
+      "identity_frac": 0.07559598494353827,
+      "n": 3188
+    },
+    {
+      "window_step": 36000,
+      "identity_frac": 0.08124215809284818,
+      "n": 3188
+    },
+    {
+      "window_step": 36200,
+      "identity_frac": 0.07716436637390213,
+      "n": 3188
+    },
+    {
+      "window_step": 36400,
+      "identity_frac": 0.07714105793450882,
+      "n": 3176
+    },
+    {
+      "window_step": 36600,
+      "identity_frac": 0.08281053952321205,
+      "n": 3188
+    },
+    {
+      "window_step": 36800,
+      "identity_frac": 0.07434127979924718,
+      "n": 3188
+    },
+    {
+      "window_step": 37000,
+      "identity_frac": 0.07685069008782935,
+      "n": 3188
+    },
+    {
+      "window_step": 37200,
+      "identity_frac": 0.0790302267002519,
+      "n": 3176
+    },
+    {
+      "window_step": 37400,
+      "identity_frac": 0.0740276035131744,
+      "n": 3188
+    },
+    {
+      "window_step": 37600,
+      "identity_frac": 0.08155583437892096,
+      "n": 3188
+    },
+    {
+      "window_step": 37800,
+      "identity_frac": 0.07682619647355164,
+      "n": 3176
+    },
+    {
+      "window_step": 38000,
+      "identity_frac": 0.0809284818067754,
+      "n": 3188
+    },
+    {
+      "window_step": 38200,
+      "identity_frac": 0.0774780426599749,
+      "n": 3188
+    },
+    {
+      "window_step": 38400,
+      "identity_frac": 0.07779171894604768,
+      "n": 3188
+    },
+    {
+      "window_step": 38600,
+      "identity_frac": 0.07399244332493703,
+      "n": 3176
+    },
+    {
+      "window_step": 38800,
+      "identity_frac": 0.0799874529485571,
+      "n": 3188
+    },
+    {
+      "window_step": 39000,
+      "identity_frac": 0.08155583437892096,
+      "n": 3188
+    },
+    {
+      "window_step": 39200,
+      "identity_frac": 0.07465495608531995,
+      "n": 3188
+    },
+    {
+      "window_step": 39400,
+      "identity_frac": 0.0787153652392947,
+      "n": 3176
+    },
+    {
+      "window_step": 39600,
+      "identity_frac": 0.08186951066499373,
+      "n": 3188
+    },
+    {
+      "window_step": 39800,
+      "identity_frac": 0.07559598494353827,
+      "n": 3188
+    }
+  ]
+}
