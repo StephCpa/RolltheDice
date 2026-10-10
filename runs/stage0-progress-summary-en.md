@@ -1,5 +1,12 @@
 # P6 Stage 0 Progress Summary (as of 2026-10-10)
 
+> **⚠ Review note, added 2026-10-10. The text below is unchanged; see `analysis/2026-10-10-external-review.md`.**
+> - The `ntp_randperm` row comes from a run registered as **INVALID** (incident #3: it never re-paired). Reading point 3 (the "G1 control result") is therefore unsupported. In practice that run is a replicate of ntp_fixed, and the gap between them (0.063 validity) is larger than setc's lead (+0.039).
+> - The `setc_m4` row is the **DEVIATION** run. setc also differs from ntp_fixed by adding the teacherless objective and a second forward pass per step. Use the new matched arms `tl_fixed_m4` and `tl_randperm_m4` to isolate the effect of matching itself.
+> - **Incident #4:** the circle `seen()` check did not truncate at `</a>`. This inflates *Unseen-valid* and *Unique novel* and deflates `test_seen`; validity, memorization and unique-valid are unaffected. It is fixed; re-score the existing models with `code/rescore.py`.
+> - The no-seed "single output" result follows from greedy decoding on a constant prompt, so it is not evidence of mode collapse; a temperature-sampling comparison is needed. setc's memorization score of 0.41 measures reproduction of the *dataset* pairing, not the absence of memorization.
+> - The evaluator self-test now has 15 checks.
+
 Project: transferable multi-solution generation following *Roll the dice & look before you leap* (ICML 2025 Outstanding Paper, arXiv:2504.15266). Candidate under test: **set-coupled multi-solution training** — per round, an optimal bijection between m=4 seeds and m=4 verified solutions is chosen by Hungarian matching on teacherless (parallel-prediction) costs, so that m² pairing costs are computed from only m forward passes. All results below are **development status, single training seed, greedy decoding** (matching the original repo's predict mechanics).
 
 ## Infrastructure completed

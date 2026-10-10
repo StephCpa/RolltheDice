@@ -1,6 +1,14 @@
 """P6 评审落地分析（2026-10-10）：
 A. memo 重评分：setc_v2 按 π*_final 配对重评训练配对记忆；randperm_v2 评"组内任一目标"。
+   【事件 #5 更正】首版把预测整串（含本 seed 的 hash 前缀）与各组员的 target_text 整串比较，
+   而组员的 target_text 带各自的 hash 前缀 → 只可能与本 seed 的名义目标相等：
+   memo_pi_final 与 memo_any_group_target 被迫退化为"π*_final 不动点且被复现"的比例
+   （setc_v2：35/128，恰等于 π*_final 在这 128 个探针上的不动点数）。现改为只比较答案部分。
+   更系统的版本见 train.py/evaluator.py 的 memo_own 与 rescore.py --pairing_file。
 B. 差距基线：ntp_fixed 末模型在同样组上的最优-次优差距（对照 setc_v2 的 479 nats）。
+   注意：ntp_fixed 从未训练 TL 目标，其 teacherless 代价是分布外读数；同口径基线应比较
+   AR（teacher-forcing）代价下"本臂自身配对 vs 其余 23 个排列"的间隔，并按 token 数与
+   dropout 噪声尺度归一（diagnose.py --mode gap）。
 C. C01b：同一模型上 teacherless 代价与 NTP(teacher-forcing) 代价的选排列一致率与 regret。
 """
 import json, sys, itertools
@@ -10,6 +18,7 @@ import torch.nn.functional as F
 
 sys.path.insert(0, 'code')
 from train import encode_raw, build_groups, mtp_seq, ntp_seq, pad_batch, MAX_LEN
+from evaluator import answer_of
 from transformers import GPT2LMHeadModel, GPT2TokenizerFast
 from scipy.optimize import linear_sum_assignment
 
@@ -104,10 +113,11 @@ def main():
         tok, m = load(f'{ROOT}/{arm}/final_model')
         c_nom = c_pf = c_any = 0
         for p in probes:
-            pred = greedy_pred(tok, m, p['input_text']).split('</a>')[0]
+            pred = answer_of(greedy_pred(tok, m, p['input_text']))
             idx = text2idx[p['input_text']]
             g, i = tok2grp[tuple(exs[idx][0])]
-            golds = [raw[tok2idx[tuple(pp)]]['target_text'].split('</a>')[0]
+            # 只比较答案部分：target_text 带各组员自己的 hash 前缀（事件 #5）
+            golds = [answer_of(raw[tok2idx[tuple(pp)]]['target_text'])
                      for (pp, _) in groups[g]]
             c_nom += int(pred == golds[i])
             c_any += int(pred in golds)
