@@ -489,6 +489,8 @@ def test_churn_commitment_and_final_stats():
     assert res["commitment"]["hist"] == {0: 1, 10: 1}         # 组 1 在第 5 步承诺，组 0 在第 10 步
     fps = res["final_perm_stats"]
     assert fps["identity_share"] == 0.5 and fps["cycle_types"] == {"1+1+1+1": 0.5, "2+2": 0.5}
+    fpw = {w["window_step"]: w["frac"] for w in res["fixed_point_frac"]}
+    assert abs(fpw[0] - (2 + 4 + 4 + 4 + 0 + 0) / 24) < 1e-9          # 6 次访问的不动点均值
 
 
 def test_gap_stats_own_margin_and_noise():

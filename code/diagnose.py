@@ -100,13 +100,14 @@ def churn_analysis(dump_path, window=200, struct_keys=None, commit_bin=1000):
     - final_perm_stats：各组最终配对的循环型分布、不动点占比、恒等占比（对照均匀 S_m）；
     - p_eq_final：各窗口内访问的配对 == 该组最终配对 的比例（富者愈富：早期即应 > 1/m!）；
     - commitment：各组"此后每次访问都等于最终配对"的最早步（承诺时间）分布；
+    - fixed_point_frac：各窗口 π(i)=i 的比例（setc_MN / setc_NM 中即"两分支目标相同"的 seed 比例）；
     - struct_change_traj（给定 struct_keys 时）：只把"某个 seed 被分到的 canonical 结构变了"计为变化
       ——目标结构相同的两个条目互换不算换了生成方案（circle 1 万个目标只有 8,859 个结构）。
     struct_keys: {组键: [组员 0..m-1 的目标结构键]}。
     tl_fixed/tl_randperm/锁定分支的记录含影子 argmin：另报告"施加配对 == 模型 argmin"的比例。"""
     by_group, argmin = read_churn(dump_path)
     dists, steps_all, schg = [], [], []
-    ident_frac_win, eqf_win = {}, {}
+    ident_frac_win, eqf_win, fp_win = {}, {}, {}
     commit, final = [], {}
     for g, visits in by_group.items():
         fin = visits[-1][1]
@@ -121,6 +122,7 @@ def churn_analysis(dump_path, window=200, struct_keys=None, commit_bin=1000):
             w = s // window
             ident_frac_win.setdefault(w, []).append(1.0 if p == list(range(len(p))) else 0.0)
             eqf_win.setdefault(w, []).append(1.0 if p == fin else 0.0)
+            fp_win.setdefault(w, []).append(sum(p[i] == i for i in range(len(p))) / len(p))
         t_commit = visits[-1][0]
         for s, p in reversed(visits):
             if p != fin:
@@ -154,6 +156,9 @@ def churn_analysis(dump_path, window=200, struct_keys=None, commit_bin=1000):
            "mean_cayley": float(np.mean(dists)) if dists else None,
            "chance_cayley": float(m - sum(1.0 / k for k in range(1, m + 1))),
            "traj": traj, "identity_frac": ident,
+           # 冲突持久度：π(i)=i 的 seed 比例。对 TL/NTP 一支匹配、一支名义的臂，1−该值 = 两分支目标不同的 seed 比例
+           "fixed_point_frac": [{"window_step": w * window, "frac": float(np.mean(v)), "n": len(v)}
+                                for w, v in sorted(fp_win.items())],
            "final_perm_stats": {
                "fixed_point_frac": float(np.mean([sum(p[i] == i for i in range(m)) / m
                                                   for p in final.values()])),
