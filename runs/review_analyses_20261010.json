@@ -1,0 +1,24 @@
+{
+  "server-circle-40k/setc_m4_v2": {
+    "memo_nominal": 0.2734375,
+    "memo_pi_final": 0.2734375,
+    "memo_any_group_target": 0.2734375
+  },
+  "server-circle-40k/ntp_randperm_v2": {
+    "memo_nominal": 0.1640625,
+    "memo_pi_final": null,
+    "memo_any_group_target": 0.1640625
+  },
+  "20261009-circle-40k/ntp_fixed_cost": {
+    "tl_gap_median": 56.08428192138672,
+    "P_piTL_eq_piNTP": 0.994140625,
+    "ntp_regret_median": 0.0,
+    "ntp_regret_mean": 1.5346336368914706
+  },
+  "server-circle-40k/setc_m4_v2_cost": {
+    "tl_gap_median": 634.0348994136012,
+    "P_piTL_eq_piNTP": 1.0,
+    "ntp_regret_median": 0.0,
+    "ntp_regret_mean": 0.0
+  }
+}
