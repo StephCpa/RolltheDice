@@ -55,3 +55,14 @@ n_unique_valid 不受影响。偏差随各臂超长输出比例变化，跨臂�
 split("</a>")[0]+"</a>"，故为移植特有问题。已修复（seen 截断＋run_eval 截断＋回归测试），
 此后每次评价另存 preds_step*.jsonl。已有 final_model 需用 code/rescore.py 重评（含服务器上
 修复前启动的 tl_hybrid_v2 / setc_m4_v2 / ntp_randperm_v2）。
+
+事件 #5 登记（2026-10-10，评审第 5 轮代码核对发现）：code/review_analyses.py 的 memo 重评分
+把预测整串（含本 seed 的 hash 前缀）与组员 target_text 整串比较；组员的 target_text 带各自的
+hash 前缀，因而只可能与本 seed 的名义目标相等。memo_pi_final 与 memo_any_group_target 被迫退化为
+"π*_final 不动点且被复现"的比例。核对：用已提交的 setc_m4_v2/churn.jsonl.gz 与固定种子重建的分组，
+π*_final 在这 128 个训练探针上恰有 35 个不动点 = 35/128 = 0.2734，与三个 memo 读数完全一致。
+因此 runs/review_analyses_20261010.json 的 A 部分与 stage0-report"增补 2"中"伪读数假说被否证 /
+setc_v2 只复现 27% 训练对 / 坍缩≠记忆式过拟合"的裁定**作废**；现有数据（35 个不动点探针全部被复现）
+反而与"setc_v2 完整记住了自选配对"相容，需用修正脚本或 rescore.py --pairing_file 在服务器上重评定案。
+已修复（只比较答案部分；evaluator 新增 memo_own 与自检用例）。ntp_randperm_v2 的 memo_any_group_target
+（0.164）同受影响，应以结构级 train_seen 替代。
