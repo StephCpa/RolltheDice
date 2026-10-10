@@ -46,3 +46,12 @@ train.py group_step NTP 前向误用 groups_ex[g][j] 整个元素（前缀+答�
 导致 ntp_randperm 首轮从未真正重配（等价组批版 ntp_fixed，该臂标记 INVALID）、
 setc_m4 首轮 NTP 分量（1/4 权重）训练名义配对（标记 DEVIATION，MTP 匹配分支正确）。
 已修复（前缀取 i、答案取 π(i)）并烟雾验证；本地 setc_m4/ntp_fixed/ntp_noseed 不受影响。
+
+事件 #4 登记（2026-10-10，外部评审发现，见 analysis/2026-10-10-external-review.md §1.1）：
+evaluator.seen() 未截断 </a>。run_eval 批量 generate 时提前停止的行被补 pad（<|endoftext|>），
+circle_canonicalize 因尾部内容返回 None → 已见解被计为"未见/新解"。影响全部 circle 运行的
+test_seen（偏低）、test_unseen 与 n_unique_valid_novel（偏高）；test_validity、train_memorization、
+n_unique_valid 不受影响。偏差随各臂超长输出比例变化，跨臂不抵消。原实现 predict() 已
+split("</a>")[0]+"</a>"，故为移植特有问题。已修复（seen 截断＋run_eval 截断＋回归测试），
+此后每次评价另存 preds_step*.jsonl。已有 final_model 需用 code/rescore.py 重评（含服务器上
+修复前启动的 tl_hybrid_v2 / setc_m4_v2 / ntp_randperm_v2）。

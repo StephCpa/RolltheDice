@@ -1,5 +1,16 @@
 # P6 阶段 0 报告（草稿，进行中）
 
+> **⚠ 2026-10-10 外部评审标注（正文未改动，详见 `analysis/2026-10-10-external-review.md`）**
+> 1. §1 表中 `ntp_randperm` 行来自**已登记失效**的运行（事件 #3：从未真正重配），不能作为 G1 对照；
+>    "randperm ≲ fixed、排除非永久性解释"的结论不成立。该运行等价于 ntp_fixed 的近似重复，
+>    与 ntp_fixed 的差距（validity 0.063）可作噪声下限参考，已大于 setc 的领先幅度（+0.039）。
+> 2. `setc_m4` 行来自 **DEVIATION** 运行；且 setc 相对 ntp_fixed 混杂了 teacherless 目标与 2× 前向，
+>    "最优配对"的效应需对照新增的等算力臂 `tl_fixed_m4` / `tl_randperm_m4`。
+> 3. 事件 #4：circle 评价的 `seen()` 未截断 `</a>` 后的批量 pad，`test_seen` 偏低、`test_unseen`
+>    与"唯一新解"偏高（validity / memo / 唯一有效不受影响）。已修复，需用 `code/rescore.py` 重评。
+> 4. `ntp_noseed` 的"唯一输出"在 greedy＋恒定 prompt 下必然成立，不构成模式塌缩证据；需温度采样对照。
+> 5. setc 的 memo=0.41 衡量的是"复现数据集名义配对"，不是"是否记忆"（自选配对若均匀，期望 0.25）。
+
 运行：`runs/20261009-circle-40k/`（五臂 × 40k 步，circle 任务，256 探针 greedy，与原仓库 predict 机制一致）。环境差异、失效运行与修复记录见 `runs/README.md` 与各臂 `run_meta.json`。全部结果 **development 状态、单训练种子**。
 
 ## 1. 四臂终点对照（40k 步）
