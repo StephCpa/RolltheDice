@@ -4,7 +4,10 @@
 - validity: circle=每节点度恰为2的单一连通环；sibling=(b1,a)与(b2,a)均为知识图真边；
 - seen: circle=按首次出现重标定后的结构级匹配；sibling=原始串精确匹配；
 - unseen = valid 且非 seen；creativity=有效且未见的去重比例；diversity=有效的去重比例；
-- train_memorization = 与 gold 逐串一致。
+- train_memorization = 与 gold 逐串一致（即复现数据集的 hash↔target 配对；
+  对自选配对的 setc 臂，它不等于"是否记忆训练集"）。
+与原文的差异：n_unique_valid / n_unique_valid_novel 按 canonical 结构去重；
+原 eval_qa 的 creativity/diversity 按原始答案串去重并除以生成数。
 自检（--selftest）对构造样例独立复算，属 WP0c 评价核验。
 """
 import argparse
@@ -114,10 +117,13 @@ class Evaluator:
     def seen(self, pred):
         if "<q>" not in pred:
             return 0
-        ans = pred.split("<q>")[1]
+        # 先截断到首个 </a>：批量 generate 中提前停止的行会被补 pad（<|endoftext|>），
+        # 不截断则 circle_canonicalize 返回 None → 已见解被误判为"未见/新解"（事件 #4）。
+        # 原实现 predict() 已对输出做 split("</a>")[0]+"</a>"，故原 eval_qa 无此问题。
+        ans = pred.split("<q>")[1].split("</a>")[0]
         if self.task == "circle":
             return int(circle_canonicalize(ans) in self.train_answers)
-        return int(ans.split("</a>")[0] in self.train_answers)
+        return int(ans in self.train_answers)
 
     def validity(self, pred):
         if pred.count("</a>") != 1 or "<q>" not in pred:
@@ -214,6 +220,9 @@ def selftest():
     ev = Evaluator("circle", tr)
     chk("circle seen relabeled", ev.seen("zz<q><a_5><a_6><sep><a_6><a_9></a>"), 1)
     chk("circle unseen structure", ev.seen("zz<q><a_1><a_2><sep><a_2><a_3><sep><a_3><a_1></a>"), 0)
+    # 事件 #4 回归：</a> 之后的批量 pad 不得改变 seen 判定
+    chk("circle seen with trailing pad",
+        ev.seen("zz<q><a_5><a_6><sep><a_6><a_9></a><|endoftext|><|endoftext|>"), 1)
 
     # sibling
     tr_s = [{"target_text": "h<q><b1_1><b2_2><a_0></a>"},
@@ -224,6 +233,8 @@ def selftest():
     chk("sibling unknown node", evs.validity("q<q><b1_99><b2_2><a_0></a>"), 0)
     chk("sibling seen exact", evs.seen("q<q><b1_5><b2_9><a_3></a>"), 1)
     chk("sibling unseen valid", evs.seen("q<q><b1_5><b2_2><a_3></a>"), 0)
+    chk("sibling seen with trailing pad",
+        evs.seen("q<q><b1_5><b2_9><a_3></a><|endoftext|>"), 1)
     print("SELFTEST", "OK" if ok else "FAILED")
     return 0 if ok else 1
 

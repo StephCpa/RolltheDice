@@ -16,7 +16,14 @@
   tl_hybrid    原 teacherless 混合（1 NTP+3 MTP）     16 例/步（忠实原文展开）
   setc_m4      WP2 集合耦合（teacherless 代价+Hungarian，
                梯度只走被配对条目＋NTP 混合×3）        64 例/步
+  tl_fixed_m4    等算力对照: 与 setc 同一代码路径（MTP×3+NTP，2 次前向/步），
+                 配对固定为数据集名义配对（恒等置换）     64 例/步
+  tl_randperm_m4 等算力对照: 同上，每次组访问随机双射       64 例/步
 主要对照 fixed/randperm/setc 为等吞吐；hybrid 按原文语义（4×展开条目）。
+setc 相对 ntp_* 多了 teacherless 目标与第二次前向；"最优配对"本身的效应
+须对照 tl_fixed_m4 / tl_randperm_m4（目标、算力、批组织均相同，仅选择规则不同）。
+组大小由 --m 决定（臂名中的 m4 只是标签）：--m 64 --groups_per_step 1 即整批匹配，
+前向次数不变。
 偏差登记：vendored simpletransformers 需 2021 版 transformers（无 cp312 轮子），
 按上述语义干净重实现；环境与差异记入 run_meta.json。
 """
@@ -47,11 +54,14 @@ def encode_raw(raw, tok):
     return exs
 
 
-def build_groups(exs, m, rng):
-    idx = list(range(len(exs)))
+def build_index_groups(n, m, rng):
+    idx = list(range(n))
     rng.shuffle(idx)
-    groups = [idx[i:i + m] for i in range(0, len(idx) - m + 1, m)]
-    return [[exs[j] for j in mem] for mem in groups]
+    return [idx[i:i + m] for i in range(0, len(idx) - m + 1, m)]
+
+
+def build_groups(exs, m, rng):
+    return [[exs[j] for j in mem] for mem in build_index_groups(len(exs), m, rng)]
 
 
 def ntp_seq(p, a):
@@ -92,26 +102,48 @@ class UnitDataset(Dataset):
 
 # ---------------- setc / randperm 共用的组级步骤 ----------------
 
-def group_step(model, opt, scaler, groups_ex, group_ids, mode, device, step,
-               churn_log, mtp_weight=3.0, matrix_log=None):
-    """mode='randperm': 随机双射＋NTP；mode='setc': teacherless 代价+Hungarian+混合。
-    group_ids: 每组的全局编号（用于 churn 记录）。
-    matrix_log: 若给定列表且 step % matrix_log['every'] == 0，转储全部 4×4 代价矩阵
-    （用于最优/次优差距、并列率、结构同质性等离线分析）。"""
+TL_MODES = ("setc", "tl_fixed", "tl_randperm")
+
+
+def assign(C, tiebreak_rng=None):
+    """Hungarian 求 argmin_π Σ_i C[i, π(i)]，返回 π（列表）。
+    linear_sum_assignment 对完全并列的代价确定性地返回恒等置换（fp16 logits
+    舍入或模型尚未区分 seed 时常见）；tiebreak_rng 给定时先随机置换列再求解，
+    使并列被均匀打破。"""
     from scipy.optimize import linear_sum_assignment
+    if tiebreak_rng is None:
+        r, c = linear_sum_assignment(C)
+        assert list(r) == list(range(C.shape[0]))
+        return list(map(int, c))
+    sh = tiebreak_rng.permutation(C.shape[1])
+    _, c = linear_sum_assignment(C[:, sh])
+    return [int(sh[k]) for k in c]
+
+
+def group_step(model, opt, scaler, groups_ex, group_ids, mode, device, step,
+               churn_log, mtp_weight=3.0, matrix_log=None, tiebreak_rng=None,
+               members=None):
+    """mode='randperm': 随机双射＋NTP；mode='setc': teacherless 代价+Hungarian+混合；
+    mode='tl_fixed' / 'tl_randperm': 与 setc 相同的 MTP×mtp_weight+NTP 目标与算力，
+    但配对取恒等 / 随机双射（Hungarian 结果只作影子记录 argmin，不参与训练）。
+    group_ids: 每组的编号（用于 churn 记录；--regroup 时仅在本轮内唯一，另记 members）。
+    matrix_log: 若给定列表且 step % matrix_log['every'] == 0，转储全部 m×m 代价矩阵
+    （用于最优/次优差距、并列率、结构同质性等离线分析）。"""
     eos = model.config.eos_token_id
     G = len(groups_ex)
     m = len(groups_ex[0])
 
     perms = []
-    if mode == "randperm":
+    if mode in ("randperm", "tl_randperm"):
         for _ in range(G):
             pi = list(range(m))
             random.shuffle(pi)
             perms.append(pi)
+    elif mode == "tl_fixed":
+        perms = [list(range(m)) for _ in range(G)]
     loss = None
 
-    if mode == "setc":
+    if mode in TL_MODES:
         # ---- MTP 前向（每 seed 一次，带梯度；m² 代价是同次前向的 gather，向量化）----
         seqs, p_lens, a_lens = [], [], []
         for grp in groups_ex:
@@ -141,22 +173,29 @@ def group_step(model, opt, scaler, groups_ex, group_ids, mode, device, step,
         tgt_b = tgt.unsqueeze(1).expand(G, m, m, L)                      # [G, m(i), m(j), L]
         ll = logp[g_i.expand_as(tgt_b), t_t.expand_as(tgt_b), tgt_b]    # [G, m(i), m(j), L]
         C = -ll.sum(-1)                                                  # [G, m, m]
-        # Hungarian 在 detach 代价上选择
+        # Hungarian 在 detach 代价上选择（tl_fixed/tl_randperm 只作影子记录）
         C_np = C.detach().cpu().numpy()
         dump_matrices = (matrix_log is not None
                          and step % matrix_log["every"] == 0)
         for g in range(G):
-            r, c = linear_sum_assignment(C_np[g])
-            assert list(r) == list(range(m))
-            perms.append(list(map(int, c)))
+            hung = assign(C_np[g], tiebreak_rng)
+            if mode == "setc":
+                perms.append(hung)
+            pi = perms[g]
             if churn_log is not None:
-                churn_log.append({"step": step, "group": int(group_ids[g]),
-                                  "perm": list(map(int, c)),
-                                  "cost": float(C_np[g][r, c].sum())})
+                rec = {"step": step, "group": int(group_ids[g]), "perm": pi,
+                       "cost": float(C_np[g][np.arange(m), pi].sum())}
+                if mode != "setc":
+                    rec["argmin"] = hung
+                if members is not None:
+                    rec["members"] = members[g]
+                churn_log.append(rec)
             if dump_matrices:
-                matrix_log["records"].append(
-                    {"step": step, "group": int(group_ids[g]),
-                     "C": C_np[g].round(4).tolist(), "perm": list(map(int, c))})
+                mrec = {"step": step, "group": int(group_ids[g]),
+                        "C": C_np[g].round(4).tolist(), "perm": pi}
+                if members is not None:
+                    mrec["members"] = members[g]
+                matrix_log["records"].append(mrec)
         # 被配对条目的 MTP 损失（梯度只流过被选条目；argmin 不可微，EM 式）
         perm_t = torch.tensor(perms, device=device)                      # [G, m]
         sel_ll = ll[torch.arange(G, device=device).view(G, 1, 1),
@@ -179,7 +218,7 @@ def group_step(model, opt, scaler, groups_ex, group_ids, mode, device, step,
         out = model(inp2, labels=lab2)
     ntp_loss = out.loss.float()
 
-    if mode == "setc":
+    if mode in TL_MODES:
         loss = ntp_loss + mtp_weight * mtp_loss
     else:
         loss = ntp_loss
@@ -195,23 +234,33 @@ def group_step(model, opt, scaler, groups_ex, group_ids, mode, device, step,
 
 # ---------------- 评价 ----------------
 
-def run_eval(model, tok, probes, raw, task, out_dir, step, device, n_samples, temp, eos):
+def truncate_answer(s):
+    """截到首个 </a>（含）。批量 generate 中提前停止的行会被补 pad_token
+    （<|endoftext|>）；原实现 predict() 同样做 split("</a>")[0]+"</a>"。
+    无 </a> 的输出保持原样（评价器判为无效，与原实现补 </a> 的差别已登记）。"""
+    return s.split("</a>")[0] + "</a>" if "</a>" in s else s
+
+
+def run_eval(model, tok, probes, raw, task, out_dir, step, device, n_samples, temp, eos,
+             save_preds=True, do_sample=None):
+    """do_sample=None 时沿用原逻辑（n_samples>1 才采样，否则 greedy）。"""
     model.eval()
     end_id = tok.convert_tokens_to_ids("</a>")
     tok.padding_side = "left"
     texts = [p["input_text"] for p in probes for _ in range(n_samples)]
+    sample = n_samples > 1 if do_sample is None else do_sample
     outs_flat = []
     with torch.no_grad():
         for i in range(0, len(texts), 32):
             enc = tok(texts[i:i + 32], return_tensors="pt", padding=True).to(device)
-            gkw = dict(max_length=MAX_LEN, do_sample=n_samples > 1,
+            gkw = dict(max_length=MAX_LEN, do_sample=sample,
                        pad_token_id=eos, eos_token_id=end_id)
-            if n_samples > 1:
+            if sample:
                 gkw["temperature"] = temp
             o = model.generate(**enc, **gkw)
             for r in range(o.shape[0]):
-                outs_flat.append(tok.decode(o[r][enc["input_ids"].shape[1]:],
-                                            skip_special_tokens=False))
+                outs_flat.append(truncate_answer(
+                    tok.decode(o[r][enc["input_ids"].shape[1]:], skip_special_tokens=False)))
     items = []
     for k, p in enumerate(probes):
         outs = [p["input_text"] + outs_flat[k * n_samples + r]
@@ -220,6 +269,12 @@ def run_eval(model, tok, probes, raw, task, out_dir, step, device, n_samples, te
                       "model_output": outs if n_samples > 1 else outs[0],
                       "target_text": p["target_text"]})
     model.train()
+    if save_preds:
+        # 保存原始生成，评价器修订后可离线重算全部指标（无需重新生成）
+        with open(os.path.join(out_dir, f"preds_step{step}.jsonl"), "w", encoding="utf-8") as f:
+            for p, it in zip(probes, items):
+                f.write(json.dumps({"input_text": p["input_text"], **it},
+                                   ensure_ascii=False) + "\n")
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     from evaluator import Evaluator
     scores = Evaluator(task, raw).eval_items(items, n_gen=n_samples)
@@ -234,7 +289,8 @@ def run_eval(model, tok, probes, raw, task, out_dir, step, device, n_samples, te
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--arm", required=True,
-                    choices=["ntp_noseed", "ntp_fixed", "ntp_randperm", "tl_hybrid", "setc_m4"])
+                    choices=["ntp_noseed", "ntp_fixed", "ntp_randperm", "tl_hybrid", "setc_m4",
+                             "tl_fixed_m4", "tl_randperm_m4"])
     ap.add_argument("--data_dir", required=True)
     ap.add_argument("--task", choices=["circle", "sibling"], default="circle")
     ap.add_argument("--out", required=True)
@@ -252,6 +308,14 @@ def main():
     ap.add_argument("--sample_temp", type=float, default=1.0)
     ap.add_argument("--churn_dump", default=None)
     ap.add_argument("--save_final", action="store_true")
+    ap.add_argument("--mtp_weight", type=float, default=3.0,
+                    help="组级臂中 MTP 损失相对 NTP 的权重（默认 3.0 = 原 1:3 混合比）")
+    ap.add_argument("--random_tiebreak", action="store_true",
+                    help="Hungarian 前随机置换列，均匀打破并列（默认关闭以保持已有运行可复现）")
+    ap.add_argument("--regroup", action="store_true",
+                    help="组级臂每轮（遍历完全部组后）重新随机分组；churn 记录附 members")
+    ap.add_argument("--no_save_preds", action="store_true",
+                    help="不保存每次评价的原始生成 preds_step*.jsonl")
     args = ap.parse_args()
 
     os.makedirs(args.out, exist_ok=True)
@@ -284,6 +348,8 @@ def main():
     meta = {"arm": args.arm, "task": args.task, "data_dir": args.data_dir,
             "steps": args.steps, "bs": args.bs, "lr": args.lr, "seed": args.seed,
             "m": args.m, "groups_per_step": args.groups_per_step, "model": args.model,
+            "mtp_weight": args.mtp_weight, "random_tiebreak": args.random_tiebreak,
+            "regroup": args.regroup, "n_probes": len(probes),
             "n_train_examples": len(exs), "vocab_size": len(tok),
             "torch": torch.__version__, "device": torch.cuda.get_device_name(0)
             if device == "cuda" else "cpu",
@@ -296,28 +362,42 @@ def main():
     sched = torch.optim.lr_scheduler.LambdaLR(
         opt, lambda s: min(1.0, (s + 1) / max(args.warmup, 1)))
     scaler = torch.amp.GradScaler("cuda", enabled=(device == "cuda"))
-    churn_log = [] if args.arm == "setc_m4" else None
-    matrix_log = ({"every": 50, "records": []} if args.arm == "setc_m4" else None)
+    group_mode = {"ntp_randperm": "randperm", "setc_m4": "setc",
+                  "tl_fixed_m4": "tl_fixed", "tl_randperm_m4": "tl_randperm"}.get(args.arm)
+    tl_arm = group_mode in TL_MODES
+    churn_log = [] if tl_arm else None
+    matrix_log = ({"every": 50, "records": []} if tl_arm else None)
+    # 独立随机流：开启 --random_tiebreak 不改变分组/顺序所用的 rng 序列
+    tiebreak_rng = np.random.default_rng(args.seed + 1) if args.random_tiebreak else None
+    save_preds = not args.no_save_preds
     step_times = []
     print_every = max(50, args.steps // 40)
     model.train()
     t0_all = time.time()
     step = 0
 
-    if args.arm in ("ntp_randperm", "setc_m4"):
-        groups = build_groups(exs, args.m, rng)
+    if group_mode is not None:
+        groups_idx = build_index_groups(len(exs), args.m, rng)
+        groups = [[exs[j] for j in mem] for mem in groups_idx]
         order = []
+        n_epochs = 0
         while step < args.steps:
             if not order:
+                if args.regroup and n_epochs > 0:
+                    groups_idx = build_index_groups(len(exs), args.m, rng)
+                    groups = [[exs[j] for j in mem] for mem in groups_idx]
                 order = list(range(len(groups)))
                 rng.shuffle(order)
+                n_epochs += 1
             pick = order[: args.groups_per_step]
             order = order[args.groups_per_step:]
             batch_groups = [groups[g] for g in pick]
+            members = [groups_idx[g] for g in pick] if args.regroup else None
             t0 = time.time()
-            mode = "setc" if args.arm == "setc_m4" else "randperm"
-            loss, _ = group_step(model, opt, scaler, batch_groups, pick, mode, device,
-                                 step, churn_log, matrix_log=matrix_log)
+            loss, _ = group_step(model, opt, scaler, batch_groups, pick, group_mode, device,
+                                 step, churn_log, mtp_weight=args.mtp_weight,
+                                 matrix_log=matrix_log, tiebreak_rng=tiebreak_rng,
+                                 members=members)
             sched.step()
             step += 1
             if step > 50:
@@ -327,7 +407,7 @@ def main():
                       f"sec/step {np.mean(step_times[-100:]):.3f}", flush=True)
             if step % args.eval_every == 0:
                 run_eval(model, tok, probes, raw, args.task, args.out, step, device,
-                         args.n_samples_probe, args.sample_temp, eos)
+                         args.n_samples_probe, args.sample_temp, eos, save_preds)
     else:
         if args.arm == "tl_hybrid":
             # 消费 hybrid JSON：文件本身已是 1×NTP + 3×MTP 逐例展开
@@ -377,7 +457,7 @@ def main():
                           f"sec/step {np.mean(step_times[-100:]):.3f}", flush=True)
                 if step % args.eval_every == 0:
                     run_eval(model, tok, probes, raw, args.task, args.out, step, device,
-                             args.n_samples_probe, args.sample_temp, eos)
+                             args.n_samples_probe, args.sample_temp, eos, save_preds)
 
     thr = {"sec_per_step_mean": float(np.mean(step_times)),
            "sec_per_step_p50": float(np.median(step_times)),
@@ -397,8 +477,9 @@ def main():
     if args.save_final:
         model.save_pretrained(os.path.join(args.out, "final_model"))
         tok.save_pretrained(os.path.join(args.out, "final_model"))
-    run_eval(model, tok, probes, raw, args.task, args.out, args.steps, device,
-             args.n_samples_probe, args.sample_temp, eos)
+    if args.steps % args.eval_every != 0:  # 否则循环内已在 args.steps 评价过（避免重复行）
+        run_eval(model, tok, probes, raw, args.task, args.out, args.steps, device,
+                 args.n_samples_probe, args.sample_temp, eos, save_preds)
 
 
 if __name__ == "__main__":

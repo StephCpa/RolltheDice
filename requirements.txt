@@ -1,0 +1,6 @@
+# 服务器 gpu-gfkd 上登记的版本（runs/README.md 迁移登记）；本地 2080 Ti 环境另见各运行 run_meta.json
+torch==2.4.0
+transformers==4.47.1
+scipy==1.14.1
+numpy
+# 仅回归测试（code/test_pipeline.py）额外需要 tokenizers（随 transformers 安装）
