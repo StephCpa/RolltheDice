@@ -105,3 +105,29 @@ A6000 实测（`runs/server-circle-40k/*/throughput.json`）：NTP 臂 ≈1 h/40
 ## 6. 明确推迟（评审共识）
 m=8、Sinkhorn / Gumbel 扰动匹配、`--regroup`、新鲜种子（IMLE 式）臂、更大模型——均在 B/C 指明"匹配本身"有作用之后再议；
 代码均已就绪（`--m`、`--regroup`、`--random_tiebreak`）但不在本轮运行。
+
+## 7. 提议的修订（**未签署**，需项目负责人批准后才进入预注册）：冲突分解
+
+**动机。** 若阶段 B/C 中 `setc_MN`（匹配 TL / 名义 NTP）稳定，可至少有三种机制解释，而"分支目标冲突是一种正则"只是其一：
+(i) 与**被匹配**的伙伴冲突才有用；(ii) 与**任意**伙伴冲突都行（匹配无关）；(iii) 与 TL 通道无关，只是每个 seed 有两个目标
+（多目标/标签噪声式正则，已知现象）。另外，预注册比较对象是 `ntp_fixed`（无 TL）：若 `setc_MN` ≈ `ntp_fixed`，正确读法是
+"冲突抵消了 TL 查表的害处"，而不是"冲突带来正则收益"；只有 `setc_MN` 按 §3.6 判 PASS 才支持后者。
+
+| 标签 | 命令要点 | TL / NTP 目标 | 回答 |
+|---|---|---|---|
+| `tl_RN` | `setc_m4 --pair_rule fixed --fixed_pairing random --ntp_lambda 1` | 固定随机双射 / N | 无匹配的分支冲突 |
+| `ntp_2tgt` | `ntp_fixed_grouped --pair_rule fixed --fixed_pairing random --ntp_lambda 0.5` | — / N + 固定随机伙伴 | 无 TL 的双目标 |
+
+固定随机双射在每组内均匀抽取（独立随机流 seed+2），不动点约 25%，与 setc 冻结 π*（v2 实测 25.7%）可比。
+`bash code/run_stage0b.sh conflict`；两臂各 3 种子。
+
+| 结果（按 §3.6 规则，对 `setc_MN` 与 `ntp_fixed` 各比一次） | 解读 |
+|---|---|
+| `tl_RN` ≈ `setc_MN` | 匹配无关；起作用的是分支目标不一致——集合耦合作为方法的结论保持"失败" |
+| `ntp_2tgt` ≈ `setc_MN` | TL 通道无关；现象归入多目标监督正则（需与已有文献对照，新意有限） |
+| 二者都显著低于 `setc_MN` | 需要"被匹配的伙伴 + TL 通道"——唯一仍支持集合耦合有独立贡献的结果 |
+| `setc_MN` ≈ `ntp_fixed` | 冲突只抵消 TL 的害处；"冲突正则"主张不成立 |
+
+**预算（不增加总量的置换建议）。** 两臂合计 ≈9 GPU·时（tl_RN 3×2 h + ntp_2tgt 3×1 h）。建议以其替换 C 中的 `setc_M05`（3×2 h）与
+`ntp_fixed_rep`（3×1 h）：λ=0.5 只在 `setc_MN` 已 PASS 时才有解读价值，NTP-only 回放只在 π* 回放显示效应时才需要；二者可顺延。
+若团队预估的阶段 0 总量（≈67 GPU·时）超过 60 的上限，另可将 `tl_NN_rep` 顺延（−6 h），使总量回到上限内。
