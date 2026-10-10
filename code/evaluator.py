@@ -142,11 +142,24 @@ class Evaluator:
             return 0
 
     def eval_items(self, all_items, n_gen=1):
-        """all_items: [{type, model_output(可为多采样列表), target_text}]。
-        返回汇总分数。多样本时对每样本计分后取均值（creativity/diversity 用并集）。"""
+        """all_items: [{type, model_output(可为多采样列表), target_text[, own_target_text]}]。
+        返回汇总分数。多样本时对每样本计分后取均值（creativity/diversity 用并集）。
+
+        训练探针（type=train）：
+        - train_memorization：与 target_text（数据集名义配对）逐串一致（原指标，保留）；
+        - memo_own：仅比较答案部分（<q> 之后、</a> 之前）与 own_target_text 一致——
+          own_target_text 为该臂实际训练所用配对的目标（setc 为当前/冻结 π*，名义臂为名义，
+          --pairing_file 臂为回放配对）。注意不能比较整串：整串含各自的 hash 前缀，
+          只可能与本 seed 的名义目标相等（review_analyses 首版即因此失效，事件 #5）；
+        - train_seen：输出结构属于训练集任一目标（结构级，等价于"复现某个训练目标"）。
+        测试探针：
+        - test_unseen（=test_novel_valid）：有效且结构未见；
+        - creativity：去重（canonical）后的有效新结构数 / 测试生成数——论文主指标口径；
+        - creativity_raw / diversity_raw：原 eval_qa 口径（按原始答案串去重 / 测试生成数）。"""
         acc = {"train_memorization": [], "test_seen": [], "test_unseen": [],
-               "test_validity": []}
+               "test_validity": [], "memo_own": [], "train_seen": [], "train_validity": []}
         valid_answers, valid_novel_answers = set(), set()
+        raw_valid, raw_novel = set(), set()
         for item in all_items:
             t = item.get("type", "test")
             outs = item["model_output"] if isinstance(item["model_output"], list) \
@@ -155,6 +168,11 @@ class Evaluator:
                 if t == "train":
                     gold = item["target_text"].split("</a>")[0]
                     acc["train_memorization"].append(int(pred.split("</a>")[0] == gold))
+                    acc["train_seen"].append(self.seen(pred))
+                    acc["train_validity"].append(self.validity(pred))
+                    own = item.get("own_target_text")
+                    if own is not None:
+                        acc["memo_own"].append(int(answer_of(pred) == answer_of(own)))
                 else:
                     sv = self.seen(pred)
                     vd = self.validity(pred)
@@ -165,10 +183,16 @@ class Evaluator:
                         ans = pred.split("<q>")[1].split("</a>")[0]
                         key = circle_canonicalize(ans) if self.task == "circle" else ans
                         valid_answers.add(key)
+                        raw_valid.add(ans)
                         if sv == 0:
                             valid_novel_answers.add(key)
+                            raw_novel.add(ans)
         n_test = max(len(acc["test_seen"]), 1)
-        return {
+
+        def mean(k):
+            return sum(acc[k]) / len(acc[k]) if acc[k] else None
+
+        out = {
             "train_memorization": sum(acc["train_memorization"]) / max(len(acc["train_memorization"]), 1),
             "test_seen": sum(acc["test_seen"]) / n_test,
             "test_validity": sum(acc["test_validity"]) / n_test,
@@ -176,6 +200,25 @@ class Evaluator:
             "n_unique_valid": len(valid_answers),
             "n_unique_valid_novel": len(valid_novel_answers),
         }
+        out.update({
+            "test_novel_valid": out["test_unseen"],
+            "creativity": len(valid_novel_answers) / n_test,
+            "creativity_raw": len(raw_novel) / n_test,
+            "diversity_raw": len(raw_valid) / n_test,
+            "train_seen": mean("train_seen"),
+            "train_validity": mean("train_validity"),
+            "n_test_gen": len(acc["test_seen"]),
+            "n_train_gen": len(acc["train_memorization"]),
+        })
+        if acc["memo_own"]:
+            out["memo_own"] = mean("memo_own")
+        return out
+
+
+def answer_of(s):
+    """答案部分：<q> 之后、首个 </a> 之前（无 <q> 时取整串）。"""
+    s = s.split("<q>", 1)[1] if "<q>" in s else s
+    return s.split("</a>")[0]
 
 
 def selftest():
@@ -235,6 +278,20 @@ def selftest():
     chk("sibling unseen valid", evs.seen("q<q><b1_5><b2_2><a_3></a>"), 0)
     chk("sibling seen with trailing pad",
         evs.seen("q<q><b1_5><b2_9><a_3></a><|endoftext|>"), 1)
+
+    # memo_own 只比答案部分：自选配对目标来自别的 seed（hash 前缀不同）也必须判为复现（事件 #5 回归）
+    other = "h2<q><b1_5><b2_9><a_3></a>"
+    items = [{"type": "train", "model_output": "h1<q><b1_5><b2_9><a_3></a>",
+              "target_text": "h1<q><b1_1><b2_2><a_0></a>", "own_target_text": other}]
+    sc = evs.eval_items(items)
+    chk("memo_own ignores hash prefix", (sc["memo_own"], sc["train_memorization"]), (1.0, 0.0))
+    # creativity = 去重有效新结构 / 测试生成数
+    ev2 = Evaluator("sibling", tr_s + [{"target_text": "h<q><b1_6><b2_8><a_3></a>"}])
+    tests = [{"type": "test", "model_output": f"x{k}<q><b1_5><b2_8><a_3></a>", "target_text": ""}
+             for k in range(3)] + [{"type": "test", "model_output": "y<q><b1_99></a>", "target_text": ""}]
+    sc = ev2.eval_items(tests)
+    chk("creativity counts unique novel valid / n", (sc["creativity"], sc["test_novel_valid"]),
+        (0.25, 0.75))
     print("SELFTEST", "OK" if ok else "FAILED")
     return 0 if ok else 1
 
