@@ -1,0 +1,62 @@
+The new embeddings will be initialized from a multivariate normal distribution that has old embeddings' mean and covariance. As described in this article: https://nlp.stanford.edu/~johnhew/vocab-expansion.html. To disable this, use `mean_resizing=False`
+{"arm": "setc_m4", "label": "setc_MM", "task": "circle", "data_dir": "/home/wlwuser/P6-Roll_the_dice/data/circle.10.9.10.10000", "steps": 40000, "bs": 64, "lr": 0.0001, "seed": 42, "m": 4, "groups_per_step": 16, "model": "gpt2", "group_cfg": {"pair_rule": "hungarian", "tl_target": "matched", "ntp_lambda": 0.0, "mtp_weight": 3.0, "lock_at": -1}, "random_tiebreak": false, "regroup": false, "pairing_file": null, "pairing_sha256": null, "resume_from": null, "resume_step": null, "ckpt_every": 5000, "state_at": [10000, 14000, 20000], "deterministic": false, "n_probes": 256, "n_train_examples": 10000, "vocab_size": 50273, "torch": "2.4.0+cu121", "device": "NVIDIA RTX A6000", "git_commit": null, "argv": ["--arm", "setc_m4", "--label", "setc_MM", "--seed", "42", "--out", "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/setc_MM/s42", "--model", "gpt2", "--task", "circle", "--data_dir", "/home/wlwuser/P6-Roll_the_dice/data/circle.10.9.10.10000", "--steps", "40000", "--eval_every", "5000", "--ckpt_every", "5000", "--save_final", "--churn_dump", "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/setc_MM/s42/churn.jsonl", "--state_at", "10000,14000,20000"], "started": "2026-10-10 20:21:30"}
+step 1000 loss 7.9291 sec/step 0.286
+step 2000 loss 6.1113 sec/step 0.294
+step 3000 loss 6.0926 sec/step 0.291
+step 4000 loss 6.1230 sec/step 0.291
+step 5000 loss 6.0765 sec/step 0.269
+[eval] 5000 {"train_memorization": 0.0, "test_seen": 0.0, "test_validity": 0.0, "test_unseen": 0.0, "n_unique_valid": 0, "n_unique_valid_novel": 0, "test_novel_valid": 0.0, "creativity": 0.0, "creativity_raw": 0.0, "diversity_raw": 0.0, "train_seen": 0.0, "train_validity": 0.0, "n_test_gen": 128, "n_train_gen": 128, "memo_own": 0.0, "nll_nominal": 1.4913083016872406, "nll_own": 1.4793956279754639, "step": 5000}
+[2026-10-10 20:45:45,413] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.4
+[93m [WARNING] [0m using untested triton version (3.0.0), only 1.0.0 is known to be compatible
+/home/wlwuser/anaconda3/lib/python3.12/site-packages/deepspeed/runtime/zero/linear.py:47: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  @autocast_custom_fwd
+/home/wlwuser/anaconda3/lib/python3.12/site-packages/deepspeed/runtime/zero/linear.py:66: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+  @autocast_custom_bwd
+step 6000 loss 6.0195 sec/step 0.291
+step 7000 loss 5.9281 sec/step 0.291
+step 8000 loss 5.8622 sec/step 0.292
+step 9000 loss 5.7424 sec/step 0.291
+step 10000 loss 5.6347 sec/step 0.284
+[eval] 10000 {"train_memorization": 0.0, "test_seen": 0.015625, "test_validity": 0.09375, "test_unseen": 0.078125, "n_unique_valid": 9, "n_unique_valid_novel": 7, "test_novel_valid": 0.078125, "creativity": 0.0546875, "creativity_raw": 0.0546875, "diversity_raw": 0.0703125, "train_seen": 0.0078125, "train_validity": 0.0703125, "n_test_gen": 128, "n_train_gen": 128, "memo_own": 0.0, "nll_nominal": 1.1201777756214142, "nll_own": 1.0986838638782501, "step": 10000}
+step 11000 loss 5.5697 sec/step 0.291
+step 12000 loss 5.2818 sec/step 0.291
+step 13000 loss 4.8017 sec/step 0.293
+step 14000 loss 4.1543 sec/step 0.292
+step 15000 loss 3.6995 sec/step 0.270
+[eval] 15000 {"train_memorization": 0.015625, "test_seen": 0.0390625, "test_validity": 0.1953125, "test_unseen": 0.15625, "n_unique_valid": 25, "n_unique_valid_novel": 20, "test_novel_valid": 0.15625, "creativity": 0.15625, "creativity_raw": 0.15625, "diversity_raw": 0.1953125, "train_seen": 0.109375, "train_validity": 0.390625, "n_test_gen": 128, "n_train_gen": 128, "memo_own": 0.046875, "nll_nominal": 1.7066497206687927, "nll_own": 0.35359320044517517, "step": 15000}
+step 16000 loss 2.7795 sec/step 0.293
+step 17000 loss 2.1403 sec/step 0.290
+step 18000 loss 1.6256 sec/step 0.293
+step 19000 loss 1.2352 sec/step 0.291
+step 20000 loss 0.9530 sec/step 0.291
+[eval] 20000 {"train_memorization": 0.265625, "test_seen": 0.046875, "test_validity": 0.2265625, "test_unseen": 0.1796875, "n_unique_valid": 29, "n_unique_valid_novel": 23, "test_novel_valid": 0.1796875, "creativity": 0.1796875, "creativity_raw": 0.1796875, "diversity_raw": 0.2265625, "train_seen": 0.9375, "train_validity": 0.9765625, "n_test_gen": 128, "n_train_gen": 128, "memo_own": 0.9296875, "nll_nominal": 3.44305819272995, "nll_own": 0.023083082400262356, "step": 20000}
+step 21000 loss 0.7034 sec/step 0.292
+step 22000 loss 0.4447 sec/step 0.291
+step 23000 loss 0.3721 sec/step 0.291
+step 24000 loss 0.3002 sec/step 0.249
+step 25000 loss 0.2750 sec/step 0.290
+[eval] 25000 {"train_memorization": 0.2734375, "test_seen": 0.015625, "test_validity": 0.0625, "test_unseen": 0.046875, "n_unique_valid": 8, "n_unique_valid_novel": 6, "test_novel_valid": 0.046875, "creativity": 0.046875, "creativity_raw": 0.046875, "diversity_raw": 0.0625, "train_seen": 1.0, "train_validity": 1.0, "n_test_gen": 128, "n_train_gen": 128, "memo_own": 1.0, "nll_nominal": 4.75881814956665, "nll_own": 0.0008342566870851442, "step": 25000}
+step 26000 loss 0.1890 sec/step 0.291
+step 27000 loss 0.1916 sec/step 0.292
+step 28000 loss 0.1942 sec/step 0.291
+step 29000 loss 0.1549 sec/step 0.293
+step 30000 loss 0.1242 sec/step 0.291
+[eval] 30000 {"train_memorization": 0.2734375, "test_seen": 0.03125, "test_validity": 0.0546875, "test_unseen": 0.0234375, "n_unique_valid": 7, "n_unique_valid_novel": 3, "test_novel_valid": 0.0234375, "creativity": 0.0234375, "creativity_raw": 0.0234375, "diversity_raw": 0.0546875, "train_seen": 1.0, "train_validity": 1.0, "n_test_gen": 128, "n_train_gen": 128, "memo_own": 1.0, "nll_nominal": 5.513336539268494, "nll_own": 0.00010473729525983799, "step": 30000}
+step 31000 loss 0.1359 sec/step 0.290
+step 32000 loss 0.1198 sec/step 0.293
+step 33000 loss 0.0803 sec/step 0.293
+step 34000 loss 0.0741 sec/step 0.291
+step 35000 loss 0.0667 sec/step 0.292
+[eval] 35000 {"train_memorization": 0.2734375, "test_seen": 0.0, "test_validity": 0.0546875, "test_unseen": 0.0546875, "n_unique_valid": 7, "n_unique_valid_novel": 7, "test_novel_valid": 0.0546875, "creativity": 0.0546875, "creativity_raw": 0.0546875, "diversity_raw": 0.0546875, "train_seen": 1.0, "train_validity": 1.0, "n_test_gen": 128, "n_train_gen": 128, "memo_own": 1.0, "nll_nominal": 6.099252939224243, "nll_own": 2.3820282194719766e-05, "step": 35000}
+step 36000 loss 0.0657 sec/step 0.291
+step 37000 loss 0.0629 sec/step 0.210
+step 38000 loss 0.0766 sec/step 0.291
+step 39000 loss 0.0618 sec/step 0.290
+step 40000 loss 0.0385 sec/step 0.291
+[eval] 40000 {"train_memorization": 0.2734375, "test_seen": 0.015625, "test_validity": 0.0390625, "test_unseen": 0.0234375, "n_unique_valid": 5, "n_unique_valid_novel": 3, "test_novel_valid": 0.0234375, "creativity": 0.0234375, "creativity_raw": 0.0234375, "diversity_raw": 0.0390625, "train_seen": 1.0, "train_validity": 1.0, "n_test_gen": 128, "n_train_gen": 128, "memo_own": 1.0, "nll_nominal": 6.5881108045578, "nll_own": 0.0002693434081493251, "step": 40000}
+throughput {"sec_per_step_mean": 0.2886291542100966, "sec_per_step_p50": 0.29177093505859375, "total_hours": 3.2428258758121067, "steps": 40000, "start_step": 0}

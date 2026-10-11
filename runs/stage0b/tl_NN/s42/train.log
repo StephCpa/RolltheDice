@@ -1,0 +1,90 @@
+'(MaxRetryError("HTTPSConnectionPool(host='hf-mirror.com', port=443): Max retries exceeded with url: /gpt2/resolve/main/tokenizer_config.json (Caused by ConnectTimeoutError(<HTTPSConnection(host='hf-mirror.com', port=443) at 0x72e5c0bbde50>, 'Connection to hf-mirror.com timed out. (connect timeout=10)'))"), '(Request ID: 33639fda-fd99-4a78-ae94-8bd8346e0ba5)')' thrown while requesting HEAD https://hf-mirror.com/gpt2/resolve/main/tokenizer_config.json
+Retrying in 1s [Retry 1/5].
+'(MaxRetryError("HTTPSConnectionPool(host='hf-mirror.com', port=443): Max retries exceeded with url: /gpt2/resolve/main/tokenizer_config.json (Caused by ConnectTimeoutError(<HTTPSConnection(host='hf-mirror.com', port=443) at 0x72e5c07ba840>, 'Connection to hf-mirror.com timed out. (connect timeout=10)'))"), '(Request ID: f2c081b0-8585-48fc-8474-1157a9ffa9e9)')' thrown while requesting HEAD https://hf-mirror.com/gpt2/resolve/main/tokenizer_config.json
+Retrying in 2s [Retry 2/5].
+'(MaxRetryError("HTTPSConnectionPool(host='hf-mirror.com', port=443): Max retries exceeded with url: /gpt2/resolve/main/tokenizer_config.json (Caused by ConnectTimeoutError(<HTTPSConnection(host='hf-mirror.com', port=443) at 0x72e5c07bab10>, 'Connection to hf-mirror.com timed out. (connect timeout=10)'))"), '(Request ID: 96e74313-8448-4d4c-8581-8c3007658090)')' thrown while requesting HEAD https://hf-mirror.com/gpt2/resolve/main/tokenizer_config.json
+Retrying in 4s [Retry 3/5].
+'(MaxRetryError("HTTPSConnectionPool(host='hf-mirror.com', port=443): Max retries exceeded with url: /gpt2/resolve/main/tokenizer_config.json (Caused by ConnectTimeoutError(<HTTPSConnection(host='hf-mirror.com', port=443) at 0x72e5c07bade0>, 'Connection to hf-mirror.com timed out. (connect timeout=10)'))"), '(Request ID: 2966d0d8-0fde-43d4-a262-6bd4fc07f8f8)')' thrown while requesting HEAD https://hf-mirror.com/gpt2/resolve/main/tokenizer_config.json
+Retrying in 8s [Retry 4/5].
+'(MaxRetryError("HTTPSConnectionPool(host='hf-mirror.com', port=443): Max retries exceeded with url: /gpt2/resolve/main/tokenizer_config.json (Caused by ConnectTimeoutError(<HTTPSConnection(host='hf-mirror.com', port=443) at 0x72e5c07bb0b0>, 'Connection to hf-mirror.com timed out. (connect timeout=10)'))"), '(Request ID: 924fa83a-0846-4196-bb95-4d4a2c876e26)')' thrown while requesting HEAD https://hf-mirror.com/gpt2/resolve/main/tokenizer_config.json
+Retrying in 8s [Retry 5/5].
+'(MaxRetryError("HTTPSConnectionPool(host='hf-mirror.com', port=443): Max retries exceeded with url: /gpt2/resolve/main/tokenizer_config.json (Caused by ConnectTimeoutError(<HTTPSConnection(host='hf-mirror.com', port=443) at 0x72e5c0b895e0>, 'Connection to hf-mirror.com timed out. (connect timeout=10)'))"), '(Request ID: 8b0c9957-0a9a-46f3-8f2e-e4bf488cf895)')' thrown while requesting HEAD https://hf-mirror.com/gpt2/resolve/main/tokenizer_config.json
+'(MaxRetryError("HTTPSConnectionPool(host='hf-mirror.com', port=443): Max retries exceeded with url: /gpt2/resolve/main/config.json (Caused by ConnectTimeoutError(<HTTPSConnection(host='hf-mirror.com', port=443) at 0x72e5c07fb7a0>, 'Connection to hf-mirror.com timed out. (connect timeout=10)'))"), '(Request ID: 89d711c9-918a-4174-9afa-3f1b747878a8)')' thrown while requesting HEAD https://hf-mirror.com/gpt2/resolve/main/config.json
+Retrying in 1s [Retry 1/5].
+'(MaxRetryError("HTTPSConnectionPool(host='hf-mirror.com', port=443): Max retries exceeded with url: /gpt2/resolve/main/config.json (Caused by ConnectTimeoutError(<HTTPSConnection(host='hf-mirror.com', port=443) at 0x72e5c07fb4d0>, 'Connection to hf-mirror.com timed out. (connect timeout=10)'))"), '(Request ID: 2be882a9-64b5-4001-9545-dc0aee0b1214)')' thrown while requesting HEAD https://hf-mirror.com/gpt2/resolve/main/config.json
+Retrying in 2s [Retry 2/5].
+'(MaxRetryError("HTTPSConnectionPool(host='hf-mirror.com', port=443): Max retries exceeded with url: /gpt2/resolve/main/config.json (Caused by ConnectTimeoutError(<HTTPSConnection(host='hf-mirror.com', port=443) at 0x72e5c07fb0e0>, 'Connection to hf-mirror.com timed out. (connect timeout=10)'))"), '(Request ID: 0495158c-d29e-4655-af38-4f7b8b1a6883)')' thrown while requesting HEAD https://hf-mirror.com/gpt2/resolve/main/config.json
+Retrying in 4s [Retry 3/5].
+'(ReadTimeoutError("HTTPSConnectionPool(host='hf-mirror.com', port=443): Read timed out. (read timeout=10)"), '(Request ID: f81cccce-50f1-43c2-8d9b-006229dece96)')' thrown while requesting HEAD https://hf-mirror.com/gpt2/resolve/main/generation_config.json
+Retrying in 1s [Retry 1/5].
+'(MaxRetryError("HTTPSConnectionPool(host='hf-mirror.com', port=443): Max retries exceeded with url: /gpt2/resolve/main/generation_config.json (Caused by ConnectTimeoutError(<HTTPSConnection(host='hf-mirror.com', port=443) at 0x72e5c07f9be0>, 'Connection to hf-mirror.com timed out. (connect timeout=10)'))"), '(Request ID: e8c22c90-a8b0-49ab-813f-ab4ebfa0cd00)')' thrown while requesting HEAD https://hf-mirror.com/gpt2/resolve/main/generation_config.json
+Retrying in 2s [Retry 2/5].
+'(MaxRetryError("HTTPSConnectionPool(host='hf-mirror.com', port=443): Max retries exceeded with url: /gpt2/resolve/main/generation_config.json (Caused by ConnectTimeoutError(<HTTPSConnection(host='hf-mirror.com', port=443) at 0x72e5c07f8d40>, 'Connection to hf-mirror.com timed out. (connect timeout=10)'))"), '(Request ID: 81866a8a-1e41-470d-9bc6-8bf7f328e9b4)')' thrown while requesting HEAD https://hf-mirror.com/gpt2/resolve/main/generation_config.json
+Retrying in 4s [Retry 3/5].
+'(MaxRetryError("HTTPSConnectionPool(host='hf-mirror.com', port=443): Max retries exceeded with url: /gpt2/resolve/main/generation_config.json (Caused by ConnectTimeoutError(<HTTPSConnection(host='hf-mirror.com', port=443) at 0x72e5c07f8bc0>, 'Connection to hf-mirror.com timed out. (connect timeout=10)'))"), '(Request ID: 2eed8b3e-d8a6-4d8c-8017-9b32887c930c)')' thrown while requesting HEAD https://hf-mirror.com/gpt2/resolve/main/generation_config.json
+Retrying in 8s [Retry 4/5].
+'(MaxRetryError("HTTPSConnectionPool(host='hf-mirror.com', port=443): Max retries exceeded with url: /gpt2/resolve/main/generation_config.json (Caused by ConnectTimeoutError(<HTTPSConnection(host='hf-mirror.com', port=443) at 0x72e5c07f8830>, 'Connection to hf-mirror.com timed out. (connect timeout=10)'))"), '(Request ID: 75811c6d-67ec-4f3b-a361-31c8611ca224)')' thrown while requesting HEAD https://hf-mirror.com/gpt2/resolve/main/generation_config.json
+Retrying in 8s [Retry 5/5].
+'(ReadTimeoutError("HTTPSConnectionPool(host='hf-mirror.com', port=443): Read timed out. (read timeout=10)"), '(Request ID: 2e93e04a-35ea-4f56-9b5e-80256a9111e2)')' thrown while requesting HEAD https://hf-mirror.com/gpt2/resolve/main/generation_config.json
+The new embeddings will be initialized from a multivariate normal distribution that has old embeddings' mean and covariance. As described in this article: https://nlp.stanford.edu/~johnhew/vocab-expansion.html. To disable this, use `mean_resizing=False`
+{"arm": "tl_fixed_m4", "label": "tl_NN", "task": "circle", "data_dir": "/home/wlwuser/P6-Roll_the_dice/data/circle.10.9.10.10000", "steps": 40000, "bs": 64, "lr": 0.0001, "seed": 42, "m": 4, "groups_per_step": 16, "model": "gpt2", "group_cfg": {"pair_rule": "nominal", "tl_target": "nominal", "ntp_lambda": 0.0, "mtp_weight": 3.0, "lock_at": -1}, "random_tiebreak": false, "regroup": false, "pairing_file": null, "pairing_sha256": null, "resume_from": null, "resume_step": null, "ckpt_every": 5000, "state_at": [], "deterministic": false, "n_probes": 256, "n_train_examples": 10000, "vocab_size": 50273, "torch": "2.4.0+cu121", "device": "NVIDIA RTX A6000", "git_commit": null, "argv": ["--arm", "tl_fixed_m4", "--label", "tl_NN", "--seed", "42", "--out", "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/tl_NN/s42", "--model", "gpt2", "--task", "circle", "--data_dir", "/home/wlwuser/P6-Roll_the_dice/data/circle.10.9.10.10000", "--steps", "40000", "--eval_every", "5000", "--ckpt_every", "5000", "--save_final", "--churn_dump", "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/tl_NN/s42/churn.jsonl"], "started": "2026-10-10 17:07:29"}
+step 1000 loss 7.9867 sec/step 0.291
+step 2000 loss 6.1675 sec/step 0.293
+step 3000 loss 6.1537 sec/step 0.291
+step 4000 loss 6.1496 sec/step 0.291
+step 5000 loss 6.1773 sec/step 0.265
+[eval] 5000 {"train_memorization": 0.0, "test_seen": 0.0, "test_validity": 0.0, "test_unseen": 0.0, "n_unique_valid": 0, "n_unique_valid_novel": 0, "test_novel_valid": 0.0, "creativity": 0.0, "creativity_raw": 0.0, "diversity_raw": 0.0, "train_seen": 0.0, "train_validity": 0.0, "n_test_gen": 128, "n_train_gen": 128, "memo_own": 0.0, "nll_nominal": 1.5418953001499176, "nll_own": 1.5418953001499176, "step": 5000}
+[2026-10-10 17:31:40,669] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.4
+[93m [WARNING] [0m using untested triton version (3.0.0), only 1.0.0 is known to be compatible
+/home/wlwuser/anaconda3/lib/python3.12/site-packages/deepspeed/runtime/zero/linear.py:47: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  @autocast_custom_fwd
+/home/wlwuser/anaconda3/lib/python3.12/site-packages/deepspeed/runtime/zero/linear.py:66: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+  @autocast_custom_bwd
+step 6000 loss 6.1437 sec/step 0.291
+step 7000 loss 6.1482 sec/step 0.291
+step 8000 loss 6.1487 sec/step 0.291
+step 9000 loss 6.1518 sec/step 0.293
+step 10000 loss 6.1391 sec/step 0.293
+[eval] 10000 {"train_memorization": 0.0, "test_seen": 0.0, "test_validity": 0.0, "test_unseen": 0.0, "n_unique_valid": 0, "n_unique_valid_novel": 0, "test_novel_valid": 0.0, "creativity": 0.0, "creativity_raw": 0.0, "diversity_raw": 0.0, "train_seen": 0.0, "train_validity": 0.0, "n_test_gen": 128, "n_train_gen": 128, "memo_own": 0.0, "nll_nominal": 1.536197304725647, "nll_own": 1.536197304725647, "step": 10000}
+step 11000 loss 6.1441 sec/step 0.290
+step 12000 loss 6.1454 sec/step 0.291
+step 13000 loss 6.1375 sec/step 0.294
+step 14000 loss 6.0957 sec/step 0.294
+step 15000 loss 5.5345 sec/step 0.291
+[eval] 15000 {"train_memorization": 0.0, "test_seen": 0.015625, "test_validity": 0.015625, "test_unseen": 0.0, "n_unique_valid": 2, "n_unique_valid_novel": 0, "test_novel_valid": 0.0, "creativity": 0.0, "creativity_raw": 0.0, "diversity_raw": 0.015625, "train_seen": 0.0078125, "train_validity": 0.0234375, "n_test_gen": 128, "n_train_gen": 128, "memo_own": 0.0, "nll_nominal": 0.9807040989398956, "nll_own": 0.9807040989398956, "step": 15000}
+step 16000 loss 4.9485 sec/step 0.292
+step 17000 loss 4.4507 sec/step 0.291
+step 18000 loss 3.7759 sec/step 0.238
+step 19000 loss 3.0525 sec/step 0.291
+step 20000 loss 2.5458 sec/step 0.291
+[eval] 20000 {"train_memorization": 0.203125, "test_seen": 0.046875, "test_validity": 0.203125, "test_unseen": 0.15625, "n_unique_valid": 26, "n_unique_valid_novel": 20, "test_novel_valid": 0.15625, "creativity": 0.15625, "creativity_raw": 0.15625, "diversity_raw": 0.203125, "train_seen": 0.25, "train_validity": 0.375, "n_test_gen": 128, "n_train_gen": 128, "memo_own": 0.203125, "nll_nominal": 0.21819129586219788, "nll_own": 0.21819129586219788, "step": 20000}
+step 21000 loss 1.9067 sec/step 0.293
+step 22000 loss 1.1971 sec/step 0.295
+step 23000 loss 0.9745 sec/step 0.290
+step 24000 loss 0.9141 sec/step 0.292
+step 25000 loss 0.4858 sec/step 0.274
+[eval] 25000 {"train_memorization": 0.984375, "test_seen": 0.0, "test_validity": 0.0625, "test_unseen": 0.0625, "n_unique_valid": 8, "n_unique_valid_novel": 8, "test_novel_valid": 0.0625, "creativity": 0.0625, "creativity_raw": 0.0625, "diversity_raw": 0.0625, "train_seen": 0.984375, "train_validity": 0.9921875, "n_test_gen": 128, "n_train_gen": 128, "memo_own": 0.984375, "nll_nominal": 0.004237406072206795, "nll_own": 0.004237406072206795, "step": 25000}
+step 26000 loss 0.4464 sec/step 0.291
+step 27000 loss 0.3870 sec/step 0.299
+step 28000 loss 0.3427 sec/step 0.290
+step 29000 loss 0.2350 sec/step 0.293
+step 30000 loss 0.2260 sec/step 0.291
+[eval] 30000 {"train_memorization": 1.0, "test_seen": 0.0078125, "test_validity": 0.109375, "test_unseen": 0.1015625, "n_unique_valid": 14, "n_unique_valid_novel": 13, "test_novel_valid": 0.1015625, "creativity": 0.1015625, "creativity_raw": 0.1015625, "diversity_raw": 0.109375, "train_seen": 1.0, "train_validity": 1.0, "n_test_gen": 128, "n_train_gen": 128, "memo_own": 1.0, "nll_nominal": 6.458923780883197e-05, "nll_own": 6.458923780883197e-05, "step": 30000}
+step 31000 loss 0.1912 sec/step 0.257
+step 32000 loss 0.1314 sec/step 0.295
+step 33000 loss 0.1434 sec/step 0.290
+step 34000 loss 0.1051 sec/step 0.290
+step 35000 loss 0.1212 sec/step 0.292
+[eval] 35000 {"train_memorization": 1.0, "test_seen": 0.015625, "test_validity": 0.1015625, "test_unseen": 0.0859375, "n_unique_valid": 13, "n_unique_valid_novel": 11, "test_novel_valid": 0.0859375, "creativity": 0.0859375, "creativity_raw": 0.0859375, "diversity_raw": 0.1015625, "train_seen": 1.0, "train_validity": 1.0, "n_test_gen": 128, "n_train_gen": 128, "memo_own": 1.0, "nll_nominal": 2.11282426789694e-05, "nll_own": 2.11282426789694e-05, "step": 35000}
+step 36000 loss 0.1035 sec/step 0.291
+step 37000 loss 0.0973 sec/step 0.292
+step 38000 loss 0.1165 sec/step 0.290
+step 39000 loss 0.0689 sec/step 0.290
+step 40000 loss 0.0871 sec/step 0.281
+[eval] 40000 {"train_memorization": 1.0, "test_seen": 0.0078125, "test_validity": 0.0390625, "test_unseen": 0.03125, "n_unique_valid": 5, "n_unique_valid_novel": 4, "test_novel_valid": 0.03125, "creativity": 0.03125, "creativity_raw": 0.03125, "diversity_raw": 0.0390625, "train_seen": 1.0, "train_validity": 1.0, "n_test_gen": 128, "n_train_gen": 128, "memo_own": 1.0, "nll_nominal": 8.593917073085322e-06, "nll_own": 8.593917073085322e-06, "step": 40000}
+throughput {"sec_per_step_mean": 0.2889421776686801, "sec_per_step_p50": 0.2918509244918823, "total_hours": 3.221982204119364, "steps": 40000, "start_step": 0}

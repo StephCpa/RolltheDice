@@ -1,0 +1,27 @@
+{
+  "weights_identical": false,
+  "weights_max_abs_diff": 0.02141542360186577,
+  "churn_common_visits": 31856,
+  "churn_perm_agree_frac": 0.996703917629332,
+  "churn_first_disagree_step": 14002,
+  "scores": [
+    {
+      "step": 15000,
+      "creativity_a": 0.15625,
+      "test_validity_a": 0.1953125,
+      "memo_own_a": 0.046875,
+      "creativity_b": 0.140625,
+      "test_validity_b": 0.1875,
+      "memo_own_b": 0.046875
+    },
+    {
+      "step": 16000,
+      "creativity_a": 0.1171875,
+      "test_validity_a": 0.171875,
+      "memo_own_a": 0.15625,
+      "creativity_b": 0.1484375,
+      "test_validity_b": 0.21875,
+      "memo_own_b": 0.1875
+    }
+  ]
+}
