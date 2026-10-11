@@ -608,6 +608,25 @@ def test_fixed_random_vs_file_and_resume():
     assert all(torch.equal(wa[k], wc[k]) for k in wa)                  # 续训逐位一致
 
 
+def test_derangement_spec_amendment1():
+    """修订 №1 §2：tl_RN 的 R 为组内错排（与名义零重合），种子 777；重合率须登记。"""
+    env = e2e_env()
+    outs = []
+    for k in range(2):
+        d = os.path.join(env["root"], f"der{k}")
+        _main(d, "--arm", "setc_m4", "--pair_rule", "fixed", "--fixed_pairing", "derangement",
+              "--fixed_seed", "777", "--ntp_lambda", "1", steps=2)
+        outs.append(json.load(open(os.path.join(d, "fixed_pairing.json"))))
+    fp = outs[0]
+    assert fp["entry_overlap_with_nominal"] == 0.0 and 0.0 <= fp["structure_overlap_with_nominal"] < 1.0
+    assert all(s != t for s, t in fp["pairs"]) and fp["fixed_seed"] == 777
+    assert outs[0]["pairs"] == outs[1]["pairs"]                        # 同种子可复现
+    u = os.path.join(env["root"], "unif")
+    _main(u, "--arm", "setc_m4", "--pair_rule", "fixed", "--fixed_pairing", "random",
+          "--ntp_lambda", "1", steps=2)
+    assert json.load(open(os.path.join(u, "fixed_pairing.json")))["entry_overlap_with_nominal"] > 0
+
+
 if __name__ == "__main__":
     fails = 0
     for name, fn in sorted((k, v) for k, v in globals().items() if k.startswith("test_")):

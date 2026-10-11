@@ -66,3 +66,14 @@ setc_v2 只复现 27% 训练对 / 坍缩≠记忆式过拟合"的裁定**作废*
 反而与"setc_v2 完整记住了自选配对"相容，需用修正脚本或 rescore.py --pairing_file 在服务器上重评定案。
 已修复（只比较答案部分；evaluator 新增 memo_own 与自检用例）。ntp_randperm_v2 的 memo_any_group_target
 （0.164）同受影响，应以结构级 train_seen 替代。
+
+事件 #7 登记（2026-10-11，分支作者核对修订 №1 §2 时发现）：修订 №1 锁定 tl_RN 的伙伴 R 为"非名义条件版"
+（组内错排，与名义零重合）、种子 777；但实际运行的 `--fixed_pairing random` 抽的是**均匀随机双射**、随机流为
+seed+2。按与 train.py 相同的调用重建：种子 42/43/44 下 R 与名义的**条目级重合率 = 0.243 / 0.243 / 0.242**
+（规格要求 0），即约 24% 的 seed 的 TL 目标就是名义目标、没有冲突。影响：tl_RN/s42（增补 6 的预览读数）与
+正在运行/排队的 ntp_2tgt、两臂种子 43/44 都是该变体，**不是**修订 №1 规格的运行。处理：
+(1) 已有及在跑的运行改标 `tl_RN_unif` / `ntp_2tgt_unif`（探索性变体，保留——其 24% 无冲突比例恰与 setc_MN 的
+π* 不动点占比 25–32% 相当，反而是与 MN 冲突率匹配的对照）；(2) train.py 新增 `--fixed_pairing derangement`
+与 `--fixed_seed`，fixed_pairing.json 自动登记条目级/结构级重合率；`run_stage0b.sh conflict` 改为规格版
+（derangement，种子 777），旧规格移入 `conflict_unif`；(3) 规格版需按修订 №1 补跑 3 种子后再判读分支表。
+另：服务器 run_meta 的 git_commit 为 null（同步目录非 git 副本），train.py 现回退读取环境变量 P6_CODE_SHA。

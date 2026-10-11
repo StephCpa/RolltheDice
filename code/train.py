@@ -146,6 +146,26 @@ def write_pairing(path, cmap, **meta):
                    "pairs": [[int(s), int(t)] for s, t in sorted(cmap.items())]}, f)
 
 
+def fixed_overlap(raw, R, groups_idx, fixed_perms, task):
+    """修订 №1 §2 要求登记：固定伙伴 R 与名义 N 的条目级重合率（应为 0）与结构级重合率
+    （伙伴目标与名义目标 canonical 结构相同的 seed 占比）。"""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from evaluator import circle_canonicalize
+
+    def key(t):
+        a = raw[t]["target_text"].split("<q>")[1].split("</a>")[0]
+        return circle_canonicalize(a) if task == "circle" else a
+    n_e = n_s = n = 0
+    for g, mem in enumerate(groups_idx):
+        for i, e in enumerate(mem):
+            t_nom, t_fix = R[e], R[mem[fixed_perms[g][i]]]
+            n += 1
+            n_e += int(t_fix == t_nom)
+            n_s += int(t_fix == t_nom or key(t_fix) == key(t_nom))
+    return {"entry_overlap_with_nominal": n_e / max(n, 1),
+            "structure_overlap_with_nominal": n_s / max(n, 1)}
+
+
 def sha256_of(path):
     h = hashlib.sha256()
     with open(path, "rb") as f:
@@ -456,12 +476,13 @@ def save_train_state(path, **state):
 
 
 def git_commit():
+    """代码版本：git HEAD；非 git 副本（如服务器同步目录）回退到环境变量 P6_CODE_SHA。"""
     try:
         return subprocess.check_output(["git", "rev-parse", "HEAD"],
                                        cwd=os.path.dirname(os.path.abspath(__file__)),
                                        stderr=subprocess.DEVNULL).decode().strip()
     except Exception:  # noqa: BLE001
-        return None
+        return os.environ.get("P6_CODE_SHA")
 
 
 # ---------------- 主流程 ----------------
@@ -494,8 +515,11 @@ def parse_args(argv=None):
     # 组级目标（None = 用预设或续训状态中的值）
     ap.add_argument("--pair_rule", choices=["nominal", "random", "hungarian", "fixed"], default=None)
     ap.add_argument("--fixed_pairing", default=None,
-                    help="pair_rule=fixed 的配对：random（每组一个均匀随机双射，独立随机流 seed+2）"
-                         "或 p6-pairing JSON（seed→target，须落在同组内，如 setc 的 final_pairing.json）")
+                    help="pair_rule=fixed 的配对：random（每组一个均匀随机双射，约 25%% seed 与名义重合）"
+                         "| derangement（每组一个均匀随机错排：无 seed 与名义重合——修订 №1 §2 的 tl_RN 规格）"
+                         "| p6-pairing JSON（seed→target，须落在同组内，如 setc 的 final_pairing.json）")
+    ap.add_argument("--fixed_seed", type=int, default=None,
+                    help="random/derangement 的随机流种子（缺省 seed+2；修订 №1 规定 777，与训练种子无关）")
     ap.add_argument("--tl_target", choices=["matched", "nominal"], default=None)
     ap.add_argument("--ntp_lambda", type=float, default=None,
                     help="NTP 分支名义目标权重：0=匹配目标，1=名义目标（setc_m4 --ntp_lambda 1 重建偏差版）")
@@ -611,6 +635,7 @@ def main(argv=None):
             "group_cfg": asdict(cfg) if cfg else None,
             "random_tiebreak": args.random_tiebreak, "regroup": args.regroup,
             "pairing_file": args.pairing_file, "fixed_pairing": args.fixed_pairing,
+            "fixed_seed": args.fixed_seed,
             "pairing_sha256": sha256_of(args.pairing_file) if args.pairing_file else None,
             "resume_from": args.resume_from, "resume_step": state["step"] if state else None,
             "ckpt_every": args.ckpt_every, "state_at": args.state_at,
@@ -728,9 +753,16 @@ def main(argv=None):
         if cfg.pair_rule == "fixed":
             if state is not None and state.get("fixed_perms") is not None:
                 fixed_perms = state["fixed_perms"]
-            elif args.fixed_pairing == "random":
-                frng = np.random.default_rng(args.seed + 2)   # 独立随机流，不扰动分组/顺序
-                fixed_perms = {g: frng.permutation(args.m).tolist() for g in range(len(groups_idx))}
+            elif args.fixed_pairing in ("random", "derangement"):
+                # 独立随机流，不扰动分组/顺序；derangement 用拒绝抽样得到均匀随机错排
+                frng = np.random.default_rng(args.seed + 2 if args.fixed_seed is None
+                                             else args.fixed_seed)
+                fixed_perms = {}
+                for g in range(len(groups_idx)):
+                    p = frng.permutation(args.m).tolist()
+                    while args.fixed_pairing == "derangement" and any(p[i] == i for i in range(args.m)):
+                        p = frng.permutation(args.m).tolist()
+                    fixed_perms[g] = p
             else:
                 Fp = load_pairing(args.fixed_pairing, n)
                 fixed_perms = {}
@@ -742,7 +774,9 @@ def main(argv=None):
             write_pairing(os.path.join(args.out, "fixed_pairing.json"),
                           {mem[i]: R[mem[fixed_perms[g][i]]] for g, mem in enumerate(groups_idx)
                            for i in range(args.m)},
-                          source=args.fixed_pairing, seed=args.seed, m=args.m)
+                          source=args.fixed_pairing, seed=args.seed, m=args.m,
+                          fixed_seed=args.fixed_seed,
+                          **fixed_overlap(raw, R, groups_idx, fixed_perms, args.task))
         while step < args.steps:
             if not order:
                 if args.regroup and n_epochs > 0:
