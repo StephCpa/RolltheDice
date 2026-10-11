@@ -489,6 +489,8 @@ def test_churn_commitment_and_final_stats():
     assert res["commitment"]["hist"] == {0: 1, 10: 1}         # 组 1 在第 5 步承诺，组 0 在第 10 步
     fps = res["final_perm_stats"]
     assert fps["identity_share"] == 0.5 and fps["cycle_types"] == {"1+1+1+1": 0.5, "2+2": 0.5}
+    fpw = {w["window_step"]: w["frac"] for w in res["fixed_point_frac"]}
+    assert abs(fpw[0] - (2 + 4 + 4 + 4 + 0 + 0) / 24) < 1e-9          # 6 次访问的不动点均值
 
 
 def test_gap_stats_own_margin_and_noise():
@@ -560,6 +562,50 @@ def test_c01_reuse_equals_recompute():
     with torch.no_grad():
         for g in range(3):
             assert np.max(np.abs(C1[g] - diagnose.tl_cost_tensor(model, [groups[g]], 0, 1, "cpu")[0].sum(-1))) < 1e-4
+
+
+# ---------------- 冲突分解：fixed 配对规则（无匹配的持久双射） ----------------
+
+def test_fixed_rule_uses_given_perms():
+    model = make_model(64).eval()
+    groups = synth_groups()
+    fixed = {0: [1, 0, 3, 2], 1: [2, 3, 0, 1], 2: [0, 1, 2, 3]}
+    log = []
+    cap, orig = _capture_ntp()
+    try:
+        st, perms = _step(model, groups, train.GroupCfg("fixed", "matched", 1.0, 3.0),
+                          log=log, fixed_perms=fixed)
+    finally:
+        train._ntp_loss, train._weighted_ntp_loss = orig
+    assert perms == [fixed[0], fixed[1], fixed[2]]
+    assert all("argmin" in r and "locked" not in r for r in log)      # 影子 argmin 照记
+    nominal = [train.ntp_seq(groups[g][i][0], groups[g][i][1]) for g in range(3) for i in range(4)]
+    assert cap[-1][1] == nominal                                       # λ=1：NTP 训名义
+    st_tl, _ = _step(model, groups, train.GroupCfg("fixed", "matched", 0.0, 3.0), fixed_perms=fixed)
+    st_nom, _ = _step(model, groups, "tl_fixed")
+    assert abs(st["mtp"] - st_tl["mtp"]) < 1e-6 and abs(st["mtp"] - st_nom["mtp"]) > 1e-7
+
+
+def test_fixed_random_vs_file_and_resume():
+    env = e2e_env()
+    a = os.path.join(env["root"], "fixed_rand")
+    _main(a, "--arm", "setc_m4", "--pair_rule", "fixed", "--fixed_pairing", "random",
+          "--ntp_lambda", "1", "--state_at", "6", "--churn_dump", os.path.join(a, "churn.jsonl"))
+    fp = json.load(open(os.path.join(a, "fixed_pairing.json")))["pairs"]
+    assert json.load(open(os.path.join(a, "final_pairing.json")))["pairs"] == fp
+    by = {}
+    for line in open(os.path.join(a, "churn.jsonl")):
+        r = json.loads(line)
+        by.setdefault(r["group"], set()).add(tuple(r["perm"]))
+    assert all(len(v) == 1 for v in by.values())                       # 每组配对恒定
+    b = os.path.join(env["root"], "fixed_file")
+    _main(b, "--arm", "setc_m4", "--pair_rule", "fixed", "--ntp_lambda", "1",
+          "--fixed_pairing", os.path.join(a, "fixed_pairing.json"))
+    c = os.path.join(env["root"], "fixed_resumed")
+    _main(c, "--arm", "setc_m4", "--resume_from", os.path.join(a, "state_step6"))
+    wa, wb, wc = _weights(a), _weights(b), _weights(c)
+    assert all(torch.equal(wa[k], wb[k]) for k in wa)                  # 文件回放 = 随机生成（逐位）
+    assert all(torch.equal(wa[k], wc[k]) for k in wa)                  # 续训逐位一致
 
 
 if __name__ == "__main__":

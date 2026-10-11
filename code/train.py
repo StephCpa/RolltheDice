@@ -24,6 +24,10 @@
                                 （π 是组内双射 → 组内 {(p_j, a_j) : j=π(i)} 就是全部名义对）；
   setc_m4 --tl_target nominal = 名义 TL + 匹配 NTP（反向组合）；
   setc_m4 --ntp_lambda 0.5    = NTP 分支按 0.5/0.5 混合匹配与名义目标（总监督权重不变）。
+  setc_m4 --pair_rule fixed --fixed_pairing random --ntp_lambda 1
+                              = TL 训每组一个固定随机双射、NTP 训名义：有分支冲突、无匹配；
+  ntp_fixed_grouped --pair_rule fixed --fixed_pairing random --ntp_lambda 0.5
+                              = 仅 NTP 的双目标（名义 + 固定随机伙伴），无 TL。
   组大小由 --m 决定（臂名中的 m4 只是标签）：--m 64 --groups_per_step 1 即整批匹配。
 
 干预/回放（评审第 2–4 轮的冻结-锁定-回放设计）：
@@ -155,6 +159,7 @@ def sha256_of(path):
 class GroupCfg:
     """组级臂的训练目标。
     pair_rule : nominal（名义）| random（每次访问随机双射）| hungarian（teacherless 代价上的最优双射）
+                | fixed（每组一个持久双射，来自 --fixed_pairing：random 或配对文件；不做匹配）
     tl_target : matched（TL 损失用 pair_rule 的配对）| nominal（TL 损失用名义配对）
     ntp_lambda: NTP 分支中名义目标的权重；0 = 全用匹配目标，1 = 全用名义目标，中间值按权混合
                 （逐 token 加权平均，总监督权重不变）
@@ -219,11 +224,12 @@ def _weighted_ntp_loss(model, seqs, weights, eos, device):
 
 def group_step(model, opt, scaler, groups_ex, group_ids, cfg, device, step,
                churn_log, mtp_weight=None, matrix_log=None, tiebreak_rng=None,
-               members=None, last_perm=None, perm_keys=None):
+               members=None, last_perm=None, perm_keys=None, fixed_perms=None):
     """一步组级训练。cfg 为 GroupCfg 或预设名（"randperm"/"setc"/"tl_fixed"/"tl_randperm"/
     "ntp_fixed_grouped"）；mtp_weight 若给定则覆盖 cfg。
     group_ids: 每组编号（churn 记录用）；perm_keys: last_perm 的键（默认 group_ids；--regroup 时用成员元组）。
     last_perm: dict，记录各组上次实际使用的配对（锁定与 churn 统计用；就地更新）。
+    fixed_perms: pair_rule="fixed" 时各组（按 perm_keys）的持久配对。
     返回 (stats, perms)：stats 含 loss / ntp / mtp / n_changed / n_revisit。"""
     if isinstance(cfg, str):
         cfg = PRESETS[cfg]
@@ -245,6 +251,8 @@ def group_step(model, opt, scaler, groups_ex, group_ids, cfg, device, step,
             perms.append(pi)
     elif cfg.pair_rule == "nominal":
         perms = [list(range(m)) for _ in range(G)]
+    elif cfg.pair_rule == "fixed":
+        perms = [list(fixed_perms[k]) for k in keys]
     elif cfg.pair_rule != "hungarian":
         raise ValueError(cfg.pair_rule)
 
@@ -484,7 +492,10 @@ def parse_args(argv=None):
     ap.add_argument("--churn_dump", default=None)
     ap.add_argument("--save_final", action="store_true")
     # 组级目标（None = 用预设或续训状态中的值）
-    ap.add_argument("--pair_rule", choices=["nominal", "random", "hungarian"], default=None)
+    ap.add_argument("--pair_rule", choices=["nominal", "random", "hungarian", "fixed"], default=None)
+    ap.add_argument("--fixed_pairing", default=None,
+                    help="pair_rule=fixed 的配对：random（每组一个均匀随机双射，独立随机流 seed+2）"
+                         "或 p6-pairing JSON（seed→target，须落在同组内，如 setc 的 final_pairing.json）")
     ap.add_argument("--tl_target", choices=["matched", "nominal"], default=None)
     ap.add_argument("--ntp_lambda", type=float, default=None,
                     help="NTP 分支名义目标权重：0=匹配目标，1=名义目标（setc_m4 --ntp_lambda 1 重建偏差版）")
@@ -518,6 +529,10 @@ def parse_args(argv=None):
             ap.error("--resume_from 只支持组级臂（DataLoader 臂的批次顺序无法逐位续接）")
     if args.ntp_lambda is not None and not 0.0 <= args.ntp_lambda <= 1.0:
         ap.error("--ntp_lambda 须在 [0, 1]")
+    if (args.pair_rule == "fixed") != bool(args.fixed_pairing) and not args.resume_from:
+        ap.error("--pair_rule fixed 与 --fixed_pairing 须同时给出")
+    if args.pair_rule == "fixed" and args.regroup:
+        ap.error("--pair_rule fixed 需要持久分组，不能与 --regroup 同用")
     if args.pairing_file and args.arm in ("tl_hybrid", "ntp_noseed"):
         ap.error("--pairing_file 不适用于 tl_hybrid / ntp_noseed")
     args.state_at = sorted({int(s) for s in args.state_at.split(",") if s.strip()})
@@ -595,7 +610,7 @@ def main(argv=None):
             "m": args.m, "groups_per_step": args.groups_per_step, "model": args.model,
             "group_cfg": asdict(cfg) if cfg else None,
             "random_tiebreak": args.random_tiebreak, "regroup": args.regroup,
-            "pairing_file": args.pairing_file,
+            "pairing_file": args.pairing_file, "fixed_pairing": args.fixed_pairing,
             "pairing_sha256": sha256_of(args.pairing_file) if args.pairing_file else None,
             "resume_from": args.resume_from, "resume_step": state["step"] if state else None,
             "ckpt_every": args.ckpt_every, "state_at": args.state_at,
@@ -709,6 +724,25 @@ def main(argv=None):
             order = []
             n_epochs = 0
         groups = [[exs_used[j] for j in mem] for mem in groups_idx]
+        fixed_perms = None
+        if cfg.pair_rule == "fixed":
+            if state is not None and state.get("fixed_perms") is not None:
+                fixed_perms = state["fixed_perms"]
+            elif args.fixed_pairing == "random":
+                frng = np.random.default_rng(args.seed + 2)   # 独立随机流，不扰动分组/顺序
+                fixed_perms = {g: frng.permutation(args.m).tolist() for g in range(len(groups_idx))}
+            else:
+                Fp = load_pairing(args.fixed_pairing, n)
+                fixed_perms = {}
+                for g, mem in enumerate(groups_idx):
+                    pos = {R[e]: k for k, e in enumerate(mem)}
+                    missing = [e for e in mem if Fp[e] not in pos]
+                    assert not missing, f"--fixed_pairing 的目标不在同组内（组 {g}）：须来自同一 --seed 的分组"
+                    fixed_perms[g] = [pos[Fp[e]] for e in mem]
+            write_pairing(os.path.join(args.out, "fixed_pairing.json"),
+                          {mem[i]: R[mem[fixed_perms[g][i]]] for g, mem in enumerate(groups_idx)
+                           for i in range(args.m)},
+                          source=args.fixed_pairing, seed=args.seed, m=args.m)
         while step < args.steps:
             if not order:
                 if args.regroup and n_epochs > 0:
@@ -726,7 +760,8 @@ def main(argv=None):
             stats, perms = group_step(model, opt, scaler, batch_groups, pick, cfg, device,
                                       step, churn_log, matrix_log=matrix_log,
                                       tiebreak_rng=tiebreak_rng, members=members,
-                                      last_perm=last_perm, perm_keys=keys)
+                                      last_perm=last_perm, perm_keys=keys,
+                                      fixed_perms=fixed_perms)
             if current_map is not None:
                 for gl, gid in enumerate(pick):
                     mem = groups_idx[gid]
@@ -745,6 +780,7 @@ def main(argv=None):
             after_step(stats["loss"], extra_state=dict(
                 groups_idx=groups_idx, order=list(order), n_epochs=n_epochs,
                 last_perm=dict(last_perm), regroup=args.regroup, m=args.m,
+                fixed_perms=fixed_perms,
                 groups_per_step=args.groups_per_step) if step in args.state_at else None)
     else:
         if args.arm == "tl_hybrid":
