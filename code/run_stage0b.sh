@@ -6,8 +6,9 @@
 #   intervene  晚期干预：从 state_step$INTERVENE_AT 以 --ntp_lambda 1 续训到 $STEPS
 #   C          种子 $SEEDS_C：ntp_fixed, setc_MN, setc_MM, tl_NN；setc_M05 ×（42 + $SEEDS_C）
 #   replay     π* 回放（各种子用自己 setc_MM 的 final_pairing.json）：tl_NN_rep, ntp_fixed_rep
-#   conflict   冲突分解（plan §7，待批准的修订）：tl_RN（TL 训固定随机双射 + NTP 名义，无匹配）、
-#              ntp_2tgt（仅 NTP：名义 + 固定随机伙伴各 0.5，无 TL）× (42 + $SEEDS_C)
+#   conflict   冲突分解（修订 №1 §2）：tl_RN（TL 训固定随机错排 + NTP 名义，无匹配）、
+#              ntp_2tgt（仅 NTP：名义 + 同一错排伙伴各 0.5，无 TL）× (42 + $SEEDS_C)；R 种子 777
+#   conflict_unif  探索性变体：同上但 R 为均匀随机双射（约 24% 与名义重合；即事件 #7 前实际运行的规格）
 #   diag       TL/setc 运行：churn（结构级）+ 逐检查点 gap
 #   heldout    生成留出集（若无）→ 开发集选检查点 → 留出集一次性评测（PRUNE=1 删未选检查点）
 #   report     汇总（参照 ntp_fixed，margin 0.03，min_seeds 3）
@@ -160,16 +161,24 @@ phase_replay () {
   wait
 }
 
-phase_conflict () {
+phase_conflict () {   # 修订 №1 §2 规格：R = 组内均匀随机错排（与名义零重合），种子 777（与训练种子无关）
   for s in 42 $SEEDS_C; do
-    launch train tl_RN "$s" setc_m4 --pair_rule fixed --fixed_pairing random --ntp_lambda 1
-    launch train ntp_2tgt "$s" ntp_fixed_grouped --pair_rule fixed --fixed_pairing random --ntp_lambda 0.5
+    launch train tl_RN "$s" setc_m4 --pair_rule fixed --fixed_pairing derangement --fixed_seed 777 --ntp_lambda 1
+    launch train ntp_2tgt "$s" ntp_fixed_grouped --pair_rule fixed --fixed_pairing derangement --fixed_seed 777 --ntp_lambda 0.5
+  done
+  wait
+}
+
+phase_conflict_unif () {   # 探索性变体（事件 #7）：R 为均匀随机双射（约 24% 与名义重合），种子 seed+2
+  for s in 42 $SEEDS_C; do
+    launch train tl_RN_unif "$s" setc_m4 --pair_rule fixed --fixed_pairing random --ntp_lambda 1
+    launch train ntp_2tgt_unif "$s" ntp_fixed_grouped --pair_rule fixed --fixed_pairing random --ntp_lambda 0.5
   done
   wait
 }
 
 phase_diag () {
-  for d in "$OUT"/setc_*/s* "$OUT"/tl_NN*/s* "$OUT"/tl_RN/s*; do
+  for d in "$OUT"/setc_*/s* "$OUT"/tl_NN*/s* "$OUT"/tl_RN*/s*; do
     [ -d "$d" ] || continue
     local seed=${d##*/s}
     [ -f "$d/churn.jsonl" ] && "$PY" "$C/diagnose.py" --mode churn --churn_dump "$d/churn.jsonl" \
@@ -202,7 +211,8 @@ phase_report () {
 
 case "$PHASE" in
   A) phase_A ;; B) phase_B ;; lock) phase_lock ;; intervene) phase_intervene ;;
-  C) phase_C ;; replay) phase_replay ;; conflict) phase_conflict ;; diag) phase_diag ;;
+  C) phase_C ;; replay) phase_replay ;; conflict) phase_conflict ;; conflict_unif) phase_conflict_unif ;;
+  diag) phase_diag ;;
   heldout) phase_heldout ;; report) phase_report ;;
   *) echo "未知阶段：$PHASE"; exit 2 ;;
 esac
