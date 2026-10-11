@@ -1,0 +1,1792 @@
+{
+  "primary": "creativity",
+  "ref": "ntp_fixed",
+  "margin": 0.03,
+  "min_seeds": 3,
+  "aggregate": {
+    "ntp_fixed": {
+      "n_runs": 3,
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "sel_step": [
+        25000,
+        20000,
+        20000
+      ],
+      "dev_sel": {
+        "mean": 0.20833333333333334,
+        "se": 0.014499386361536517,
+        "n": 3
+      },
+      "heldout_sel": {
+        "mean": 0.16227213541666666,
+        "se": 0.009026969156160188,
+        "n": 3
+      },
+      "validity_sel": {
+        "mean": 0.21061197916666666,
+        "se": 0.00848698426073157,
+        "n": 3
+      },
+      "memo_own_sel": {
+        "mean": 0.984375,
+        "se": 0.015625,
+        "n": 3
+      },
+      "endpoint": {
+        "mean": 0.16145833333333334,
+        "se": 0.011351299332137172,
+        "n": 3
+      },
+      "peak": {
+        "mean": 0.20833333333333334,
+        "se": 0.014499386361536517,
+        "n": 3
+      },
+      "auc": {
+        "mean": 0.12351190476190477,
+        "se": 0.008050254839427978,
+        "n": 3
+      },
+      "derived": false
+    },
+    "ntp_fixed_grp": {
+      "n_runs": 1,
+      "seeds": [
+        42
+      ],
+      "sel_step": [
+        35000
+      ],
+      "dev_sel": {
+        "mean": 0.21875,
+        "se": null,
+        "n": 1
+      },
+      "heldout_sel": {
+        "mean": 0.16650390625,
+        "se": null,
+        "n": 1
+      },
+      "validity_sel": {
+        "mean": 0.20947265625,
+        "se": null,
+        "n": 1
+      },
+      "memo_own_sel": {
+        "mean": 1.0,
+        "se": null,
+        "n": 1
+      },
+      "endpoint": {
+        "mean": 0.1640625,
+        "se": null,
+        "n": 1
+      },
+      "peak": {
+        "mean": 0.21875,
+        "se": null,
+        "n": 1
+      },
+      "auc": {
+        "mean": 0.13225446428571427,
+        "se": null,
+        "n": 1
+      },
+      "derived": false
+    },
+    "setc_MM": {
+      "n_runs": 1,
+      "seeds": [
+        42
+      ],
+      "sel_step": [
+        20000
+      ],
+      "dev_sel": {
+        "mean": 0.1796875,
+        "se": null,
+        "n": 1
+      },
+      "heldout_sel": {
+        "mean": 0.119140625,
+        "se": null,
+        "n": 1
+      },
+      "validity_sel": {
+        "mean": 0.14990234375,
+        "se": null,
+        "n": 1
+      },
+      "memo_own_sel": {
+        "mean": 0.9296875,
+        "se": null,
+        "n": 1
+      },
+      "endpoint": {
+        "mean": 0.0234375,
+        "se": null,
+        "n": 1
+      },
+      "peak": {
+        "mean": 0.1796875,
+        "se": null,
+        "n": 1
+      },
+      "auc": {
+        "mean": 0.07533482142857142,
+        "se": null,
+        "n": 1
+      },
+      "derived": false
+    },
+    "setc_MM_late_MN": {
+      "n_runs": 1,
+      "seeds": [
+        42
+      ],
+      "sel_step": [
+        35000
+      ],
+      "dev_sel": {
+        "mean": 0.25,
+        "se": null,
+        "n": 1
+      },
+      "heldout_sel": {
+        "mean": 0.2373046875,
+        "se": null,
+        "n": 1
+      },
+      "validity_sel": {
+        "mean": 0.31201171875,
+        "se": null,
+        "n": 1
+      },
+      "memo_own_sel": {
+        "mean": 0.2734375,
+        "se": null,
+        "n": 1
+      },
+      "endpoint": {
+        "mean": 0.2265625,
+        "se": null,
+        "n": 1
+      },
+      "peak": {
+        "mean": 0.25,
+        "se": null,
+        "n": 1
+      },
+      "auc": {
+        "mean": 0.2265625,
+        "se": null,
+        "n": 1
+      },
+      "derived": false
+    },
+    "setc_MM_lock": {
+      "n_runs": 1,
+      "seeds": [
+        42
+      ],
+      "sel_step": [
+        16000
+      ],
+      "dev_sel": {
+        "mean": 0.1484375,
+        "se": null,
+        "n": 1
+      },
+      "heldout_sel": {
+        "mean": 0.16455078125,
+        "se": null,
+        "n": 1
+      },
+      "validity_sel": {
+        "mean": 0.212890625,
+        "se": null,
+        "n": 1
+      },
+      "memo_own_sel": {
+        "mean": 0.1875,
+        "se": null,
+        "n": 1
+      },
+      "endpoint": {
+        "mean": 0.1484375,
+        "se": null,
+        "n": 1
+      },
+      "peak": {
+        "mean": 0.1484375,
+        "se": null,
+        "n": 1
+      },
+      "auc": {
+        "mean": 0.14453125,
+        "se": null,
+        "n": 1
+      },
+      "derived": false
+    },
+    "setc_MM_online": {
+      "n_runs": 1,
+      "seeds": [
+        42
+      ],
+      "sel_step": [
+        15000
+      ],
+      "dev_sel": {
+        "mean": 0.15625,
+        "se": null,
+        "n": 1
+      },
+      "heldout_sel": {
+        "mean": 0.17578125,
+        "se": null,
+        "n": 1
+      },
+      "validity_sel": {
+        "mean": 0.2255859375,
+        "se": null,
+        "n": 1
+      },
+      "memo_own_sel": {
+        "mean": 0.046875,
+        "se": null,
+        "n": 1
+      },
+      "endpoint": {
+        "mean": 0.1171875,
+        "se": null,
+        "n": 1
+      },
+      "peak": {
+        "mean": 0.15625,
+        "se": null,
+        "n": 1
+      },
+      "auc": {
+        "mean": 0.13671875,
+        "se": null,
+        "n": 1
+      },
+      "derived": false
+    },
+    "setc_MN": {
+      "n_runs": 3,
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "sel_step": [
+        25000,
+        35000,
+        40000
+      ],
+      "dev_sel": {
+        "mean": 0.23958333333333334,
+        "se": 0.005208333333333333,
+        "n": 3
+      },
+      "heldout_sel": {
+        "mean": 0.20930989583333334,
+        "se": 0.006430581466516411,
+        "n": 3
+      },
+      "validity_sel": {
+        "mean": 0.2726236979166667,
+        "se": 0.011706310310124682,
+        "n": 3
+      },
+      "memo_own_sel": {
+        "mean": 0.3098958333333333,
+        "se": 0.03836177047566729,
+        "n": 3
+      },
+      "endpoint": {
+        "mean": 0.19270833333333334,
+        "se": 0.02484216670356629,
+        "n": 3
+      },
+      "peak": {
+        "mean": 0.23958333333333334,
+        "se": 0.005208333333333333,
+        "n": 3
+      },
+      "auc": {
+        "mean": 0.15029761904761904,
+        "se": 0.011891675750315934,
+        "n": 3
+      },
+      "derived": false
+    },
+    "setc_NM": {
+      "n_runs": 1,
+      "seeds": [
+        42
+      ],
+      "sel_step": [
+        20000
+      ],
+      "dev_sel": {
+        "mean": 0.1328125,
+        "se": null,
+        "n": 1
+      },
+      "heldout_sel": {
+        "mean": 0.11474609375,
+        "se": null,
+        "n": 1
+      },
+      "validity_sel": {
+        "mean": 0.1416015625,
+        "se": null,
+        "n": 1
+      },
+      "memo_own_sel": {
+        "mean": 0.796875,
+        "se": null,
+        "n": 1
+      },
+      "endpoint": {
+        "mean": 0.0546875,
+        "se": null,
+        "n": 1
+      },
+      "peak": {
+        "mean": 0.1328125,
+        "se": null,
+        "n": 1
+      },
+      "auc": {
+        "mean": 0.060825892857142856,
+        "se": null,
+        "n": 1
+      },
+      "derived": false
+    },
+    "tl_NN": {
+      "n_runs": 1,
+      "seeds": [
+        42
+      ],
+      "sel_step": [
+        20000
+      ],
+      "dev_sel": {
+        "mean": 0.15625,
+        "se": null,
+        "n": 1
+      },
+      "heldout_sel": {
+        "mean": 0.13427734375,
+        "se": null,
+        "n": 1
+      },
+      "validity_sel": {
+        "mean": 0.1689453125,
+        "se": null,
+        "n": 1
+      },
+      "memo_own_sel": {
+        "mean": 0.203125,
+        "se": null,
+        "n": 1
+      },
+      "endpoint": {
+        "mean": 0.03125,
+        "se": null,
+        "n": 1
+      },
+      "peak": {
+        "mean": 0.15625,
+        "se": null,
+        "n": 1
+      },
+      "auc": {
+        "mean": 0.060267857142857144,
+        "se": null,
+        "n": 1
+      },
+      "derived": false
+    }
+  },
+  "verdicts": {
+    "ntp_fixed_grp": {
+      "n_pairs": 1,
+      "mean_diff": -0.01171875,
+      "min_diff": -0.01171875,
+      "per_seed": [
+        -0.01171875
+      ],
+      "sources": [
+        "heldout"
+      ],
+      "verdict": "INSUFFICIENT"
+    },
+    "setc_MM": {
+      "n_pairs": 1,
+      "mean_diff": -0.05908203125,
+      "min_diff": -0.05908203125,
+      "per_seed": [
+        -0.05908203125
+      ],
+      "sources": [
+        "heldout"
+      ],
+      "verdict": "INSUFFICIENT"
+    },
+    "setc_MM_late_MN": {
+      "n_pairs": 1,
+      "mean_diff": 0.05908203125,
+      "min_diff": 0.05908203125,
+      "per_seed": [
+        0.05908203125
+      ],
+      "sources": [
+        "heldout"
+      ],
+      "verdict": "INSUFFICIENT"
+    },
+    "setc_MM_lock": {
+      "n_pairs": 1,
+      "mean_diff": -0.013671875,
+      "min_diff": -0.013671875,
+      "per_seed": [
+        -0.013671875
+      ],
+      "sources": [
+        "heldout"
+      ],
+      "verdict": "INSUFFICIENT"
+    },
+    "setc_MM_online": {
+      "n_pairs": 1,
+      "mean_diff": -0.00244140625,
+      "min_diff": -0.00244140625,
+      "per_seed": [
+        -0.00244140625
+      ],
+      "sources": [
+        "heldout"
+      ],
+      "verdict": "INSUFFICIENT"
+    },
+    "setc_MN": {
+      "n_pairs": 3,
+      "mean_diff": 0.047037760416666664,
+      "min_diff": 0.041015625,
+      "per_seed": [
+        0.041015625,
+        0.05029296875,
+        0.0498046875
+      ],
+      "sources": [
+        "heldout"
+      ],
+      "verdict": "PASS"
+    },
+    "setc_NM": {
+      "n_pairs": 1,
+      "mean_diff": -0.0634765625,
+      "min_diff": -0.0634765625,
+      "per_seed": [
+        -0.0634765625
+      ],
+      "sources": [
+        "heldout"
+      ],
+      "verdict": "INSUFFICIENT"
+    },
+    "tl_NN": {
+      "n_pairs": 1,
+      "mean_diff": -0.0439453125,
+      "min_diff": -0.0439453125,
+      "per_seed": [
+        -0.0439453125
+      ],
+      "sources": [
+        "heldout"
+      ],
+      "verdict": "INSUFFICIENT"
+    }
+  },
+  "runs": [
+    {
+      "run": "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/ntp_fixed/s42",
+      "label": "ntp_fixed",
+      "seed": 42,
+      "arm": "ntp_fixed",
+      "group_cfg": null,
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.1796875,
+          "endpoint_step": 40000,
+          "peak": 0.2265625,
+          "peak_step": 25000,
+          "auc_mean": 0.13560267857142858
+        },
+        "test_validity": {
+          "endpoint": 0.21875,
+          "endpoint_step": 40000,
+          "peak": 0.2890625,
+          "peak_step": 25000,
+          "auc_mean": 0.17522321428571427
+        },
+        "test_novel_valid": {
+          "endpoint": 0.1796875,
+          "endpoint_step": 40000,
+          "peak": 0.2265625,
+          "peak_step": 25000,
+          "auc_mean": 0.13560267857142858
+        },
+        "memo_own": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 25000,
+          "auc_mean": 0.7444196428571429
+        },
+        "train_seen": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 25000,
+          "auc_mean": 0.7466517857142857
+        },
+        "train_memorization": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 25000,
+          "auc_mean": 0.7444196428571429
+        },
+        "nll_own": {
+          "endpoint": 5.43764408575953e-05,
+          "endpoint_step": 40000,
+          "peak": 1.5125486850738525,
+          "peak_step": 5000,
+          "auc_mean": 0.2650416008841603
+        },
+        "nll_nominal": {
+          "endpoint": 5.43764408575953e-05,
+          "endpoint_step": 40000,
+          "peak": 1.5125486850738525,
+          "peak_step": 5000,
+          "auc_mean": 0.2650416008841603
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 25000,
+        "ckpt_dir": "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/ntp_fixed/s42/ckpts/step25000",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.2265625,
+          "test_validity": 0.2890625,
+          "test_novel_valid": 0.2265625,
+          "memo_own": 1.0,
+          "train_seen": 1.0,
+          "train_memorization": 1.0,
+          "nll_own": 0.0003159304542350583,
+          "nll_nominal": 0.0003159304542350583
+        }
+      },
+      "heldout": {
+        "creativity": 0.17822265625,
+        "test_validity": 0.22705078125,
+        "test_novel_valid": 0.1787109375,
+        "memo_own": 1.0,
+        "train_seen": 1.0,
+        "train_memorization": 1.0,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      }
+    },
+    {
+      "run": "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/ntp_fixed/s43",
+      "label": "ntp_fixed",
+      "seed": 43,
+      "arm": "ntp_fixed",
+      "group_cfg": null,
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.140625,
+          "endpoint_step": 40000,
+          "peak": 0.1796875,
+          "peak_step": 20000,
+          "auc_mean": 0.10825892857142858
+        },
+        "test_validity": {
+          "endpoint": 0.1796875,
+          "endpoint_step": 40000,
+          "peak": 0.234375,
+          "peak_step": 20000,
+          "auc_mean": 0.14006696428571427
+        },
+        "test_novel_valid": {
+          "endpoint": 0.140625,
+          "endpoint_step": 40000,
+          "peak": 0.1796875,
+          "peak_step": 20000,
+          "auc_mean": 0.10825892857142858
+        },
+        "memo_own": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 30000,
+          "auc_mean": 0.6997767857142857
+        },
+        "train_seen": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 30000,
+          "auc_mean": 0.7075892857142857
+        },
+        "train_memorization": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 30000,
+          "auc_mean": 0.6997767857142857
+        },
+        "nll_own": {
+          "endpoint": 4.543672730505932e-05,
+          "endpoint_step": 40000,
+          "peak": 1.5361269116401672,
+          "peak_step": 5000,
+          "auc_mean": 0.29028985361596177
+        },
+        "nll_nominal": {
+          "endpoint": 4.543672730505932e-05,
+          "endpoint_step": 40000,
+          "peak": 1.5361269116401672,
+          "peak_step": 5000,
+          "auc_mean": 0.29028985361596177
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 20000,
+        "ckpt_dir": "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/ntp_fixed/s43/ckpts/step20000",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.1796875,
+          "test_validity": 0.234375,
+          "test_novel_valid": 0.1796875,
+          "memo_own": 0.953125,
+          "train_seen": 0.953125,
+          "train_memorization": 0.953125,
+          "nll_own": 0.005016114329919219,
+          "nll_nominal": 0.005016114329919219
+        }
+      },
+      "heldout": {
+        "creativity": 0.14697265625,
+        "test_validity": 0.19873046875,
+        "test_novel_valid": 0.14697265625,
+        "memo_own": 0.953125,
+        "train_seen": 0.953125,
+        "train_memorization": 0.953125,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      }
+    },
+    {
+      "run": "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/ntp_fixed/s44",
+      "label": "ntp_fixed",
+      "seed": 44,
+      "arm": "ntp_fixed",
+      "group_cfg": null,
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.1640625,
+          "endpoint_step": 40000,
+          "peak": 0.21875,
+          "peak_step": 20000,
+          "auc_mean": 0.12667410714285715
+        },
+        "test_validity": {
+          "endpoint": 0.2421875,
+          "endpoint_step": 40000,
+          "peak": 0.2421875,
+          "peak_step": 40000,
+          "auc_mean": 0.16796875
+        },
+        "test_novel_valid": {
+          "endpoint": 0.1640625,
+          "endpoint_step": 40000,
+          "peak": 0.21875,
+          "peak_step": 20000,
+          "auc_mean": 0.12667410714285715
+        },
+        "memo_own": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 20000,
+          "auc_mean": 0.7444196428571429
+        },
+        "train_seen": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 20000,
+          "auc_mean": 0.7466517857142857
+        },
+        "train_memorization": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 20000,
+          "auc_mean": 0.7444196428571429
+        },
+        "nll_own": {
+          "endpoint": 0.00034784365652740235,
+          "endpoint_step": 40000,
+          "peak": 1.4808068573474884,
+          "peak_step": 5000,
+          "auc_mean": 0.261181794631284
+        },
+        "nll_nominal": {
+          "endpoint": 0.00034784365652740235,
+          "endpoint_step": 40000,
+          "peak": 1.4808068573474884,
+          "peak_step": 5000,
+          "auc_mean": 0.261181794631284
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 20000,
+        "ckpt_dir": "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/ntp_fixed/s44/ckpts/step20000",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.21875,
+          "test_validity": 0.234375,
+          "test_novel_valid": 0.21875,
+          "memo_own": 1.0,
+          "train_seen": 1.0,
+          "train_memorization": 1.0,
+          "nll_own": 0.002474012551829219,
+          "nll_nominal": 0.002474012551829219
+        }
+      },
+      "heldout": {
+        "creativity": 0.16162109375,
+        "test_validity": 0.2060546875,
+        "test_novel_valid": 0.1640625,
+        "memo_own": 1.0,
+        "train_seen": 1.0,
+        "train_memorization": 1.0,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      }
+    },
+    {
+      "run": "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/ntp_fixed_grp/s42",
+      "label": "ntp_fixed_grp",
+      "seed": 42,
+      "arm": "ntp_fixed_grouped",
+      "group_cfg": {
+        "pair_rule": "nominal",
+        "tl_target": "nominal",
+        "ntp_lambda": 0.0,
+        "mtp_weight": 0.0,
+        "lock_at": -1
+      },
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.1640625,
+          "endpoint_step": 40000,
+          "peak": 0.21875,
+          "peak_step": 35000,
+          "auc_mean": 0.13225446428571427
+        },
+        "test_validity": {
+          "endpoint": 0.203125,
+          "endpoint_step": 40000,
+          "peak": 0.28125,
+          "peak_step": 35000,
+          "auc_mean": 0.17299107142857142
+        },
+        "test_novel_valid": {
+          "endpoint": 0.1640625,
+          "endpoint_step": 40000,
+          "peak": 0.21875,
+          "peak_step": 35000,
+          "auc_mean": 0.13225446428571427
+        },
+        "memo_own": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 20000,
+          "auc_mean": 0.6997767857142857
+        },
+        "train_seen": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 20000,
+          "auc_mean": 0.7098214285714286
+        },
+        "train_memorization": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 20000,
+          "auc_mean": 0.6997767857142857
+        },
+        "nll_own": {
+          "endpoint": 0.00010233362127110013,
+          "endpoint_step": 40000,
+          "peak": 1.5377982556819916,
+          "peak_step": 5000,
+          "auc_mean": 0.28266990025456706
+        },
+        "nll_nominal": {
+          "endpoint": 0.00010233362127110013,
+          "endpoint_step": 40000,
+          "peak": 1.5377982556819916,
+          "peak_step": 5000,
+          "auc_mean": 0.28266990025456706
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 35000,
+        "ckpt_dir": "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/ntp_fixed_grp/s42/ckpts/step35000",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.21875,
+          "test_validity": 0.28125,
+          "test_novel_valid": 0.21875,
+          "memo_own": 1.0,
+          "train_seen": 1.0,
+          "train_memorization": 1.0,
+          "nll_own": 4.465436541067902e-05,
+          "nll_nominal": 4.465436541067902e-05
+        }
+      },
+      "heldout": {
+        "creativity": 0.16650390625,
+        "test_validity": 0.20947265625,
+        "test_novel_valid": 0.16748046875,
+        "memo_own": 1.0,
+        "train_seen": 1.0,
+        "train_memorization": 1.0,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      }
+    },
+    {
+      "run": "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/setc_MM/s42",
+      "label": "setc_MM",
+      "seed": 42,
+      "arm": "setc_m4",
+      "group_cfg": {
+        "pair_rule": "hungarian",
+        "tl_target": "matched",
+        "ntp_lambda": 0.0,
+        "mtp_weight": 3.0,
+        "lock_at": -1
+      },
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.0234375,
+          "endpoint_step": 40000,
+          "peak": 0.1796875,
+          "peak_step": 20000,
+          "auc_mean": 0.07533482142857142
+        },
+        "test_validity": {
+          "endpoint": 0.0390625,
+          "endpoint_step": 40000,
+          "peak": 0.2265625,
+          "peak_step": 20000,
+          "auc_mean": 0.10100446428571429
+        },
+        "test_novel_valid": {
+          "endpoint": 0.0234375,
+          "endpoint_step": 40000,
+          "peak": 0.1796875,
+          "peak_step": 20000,
+          "auc_mean": 0.07868303571428571
+        },
+        "memo_own": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 25000,
+          "auc_mean": 0.6395089285714286
+        },
+        "train_seen": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 25000,
+          "auc_mean": 0.6506696428571429
+        },
+        "train_memorization": {
+          "endpoint": 0.2734375,
+          "endpoint_step": 40000,
+          "peak": 0.2734375,
+          "peak_step": 25000,
+          "auc_mean": 0.17689732142857142
+        },
+        "nll_own": {
+          "endpoint": 0.0002693434081493251,
+          "endpoint_step": 40000,
+          "peak": 1.4793956279754639,
+          "peak_step": 5000,
+          "auc_mean": 0.31659363524000483
+        },
+        "nll_nominal": {
+          "endpoint": 6.5881108045578,
+          "endpoint_step": 40000,
+          "peak": 6.5881108045578,
+          "peak_step": 40000,
+          "auc_mean": 3.811571838600295
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 20000,
+        "ckpt_dir": "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/setc_MM/s42/ckpts/step20000",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.1796875,
+          "test_validity": 0.2265625,
+          "test_novel_valid": 0.1796875,
+          "memo_own": 0.9296875,
+          "train_seen": 0.9375,
+          "train_memorization": 0.265625,
+          "nll_own": 0.023083082400262356,
+          "nll_nominal": 3.44305819272995
+        }
+      },
+      "heldout": {
+        "creativity": 0.119140625,
+        "test_validity": 0.14990234375,
+        "test_novel_valid": 0.119140625,
+        "memo_own": 0.9296875,
+        "train_seen": 0.9375,
+        "train_memorization": 0.265625,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      }
+    },
+    {
+      "run": "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/setc_MM_late_MN/s42",
+      "label": "setc_MM_late_MN",
+      "seed": 42,
+      "arm": "setc_m4",
+      "group_cfg": {
+        "pair_rule": "hungarian",
+        "tl_target": "matched",
+        "ntp_lambda": 1.0,
+        "mtp_weight": 3.0,
+        "lock_at": -1
+      },
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.2265625,
+          "endpoint_step": 40000,
+          "peak": 0.25,
+          "peak_step": 35000,
+          "auc_mean": 0.2265625
+        },
+        "test_validity": {
+          "endpoint": 0.28125,
+          "endpoint_step": 40000,
+          "peak": 0.3125,
+          "peak_step": 35000,
+          "auc_mean": 0.2799479166666667
+        },
+        "test_novel_valid": {
+          "endpoint": 0.2265625,
+          "endpoint_step": 40000,
+          "peak": 0.25,
+          "peak_step": 35000,
+          "auc_mean": 0.2265625
+        },
+        "memo_own": {
+          "endpoint": 0.2734375,
+          "endpoint_step": 40000,
+          "peak": 0.296875,
+          "peak_step": 25000,
+          "auc_mean": 0.2799479166666667
+        },
+        "train_seen": {
+          "endpoint": 0.453125,
+          "endpoint_step": 40000,
+          "peak": 0.453125,
+          "peak_step": 40000,
+          "auc_mean": 0.4244791666666667
+        },
+        "train_memorization": {
+          "endpoint": 0.4140625,
+          "endpoint_step": 40000,
+          "peak": 0.4140625,
+          "peak_step": 40000,
+          "auc_mean": 0.34375
+        },
+        "nll_own": {
+          "endpoint": 0.554273247718811,
+          "endpoint_step": 40000,
+          "peak": 0.554273247718811,
+          "peak_step": 40000,
+          "auc_mean": 0.3849656246602535
+        },
+        "nll_nominal": {
+          "endpoint": 0.03850575629621744,
+          "endpoint_step": 40000,
+          "peak": 0.5510633736848831,
+          "peak_step": 25000,
+          "auc_mean": 0.15194790701692304
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 35000,
+        "ckpt_dir": "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/setc_MM_late_MN/s42/ckpts/step35000",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.25,
+          "test_validity": 0.3125,
+          "test_novel_valid": 0.25,
+          "memo_own": 0.2734375,
+          "train_seen": 0.4375,
+          "train_memorization": 0.3828125,
+          "nll_own": 0.4425755888223648,
+          "nll_nominal": 0.041745299473404884
+        }
+      },
+      "heldout": {
+        "creativity": 0.2373046875,
+        "test_validity": 0.31201171875,
+        "test_novel_valid": 0.240234375,
+        "memo_own": 0.2734375,
+        "train_seen": 0.4375,
+        "train_memorization": 0.3828125,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      }
+    },
+    {
+      "run": "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/setc_MM_lock/s42",
+      "label": "setc_MM_lock",
+      "seed": 42,
+      "arm": "setc_m4",
+      "group_cfg": {
+        "pair_rule": "hungarian",
+        "tl_target": "matched",
+        "ntp_lambda": 0.0,
+        "mtp_weight": 3.0,
+        "lock_at": 14000
+      },
+      "steps": 16000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.1484375,
+          "endpoint_step": 16000,
+          "peak": 0.1484375,
+          "peak_step": 16000,
+          "auc_mean": 0.14453125
+        },
+        "test_validity": {
+          "endpoint": 0.21875,
+          "endpoint_step": 16000,
+          "peak": 0.21875,
+          "peak_step": 16000,
+          "auc_mean": 0.203125
+        },
+        "test_novel_valid": {
+          "endpoint": 0.1484375,
+          "endpoint_step": 16000,
+          "peak": 0.1484375,
+          "peak_step": 16000,
+          "auc_mean": 0.14453125
+        },
+        "memo_own": {
+          "endpoint": 0.1875,
+          "endpoint_step": 16000,
+          "peak": 0.1875,
+          "peak_step": 16000,
+          "auc_mean": 0.1171875
+        },
+        "train_seen": {
+          "endpoint": 0.2578125,
+          "endpoint_step": 16000,
+          "peak": 0.2578125,
+          "peak_step": 16000,
+          "auc_mean": 0.1796875
+        },
+        "train_memorization": {
+          "endpoint": 0.0546875,
+          "endpoint_step": 16000,
+          "peak": 0.0546875,
+          "peak_step": 16000,
+          "auc_mean": 0.0390625
+        },
+        "nll_own": {
+          "endpoint": 0.22541386634111404,
+          "endpoint_step": 16000,
+          "peak": 0.35350412130355835,
+          "peak_step": 15000,
+          "auc_mean": 0.2894589938223362
+        },
+        "nll_nominal": {
+          "endpoint": 2.0654899179935455,
+          "endpoint_step": 16000,
+          "peak": 2.0654899179935455,
+          "peak_step": 16000,
+          "auc_mean": 1.8845273107290268
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 16000,
+        "ckpt_dir": "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/setc_MM_lock/s42/final_model",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.1484375,
+          "test_validity": 0.21875,
+          "test_novel_valid": 0.1484375,
+          "memo_own": 0.1875,
+          "train_seen": 0.2578125,
+          "train_memorization": 0.0546875,
+          "nll_own": 0.22541386634111404,
+          "nll_nominal": 2.0654899179935455
+        }
+      },
+      "heldout": {
+        "creativity": 0.16455078125,
+        "test_validity": 0.212890625,
+        "test_novel_valid": 0.16650390625,
+        "memo_own": 0.1875,
+        "train_seen": 0.2578125,
+        "train_memorization": 0.0546875,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      }
+    },
+    {
+      "run": "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/setc_MM_online/s42",
+      "label": "setc_MM_online",
+      "seed": 42,
+      "arm": "setc_m4",
+      "group_cfg": {
+        "pair_rule": "hungarian",
+        "tl_target": "matched",
+        "ntp_lambda": 0.0,
+        "mtp_weight": 3.0,
+        "lock_at": -1
+      },
+      "steps": 16000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.1171875,
+          "endpoint_step": 16000,
+          "peak": 0.15625,
+          "peak_step": 15000,
+          "auc_mean": 0.13671875
+        },
+        "test_validity": {
+          "endpoint": 0.171875,
+          "endpoint_step": 16000,
+          "peak": 0.1953125,
+          "peak_step": 15000,
+          "auc_mean": 0.18359375
+        },
+        "test_novel_valid": {
+          "endpoint": 0.1171875,
+          "endpoint_step": 16000,
+          "peak": 0.15625,
+          "peak_step": 15000,
+          "auc_mean": 0.13671875
+        },
+        "memo_own": {
+          "endpoint": 0.15625,
+          "endpoint_step": 16000,
+          "peak": 0.15625,
+          "peak_step": 16000,
+          "auc_mean": 0.1015625
+        },
+        "train_seen": {
+          "endpoint": 0.2265625,
+          "endpoint_step": 16000,
+          "peak": 0.2265625,
+          "peak_step": 16000,
+          "auc_mean": 0.16796875
+        },
+        "train_memorization": {
+          "endpoint": 0.046875,
+          "endpoint_step": 16000,
+          "peak": 0.046875,
+          "peak_step": 16000,
+          "auc_mean": 0.03125
+        },
+        "nll_own": {
+          "endpoint": 0.2249264381825924,
+          "endpoint_step": 16000,
+          "peak": 0.35359320044517517,
+          "peak_step": 15000,
+          "auc_mean": 0.2892598193138838
+        },
+        "nll_nominal": {
+          "endpoint": 2.0723879635334015,
+          "endpoint_step": 16000,
+          "peak": 2.0723879635334015,
+          "peak_step": 16000,
+          "auc_mean": 1.889518842101097
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 15000,
+        "ckpt_dir": "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/setc_MM_online/s42/ckpts/step15000",
+        "restricted_to_ckpts": false,
+        "dev": {
+          "creativity": 0.15625,
+          "test_validity": 0.1953125,
+          "test_novel_valid": 0.15625,
+          "memo_own": 0.046875,
+          "train_seen": 0.109375,
+          "train_memorization": 0.015625,
+          "nll_own": 0.35359320044517517,
+          "nll_nominal": 1.7066497206687927
+        }
+      },
+      "heldout": {
+        "creativity": 0.17578125,
+        "test_validity": 0.2255859375,
+        "test_novel_valid": 0.18115234375,
+        "memo_own": 0.046875,
+        "train_seen": 0.109375,
+        "train_memorization": 0.015625,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      }
+    },
+    {
+      "run": "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/setc_MN/s42",
+      "label": "setc_MN",
+      "seed": 42,
+      "arm": "setc_m4",
+      "group_cfg": {
+        "pair_rule": "hungarian",
+        "tl_target": "matched",
+        "ntp_lambda": 1.0,
+        "mtp_weight": 3.0,
+        "lock_at": -1
+      },
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.1953125,
+          "endpoint_step": 40000,
+          "peak": 0.25,
+          "peak_step": 25000,
+          "auc_mean": 0.16685267857142858
+        },
+        "test_validity": {
+          "endpoint": 0.2265625,
+          "endpoint_step": 40000,
+          "peak": 0.3359375,
+          "peak_step": 25000,
+          "auc_mean": 0.21707589285714285
+        },
+        "test_novel_valid": {
+          "endpoint": 0.1953125,
+          "endpoint_step": 40000,
+          "peak": 0.25,
+          "peak_step": 25000,
+          "auc_mean": 0.16685267857142858
+        },
+        "memo_own": {
+          "endpoint": 0.3046875,
+          "endpoint_step": 40000,
+          "peak": 0.3046875,
+          "peak_step": 30000,
+          "auc_mean": 0.15011160714285715
+        },
+        "train_seen": {
+          "endpoint": 0.46875,
+          "endpoint_step": 40000,
+          "peak": 0.4765625,
+          "peak_step": 35000,
+          "auc_mean": 0.23883928571428573
+        },
+        "train_memorization": {
+          "endpoint": 0.4296875,
+          "endpoint_step": 40000,
+          "peak": 0.4453125,
+          "peak_step": 35000,
+          "auc_mean": 0.20591517857142858
+        },
+        "nll_own": {
+          "endpoint": 1.0567315220832825,
+          "endpoint_step": 40000,
+          "peak": 1.5360478460788727,
+          "peak_step": 5000,
+          "auc_mean": 0.9352792395012719
+        },
+        "nll_nominal": {
+          "endpoint": 0.039368693716824055,
+          "endpoint_step": 40000,
+          "peak": 1.5374115407466888,
+          "peak_step": 5000,
+          "auc_mean": 0.5070356261650366
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 25000,
+        "ckpt_dir": "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/setc_MN/s42/ckpts/step25000",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.25,
+          "test_validity": 0.3359375,
+          "test_novel_valid": 0.25,
+          "memo_own": 0.2421875,
+          "train_seen": 0.375,
+          "train_memorization": 0.3203125,
+          "nll_own": 0.6907431930303574,
+          "nll_nominal": 0.14640261977910995
+        }
+      },
+      "heldout": {
+        "creativity": 0.21923828125,
+        "test_validity": 0.29248046875,
+        "test_novel_valid": 0.22216796875,
+        "memo_own": 0.2421875,
+        "train_seen": 0.375,
+        "train_memorization": 0.3203125,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      }
+    },
+    {
+      "run": "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/setc_MN/s43",
+      "label": "setc_MN",
+      "seed": 43,
+      "arm": "setc_m4",
+      "group_cfg": {
+        "pair_rule": "hungarian",
+        "tl_target": "matched",
+        "ntp_lambda": 1.0,
+        "mtp_weight": 3.0,
+        "lock_at": -1
+      },
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.1484375,
+          "endpoint_step": 40000,
+          "peak": 0.234375,
+          "peak_step": 35000,
+          "auc_mean": 0.15680803571428573
+        },
+        "test_validity": {
+          "endpoint": 0.2265625,
+          "endpoint_step": 40000,
+          "peak": 0.2734375,
+          "peak_step": 25000,
+          "auc_mean": 0.18694196428571427
+        },
+        "test_novel_valid": {
+          "endpoint": 0.1484375,
+          "endpoint_step": 40000,
+          "peak": 0.234375,
+          "peak_step": 35000,
+          "auc_mean": 0.15680803571428573
+        },
+        "memo_own": {
+          "endpoint": 0.3125,
+          "endpoint_step": 40000,
+          "peak": 0.3125,
+          "peak_step": 35000,
+          "auc_mean": 0.140625
+        },
+        "train_seen": {
+          "endpoint": 0.4765625,
+          "endpoint_step": 40000,
+          "peak": 0.4765625,
+          "peak_step": 40000,
+          "auc_mean": 0.19363839285714285
+        },
+        "train_memorization": {
+          "endpoint": 0.3984375,
+          "endpoint_step": 40000,
+          "peak": 0.3984375,
+          "peak_step": 40000,
+          "auc_mean": 0.17020089285714285
+        },
+        "nll_own": {
+          "endpoint": 1.1392779797315598,
+          "endpoint_step": 40000,
+          "peak": 1.5370070040225983,
+          "peak_step": 5000,
+          "auc_mean": 0.9915146029421261
+        },
+        "nll_nominal": {
+          "endpoint": 0.04180276393890381,
+          "endpoint_step": 40000,
+          "peak": 1.5383371114730835,
+          "peak_step": 5000,
+          "auc_mean": 0.5446521627849766
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 35000,
+        "ckpt_dir": "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/setc_MN/s43/ckpts/step35000",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.234375,
+          "test_validity": 0.2578125,
+          "test_novel_valid": 0.234375,
+          "memo_own": 0.3125,
+          "train_seen": 0.4140625,
+          "train_memorization": 0.3828125,
+          "nll_own": 1.0410315096378326,
+          "nll_nominal": 0.043882046826183796
+        }
+      },
+      "heldout": {
+        "creativity": 0.197265625,
+        "test_validity": 0.251953125,
+        "test_novel_valid": 0.19921875,
+        "memo_own": 0.3125,
+        "train_seen": 0.4140625,
+        "train_memorization": 0.3828125,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      }
+    },
+    {
+      "run": "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/setc_MN/s44",
+      "label": "setc_MN",
+      "seed": 44,
+      "arm": "setc_m4",
+      "group_cfg": {
+        "pair_rule": "hungarian",
+        "tl_target": "matched",
+        "ntp_lambda": 1.0,
+        "mtp_weight": 3.0,
+        "lock_at": -1
+      },
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.234375,
+          "endpoint_step": 40000,
+          "peak": 0.234375,
+          "peak_step": 40000,
+          "auc_mean": 0.12723214285714285
+        },
+        "test_validity": {
+          "endpoint": 0.2890625,
+          "endpoint_step": 40000,
+          "peak": 0.2890625,
+          "peak_step": 40000,
+          "auc_mean": 0.17020089285714285
+        },
+        "test_novel_valid": {
+          "endpoint": 0.234375,
+          "endpoint_step": 40000,
+          "peak": 0.234375,
+          "peak_step": 40000,
+          "auc_mean": 0.12723214285714285
+        },
+        "memo_own": {
+          "endpoint": 0.375,
+          "endpoint_step": 40000,
+          "peak": 0.375,
+          "peak_step": 35000,
+          "auc_mean": 0.17299107142857142
+        },
+        "train_seen": {
+          "endpoint": 0.484375,
+          "endpoint_step": 40000,
+          "peak": 0.484375,
+          "peak_step": 30000,
+          "auc_mean": 0.23660714285714285
+        },
+        "train_memorization": {
+          "endpoint": 0.4375,
+          "endpoint_step": 40000,
+          "peak": 0.4609375,
+          "peak_step": 35000,
+          "auc_mean": 0.20758928571428573
+        },
+        "nll_own": {
+          "endpoint": 1.1199951171875,
+          "endpoint_step": 40000,
+          "peak": 1.5393363237380981,
+          "peak_step": 5000,
+          "auc_mean": 0.9473812920706612
+        },
+        "nll_nominal": {
+          "endpoint": 0.042916782200336456,
+          "endpoint_step": 40000,
+          "peak": 1.5394370257854462,
+          "peak_step": 5000,
+          "auc_mean": 0.5180715049750039
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 40000,
+        "ckpt_dir": "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/setc_MN/s44/ckpts/step40000",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.234375,
+          "test_validity": 0.2890625,
+          "test_novel_valid": 0.234375,
+          "memo_own": 0.375,
+          "train_seen": 0.484375,
+          "train_memorization": 0.4375,
+          "nll_own": 1.1199951171875,
+          "nll_nominal": 0.042916782200336456
+        }
+      },
+      "heldout": {
+        "creativity": 0.21142578125,
+        "test_validity": 0.2734375,
+        "test_novel_valid": 0.2119140625,
+        "memo_own": 0.375,
+        "train_seen": 0.484375,
+        "train_memorization": 0.4375,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      }
+    },
+    {
+      "run": "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/setc_NM/s42",
+      "label": "setc_NM",
+      "seed": 42,
+      "arm": "setc_m4",
+      "group_cfg": {
+        "pair_rule": "hungarian",
+        "tl_target": "nominal",
+        "ntp_lambda": 0.0,
+        "mtp_weight": 3.0,
+        "lock_at": -1
+      },
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.0546875,
+          "endpoint_step": 40000,
+          "peak": 0.1328125,
+          "peak_step": 20000,
+          "auc_mean": 0.060825892857142856
+        },
+        "test_validity": {
+          "endpoint": 0.0625,
+          "endpoint_step": 40000,
+          "peak": 0.15625,
+          "peak_step": 15000,
+          "auc_mean": 0.07366071428571429
+        },
+        "test_novel_valid": {
+          "endpoint": 0.0546875,
+          "endpoint_step": 40000,
+          "peak": 0.1328125,
+          "peak_step": 20000,
+          "auc_mean": 0.060825892857142856
+        },
+        "memo_own": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 25000,
+          "auc_mean": 0.6138392857142857
+        },
+        "train_seen": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 25000,
+          "auc_mean": 0.6171875
+        },
+        "train_memorization": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 25000,
+          "auc_mean": 0.6138392857142857
+        },
+        "nll_own": {
+          "endpoint": 5.990259955979127e-05,
+          "endpoint_step": 40000,
+          "peak": 1.5385420620441437,
+          "peak_step": 5000,
+          "auc_mean": 0.3919264293445914
+        },
+        "nll_nominal": {
+          "endpoint": 5.990259955979127e-05,
+          "endpoint_step": 40000,
+          "peak": 1.5376225411891937,
+          "peak_step": 5000,
+          "auc_mean": 0.39260857044424874
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 20000,
+        "ckpt_dir": "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/setc_NM/s42/ckpts/step20000",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.1328125,
+          "test_validity": 0.1328125,
+          "test_novel_valid": 0.1328125,
+          "memo_own": 0.796875,
+          "train_seen": 0.8125,
+          "train_memorization": 0.796875,
+          "nll_own": 0.05105477850884199,
+          "nll_nominal": 0.05105477850884199
+        }
+      },
+      "heldout": {
+        "creativity": 0.11474609375,
+        "test_validity": 0.1416015625,
+        "test_novel_valid": 0.11474609375,
+        "memo_own": 0.796875,
+        "train_seen": 0.8125,
+        "train_memorization": 0.796875,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      }
+    },
+    {
+      "run": "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/tl_NN/s42",
+      "label": "tl_NN",
+      "seed": 42,
+      "arm": "tl_fixed_m4",
+      "group_cfg": {
+        "pair_rule": "nominal",
+        "tl_target": "nominal",
+        "ntp_lambda": 0.0,
+        "mtp_weight": 3.0,
+        "lock_at": -1
+      },
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.03125,
+          "endpoint_step": 40000,
+          "peak": 0.15625,
+          "peak_step": 20000,
+          "auc_mean": 0.060267857142857144
+        },
+        "test_validity": {
+          "endpoint": 0.0390625,
+          "endpoint_step": 40000,
+          "peak": 0.203125,
+          "peak_step": 20000,
+          "auc_mean": 0.07310267857142858
+        },
+        "test_novel_valid": {
+          "endpoint": 0.03125,
+          "endpoint_step": 40000,
+          "peak": 0.15625,
+          "peak_step": 20000,
+          "auc_mean": 0.060267857142857144
+        },
+        "memo_own": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 30000,
+          "auc_mean": 0.5267857142857143
+        },
+        "train_seen": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 30000,
+          "auc_mean": 0.5345982142857143
+        },
+        "train_memorization": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 30000,
+          "auc_mean": 0.5267857142857143
+        },
+        "nll_own": {
+          "endpoint": 8.593917073085322e-06,
+          "endpoint_step": 40000,
+          "peak": 1.5418953001499176,
+          "peak_step": 5000,
+          "auc_mean": 0.5014811100162757
+        },
+        "nll_nominal": {
+          "endpoint": 8.593917073085322e-06,
+          "endpoint_step": 40000,
+          "peak": 1.5418953001499176,
+          "peak_step": 5000,
+          "auc_mean": 0.5014811100162757
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 20000,
+        "ckpt_dir": "/home/wlwuser/P6-Roll_the_dice/runs/stage0b/tl_NN/s42/ckpts/step20000",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.15625,
+          "test_validity": 0.203125,
+          "test_novel_valid": 0.15625,
+          "memo_own": 0.203125,
+          "train_seen": 0.25,
+          "train_memorization": 0.203125,
+          "nll_own": 0.21819129586219788,
+          "nll_nominal": 0.21819129586219788
+        }
+      },
+      "heldout": {
+        "creativity": 0.13427734375,
+        "test_validity": 0.1689453125,
+        "test_novel_valid": 0.13525390625,
+        "memo_own": 0.203125,
+        "train_seen": 0.25,
+        "train_memorization": 0.203125,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      }
+    }
+  ]
+}
