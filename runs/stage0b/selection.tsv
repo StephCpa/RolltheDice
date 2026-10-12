@@ -1,3 +1,7 @@
+/home/wlwuser/P6-Roll_the_dice/runs/stage0b/ntp_2tgt/s42	20000	/home/wlwuser/P6-Roll_the_dice/runs/stage0b/ntp_2tgt/s42/ckpts/step20000
+/home/wlwuser/P6-Roll_the_dice/runs/stage0b/ntp_2tgt/s43	25000	/home/wlwuser/P6-Roll_the_dice/runs/stage0b/ntp_2tgt/s43/ckpts/step25000
+/home/wlwuser/P6-Roll_the_dice/runs/stage0b/ntp_2tgt/s44	35000	/home/wlwuser/P6-Roll_the_dice/runs/stage0b/ntp_2tgt/s44/ckpts/step35000
+/home/wlwuser/P6-Roll_the_dice/runs/stage0b/ntp_2tgt_unif/s42	20000	/home/wlwuser/P6-Roll_the_dice/runs/stage0b/ntp_2tgt_unif/s42/ckpts/step20000
 /home/wlwuser/P6-Roll_the_dice/runs/stage0b/ntp_fixed/s42	25000	/home/wlwuser/P6-Roll_the_dice/runs/stage0b/ntp_fixed/s42/ckpts/step25000
 /home/wlwuser/P6-Roll_the_dice/runs/stage0b/ntp_fixed/s43	20000	/home/wlwuser/P6-Roll_the_dice/runs/stage0b/ntp_fixed/s43/ckpts/step20000
 /home/wlwuser/P6-Roll_the_dice/runs/stage0b/ntp_fixed/s44	20000	/home/wlwuser/P6-Roll_the_dice/runs/stage0b/ntp_fixed/s44/ckpts/step20000
@@ -11,3 +15,7 @@
 /home/wlwuser/P6-Roll_the_dice/runs/stage0b/setc_MN/s44	40000	/home/wlwuser/P6-Roll_the_dice/runs/stage0b/setc_MN/s44/ckpts/step40000
 /home/wlwuser/P6-Roll_the_dice/runs/stage0b/setc_NM/s42	20000	/home/wlwuser/P6-Roll_the_dice/runs/stage0b/setc_NM/s42/ckpts/step20000
 /home/wlwuser/P6-Roll_the_dice/runs/stage0b/tl_NN/s42	20000	/home/wlwuser/P6-Roll_the_dice/runs/stage0b/tl_NN/s42/ckpts/step20000
+/home/wlwuser/P6-Roll_the_dice/runs/stage0b/tl_RN/s42	30000	/home/wlwuser/P6-Roll_the_dice/runs/stage0b/tl_RN/s42/ckpts/step30000
+/home/wlwuser/P6-Roll_the_dice/runs/stage0b/tl_RN/s43	30000	/home/wlwuser/P6-Roll_the_dice/runs/stage0b/tl_RN/s43/ckpts/step30000
+/home/wlwuser/P6-Roll_the_dice/runs/stage0b/tl_RN/s44	35000	/home/wlwuser/P6-Roll_the_dice/runs/stage0b/tl_RN/s44/ckpts/step35000
+/home/wlwuser/P6-Roll_the_dice/runs/stage0b/tl_RN_unif/s42	35000	/home/wlwuser/P6-Roll_the_dice/runs/stage0b/tl_RN_unif/s42/ckpts/step35000

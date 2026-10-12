@@ -20,7 +20,8 @@
   "random_tiebreak": false,
   "regroup": false,
   "pairing_file": null,
-  "fixed_pairing": "random",
+  "fixed_pairing": "derangement",
+  "fixed_seed": 777,
   "pairing_sha256": null,
   "resume_from": null,
   "resume_step": null,
@@ -60,9 +61,11 @@
     "--pair_rule",
     "fixed",
     "--fixed_pairing",
-    "random",
+    "derangement",
+    "--fixed_seed",
+    "777",
     "--ntp_lambda",
     "1"
   ],
-  "started": "2026-10-11 12:42:37"
+  "started": "2026-10-11 21:03:17"
 }
