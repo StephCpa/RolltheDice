@@ -295,3 +295,49 @@ tl_RN/s42 ✅（throughput/轨迹已回收）；ntp_2tgt/s42 训练中；两臂�
 
 **阶段 0 状态：COMPLETE**（预定运行清单＝已验证完成清单：六 derangement 运行＋unif 两运行＋heldout/report）。
 下一步入口：阶段 1（ICML 2027 计划已批，NeurIPS 顺延预案）——首项为 Line 任务复现与 ntp_2tgt 转正预注册。
+
+---
+
+# 增补 9（2026-10-12，核验）：增补 8 的三处更正与 ntp_2tgt 转正前的混杂对照
+
+## 更正
+
+1. **report.md 有污染。** `runs/stage0b/report.md` 中 ntp_2tgt、tl_RN 两行是 n=4：unif 运行（`ntp_2tgt_unif/s42`、
+   `tl_RN_unif/s42`）的 run_meta 用了相同 label，report.py 按 label 聚合，就把它们并进来了。该表这两行的均值
+   （0.269、0.226）和判定不可引用。增补 8 的逐种子数字（3 种子，derangement 规格）是对的。
+   已修复（`8803ecc`）：重复的（标签, 种子）现在直接报错；`--label_by dir` 对 `<标签>/s<种子>` 取上级目录名；
+   launcher 的 heldout、report 两处调用都加了 `--label_by dir`。在服务器上重跑 `run_stage0b.sh report` 即可，
+   不需要重训或重评。
+2. **机制表述与数据不符。** 增补 8 第 2 条说"双目标使 seed 无法成为查表键"。ntp_2tgt 三个种子在 20k 之后的每个检查点：
+   train_memorization（名义目标）+ memo_own（伙伴目标）= 1.000（15 个检查点全部如此），train_seen = 1.0；
+   nll_nominal ≈ nll_own ≈ 0.026–0.035 /token，而 27-token 答案上 50/50 精确混合的下界是 log 2 / 27 = 0.0257。
+   也就是说，模型把每个训练 seed 的**两个**目标都背下来了，各给约一半概率。seed 仍是查表键，只是键对应一个两元素集合。
+   可以写的表述：「每个 seed 对应两个固定目标时，模型仍精确记忆（集合查表），但未见 seed 上的有效率翻倍
+   （0.21 → 0.42）。」为什么会这样，是 C4 要回答的问题。
+3. **unif 剂量措辞。** unif 规格下 24.3% 的 seed 满足 R = 名义，所以冲突剂量约为 **76%**，不是"24% 冲突剂量"。
+   同种子 s42 比较：ntp_2tgt 0.314 vs ntp_2tgt_unif 0.193（100% 剂量更高）；tl_RN 0.179 vs tl_RN_unif 0.204
+   （方向相反）。单种子、两臂方向不一致，所以不支持"剂量单调"的初步结论。剂量问题留给 A1。
+
+## tl_RN 的方差来自学习时序
+
+tl_RN 学得晚。三个种子在 10k 时 creativity 都是 0，20k 时分别为 0.031 / 0.281 / 0.094。到 40k，nll_nominal 仍在下降
+（0.06），train_memorization 为 0.09–0.13 且仍在上升。选中的检查点（30k / 30k / 35k）都落在"尚未记住名义映射"的
+过渡段，所以选在哪一步与跨种子方差关系很大。一种可能的解读：TL 分支的冲突目标只是延缓了 AR 查表的形成。训练更久，
+tl_RN 可能会像 ntp_fixed 一样走到 memo → 1。可以用长训练续跑来检验（并入 Phase 2 的 A7）。
+
+## ntp_2tgt 转正前必须排除的两个混杂
+
+- **每步梯度样本数翻倍。** ntp_2tgt 每步 128 条序列（64 个 seed × 2 个目标，各 0.5 权重），ntp_fixed 每步 64 条。
+  s/step 0.234 vs 0.083 的差距主要来自分组路径的开销（ntp_randperm 每步 64 条也要 0.222），所以混杂在梯度样本数，
+  不在墙钟时间。
+- **不同的（hash, 答案）对翻倍。** 20k 对 vs 10k 对，每个答案出现在两个 seed 之下。
+
+对照已实现（`run_stage0b.sh multiplicity`）：`ntp_fixed_b128`、`ntp_2tgt_sample`、`ntp_fixed_2hash`，再加 k 扫描
+（`ntp_k3c`、`ntp_k4c`、`ntp_k2c`）。判读规则见 `plan/icml2027-plan.md` §4.1b，需要在看留出集之前签署。
+在此之前，ntp_2tgt 的身份是"领先候选"，不是 recipe。
+
+## 其他
+
+- 服务器上这批运行的 run_meta.json 里 git_commit 为 null（服务器目录没有 .git）。启动前请
+  `export P6_CODE_SHA=<当前提交>`，train.py 会把它写进 run_meta。
+- 30 分钟巡检自动化需要在客户端手动停用（代理端无权删除）。

@@ -109,8 +109,12 @@ def summarize_run(run, args):
     meta = json.load(open(os.path.join(run, "run_meta.json"), encoding="utf-8"))
     n_test = (meta.get("n_probes") or 256) // 2
     rows = load_rows(os.path.join(run, "scores.jsonl"), n_test)
-    label = os.path.basename(run.rstrip("/")) if args.label_by == "dir" \
-        else (meta.get("label") or meta.get("arm"))
+    if args.label_by == "dir":
+        parts = run.rstrip("/").split("/")
+        # <标签>/s<种子> 布局取上一级目录名；否则取运行目录名
+        label = parts[-2] if re.fullmatch(r"s\d+", parts[-1]) and len(parts) > 1 else parts[-1]
+    else:
+        label = meta.get("label") or meta.get("arm")
     sel = select_checkpoint(run, rows, args.primary, meta.get("steps"))
     out = {"run": run, "label": label, "seed": meta.get("seed"), "arm": meta.get("arm"),
            "group_cfg": meta.get("group_cfg"), "steps": meta.get("steps"),
@@ -161,11 +165,20 @@ def main(argv=None):
     ap.add_argument("--margin", type=float, default=0.03)
     ap.add_argument("--min_seeds", type=int, default=3)
     ap.add_argument("--emit_selection", default=None, help="写出 run\\tstep\\tckpt_dir（供留出评测）")
+    ap.add_argument("--allow_duplicates", action="store_true",
+                    help="允许同一标签下出现重复种子（默认报错：防止不同规格的运行混入同一标签）")
     ap.add_argument("--out", default=None, help="Markdown 报告")
     ap.add_argument("--json", default=None)
     args = ap.parse_args(argv)
 
     runs = [summarize_run(r, args) for r in discover(args.runs)]
+    seen_ls = {}
+    for rs in runs:
+        seen_ls.setdefault((rs["label"], rs["seed"]), []).append(rs["run"])
+    dups = {k: v for k, v in seen_ls.items() if len(v) > 1}
+    if dups and not args.allow_duplicates:
+        raise SystemExit("同一标签下有重复种子（多半是不同规格的运行共用了标签；改标签或用 --label_by dir）：\n" +
+                         "\n".join(f"  {k}: {v}" for k, v in dups.items()))
     if args.emit_selection:
         with open(args.emit_selection, "w", encoding="utf-8") as f:
             for rs in runs:

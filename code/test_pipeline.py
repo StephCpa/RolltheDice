@@ -627,6 +627,105 @@ def test_derangement_spec_amendment1():
     assert json.load(open(os.path.join(u, "fixed_pairing.json")))["entry_overlap_with_nominal"] > 0
 
 
+# ---------------- 目标多重性（multi）与混杂对照 ----------------
+
+def test_multi_k2_weighted_equals_fixed_lambda_half():
+    """multi k=2 weighted 与 ntp_2tgt（fixed + λ=0.5，无 TL）是同一训练（逐位）。"""
+    env = e2e_env()
+    a = os.path.join(env["root"], "m_fixed_half")
+    b = os.path.join(env["root"], "m_multi2")
+    common = ["--arm", "ntp_fixed_grouped", "--fixed_pairing", "derangement", "--fixed_seed", "777"]
+    _main(a, *common, "--pair_rule", "fixed", "--ntp_lambda", "0.5", steps=8)
+    _main(b, *common, "--pair_rule", "multi", "--n_targets", "2", "--target_mode", "weighted", steps=8)
+    wa, wb = _weights(a), _weights(b)
+    assert all(torch.equal(wa[k], wb[k]) for k in wa)
+
+
+def test_multi_target_sets_and_sample_mode():
+    model = make_model(64).eval()
+    groups = synth_groups()
+    sigma = {0: [1, 2, 3, 0], 1: [3, 0, 1, 2], 2: [2, 3, 1, 0]}     # 4-循环
+    cap, orig = _capture_ntp()
+    try:
+        _step(model, groups, train.GroupCfg("multi", "nominal", 0.0, 0.0, n_targets=3),
+              fixed_perms=sigma)
+        kind, seqs, w = cap[-1]
+        random.seed(0)
+        cap.clear()
+        _step(model, groups, train.GroupCfg("multi", "nominal", 0.0, 0.0, n_targets=2,
+                                            target_mode="sample"), fixed_perms=sigma)
+        kind_s, seqs_s, _ = cap[-1]
+    finally:
+        train._ntp_loss, train._weighted_ntp_loss = orig
+    want = []
+    for r in (1, 2, 0):                                               # σ, σ², 名义
+        for g in range(3):
+            q = train.perm_power(sigma[g], r)
+            want += [train.ntp_seq(groups[g][i][0], groups[g][q[i]][1]) for i in range(4)]
+    assert kind == "w" and seqs == want and w == [1 / 3] * 36
+    assert kind_s == "hf" and len(seqs_s) == 12                       # sample：与 ntp_fixed 同序列数
+    for g in range(3):
+        for i in range(4):
+            ids = seqs_s[g * 4 + i][0]
+            ok = [groups[g][i][0] + groups[g][j][1] for j in (i, sigma[g][i])]
+            assert ids in ok
+
+
+def test_cycle_partner_and_k3_guard():
+    env = e2e_env()
+    c = os.path.join(env["root"], "cyc")
+    _main(c, "--arm", "ntp_fixed_grouped", "--pair_rule", "multi", "--n_targets", "4",
+          "--fixed_pairing", "cycle", "--fixed_seed", "777", steps=2)
+    fp = json.load(open(os.path.join(c, "fixed_pairing.json")))
+    assert fp["entry_overlap_with_nominal"] == 0.0
+    bad = os.path.join(env["root"], "der_k3")
+    try:
+        _main(bad, "--arm", "ntp_fixed_grouped", "--pair_rule", "multi", "--n_targets", "3",
+              "--fixed_pairing", "derangement", "--fixed_seed", "777", steps=2)
+        raised = False
+    except SystemExit:
+        raised = True
+    assert raised                                                     # 错排含 2+2 型时 σ²=恒等，须拒绝
+
+
+def test_make_variant_dup_hash():
+    import make_variant_data
+    env = e2e_env()
+    out = os.path.join(env["root"], "data_dup2")
+    make_variant_data.main(["--base_dir", env["data"], "--out", out, "--k", "2"])
+    base = json.load(open(os.path.join(env["data"], "train.json")))
+    dup = json.load(open(os.path.join(out, "train.json")))
+    assert dup[:len(base)] == base and len(dup) == 2 * len(base)
+    used = set()
+    for fn in ("train.json", "valid.json", "test.json"):
+        used |= {s["input_text"] for s in json.load(open(os.path.join(env["data"], fn)))}
+    new = dup[len(base):]
+    assert not ({s["input_text"] for s in new} & used) and len({s["input_text"] for s in dup}) == len(dup)
+    ans = lambda s: s["target_text"].split("<q>", 1)[1]               # noqa: E731
+    assert [ans(s) for s in new] == [ans(s) for s in base]            # 每个答案多一个 hash
+    _main(os.path.join(env["root"], "dup_run"), "--arm", "ntp_fixed", "--data_dir", out, steps=2)
+
+
+def test_report_duplicate_guard_and_dir_label():
+    import report
+    root = tempfile.mkdtemp(prefix="p6_dup_")
+    for lab, sd in (("armA", 42), ("armA_unif", 42)):
+        d = os.path.join(root, lab, f"s{sd}")
+        os.makedirs(d)
+        json.dump({"arm": "x", "label": "armA", "seed": sd, "steps": 10, "n_probes": 256},
+                  open(os.path.join(d, "run_meta.json"), "w"))
+        open(os.path.join(d, "scores.jsonl"), "w").write(json.dumps({"step": 10, "creativity": 0.1}) + "\n")
+    try:
+        report.main(["--runs", os.path.join(root, "*", "s*")])
+        raised = False
+    except SystemExit:
+        raised = True
+    assert raised                                                     # 两个规格共用 label=armA → 报错
+    report.main(["--runs", os.path.join(root, "*", "s*"), "--label_by", "dir",
+                 "--json", os.path.join(root, "r.json")])
+    assert sorted(json.load(open(os.path.join(root, "r.json")))["aggregate"]) == ["armA", "armA_unif"]
+
+
 if __name__ == "__main__":
     fails = 0
     for name, fn in sorted((k, v) for k, v in globals().items() if k.startswith("test_")):
