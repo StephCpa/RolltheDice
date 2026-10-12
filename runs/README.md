@@ -77,3 +77,10 @@ seed+2。按与 train.py 相同的调用重建：种子 42/43/44 下 R 与名义
 与 `--fixed_seed`，fixed_pairing.json 自动登记条目级/结构级重合率；`run_stage0b.sh conflict` 改为规格版
 （derangement，种子 777），旧规格移入 `conflict_unif`；(3) 规格版需按修订 №1 补跑 3 种子后再判读分支表。
 另：服务器 run_meta 的 git_commit 为 null（同步目录非 git 副本），train.py 现回退读取环境变量 P6_CODE_SHA。
+
+事件 #8 登记（2026-10-12，核对阶段 0 终读数时发现）：`runs/stage0b/report.md` 的 ntp_2tgt、tl_RN 两行 n=4。
+事件 #7 的"改标"只改了目录名（`*_unif/`），没改 run_meta.json 里的 label；report.py 缺省按 label 聚合，于是把
+unif 的 s42 并进了规格版（同一标签下 s42 出现两次）。增补 8 的逐种子数字未受影响（3 种子），汇总表那两行的均值和判定
+不可引用。处理：report.py 对重复的（标签, 种子）直接报错（`--allow_duplicates` 可放行）；`--label_by dir` 对
+`<标签>/s<种子>` 布局取上级目录名；launcher 的 heldout、report 两处调用都改为 `--label_by dir`。在服务器上重跑
+`run_stage0b.sh report` 即可（不需要重训或重评）。

@@ -1,10 +1,31 @@
 # P6 → ICML 2027: feasibility assessment and experimental plan
 
-Draft for the project lead, 2026-10-11. Written against `main` @ `f6bd12a`.
+Draft for the project lead, 2026-10-11, written against `main` @ `f6bd12a`; updated 2026-10-12 after the Phase 0 close-out (box below, §4.1b).
 Deadline facts: the ICML 2027 call for papers was not yet published when this was written. A deadline tracker
 estimates abstract ≈ **Jan 16, 2027** and full paper ≈ **Jan 22, 2027** (AoE), and puts the venue in South America.
 For calibration, ICML 2026 had abstract Jan 23 and paper Jan 28, 2026. **Plan to an internal freeze of Jan 15, 2027**
 and re-check the official dates as soon as the call is out.
+
+> **Update 2026-10-12, after the Phase 0 close-out (supersedes the framing in §0 and §2 where they differ).**
+> Held-out results (signed spec, 3 seeds): `ntp_2tgt` **0.294** (Δ vs `ntp_fixed` +0.136 / +0.158 / +0.101),
+> `tl_RN` 0.233 (+0.001 / +0.181 / +0.029), `setc_MN` 0.209 (+0.041 / +0.050 / +0.050), `ntp_fixed` 0.162.
+> The §3 risk "`ntp_2tgt` ≈ MN" happened in a stronger form: plain two-target next-token training beats every
+> teacherless arm. Consequences:
+> 1. **The headline moves to *target multiplicity per seed*.** With one target per seed (k = 1), seeds become lookup
+>    keys: memo → 1 and validity on unseen seeds ≈ 0.21. With two fixed targets per seed (k = 2), validity ≈ 0.42. When
+>    each visit draws a target from the whole group (`ntp_randperm`, the dynamic k = m = 4 case), the model copies
+>    training answers: validity 1.00, test_seen 0.98, almost no novelty. That suggests an inverted U in k, which the
+>    k-sweep in §4.1b tests. The teacherless results (the 2×2 collapse, `setc_MN`, `tl_RN`) become the section that
+>    explains the original paper's negative teacherless result.
+> 2. **`ntp_2tgt` is not yet a pre-registered recipe.** It trains on 2× sequences per step and on 2× distinct
+>    (hash, answer) pairs. §4.1b (Phase 0.5) separates these from "two targets per seed" before the Sibling budget
+>    is spent on it.
+> 3. **Mechanism wording.** Addendum 8 of the Stage 0 report says "dual targets make the seed unable to act as a
+>    lookup key". The logs contradict this. `ntp_2tgt` memorizes *both* targets of every training seed:
+>    memo_nominal + memo_own = 1.000 at every checkpoint from 20k on (15 of 15), train_seen = 1.0, and per-token NLL
+>    0.026–0.035 against a floor of log 2 / 27 = 0.026 for an exact 50/50 mixture. The seed is still a lookup key,
+>    but for a two-answer set. What has to be explained is why a two-answer key gives twice the validity on unseen
+>    seeds (Addendum 9).
 
 ---
 
@@ -132,6 +153,41 @@ Each phase starts with a signed pre-registration addendum, written *before* read
 
   All three are still run in Phase 1, because necessity must replicate across tasks.
 
+### 4.1b Phase 0.5: target-multiplicity controls (Oct 12–18, Circle, before G0)
+
+The rule above selects `ntp_2tgt`. It becomes the pre-registered recipe only if it survives the controls below. Each
+control changes one property of `ntp_2tgt` and keeps the rest. Run it with `run_stage0b.sh multiplicity` (seeds 42–44,
+40k steps, signed protocol), then `heldout`, then `report`. The launcher runs the three decisive controls for every
+seed before it starts the k-sweep.
+
+| Arm | What it matches in `ntp_2tgt` | What it removes | If it ≈ `ntp_2tgt` (within margin) | GPU·h (3 seeds) |
+|---|---|---|---|---|
+| `ntp_fixed_b128` | 128 sequences per step | the second target | gain is batch/compute; recipe dropped | ≈ 4 |
+| `ntp_2tgt_sample` | two fixed targets per seed | the extra sequences (one of the two targets sampled per visit, 64 sequences per step) | compute is not the driver; recipe stands | ≈ 8 |
+| `ntp_fixed_2hash` (data variant `dup_hash`, k = 2) | 20k distinct (hash, answer) pairs, 2 hashes per answer, 128 sequences per step | the second target *per hash* | gain is "each answer seen under two seeds" or more pairs; claim rewritten around answer-side multiplicity | ≈ 4 |
+| `ntp_k3c`, `ntp_k4c` (`--pair_rule multi --fixed_pairing cycle`, weighted) | fixed target sets per seed | — (sweep k = 3, 4) | — | ≈ 18 |
+| `ntp_k2c` | k = 2 on a 4-cycle partner | — (sweep point k = 2; `ntp_2tgt` already approximates it) | — | ≈ 8 |
+
+Total ≈ 45 A6000·h including held-out scoring; the three decisive controls alone take ≈ 16 h. Grouped arms run at
+≈ 0.22–0.24 s/step whatever the batch size. `ntp_randperm` at 64 sequences takes 0.222 s/step, so most of the
+0.234 vs 0.083 s/step gap between `ntp_2tgt` and `ntp_fixed` is grouped-path overhead, not the second target. The
+compute confound is in gradient samples, not wall clock.
+
+**Pre-registered reading (sign before scoring held-out):**
+- `ntp_2tgt` is the Phase 1 recipe if, on held-out, it beats `ntp_fixed_b128` **and** `ntp_fixed_2hash` by ≥ 0.03 on
+  the mean with all three seeds positive, and `ntp_2tgt_sample` passes against `ntp_fixed` under the original criterion.
+- If `ntp_fixed_2hash` ≈ `ntp_2tgt`, the claim becomes "each answer under several seeds". The k-sweep is still informative.
+- If `ntp_fixed_b128` ≈ `ntp_2tgt`, revert to the pre-0.5 order: `tl_RN`, then `setc_MN`. `ntp_2tgt` is reported as a
+  batch-size artefact.
+- **k-sweep figure** (Fig. 1 candidate): held-out creativity, validity and test_seen against k ∈ {1, 2, 3, 4}. Use
+  `ntp_fixed` (k = 1), `ntp_2tgt` / `ntp_k2c`, `ntp_k3c` and `ntp_k4c`. Add `ntp_randperm` (dynamic k = 4) and `noseed`
+  (k → all) as reference points. Prediction: an inverted U, with lookup at k = 1 and copying at k = 4. The weighted
+  sweep grows with k in sequences per step. If `ntp_2tgt_sample` ≠ `ntp_2tgt`, re-run the sweep with
+  `--target_mode sample` (≈ 25 h).
+
+Line can start in parallel. The Phase 1 Line set below already runs all three candidates, so only the Sibling recipe
+waits for this verdict.
+
 ### 4.2 Phase 1: generality across the original benchmark (Oct 19 – Nov 8)
 
 | Task | Steps (original) | Arms | Seeds | GPU·h |
@@ -204,7 +260,8 @@ Failure → scope the paper to small models explicitly, or move to NeurIPS 2027.
 
 | Phase | Must-have | Stretch |
 |---|---|---|
-| 0 close-out | ≈ 15 | — |
+| 0 close-out | ≈ 15 (spent) | — |
+| 0.5 multiplicity controls + k-sweep (§4.1b) | ≈ 45 | +25 (sample-mode sweep) |
 | 1 generality | ≈ 400–500 (Line, Sibling, Circle top-up) | +150 (Triangle) |
 | 2 ablations | ≈ 230 | — |
 | 3 scale | ≈ 110 (GPT-2 medium) | +120 (~2B) |
@@ -234,7 +291,7 @@ Every new flag gets a regression test and a bit-identity check against existing 
 
 | Week | Dates | Compute | People / writing | Milestone |
 |---|---|---|---|---|
-| 1 | Oct 12–18 | Phase 0 close-out (signed conflict controls, lock re-check, reversal) | E1, E3 start; Phase-1 pre-registration | **G0 (Oct 18):** recipe chosen; Phase 0 archived |
+| 1 | Oct 12–18 | Phase 0.5 multiplicity controls (§4.1b), first; lock re-check, reversal | E1, E3 start; Phase-1 pre-registration | **G0 (Oct 18):** recipe chosen from the §4.1b reading; Phase 0 archived |
 | 2 | Oct 19–25 | Line full arm set; Sibling launches (long runs) | E1 done; E2 start | |
 | 3 | Oct 26–Nov 1 | Sibling continues; A1 dose + A5 regularizers (Circle/Line) | E2; E5 start | Line verdict |
 | 4 | Nov 2–8 | Sibling completes; A2, A3 | E2 done; Phase-3 pre-registration | **G1 (Nov 8):** generality |
