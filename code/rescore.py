@@ -78,9 +78,14 @@ def main(argv=None):
     text2idx = {s["input_text"]: k for k, s in enumerate(raw)}
     own_targets = None
     if len(text2idx) == len(raw):   # 无 hash 数据没有逐 seed 配对
-        R = load_pairing(pf, len(raw)) if pf else list(range(len(raw)))
-        own_targets = {p["input_text"]: raw[R[text2idx[p["input_text"]]]]["target_text"]
-                       for p in tr if p["input_text"] in text2idx}
+        try:
+            R = load_pairing(pf, len(raw)) if pf else list(range(len(raw)))
+        except AssertionError as e:   # 配对来自另一份训练数据（如 dup_hash 变体）：不评 memo_own
+            print(f"[warn] 配对与 --data_dir 不匹配，跳过 memo_own：{e}")
+            R = None
+        if R is not None:
+            own_targets = {p["input_text"]: raw[R[text2idx[p["input_text"]]]]["target_text"]
+                           for p in tr if p["input_text"] in text2idx}
 
     os.makedirs(args.out, exist_ok=True)
     with open(os.path.join(args.out, "rescore_meta.json"), "w", encoding="utf-8") as f:

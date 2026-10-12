@@ -180,16 +180,22 @@ class GroupCfg:
     """组级臂的训练目标。
     pair_rule : nominal（名义）| random（每次访问随机双射）| hungarian（teacherless 代价上的最优双射）
                 | fixed（每组一个持久双射，来自 --fixed_pairing：random 或配对文件；不做匹配）
+                | multi（仅 NTP 的多目标：每个 seed 训 k 个不同目标 {名义, σ(i), σ²(i), …}，σ 为组的固定伙伴置换）
     tl_target : matched（TL 损失用 pair_rule 的配对）| nominal（TL 损失用名义配对）
     ntp_lambda: NTP 分支中名义目标的权重；0 = 全用匹配目标，1 = 全用名义目标，中间值按权混合
                 （逐 token 加权平均，总监督权重不变）
     mtp_weight: TL 损失权重（0 = 不训练 TL；hungarian 仍会做无梯度前向以取代价）
-    lock_at   : ≥0 时，从该步起 hungarian 改用各组上次的配对（影子 argmin 照记）"""
+    lock_at   : ≥0 时，从该步起 hungarian 改用各组上次的配对（影子 argmin 照记）
+    n_targets : multi 的目标数 k（含名义）
+    target_mode: multi 的组织方式：weighted（每次访问 k 个目标各 1/k 权重，k×G×m 条序列）
+                | sample（每次访问每个 seed 随机取其中一个目标，G×m 条序列——与 ntp_fixed 同算力）"""
     pair_rule: str = "nominal"
     tl_target: str = "matched"
     ntp_lambda: float = 0.0
     mtp_weight: float = 3.0
     lock_at: int = -1
+    n_targets: int = 2
+    target_mode: str = "weighted"
 
 
 PRESETS = {
@@ -217,6 +223,14 @@ def assign(C, tiebreak_rng=None):
     sh = tiebreak_rng.permutation(C.shape[1])
     _, c = linear_sum_assignment(C[:, sh])
     return [int(sh[k]) for k in c]
+
+
+def perm_power(p, r):
+    """σ^r：对 seed i 返回 σ(σ(…σ(i)))（r 次）。"""
+    q = list(range(len(p)))
+    for _ in range(r):
+        q = [p[x] for x in q]
+    return q
 
 
 def _ntp_loss(model, seqs, eos, device):
@@ -271,7 +285,7 @@ def group_step(model, opt, scaler, groups_ex, group_ids, cfg, device, step,
             perms.append(pi)
     elif cfg.pair_rule == "nominal":
         perms = [list(range(m)) for _ in range(G)]
-    elif cfg.pair_rule == "fixed":
+    elif cfg.pair_rule in ("fixed", "multi"):
         perms = [list(fixed_perms[k]) for k in keys]
     elif cfg.pair_rule != "hungarian":
         raise ValueError(cfg.pair_rule)
@@ -353,7 +367,21 @@ def group_step(model, opt, scaler, groups_ex, group_ids, cfg, device, step,
                 for g in range(G) for i in range(m)]
 
     lam = 0.0 if cfg.pair_rule == "nominal" else float(cfg.ntp_lambda)
-    if lam == 0.0:
+    if cfg.pair_rule == "multi":
+        k = cfg.n_targets
+        # 目标集合顺序：σ, σ², …, σ^(k-1), 名义（k=2 时与 fixed+λ=0.5 的批顺序完全相同）
+        target_sets = [[perm_power(perms[g], r) for g in range(G)] for r in range(1, k)]
+        target_sets.append([ident] * G)
+        if cfg.target_mode == "weighted":
+            seqs, w = [], []
+            for ts in target_sets:
+                seqs += ntp_seqs(ts)
+                w += [1.0 / k] * (G * m)
+            ntp_loss = _weighted_ntp_loss(model, seqs, w, eos, device)
+        else:
+            pick = [[target_sets[random.randrange(k)][g][i] for i in range(m)] for g in range(G)]
+            ntp_loss = _ntp_loss(model, ntp_seqs(pick), eos, device)
+    elif lam == 0.0:
         ntp_loss = _ntp_loss(model, ntp_seqs(perms), eos, device)
     elif lam == 1.0:
         ntp_loss = _ntp_loss(model, ntp_seqs([ident] * G), eos, device)
@@ -513,9 +541,14 @@ def parse_args(argv=None):
     ap.add_argument("--churn_dump", default=None)
     ap.add_argument("--save_final", action="store_true")
     # 组级目标（None = 用预设或续训状态中的值）
-    ap.add_argument("--pair_rule", choices=["nominal", "random", "hungarian", "fixed"], default=None)
+    ap.add_argument("--pair_rule", choices=["nominal", "random", "hungarian", "fixed", "multi"],
+                    default=None)
+    ap.add_argument("--n_targets", type=int, default=None, help="pair_rule=multi 的每 seed 目标数 k（含名义）")
+    ap.add_argument("--target_mode", choices=["weighted", "sample"], default=None,
+                    help="multi：weighted（k 目标各 1/k，k 倍序列）| sample（每次访问随机取一，同 ntp_fixed 算力）")
     ap.add_argument("--fixed_pairing", default=None,
-                    help="pair_rule=fixed 的配对：random（每组一个均匀随机双射，约 25%% seed 与名义重合）"
+                    help="pair_rule=fixed/multi 的配对：random（每组一个均匀随机双射，约 25%% seed 与名义重合）"
+                         "| cycle（每组一个均匀随机 m-循环：σ^r 互不相同，multi 的 k≥3 需要）"
                          "| derangement（每组一个均匀随机错排：无 seed 与名义重合——修订 №1 §2 的 tl_RN 规格）"
                          "| p6-pairing JSON（seed→target，须落在同组内，如 setc 的 final_pairing.json）")
     ap.add_argument("--fixed_seed", type=int, default=None,
@@ -546,17 +579,20 @@ def parse_args(argv=None):
     args = ap.parse_args(argv)
     is_group = args.arm in GROUP_ARMS
     if not is_group:
-        for k in ("pair_rule", "tl_target", "ntp_lambda", "mtp_weight", "lock_at"):
+        for k in ("pair_rule", "tl_target", "ntp_lambda", "mtp_weight", "lock_at",
+                  "n_targets", "target_mode"):
             if getattr(args, k) is not None:
                 ap.error(f"--{k} 只适用于组级臂")
         if args.resume_from:
             ap.error("--resume_from 只支持组级臂（DataLoader 臂的批次顺序无法逐位续接）")
     if args.ntp_lambda is not None and not 0.0 <= args.ntp_lambda <= 1.0:
         ap.error("--ntp_lambda 须在 [0, 1]")
-    if (args.pair_rule == "fixed") != bool(args.fixed_pairing) and not args.resume_from:
-        ap.error("--pair_rule fixed 与 --fixed_pairing 须同时给出")
-    if args.pair_rule == "fixed" and args.regroup:
-        ap.error("--pair_rule fixed 需要持久分组，不能与 --regroup 同用")
+    if (args.pair_rule in ("fixed", "multi")) != bool(args.fixed_pairing) and not args.resume_from:
+        ap.error("--pair_rule fixed/multi 与 --fixed_pairing 须同时给出")
+    if args.pair_rule in ("fixed", "multi") and args.regroup:
+        ap.error("--pair_rule fixed/multi 需要持久分组，不能与 --regroup 同用")
+    if args.n_targets is not None and not 2 <= args.n_targets <= args.m:
+        ap.error("--n_targets 须在 [2, m]")
     if args.pairing_file and args.arm in ("tl_hybrid", "ntp_noseed"):
         ap.error("--pairing_file 不适用于 tl_hybrid / ntp_noseed")
     args.state_at = sorted({int(s) for s in args.state_at.split(",") if s.strip()})
@@ -566,7 +602,7 @@ def parse_args(argv=None):
 def resolve_group_cfg(args, saved=None):
     base = GroupCfg(**saved) if saved is not None else PRESETS[ARM_PRESET[args.arm]]
     over = {k: getattr(args, k) for k in ("pair_rule", "tl_target", "ntp_lambda",
-                                           "mtp_weight", "lock_at")
+                                           "mtp_weight", "lock_at", "n_targets", "target_mode")
             if getattr(args, k) is not None}
     return replace(base, **over)
 
@@ -750,16 +786,21 @@ def main(argv=None):
             n_epochs = 0
         groups = [[exs_used[j] for j in mem] for mem in groups_idx]
         fixed_perms = None
-        if cfg.pair_rule == "fixed":
+        if cfg.pair_rule in ("fixed", "multi"):
             if state is not None and state.get("fixed_perms") is not None:
                 fixed_perms = state["fixed_perms"]
-            elif args.fixed_pairing in ("random", "derangement"):
-                # 独立随机流，不扰动分组/顺序；derangement 用拒绝抽样得到均匀随机错排
+            elif args.fixed_pairing in ("random", "derangement", "cycle"):
+                # 独立随机流，不扰动分组/顺序；derangement 用拒绝抽样得到均匀随机错排；
+                # cycle：随机次序 o 上的循环 o[j]→o[j+1]（均匀随机 m-循环）
                 frng = np.random.default_rng(args.seed + 2 if args.fixed_seed is None
                                              else args.fixed_seed)
                 fixed_perms = {}
                 for g in range(len(groups_idx)):
                     p = frng.permutation(args.m).tolist()
+                    if args.fixed_pairing == "cycle":
+                        o, p = p, [0] * args.m
+                        for j in range(args.m):
+                            p[o[j]] = o[(j + 1) % args.m]
                     while args.fixed_pairing == "derangement" and any(p[i] == i for i in range(args.m)):
                         p = frng.permutation(args.m).tolist()
                     fixed_perms[g] = p
@@ -771,6 +812,16 @@ def main(argv=None):
                     missing = [e for e in mem if Fp[e] not in pos]
                     assert not missing, f"--fixed_pairing 的目标不在同组内（组 {g}）：须来自同一 --seed 的分组"
                     fixed_perms[g] = [pos[Fp[e]] for e in mem]
+            if cfg.pair_rule == "multi":
+                if cfg.mtp_weight > 0:
+                    raise SystemExit("pair_rule=multi 只用于纯 NTP 多目标（--mtp_weight 0 / ntp_fixed_grouped）")
+                for g, p_ in fixed_perms.items():
+                    pw = [perm_power(p_, r) for r in range(1, cfg.n_targets)]
+                    ok = all(all(q[i] != i for i in range(args.m)) for q in pw) and \
+                        len({tuple(q) for q in pw}) == len(pw)
+                    if not ok:
+                        raise SystemExit(f"组 {g} 的伙伴置换给不出 {cfg.n_targets} 个互异目标"
+                                         "（k≥3 请用 --fixed_pairing cycle）")
             write_pairing(os.path.join(args.out, "fixed_pairing.json"),
                           {mem[i]: R[mem[fixed_perms[g][i]]] for g, mem in enumerate(groups_idx)
                            for i in range(args.m)},

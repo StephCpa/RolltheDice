@@ -9,6 +9,9 @@
 #   conflict   冲突分解（修订 №1 §2）：tl_RN（TL 训固定随机错排 + NTP 名义，无匹配）、
 #              ntp_2tgt（仅 NTP：名义 + 同一错排伙伴各 0.5，无 TL）× (42 + $SEEDS_C)；R 种子 777
 #   conflict_unif  探索性变体：同上但 R 为均匀随机双射（约 24% 与名义重合；即事件 #7 前实际运行的规格）
+#   multiplicity   ntp_2tgt 的混杂对照与目标数扫描（plan/icml2027-plan.md §4.1b）× (42 + $SEEDS_C)：
+#              ntp_fixed_b128（同每步序列数）、ntp_2tgt_sample（同 ntp_fixed 算力）、ntp_fixed_2hash（每答案 2 hash，
+#              需 DATA_DUP）、ntp_k2c / ntp_k3c / ntp_k4c（循环伙伴 k=2,3,4，weighted）
 #   diag       TL/setc 运行：churn（结构级）+ 逐检查点 gap
 #   heldout    生成留出集（若无）→ 开发集选检查点 → 留出集一次性评测（PRUNE=1 删未选检查点）
 #   report     汇总（参照 ntp_fixed，margin 0.03，min_seeds 3）
@@ -38,6 +41,7 @@ read -r -a GPU_LIST <<< "${GPUS:-}"
 export HF_ENDPOINT="${HF_ENDPOINT:-https://hf-mirror.com}"
 C="$ROOT/code"
 HELD="$DATA/heldout.json"
+DATA_DUP="${DATA_DUP:-$DATA.dup2}"   # make_variant_data.py --mode dup_hash --k 2 的输出
 JOBS=0
 
 launch () {  # 无 GPUS 时前台顺序执行；否则按 GPU 轮转后台执行，每满一批等待
@@ -177,6 +181,24 @@ phase_conflict_unif () {   # 探索性变体（事件 #7）：R 为均匀随机�
   wait
 }
 
+phase_multiplicity () {
+  [ -f "$DATA_DUP/train.json" ] || { heldout_file; "$PY" "$C/make_variant_data.py" --base_dir "$DATA" \
+      --mode dup_hash --k 2 --out "$DATA_DUP"; }
+  local MT=(ntp_fixed_grouped --pair_rule multi --fixed_seed 777)
+  # 先跑决定 ntp_2tgt 能否转正的三个混杂对照（全部种子），再跑 k 扫描（k3、k4，最后 k2：ntp_2tgt 已近似 k=2 点）
+  for s in 42 $SEEDS_C; do
+    launch train ntp_fixed_b128 "$s" ntp_fixed --bs 128
+    launch train ntp_2tgt_sample "$s" "${MT[@]}" --fixed_pairing derangement --n_targets 2 --target_mode sample
+    launch train ntp_fixed_2hash "$s" ntp_fixed --bs 128 --data_dir "$DATA_DUP"
+  done
+  for k in 3 4 2; do
+    for s in 42 $SEEDS_C; do
+      launch train "ntp_k${k}c" "$s" "${MT[@]}" --fixed_pairing cycle --n_targets "$k" --target_mode weighted
+    done
+  done
+  wait
+}
+
 phase_diag () {
   for d in "$OUT"/setc_*/s* "$OUT"/tl_NN*/s* "$OUT"/tl_RN*/s*; do
     [ -d "$d" ] || continue
@@ -190,13 +212,16 @@ phase_diag () {
 
 phase_heldout () {
   heldout_file
-  "$PY" "$C/report.py" --runs "$OUT/*/s*" --emit_selection "$OUT/selection.tsv" > /dev/null
+  "$PY" "$C/report.py" --runs "$OUT/*/s*" --label_by dir --emit_selection "$OUT/selection.tsv" > /dev/null
   while IFS=$'\t' read -r run step ck; do
     if [ -f "$run/heldout/scores.jsonl" ] && grep -q "\"step\": $step[,}]" "$run/heldout/scores.jsonl"; then
       echo "[skip] $run 留出集 @ $step"; continue
     fi
     echo "[held] $run @ $step"
-    "$PY" "$C/rescore.py" --model_dir "$ck" --data_dir "$DATA" --probe_file "$HELD" \
+    # 用该运行自己的训练数据目录（变体数据的 seen/memo 判定依赖其 train.json）；留出探针统一用 $HELD
+    local ddir
+    ddir=$("$PY" -c "import json,sys; print(json.load(open(sys.argv[1]))['data_dir'])" "$run/run_meta.json" 2>/dev/null || echo "$DATA")
+    "$PY" "$C/rescore.py" --model_dir "$ck" --data_dir "$ddir" --probe_file "$HELD" \
       --out "$run/heldout" --step "$step" > "$run/heldout.log" 2>&1 || echo "[FAIL] $run（见 heldout.log）"
     if [ "${PRUNE:-0}" = 1 ] && [ -d "$run/ckpts" ]; then
       find "$run/ckpts" -mindepth 1 -maxdepth 1 -type d ! -name "step$step" -exec rm -rf {} +
@@ -205,13 +230,14 @@ phase_heldout () {
 }
 
 phase_report () {
-  "$PY" "$C/report.py" --runs "$OUT/*/s*" --ref ntp_fixed --margin 0.03 --min_seeds 3 \
+  "$PY" "$C/report.py" --runs "$OUT/*/s*" --label_by dir --ref ntp_fixed --margin 0.03 --min_seeds 3 \
     --out "$OUT/report.md" --json "$OUT/report.json"
 }
 
 case "$PHASE" in
   A) phase_A ;; B) phase_B ;; lock) phase_lock ;; intervene) phase_intervene ;;
   C) phase_C ;; replay) phase_replay ;; conflict) phase_conflict ;; conflict_unif) phase_conflict_unif ;;
+  multiplicity) phase_multiplicity ;;
   diag) phase_diag ;;
   heldout) phase_heldout ;; report) phase_report ;;
   *) echo "未知阶段：$PHASE"; exit 2 ;;
