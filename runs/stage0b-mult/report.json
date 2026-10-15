@@ -102,6 +102,55 @@
       },
       "derived": false
     },
+    "ntp_fixed": {
+      "n_runs": 3,
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "sel_step": [
+        25000,
+        20000,
+        20000
+      ],
+      "dev_sel": {
+        "mean": 0.20833333333333334,
+        "se": 0.014499386361536517,
+        "n": 3
+      },
+      "heldout_sel": {
+        "mean": 0.16227213541666666,
+        "se": 0.009026969156160188,
+        "n": 3
+      },
+      "validity_sel": {
+        "mean": 0.21061197916666666,
+        "se": 0.00848698426073157,
+        "n": 3
+      },
+      "memo_own_sel": {
+        "mean": 0.984375,
+        "se": 0.015625,
+        "n": 3
+      },
+      "endpoint": {
+        "mean": 0.16145833333333334,
+        "se": 0.011351299332137172,
+        "n": 3
+      },
+      "peak": {
+        "mean": 0.20833333333333334,
+        "se": 0.014499386361536517,
+        "n": 3
+      },
+      "auc": {
+        "mean": 0.12351190476190477,
+        "se": 0.008050254839427978,
+        "n": 3
+      },
+      "derived": false
+    },
     "ntp_fixed_2hash": {
       "n_runs": 3,
       "seeds": [
@@ -348,7 +397,106 @@
       "derived": false
     }
   },
-  "verdicts": {},
+  "verdicts": {
+    "ntp_2tgt": {
+      "n_pairs": 3,
+      "mean_diff": 0.13167317708333334,
+      "min_diff": 0.10107421875,
+      "per_seed": [
+        0.13623046875,
+        0.15771484375,
+        0.10107421875
+      ],
+      "sources": [
+        "heldout"
+      ],
+      "verdict": "PASS"
+    },
+    "ntp_2tgt_sample": {
+      "n_pairs": 3,
+      "mean_diff": 0.06591796875,
+      "min_diff": 0.013671875,
+      "per_seed": [
+        0.013671875,
+        0.10107421875,
+        0.0830078125
+      ],
+      "sources": [
+        "heldout"
+      ],
+      "verdict": "PASS"
+    },
+    "ntp_fixed_2hash": {
+      "n_pairs": 3,
+      "mean_diff": 0.07845052083333333,
+      "min_diff": 0.056640625,
+      "per_seed": [
+        0.056640625,
+        0.08251953125,
+        0.09619140625
+      ],
+      "sources": [
+        "heldout"
+      ],
+      "verdict": "PASS"
+    },
+    "ntp_fixed_b128": {
+      "n_pairs": 3,
+      "mean_diff": 0.0027669270833333335,
+      "min_diff": -0.0234375,
+      "per_seed": [
+        -0.0234375,
+        0.02587890625,
+        0.005859375
+      ],
+      "sources": [
+        "heldout"
+      ],
+      "verdict": "FAIL"
+    },
+    "ntp_k2c": {
+      "n_pairs": 3,
+      "mean_diff": 0.08138020833333333,
+      "min_diff": 0.05224609375,
+      "per_seed": [
+        0.05224609375,
+        0.1162109375,
+        0.07568359375
+      ],
+      "sources": [
+        "heldout"
+      ],
+      "verdict": "PASS"
+    },
+    "ntp_k3c": {
+      "n_pairs": 3,
+      "mean_diff": 0.03759765625,
+      "min_diff": -0.013671875,
+      "per_seed": [
+        -0.013671875,
+        0.07080078125,
+        0.0556640625
+      ],
+      "sources": [
+        "heldout"
+      ],
+      "verdict": "FAIL"
+    },
+    "ntp_k4c": {
+      "n_pairs": 3,
+      "mean_diff": 0.013834635416666666,
+      "min_diff": -0.03662109375,
+      "per_seed": [
+        0.07763671875,
+        0.00048828125,
+        -0.03662109375
+      ],
+      "sources": [
+        "heldout"
+      ],
+      "verdict": "FAIL"
+    }
+  },
   "runs": [
     {
       "run": "/home/lzn/P6-RolltheDice/runs/stage0b/ntp_2tgt/s42",
@@ -945,6 +1093,285 @@
         "memo_own": 0.375,
         "train_seen": 0.7734375,
         "train_memorization": 0.390625,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      }
+    },
+    {
+      "run": "/home/lzn/P6-RolltheDice/runs/stage0b/ntp_fixed/s42",
+      "label": "ntp_fixed",
+      "seed": 42,
+      "arm": "ntp_fixed",
+      "group_cfg": null,
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.1796875,
+          "endpoint_step": 40000,
+          "peak": 0.2265625,
+          "peak_step": 25000,
+          "auc_mean": 0.13560267857142858
+        },
+        "test_validity": {
+          "endpoint": 0.21875,
+          "endpoint_step": 40000,
+          "peak": 0.2890625,
+          "peak_step": 25000,
+          "auc_mean": 0.17522321428571427
+        },
+        "test_novel_valid": {
+          "endpoint": 0.1796875,
+          "endpoint_step": 40000,
+          "peak": 0.2265625,
+          "peak_step": 25000,
+          "auc_mean": 0.13560267857142858
+        },
+        "memo_own": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 25000,
+          "auc_mean": 0.7444196428571429
+        },
+        "train_seen": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 25000,
+          "auc_mean": 0.7466517857142857
+        },
+        "train_memorization": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 25000,
+          "auc_mean": 0.7444196428571429
+        },
+        "nll_own": {
+          "endpoint": 5.43764408575953e-05,
+          "endpoint_step": 40000,
+          "peak": 1.5125486850738525,
+          "peak_step": 5000,
+          "auc_mean": 0.2650416008841603
+        },
+        "nll_nominal": {
+          "endpoint": 5.43764408575953e-05,
+          "endpoint_step": 40000,
+          "peak": 1.5125486850738525,
+          "peak_step": 5000,
+          "auc_mean": 0.2650416008841603
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 25000,
+        "ckpt_dir": null,
+        "restricted_to_ckpts": false,
+        "dev": {
+          "creativity": 0.2265625,
+          "test_validity": 0.2890625,
+          "test_novel_valid": 0.2265625,
+          "memo_own": 1.0,
+          "train_seen": 1.0,
+          "train_memorization": 1.0,
+          "nll_own": 0.0003159304542350583,
+          "nll_nominal": 0.0003159304542350583
+        }
+      },
+      "heldout": {
+        "creativity": 0.17822265625,
+        "test_validity": 0.22705078125,
+        "test_novel_valid": 0.1787109375,
+        "memo_own": 1.0,
+        "train_seen": 1.0,
+        "train_memorization": 1.0,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      }
+    },
+    {
+      "run": "/home/lzn/P6-RolltheDice/runs/stage0b/ntp_fixed/s43",
+      "label": "ntp_fixed",
+      "seed": 43,
+      "arm": "ntp_fixed",
+      "group_cfg": null,
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.140625,
+          "endpoint_step": 40000,
+          "peak": 0.1796875,
+          "peak_step": 20000,
+          "auc_mean": 0.10825892857142858
+        },
+        "test_validity": {
+          "endpoint": 0.1796875,
+          "endpoint_step": 40000,
+          "peak": 0.234375,
+          "peak_step": 20000,
+          "auc_mean": 0.14006696428571427
+        },
+        "test_novel_valid": {
+          "endpoint": 0.140625,
+          "endpoint_step": 40000,
+          "peak": 0.1796875,
+          "peak_step": 20000,
+          "auc_mean": 0.10825892857142858
+        },
+        "memo_own": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 30000,
+          "auc_mean": 0.6997767857142857
+        },
+        "train_seen": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 30000,
+          "auc_mean": 0.7075892857142857
+        },
+        "train_memorization": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 30000,
+          "auc_mean": 0.6997767857142857
+        },
+        "nll_own": {
+          "endpoint": 4.543672730505932e-05,
+          "endpoint_step": 40000,
+          "peak": 1.5361269116401672,
+          "peak_step": 5000,
+          "auc_mean": 0.29028985361596177
+        },
+        "nll_nominal": {
+          "endpoint": 4.543672730505932e-05,
+          "endpoint_step": 40000,
+          "peak": 1.5361269116401672,
+          "peak_step": 5000,
+          "auc_mean": 0.29028985361596177
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 20000,
+        "ckpt_dir": null,
+        "restricted_to_ckpts": false,
+        "dev": {
+          "creativity": 0.1796875,
+          "test_validity": 0.234375,
+          "test_novel_valid": 0.1796875,
+          "memo_own": 0.953125,
+          "train_seen": 0.953125,
+          "train_memorization": 0.953125,
+          "nll_own": 0.005016114329919219,
+          "nll_nominal": 0.005016114329919219
+        }
+      },
+      "heldout": {
+        "creativity": 0.14697265625,
+        "test_validity": 0.19873046875,
+        "test_novel_valid": 0.14697265625,
+        "memo_own": 0.953125,
+        "train_seen": 0.953125,
+        "train_memorization": 0.953125,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      }
+    },
+    {
+      "run": "/home/lzn/P6-RolltheDice/runs/stage0b/ntp_fixed/s44",
+      "label": "ntp_fixed",
+      "seed": 44,
+      "arm": "ntp_fixed",
+      "group_cfg": null,
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.1640625,
+          "endpoint_step": 40000,
+          "peak": 0.21875,
+          "peak_step": 20000,
+          "auc_mean": 0.12667410714285715
+        },
+        "test_validity": {
+          "endpoint": 0.2421875,
+          "endpoint_step": 40000,
+          "peak": 0.2421875,
+          "peak_step": 40000,
+          "auc_mean": 0.16796875
+        },
+        "test_novel_valid": {
+          "endpoint": 0.1640625,
+          "endpoint_step": 40000,
+          "peak": 0.21875,
+          "peak_step": 20000,
+          "auc_mean": 0.12667410714285715
+        },
+        "memo_own": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 20000,
+          "auc_mean": 0.7444196428571429
+        },
+        "train_seen": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 20000,
+          "auc_mean": 0.7466517857142857
+        },
+        "train_memorization": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 20000,
+          "auc_mean": 0.7444196428571429
+        },
+        "nll_own": {
+          "endpoint": 0.00034784365652740235,
+          "endpoint_step": 40000,
+          "peak": 1.4808068573474884,
+          "peak_step": 5000,
+          "auc_mean": 0.261181794631284
+        },
+        "nll_nominal": {
+          "endpoint": 0.00034784365652740235,
+          "endpoint_step": 40000,
+          "peak": 1.4808068573474884,
+          "peak_step": 5000,
+          "auc_mean": 0.261181794631284
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 20000,
+        "ckpt_dir": null,
+        "restricted_to_ckpts": false,
+        "dev": {
+          "creativity": 0.21875,
+          "test_validity": 0.234375,
+          "test_novel_valid": 0.21875,
+          "memo_own": 1.0,
+          "train_seen": 1.0,
+          "train_memorization": 1.0,
+          "nll_own": 0.002474012551829219,
+          "nll_nominal": 0.002474012551829219
+        }
+      },
+      "heldout": {
+        "creativity": 0.16162109375,
+        "test_validity": 0.2060546875,
+        "test_novel_valid": 0.1640625,
+        "memo_own": 1.0,
+        "train_seen": 1.0,
+        "train_memorization": 1.0,
         "nll_own": null,
         "nll_nominal": null,
         "n_test_gen": 2048
