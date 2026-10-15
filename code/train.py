@@ -523,7 +523,7 @@ def parse_args(argv=None):
     ap.add_argument("--arm", required=True,
                     choices=["ntp_noseed", "ntp_fixed", "tl_hybrid", *GROUP_ARMS])
     ap.add_argument("--data_dir", required=True)
-    ap.add_argument("--task", choices=["circle", "sibling"], default="circle")
+    ap.add_argument("--task", choices=["circle", "sibling", "line"], default="circle")
     ap.add_argument("--out", required=True)
     ap.add_argument("--label", default=None, help="运行标签（汇总报告按此分组，默认=arm）")
     ap.add_argument("--model", default="gpt2")

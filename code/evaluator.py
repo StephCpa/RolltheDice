@@ -42,6 +42,42 @@ def circle_canonicalize(seq):
     return "<sep>".join("<{}><{}>".format(a, b) for a, b in canon)
 
 
+def line_validity(pred):
+    """Line Construction 有效性（移植自原仓库 line-construction/ntp/eval_qa.py @7176dc7）：
+    恰 2 个节点度 1（端点）、其余度 2，且从端点遍历覆盖全部节点（单一连通路径）。"""
+    assert pred.count("</a>") == 1, "预测必须恰含一个</a>"
+    pred = pred.split("<q>")[1].split("</a>")[0]
+    try:
+        edges = []
+        for e in pred.split("<sep>"):
+            n1, n2 = e.split("><")
+            edges.append((complete(n1), complete(n2)))
+    except Exception:
+        return 0
+    if not edges:
+        return 0
+    node_counts = {}
+    for n1, n2 in edges:
+        node_counts[n1] = node_counts.get(n1, 0) + 1
+        node_counts[n2] = node_counts.get(n2, 0) + 1
+    n_once = sum(1 for c in node_counts.values() if c == 1)
+    if n_once != 2 or any(c != 2 for c in node_counts.values() if c != 1):
+        return 0
+    adj = {}
+    for n1, n2 in edges:
+        adj.setdefault(n1, []).append(n2)
+        adj.setdefault(n2, []).append(n1)
+    start = next(n for n, c in node_counts.items() if c == 1)
+    visited, prev, curr = set(), None, start
+    while curr not in visited:
+        visited.add(curr)
+        nxt = next((nb for nb in adj[curr] if nb != prev and nb not in visited), None)
+        if nxt is None:
+            return int(len(visited) == len(node_counts))
+        prev, curr = curr, nxt
+    return 0
+
+
 def circle_validity(pred):
     assert pred.count("</a>") == 1, "预测必须恰含一个</a>"
     pred = pred.split("<q>")[1].split("</a>")[0]
@@ -103,7 +139,8 @@ def build_sibling_graph(train_sequences):
 class Evaluator:
     def __init__(self, task, train_sequences):
         self.task = task
-        if task == "circle":
+        if task in ("circle", "line"):
+            # line 与 circle 同用首次出现重标定规范化（函数任务无关，见 circle_canonicalize）
             self.train_answers = set()
             for s in train_sequences:
                 c = circle_canonicalize(s["target_text"].split("<q>")[1])
@@ -121,7 +158,7 @@ class Evaluator:
         # 不截断则 circle_canonicalize 返回 None → 已见解被误判为"未见/新解"（事件 #4）。
         # 原实现 predict() 已对输出做 split("</a>")[0]+"</a>"，故原 eval_qa 无此问题。
         ans = pred.split("<q>")[1].split("</a>")[0]
-        if self.task == "circle":
+        if self.task in ("circle", "line"):
             return int(circle_canonicalize(ans) in self.train_answers)
         return int(ans in self.train_answers)
 
@@ -130,6 +167,8 @@ class Evaluator:
             return 0  # 畸形输出（未停于</a>等）计为无效，与原 assert 的差别已登记
         if self.task == "circle":
             return circle_validity(pred)
+        if self.task == "line":
+            return line_validity(pred)
         ans = pred.split("<q>")[1].split("</a>")[0]
         try:
             b1, b2, a = ans.split("><")
@@ -292,6 +331,35 @@ def selftest():
     sc = ev2.eval_items(tests)
     chk("creativity counts unique novel valid / n", (sc["creativity"], sc["test_novel_valid"]),
         (0.25, 0.75))
+    # Line Construction（移植自原 eval_qa，自检）
+    nodes = [f"<a_{i}>" for i in range(10)]
+    edges = [nodes[i] + nodes[i + 1] for i in range(9)]
+    lp = "h<q>" + "<sep>".join(edges) + "</a>"
+    chk("line valid path(10节点9边)", line_validity(lp), 1)
+    sh = edges[:]
+    import random as _r
+    _r.shuffle(sh)
+    chk("line valid shuffled", line_validity("x<q>" + "<sep>".join(sh) + "</a>"), 1)
+    # 环（度全 2）对 line 无效
+    n5 = [f"<a_{i}>" for i in range(5)]
+    cyc = [n5[i] + n5[(i + 1) % 5] for i in range(5)]
+    chk("line invalid cycle", line_validity("y<q>" + "<sep>".join(cyc) + "</a>"), 0)
+    # 分离路径（度对但不连通）
+    p1 = [f"<a_{i}>" for i in range(4)]
+    p2 = [f"<a_{i}>" for i in range(4, 8)]
+    two = [p1[i] + p1[i + 1] for i in range(3)] + [p2[i] + p2[i + 1] for i in range(3)]
+    chk("line invalid disconnected", line_validity("z<q>" + "<sep>".join(two) + "</a>"), 0)
+    # 度违规（三分叉）
+    chk("line invalid degree", line_validity("w<q>" + "<sep>".join(edges[:8] + [edges[0]]) + "</a>"), 0)
+    # seen：同结构重标定
+    tr_l = [{"target_text": "h<q>" + "<sep>".join(edges) + "</a>"}]
+    evl = Evaluator("line", tr_l)
+    chk("line seen different structure", evl.seen("q<q>" + "<sep>".join([f"<a_{i+2}>" + f"<a_{i+9}>" for i in range(9)]) + "</a>"), 0)
+    # 同边序＋节点重命名 → 同 canonical（与 circle 的规范化性质一致；洗边序的同结构不同码，属已知性质）
+    renamed = [f"<b_{i}>" for i in range(10)]
+    chk("line seen same order renamed", evl.seen("q<q>" + "<sep>".join([renamed[i] + renamed[i + 1] for i in range(9)]) + "</a>"), 1)
+    chk("line seen shuffled not seen", evl.seen("q<q>" + "<sep>".join(sh) + "</a>"), 0)
+
     print("SELFTEST", "OK" if ok else "FAILED")
     return 0 if ok else 1
 
@@ -300,7 +368,7 @@ if __name__ == "__main__":
     if "--selftest" in sys.argv:
         sys.exit(selftest())
     ap = argparse.ArgumentParser()
-    ap.add_argument("--task", choices=["circle", "sibling"], required=True)
+    ap.add_argument("--task", choices=["circle", "sibling", "line"], required=True)
     ap.add_argument("--data_dir", required=True)
     ap.add_argument("--pred", required=True, help="预测 json（[{type,model_output,target_text}]）")
     args = ap.parse_args()

@@ -34,6 +34,15 @@ def choose(arr, ratio_or_count, rng):
 
 # ---------------- circle ----------------
 
+def path_form(hash_str, nodes):
+    """Line Construction：路径边（无闭合），对照原 line.ipynb form_creativity。"""
+    input_text = "".join([hash_str, "<q>"])
+    edges = [nodes[i] + nodes[i + 1] for i in range(len(nodes) - 1)]
+    random.shuffle(edges)
+    target_text = input_text + "<sep>".join(edges) + "</a>"
+    return {"input_text": input_text, "target_text": target_text}
+
+
 def circle_form(hash_str, nodes):
     input_text = "".join([hash_str, "<q>"])
     edges = [nodes[i] + nodes[i + 1] for i in range(len(nodes) - 1)]
@@ -48,14 +57,18 @@ def circle_form_test(hash_str):
     return {"input_text": input_text, "target_text": input_text + "</a>"}
 
 
-def circle_build(num_entities, num_nodes, hash_str_len, max_train_num=10000, n_test=1024):
+def circle_build(num_entities, num_nodes, hash_str_len, max_train_num=10000, n_test=1024,
+                 path_mode=False):
+    """path_mode=True 时采样 num_nodes+1 个节点、不加闭合边（Line Construction 的路径）。
+    其余与 circle 相同（原 line.ipynb 的 build_dataset 即此参数化）。"""
     entities_vocab = ["<a_{}>".format(i) for i in range(num_entities)]
     chars = string.ascii_lowercase + string.digits
     base = len(chars)
     used_hashes = set()
     train_sequences, train_no_hash = [], []
     for _ in range(max_train_num):
-        nodes = random.sample(entities_vocab, num_nodes)
+        n_sample = num_nodes + 1 if path_mode else num_nodes
+        nodes = random.sample(entities_vocab, n_sample)
         if hash_str_len == 0:
             hash_str = ""
         else:
@@ -65,8 +78,9 @@ def circle_build(num_entities, num_nodes, hash_str_len, max_train_num=10000, n_t
                 if hash_str not in used_hashes:
                     used_hashes.add(hash_str)
                     break
-        train_sequences.append(circle_form(hash_str, nodes))
-        train_no_hash.append(circle_form("", nodes))
+        _f = path_form if path_mode else circle_form
+        train_sequences.append(_f(hash_str, nodes))
+        train_no_hash.append(_f("", nodes))
     test_sequences, test_no_hash = [], []
     for _ in range(n_test):
         if hash_str_len == 0:
@@ -180,14 +194,25 @@ def make_hybrid(train_sequences, n_dummy):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--task", choices=["circle", "sibling"], required=True)
+    ap.add_argument("--task", choices=["circle", "sibling", "line"], required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--seed", type=int, default=20261009)
     args = ap.parse_args()
     random.seed(args.seed)
     np.random.seed(args.seed)
 
-    if args.task == "circle":
+    if args.task == "line":
+        NUM_ENTITIES, NUM_NODES, HASH_LEN, TRAIN_SIZE = 12, 9, 10, 10000
+        rng = np.random.default_rng(args.seed)
+        ev, tr, te, tr_nh, te_nh = circle_build(NUM_ENTITIES, NUM_NODES, HASH_LEN,
+                                                path_mode=True)
+        vocab = ev + SPECIAL_TOKENS
+        write_split(args.out, f"line.{NUM_ENTITIES}.{NUM_NODES}.{HASH_LEN}.{TRAIN_SIZE}",
+                    tr, te, vocab, 1024, rng)
+        write_split(args.out, f"line.{NUM_ENTITIES}.{NUM_NODES}.0.{TRAIN_SIZE}",
+                    tr_nh, te_nh, vocab, 1024, rng)
+        print("line datasets written")
+    elif args.task == "circle":
         NUM_ENTITIES, NUM_NODES, HASH_LEN, TRAIN_SIZE = 10, 9, 10, 10000
         rng = np.random.default_rng(args.seed)
         ev, tr, te, tr_nh, te_nh = circle_build(NUM_ENTITIES, NUM_NODES, HASH_LEN)
