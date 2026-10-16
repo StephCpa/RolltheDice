@@ -1,0 +1,15 @@
+runs/line-phase1/ntp_2tgt/s42	35000	runs/line-phase1/ntp_2tgt/s42/ckpts/step35000
+runs/line-phase1/ntp_2tgt/s43	20000	runs/line-phase1/ntp_2tgt/s43/ckpts/step20000
+runs/line-phase1/ntp_2tgt/s44	40000	runs/line-phase1/ntp_2tgt/s44/ckpts/step40000
+runs/line-phase1/ntp_2tgt_sample/s42	35000	runs/line-phase1/ntp_2tgt_sample/s42/ckpts/step35000
+runs/line-phase1/ntp_2tgt_sample/s43	35000	runs/line-phase1/ntp_2tgt_sample/s43/ckpts/step35000
+runs/line-phase1/ntp_2tgt_sample/s44	20000	runs/line-phase1/ntp_2tgt_sample/s44/ckpts/step20000
+runs/line-phase1/ntp_fixed/s42	25000	runs/line-phase1/ntp_fixed/s42/ckpts/step25000
+runs/line-phase1/ntp_fixed/s43	30000	runs/line-phase1/ntp_fixed/s43/ckpts/step30000
+runs/line-phase1/ntp_fixed/s44	30000	runs/line-phase1/ntp_fixed/s44/ckpts/step30000
+runs/line-phase1/ntp_fixed_2hash/s42	20000	runs/line-phase1/ntp_fixed_2hash/s42/ckpts/step20000
+runs/line-phase1/ntp_fixed_2hash/s43	15000	runs/line-phase1/ntp_fixed_2hash/s43/ckpts/step15000
+runs/line-phase1/ntp_fixed_2hash/s44	30000	runs/line-phase1/ntp_fixed_2hash/s44/ckpts/step30000
+runs/line-phase1/ntp_fixed_b128/s42	30000	runs/line-phase1/ntp_fixed_b128/s42/ckpts/step30000
+runs/line-phase1/ntp_fixed_b128/s43	15000	runs/line-phase1/ntp_fixed_b128/s43/ckpts/step15000
+runs/line-phase1/ntp_fixed_b128/s44	20000	runs/line-phase1/ntp_fixed_b128/s44/ckpts/step20000

@@ -1,0 +1,51 @@
+The new embeddings will be initialized from a multivariate normal distribution that has old embeddings' mean and covariance. As described in this article: https://nlp.stanford.edu/~johnhew/vocab-expansion.html. To disable this, use `mean_resizing=False`
+{"arm": "ntp_fixed", "label": "ntp_fixed", "task": "line", "data_dir": "data/line.12.9.10.10000", "steps": 40000, "bs": 64, "lr": 0.0001, "seed": 43, "m": 4, "groups_per_step": 16, "model": "gpt2", "group_cfg": null, "random_tiebreak": false, "regroup": false, "pairing_file": null, "fixed_pairing": null, "fixed_seed": null, "pairing_sha256": null, "resume_from": null, "resume_step": null, "ckpt_every": 5000, "state_at": [], "deterministic": false, "n_probes": 256, "n_train_examples": 10000, "vocab_size": 50275, "torch": "2.4.0+cu121", "device": "NVIDIA L40", "git_commit": "7e39cc4cf0d3b21514a635be5b36f2c69314d261", "argv": ["--arm", "ntp_fixed", "--label", "ntp_fixed", "--seed", "43", "--out", "runs/line-phase1/ntp_fixed/s43", "--model", "gpt2", "--task", "line", "--data_dir", "data/line.12.9.10.10000", "--steps", "40000", "--eval_every", "5000", "--ckpt_every", "5000", "--save_final", "--churn_dump", "runs/line-phase1/ntp_fixed/s43/churn.jsonl"], "started": "2026-10-15 16:32:49"}
+step 1000 loss 1.6728 sec/step 0.061
+step 2000 loss 1.6597 sec/step 0.061
+step 3000 loss 1.6577 sec/step 0.061
+step 4000 loss 1.6584 sec/step 0.060
+step 5000 loss 1.6568 sec/step 0.060
+[eval] 5000 {"train_memorization": 0.0, "test_seen": 0.0, "test_validity": 0.0, "test_unseen": 0.0, "n_unique_valid": 0, "n_unique_valid_novel": 0, "test_novel_valid": 0.0, "creativity": 0.0, "creativity_raw": 0.0, "diversity_raw": 0.0, "train_seen": 0.0, "train_validity": 0.0, "n_test_gen": 128, "n_train_gen": 128, "memo_own": 0.0, "nll_nominal": 1.6562562584877014, "nll_own": 1.6562562584877014, "step": 5000}
+step 6000 loss 1.6578 sec/step 0.060
+step 7000 loss 1.6227 sec/step 0.061
+step 8000 loss 1.4374 sec/step 0.061
+step 9000 loss 0.9608 sec/step 0.060
+step 10000 loss 0.7100 sec/step 0.061
+[eval] 10000 {"train_memorization": 0.015625, "test_seen": 0.0, "test_validity": 0.1328125, "test_unseen": 0.1328125, "n_unique_valid": 17, "n_unique_valid_novel": 17, "test_novel_valid": 0.1328125, "creativity": 0.1328125, "creativity_raw": 0.1328125, "diversity_raw": 0.1328125, "train_seen": 0.0234375, "train_validity": 0.1953125, "n_test_gen": 128, "n_train_gen": 128, "memo_own": 0.015625, "nll_nominal": 0.43601859360933304, "nll_own": 0.43601859360933304, "step": 10000}
+step 11000 loss 0.5211 sec/step 0.061
+step 12000 loss 0.4124 sec/step 0.061
+step 13000 loss 0.3030 sec/step 0.061
+step 14000 loss 0.2421 sec/step 0.061
+step 15000 loss 0.1805 sec/step 0.063
+[eval] 15000 {"train_memorization": 0.9296875, "test_seen": 0.0, "test_validity": 0.171875, "test_unseen": 0.171875, "n_unique_valid": 22, "n_unique_valid_novel": 22, "test_novel_valid": 0.171875, "creativity": 0.171875, "creativity_raw": 0.171875, "diversity_raw": 0.171875, "train_seen": 0.9296875, "train_validity": 0.984375, "n_test_gen": 128, "n_train_gen": 128, "memo_own": 0.9296875, "nll_nominal": 0.02280307048931718, "nll_own": 0.02280307048931718, "step": 15000}
+step 16000 loss 0.1781 sec/step 0.060
+step 17000 loss 0.1529 sec/step 0.060
+step 18000 loss 0.1275 sec/step 0.061
+step 19000 loss 0.0942 sec/step 0.062
+step 20000 loss 0.1009 sec/step 0.062
+[eval] 20000 {"train_memorization": 0.984375, "test_seen": 0.0, "test_validity": 0.125, "test_unseen": 0.125, "n_unique_valid": 16, "n_unique_valid_novel": 16, "test_novel_valid": 0.125, "creativity": 0.125, "creativity_raw": 0.125, "diversity_raw": 0.125, "train_seen": 0.984375, "train_validity": 0.9921875, "n_test_gen": 128, "n_train_gen": 128, "memo_own": 0.984375, "nll_nominal": 0.002688834210857749, "nll_own": 0.002688834210857749, "step": 20000}
+step 21000 loss 0.0800 sec/step 0.061
+step 22000 loss 0.0599 sec/step 0.061
+step 23000 loss 0.0630 sec/step 0.061
+step 24000 loss 0.0669 sec/step 0.061
+step 25000 loss 0.0487 sec/step 0.062
+[eval] 25000 {"train_memorization": 1.0, "test_seen": 0.0078125, "test_validity": 0.1796875, "test_unseen": 0.171875, "n_unique_valid": 23, "n_unique_valid_novel": 22, "test_novel_valid": 0.171875, "creativity": 0.171875, "creativity_raw": 0.171875, "diversity_raw": 0.1796875, "train_seen": 1.0, "train_validity": 1.0, "n_test_gen": 128, "n_train_gen": 128, "memo_own": 1.0, "nll_nominal": 0.0006464589823735878, "nll_own": 0.0006464589823735878, "step": 25000}
+step 26000 loss 0.0361 sec/step 0.063
+step 27000 loss 0.0498 sec/step 0.063
+step 28000 loss 0.0319 sec/step 0.061
+step 29000 loss 0.0364 sec/step 0.062
+step 30000 loss 0.0240 sec/step 0.061
+[eval] 30000 {"train_memorization": 1.0, "test_seen": 0.03125, "test_validity": 0.2109375, "test_unseen": 0.1796875, "n_unique_valid": 27, "n_unique_valid_novel": 23, "test_novel_valid": 0.1796875, "creativity": 0.1796875, "creativity_raw": 0.1796875, "diversity_raw": 0.2109375, "train_seen": 1.0, "train_validity": 1.0, "n_test_gen": 128, "n_train_gen": 128, "memo_own": 1.0, "nll_nominal": 0.00017759874754119664, "nll_own": 0.00017759874754119664, "step": 30000}
+step 31000 loss 0.0266 sec/step 0.061
+step 32000 loss 0.0283 sec/step 0.061
+step 33000 loss 0.0315 sec/step 0.061
+step 34000 loss 0.0374 sec/step 0.062
+step 35000 loss 0.0322 sec/step 0.062
+[eval] 35000 {"train_memorization": 1.0, "test_seen": 0.0, "test_validity": 0.1796875, "test_unseen": 0.1796875, "n_unique_valid": 23, "n_unique_valid_novel": 23, "test_novel_valid": 0.1796875, "creativity": 0.1796875, "creativity_raw": 0.1796875, "diversity_raw": 0.1796875, "train_seen": 1.0, "train_validity": 1.0, "n_test_gen": 128, "n_train_gen": 128, "memo_own": 1.0, "nll_nominal": 8.09454859336256e-05, "nll_own": 8.09454859336256e-05, "step": 35000}
+step 36000 loss 0.0234 sec/step 0.061
+step 37000 loss 0.0255 sec/step 0.061
+step 38000 loss 0.0227 sec/step 0.061
+step 39000 loss 0.0183 sec/step 0.062
+step 40000 loss 0.0228 sec/step 0.061
+[eval] 40000 {"train_memorization": 1.0, "test_seen": 0.0078125, "test_validity": 0.1640625, "test_unseen": 0.15625, "n_unique_valid": 21, "n_unique_valid_novel": 20, "test_novel_valid": 0.15625, "creativity": 0.15625, "creativity_raw": 0.15625, "diversity_raw": 0.1640625, "train_seen": 1.0, "train_validity": 1.0, "n_test_gen": 128, "n_train_gen": 128, "memo_own": 1.0, "nll_nominal": 0.00010991534509230405, "nll_own": 0.00010991534509230405, "step": 40000}
+throughput {"sec_per_step_mean": 0.060987937763724964, "sec_per_step_p50": 0.06095170974731445, "total_hours": 0.735952052142885, "steps": 40000, "start_step": 0}

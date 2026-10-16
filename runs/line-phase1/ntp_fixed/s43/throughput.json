@@ -1,0 +1,7 @@
+{
+  "sec_per_step_mean": 0.060987937763724964,
+  "sec_per_step_p50": 0.06095170974731445,
+  "total_hours": 0.735952052142885,
+  "steps": 40000,
+  "start_step": 0
+}
