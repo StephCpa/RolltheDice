@@ -145,7 +145,7 @@ arXiv:2504.15266)：在受控任务（Circle/Line Construction, Sibling/Triangle
 
 ### 5.1 仓库（https://github.com/StephCpa/RolltheDice）
 
-- **main** 最新：`bd06348`（Line 发布收尾、评价身份门禁、Sibling 配置准备包和公开 artifact 探针已入库）
+- **发布内容基线**：`bd06348`（Line 发布收尾、评价身份门禁、Sibling 配置准备包和公开 artifact 探针已入库）
 - 分支 `claude/zen-bohr-gq1si2`：合作者（另一位 AI）的工具链贡献，已全部合入 main
 - 关键路径：`runs/stage0-report.md`（全部增补1–13）、`docs/work-summary.md`（面向阅读的总结）、
   `plan/`（已签协议与修订）、`runs/line-phase1/`（最新一组实验＋修复后 heldout 分数）
