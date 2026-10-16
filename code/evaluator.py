@@ -412,11 +412,18 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--task", choices=["circle", "sibling", "line"], required=True)
     ap.add_argument("--data_dir", required=True)
+    ap.add_argument("--sibling_graph_dir", default=None,
+                    help="完整 Sibling graph JSON 目录；task=sibling 时必填")
     ap.add_argument("--pred", required=True, help="预测 json（[{type,model_output,target_text}]）")
     args = ap.parse_args()
+    if args.task == "sibling" and not args.sibling_graph_dir:
+        ap.error("task=sibling requires --sibling_graph_dir with both complete graph JSON files")
+    if args.task != "sibling" and args.sibling_graph_dir:
+        ap.error("--sibling_graph_dir is only valid with task=sibling")
     with open(os.path.join(args.data_dir, "train.json"), encoding="utf-8") as f:
         tr = json.load(f)
     with open(args.pred, encoding="utf-8") as f:
         items = json.load(f)
-    ev = Evaluator(args.task, tr)
+    graph = load_sibling_graph(args.sibling_graph_dir) if args.task == "sibling" else None
+    ev = Evaluator(args.task, tr, sibling_graph=graph)
     print(json.dumps(ev.eval_items(items), indent=2))
