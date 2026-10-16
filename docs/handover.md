@@ -282,4 +282,4 @@ Sibling 结果。数据快照、完整 `entities_b1_dict.json`/`entities_b2_dict
 本次工程 smoke 只验证现有评价器和训练流水线回归，不属于 Sibling 证据。scale、旧主候选
 `ntp_2tgt` 追门槛以及额外臂继续暂停。
 
-*本节追加对应发布提交 main@`a17701b`；此前段落中的旧提交号保留为历史定位。*
+*本节的准备包与 smoke 记录已发布于 main@`1d80e46`；此前段落中的旧提交号保留为历史定位。*
