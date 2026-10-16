@@ -41,7 +41,7 @@ arXiv:2504.15266)：在受控任务（Circle/Line Construction, Sibling/Triangle
 |---|---|---|
 | 最初 | 动态集合耦合（Hungarian 匹配在 teacherless 代价上）能否超越固定配对？ | setc_MN 预注册 PASS（Circle +0.047），但匹配与 teacherless 均非必要 |
 | 中期 | 增益的承重结构是什么？ | 配对多样性监督图结构；batch 扩大不充分；模型仍记忆训练配对（"查什么"变了） |
-| 当前 | 最优配对形式是否跨任务一致？ | 2tgt 在 Circle 最优但 Line 收窄；2hash 在两任务均达标——任务依赖或不依赖 |
+| 当前 | 最优配对形式是否跨任务一致？ | 2tgt 在 Circle 最优但 Line 收窄；2hash 在当前测试中满足两任务门槛，待独立确认 |
 
 ### 研究对象表述（第九轮评审建议）
 
@@ -145,7 +145,7 @@ arXiv:2504.15266)：在受控任务（Circle/Line Construction, Sibling/Triangle
 
 ### 5.1 仓库（https://github.com/StephCpa/RolltheDice）
 
-- **main** 最新：`1f967d4`（全部 13 个增补＋修正版 work-summary＋全部运行记录已入库）
+- **main** 最新：`b2c995f`（Line 发布收尾、评价身份门禁、Sibling 配置准备包和公开 artifact 探针已入库）
 - 分支 `claude/zen-bohr-gq1si2`：合作者（另一位 AI）的工具链贡献，已全部合入 main
 - 关键路径：`runs/stage0-report.md`（全部增补1–13）、`docs/work-summary.md`（面向阅读的总结）、
   `plan/`（已签协议与修订）、`runs/line-phase1/`（最新一组实验＋修复后 heldout 分数）
@@ -178,7 +178,8 @@ SSH 配置均在 `~/.ssh/config`（跳板机 118.252.19.90:1722，间歇性断�
 
 ### ② 若确认 2hash 为下一候选：起草预注册修订
 
-2hash 在当前已测试配置中同时达到两任务门槛（Circle +0.079、Line +0.034），但其增益机制
+2hash 在当前已测试的配方、任务配置和评价程序中于两个任务满足既定数值门槛（Circle +0.079、Line +0.034），现登记为
+下一轮独立确认候选；但其增益机制
 （更多训练 hash？更多配对数？答案多入口本身？）尚未与 b128 完全分离——Circle 上
 2hash−b128=+0.076（同 128 序列纯 NTP），这是正面对照，但 Line 上 2hash−b128=+0.032，
 幅度不一致。预注册应指定 2hash vs b128 为主比较。
@@ -262,7 +263,7 @@ RolltheDice/
 核心比较为 `2hash−b128`，同时报告 `2hash−fixed`。不加入 `2tgt`、sample、k 扫描、
 Hungarian、teacherless、新正则或 scale。上述内容是设计约束，不是已经产生的实验结果。
 
-*本文档由执行端生成于 2026-10-16，对应发布提交 main@`9a0ef73`；本轮状态修订与收尾记录追加于同日。
+*本文档由执行端生成于 2026-10-16，对应发布提交 main@`b2c995f`；此前提交号保留在历史记录中。
 如有疑问请对照仓库原始文件和增补记录，而非仅依赖本文档摘要。*
 
 ## 12. Sibling 确认准备包（2026-10-16）
@@ -282,4 +283,4 @@ Sibling 结果。数据快照、完整 `entities_b1_dict.json`/`entities_b2_dict
 本次工程 smoke 只验证现有评价器和训练流水线回归，不属于 Sibling 证据。scale、旧主候选
 `ntp_2tgt` 追门槛以及额外臂继续暂停。
 
-*本节的准备包与 smoke 记录已发布于 main@`1d80e46`；此前段落中的旧提交号保留为历史定位。*
+*本节的准备包、公开 artifact 探针与 smoke 记录已发布于 main@`b2c995f`；此前段落中的旧提交号保留为历史定位。*
