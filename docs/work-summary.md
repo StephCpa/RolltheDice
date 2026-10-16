@@ -161,3 +161,12 @@ Vaishnavh Nagarajan, Chen Henry Wu, Charles Ding, Aditi Raghunathan · **ICML 20
 Sibling 只完成静态配置核对，记录见 [`docs/sibling-config-audit-20261016.md`](sibling-config-audit-20261016.md)。
 在数据 artifact、完整知识图、模型初始化、训练长度和探针身份冻结前，不启动三臂九运行，
 也不启动 scale。
+
+### 2026-10-16：同系统确认准备包
+
+事件 #9 的发布收尾后，下一阶段只保留 `ntp_fixed`、`ntp_fixed_b128`、
+`ntp_fixed_2hash` 三臂和 42/43/44 三个种子。配置、门禁和九运行清单保存在
+[`outputs/sibling-confirmation-20261016/`](../outputs/sibling-confirmation-20261016/)，
+状态为 `blocked_pending_artifacts`。本包是 development 配置提案，不包含 Sibling
+训练或留出结果；在数据快照、完整知识图、2hash 变体校验和无留出 smoke/吞吐核价完成前，
+正式运行与 scale 均保持暂停。

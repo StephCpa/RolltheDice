@@ -264,3 +264,22 @@ Hungarian、teacherless、新正则或 scale。上述内容是设计约束，不
 
 *本文档由执行端生成于 2026-10-16，对应发布提交 main@`9a0ef73`；本轮状态修订与收尾记录追加于同日。
 如有疑问请对照仓库原始文件和增补记录，而非仅依赖本文档摘要。*
+
+## 12. Sibling 确认准备包（2026-10-16）
+
+在用户接受事件 #9 修正判定后，已建立同系统确认的开发配置包：
+[`outputs/sibling-confirmation-20261016/`](../outputs/sibling-confirmation-20261016/)。
+机器入口是 `freeze_manifest.json`，另有九行 `run_manifest.tsv` 和启动说明。三臂固定为
+`ntp_fixed`、`ntp_fixed_b128`、`ntp_fixed_2hash`，种子为 42/43/44，主比较为
+`2hash−b128`，次比较为 `2hash−fixed`。
+
+配置包当前状态是 `blocked_pending_artifacts`，只表示待补齐的启动门禁，不表示任何
+Sibling 结果。数据快照、完整 `entities_b1_dict.json`/`entities_b2_dict.json`、2hash
+变体 SHA、不相交性、同系统步数核价和显式 `task=sibling` 启动接口完成前，不得启动九个
+正式运行。`code/validate_sibling_manifest.py` 只做结构检查；它不会训练、读权重或裁决
+科学结果。
+
+本次工程 smoke 只验证现有评价器和训练流水线回归，不属于 Sibling 证据。scale、旧主候选
+`ntp_2tgt` 追门槛以及额外臂继续暂停。
+
+*本节追加对应发布提交 main@`a17701b`；此前段落中的旧提交号保留为历史定位。*

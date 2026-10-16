@@ -1,0 +1,10 @@
+arm	seed	batch_sequences	data_variant	formal_status
+ntp_fixed	42	64	base	blocked_pending_artifacts
+ntp_fixed	43	64	base	blocked_pending_artifacts
+ntp_fixed	44	64	base	blocked_pending_artifacts
+ntp_fixed_b128	42	128	base	blocked_pending_artifacts
+ntp_fixed_b128	43	128	base	blocked_pending_artifacts
+ntp_fixed_b128	44	128	base	blocked_pending_artifacts
+ntp_fixed_2hash	42	128	dup_hash_k2	blocked_pending_artifacts
+ntp_fixed_2hash	43	128	dup_hash_k2	blocked_pending_artifacts
+ntp_fixed_2hash	44	128	dup_hash_k2	blocked_pending_artifacts
