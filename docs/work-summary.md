@@ -2,6 +2,7 @@
 
 > 项目代号 P6 · 代码与全部实验记录见 [StephCpa/RolltheDice](https://github.com/StephCpa/RolltheDice)
 > 状态日期：2026-10-16 · 全部结论为 development 状态（预注册评价协议下三训练种子）
+> 发布修订：事件 #9 修正已接受；Line 主 recipe 本轮检验结束，2hash 仅登记为下一轮独立确认候选。
 
 ---
 
@@ -91,14 +92,14 @@ Vaishnavh Nagarajan, Chen Henry Wu, Charles Ding, Aditi Raghunathan · **ICML 20
 | 配方 | 留出 creativity（Line） | Δ vs fixed | 判定 |
 |---|---|---|---|
 | ntp_fixed | 0.155 | — | — |
-| b128 | 0.157 | +0.002 | 无增益（与 Circle 一致） |
+| b128 | 0.157 | +0.002 | 平均差约 +0.002，未达到项目门槛 |
 | ntp_2tgt（预指定主 recipe） | 0.169 | +0.014（3/3 正但 <0.03） | **未过门** |
 | ntp_2tgt_sample | 0.160 | 高方差 | 不稳 |
 | **ntp_fixed_2hash** | **0.190** | **+0.034（3/3 正，≥0.03）** | **PASS（辅助臂）** |
 
 **修正后的跨任务图景**：预指定主 recipe（2tgt）在 Line 上增益收窄至 +0.014、未达门槛；
-但 2hash（答案多入口、每 hash 单目标）在**两个任务上均稳定达标**（Circle +0.079、Line +0.034）
-——这是当前唯一跨任务一致的信号，值得下一轮预注册独立确认。按纪律不因辅助臂过门
+但 2hash（答案多入口、每 hash 单目标）在**当前已测试配方、任务配置和评价程序中**于两个任务达到项目门槛
+（Circle +0.079、Line +0.034）——这是当前唯一跨任务一致的候选信号，值得下一轮预注册独立确认。按纪律不因辅助臂过门
 替换预指定候选，Line 迁移问题以"主 recipe 未过、多入口变体过"的形态记录。
 
 ---
@@ -114,7 +115,7 @@ Vaishnavh Nagarajan, Chen Henry Wu, Charles Ding, Aditi Raghunathan · **ICML 20
 ### 方法论贡献
 
 - **预注册评价协议**：开发集选检查点 → 2048 全新留出 hash 一次评价 → 按种子配对对照 → 事先签署的通过门槛（均值 ≥0.03 且 3 种子全正），全程伴随 SHA256 存档——小型研究项目完整执行了预注册纪律。
-- **诚实的失效登记**：8 个实现/协议事件（双重展开、NTP 配对 bug、hash 前缀比较 bug、报告聚合污染、规格偏差等）全部保留为证据、逐项修复、事后不删除更正记录。
+- **诚实的失效登记**：9 个实现/协议事件（含 Line 评价链错误）全部保留为证据、逐项修复、事后不删除更正记录。
 
 ### 当前边界（如实声明）
 
@@ -126,9 +127,9 @@ Vaishnavh Nagarajan, Chen Henry Wu, Charles Ding, Aditi Raghunathan · **ICML 20
 
 ## 五、建议的下一步（按优先级）
 
-1. **Sibling 任务复现**（先核对原论文配置差异：数据规模 5.500 vs 我们的 10.1000、训练步数）
-2. **论文骨架起草**——素材已足（背景动机 → 2×2 发现 → 三对照分解 → k 曲线 → 跨任务）
-3. **Scale 实验**：GPT-2 medium / 一个 ~2B 模型上验证符号是否保持
+1. **Sibling 配置冻结与独立确认预注册**（配置审计已完成；先解决 5×500／10×1000、知识图和初始化差异）
+2. **论文骨架起草**——素材已足（背景动机 → 2×2 发现 → 三对照分解 → k 曲线 → 修复后的 Line 边界）
+3. **Scale 实验**：延期，待 Sibling 确认完成后另行决策
 4. **机制深化**（可选）：等计算 k 扫描（sample 模式）／配对图连通性消融
 
 ---
@@ -139,9 +140,24 @@ Vaishnavh Nagarajan, Chen Henry Wu, Charles Ding, Aditi Raghunathan · **ICML 20
 |---|---|---|
 | ntp_2tgt vs fixed | +0.132（PASS） | +0.014（未过门） |
 | sample vs fixed | +0.066（PASS） | 高方差（不稳） |
-| 2hash vs fixed | +0.079（PASS） | **+0.034（PASS）** |
-| b128 vs fixed | +0.003（FAIL） | +0.002（无增益） |
+| 2hash vs fixed | +0.079（PASS） | **+0.034（当前候选，待独立确认）** |
+| b128 vs fixed | +0.003（FAIL） | +0.002（未达到项目门槛） |
 | k=3 vs fixed | +0.038（不稳） | — |
 | k=4 vs fixed | +0.014（FAIL） | — |
 
-> 完整实验记录、事件登记、协议文件与全部增补见仓库 `runs/stage0-report.md`（增补 1–12）。
+> 完整实验记录、事件登记、协议文件与全部增补见仓库 `runs/stage0-report.md`（增补 1–13，含事件 #9 修正）。
+
+---
+
+## 发布修订记录（2026-10-16，事件 #9 收尾）
+
+本版沿用增补 12 的原始材料，但不再引用其中的 Line 数字和“迁移成立”结论；增补 13
+保留其作废原因与修正后的 15 条留出记录。修正版报告与机器裁决见
+[`runs/line-phase1/report.md`](../runs/line-phase1/report.md) 和
+[`runs/line-phase1/report.json`](../runs/line-phase1/report.json)。旧报告保存在
+`report_event9_void_circle_final.md`，仅作事件证据。
+
+本轮没有读取服务器权重或重新生成模型输出。评价身份索引和 launcher 门禁已补齐；
+Sibling 只完成静态配置核对，记录见 [`docs/sibling-config-audit-20261016.md`](sibling-config-audit-20261016.md)。
+在数据 artifact、完整知识图、模型初始化、训练长度和探针身份冻结前，不启动三臂九运行，
+也不启动 scale。

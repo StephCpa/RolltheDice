@@ -1,0 +1,489 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-16",
+  "selection_file": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/selection.tsv",
+  "selection_sha256": "1981dd65adade12e6fd10bb4b8d902260274e4e8eb5a8c37a2348447985ab355",
+  "scope": "read-only index of existing Line evaluation records; no model or probe regeneration",
+  "runs": [
+    {
+      "run": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_2tgt/s42",
+      "label": "ntp_2tgt",
+      "seed": 42,
+      "task": "line",
+      "task_status": "metadata_only",
+      "run_meta_sha256": "bd9d406f2c58b262d2270d38e291286a82bc0de499f3fb8ba5b6c92545811bf0",
+      "selected": {
+        "step": 35000,
+        "checkpoint": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_2tgt/s42/ckpts/step35000"
+      },
+      "score": {
+        "step": 35000,
+        "creativity": 0.17236328125,
+        "test_validity": 0.193359375,
+        "model_dir": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_2tgt/s42/ckpts/step35000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "score_sha256": "cb08badadecdf70ec14bf3971faf8a4f24c2cf8caf7dc4264248e43025fcd26d"
+      },
+      "checkpoint": {
+        "path": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_2tgt/s42/ckpts/step35000",
+        "status": "matched_selection",
+        "hashes": {
+          "status": "missing",
+          "files": {}
+        }
+      },
+      "rescore_meta": null,
+      "reusable_formal_result": false,
+      "limitation": "legacy score lacks task/evaluator/probe identity; retained for evidence, not formal reuse",
+      "evaluator_source_sha256": "1d507c254def44ad054edddbc58e877b85339d3e9dd4942e15bf93a98477ec0d"
+    },
+    {
+      "run": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_2tgt/s43",
+      "label": "ntp_2tgt",
+      "seed": 43,
+      "task": "line",
+      "task_status": "metadata_only",
+      "run_meta_sha256": "7cbc192bdc6e1f80299fbd5d4c3b8f398deed1cfcf198507da15886cc502a988",
+      "selected": {
+        "step": 20000,
+        "checkpoint": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_2tgt/s43/ckpts/step20000"
+      },
+      "score": {
+        "step": 20000,
+        "creativity": 0.17431640625,
+        "test_validity": 0.18115234375,
+        "model_dir": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_2tgt/s43/ckpts/step20000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "score_sha256": "e44b981f01e99ce030597e71bbf28a7b4540f26856907a02609ab62f2f8cbe67"
+      },
+      "checkpoint": {
+        "path": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_2tgt/s43/ckpts/step20000",
+        "status": "matched_selection",
+        "hashes": {
+          "status": "missing",
+          "files": {}
+        }
+      },
+      "rescore_meta": null,
+      "reusable_formal_result": false,
+      "limitation": "legacy score lacks task/evaluator/probe identity; retained for evidence, not formal reuse",
+      "evaluator_source_sha256": "1d507c254def44ad054edddbc58e877b85339d3e9dd4942e15bf93a98477ec0d"
+    },
+    {
+      "run": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_2tgt/s44",
+      "label": "ntp_2tgt",
+      "seed": 44,
+      "task": "line",
+      "task_status": "metadata_only",
+      "run_meta_sha256": "63190197b28e07f37a98a86e309bafac0567ba7de0675f0bb6035a2b8598d45c",
+      "selected": {
+        "step": 40000,
+        "checkpoint": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_2tgt/s44/ckpts/step40000"
+      },
+      "score": {
+        "step": 40000,
+        "creativity": 0.16064453125,
+        "test_validity": 0.17919921875,
+        "model_dir": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_2tgt/s44/ckpts/step40000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "score_sha256": "13a04e659111ba1d7f00fe6a3ee8719ed806a7ec160e0fd620985f3dbfc9e04d"
+      },
+      "checkpoint": {
+        "path": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_2tgt/s44/ckpts/step40000",
+        "status": "matched_selection",
+        "hashes": {
+          "status": "missing",
+          "files": {}
+        }
+      },
+      "rescore_meta": null,
+      "reusable_formal_result": false,
+      "limitation": "legacy score lacks task/evaluator/probe identity; retained for evidence, not formal reuse",
+      "evaluator_source_sha256": "1d507c254def44ad054edddbc58e877b85339d3e9dd4942e15bf93a98477ec0d"
+    },
+    {
+      "run": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_2tgt_sample/s42",
+      "label": "ntp_2tgt_sample",
+      "seed": 42,
+      "task": "line",
+      "task_status": "metadata_only",
+      "run_meta_sha256": "a652845540194d30a69d84913700fbc0c14a7f3b0a4e03bdd684f1a451322b44",
+      "selected": {
+        "step": 35000,
+        "checkpoint": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_2tgt_sample/s42/ckpts/step35000"
+      },
+      "score": {
+        "step": 35000,
+        "creativity": 0.16357421875,
+        "test_validity": 0.1689453125,
+        "model_dir": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_2tgt_sample/s42/ckpts/step35000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "score_sha256": "ae58aaa5f3f3635a410568992740d5113bc29152729e5a849a1c11799e085dc6"
+      },
+      "checkpoint": {
+        "path": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_2tgt_sample/s42/ckpts/step35000",
+        "status": "matched_selection",
+        "hashes": {
+          "status": "missing",
+          "files": {}
+        }
+      },
+      "rescore_meta": null,
+      "reusable_formal_result": false,
+      "limitation": "legacy score lacks task/evaluator/probe identity; retained for evidence, not formal reuse",
+      "evaluator_source_sha256": "1d507c254def44ad054edddbc58e877b85339d3e9dd4942e15bf93a98477ec0d"
+    },
+    {
+      "run": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_2tgt_sample/s43",
+      "label": "ntp_2tgt_sample",
+      "seed": 43,
+      "task": "line",
+      "task_status": "metadata_only",
+      "run_meta_sha256": "7b7b7cf895c0c8c78a17650c1c34e3660b3883ed0381af04a7285e80e1609f3e",
+      "selected": {
+        "step": 35000,
+        "checkpoint": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_2tgt_sample/s43/ckpts/step35000"
+      },
+      "score": {
+        "step": 35000,
+        "creativity": 0.19775390625,
+        "test_validity": 0.20263671875,
+        "model_dir": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_2tgt_sample/s43/ckpts/step35000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "score_sha256": "57cdd96da0a4d9511b72831165947c7ae12c49705e06ef668b111a64bfe3d80b"
+      },
+      "checkpoint": {
+        "path": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_2tgt_sample/s43/ckpts/step35000",
+        "status": "matched_selection",
+        "hashes": {
+          "status": "missing",
+          "files": {}
+        }
+      },
+      "rescore_meta": null,
+      "reusable_formal_result": false,
+      "limitation": "legacy score lacks task/evaluator/probe identity; retained for evidence, not formal reuse",
+      "evaluator_source_sha256": "1d507c254def44ad054edddbc58e877b85339d3e9dd4942e15bf93a98477ec0d"
+    },
+    {
+      "run": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_2tgt_sample/s44",
+      "label": "ntp_2tgt_sample",
+      "seed": 44,
+      "task": "line",
+      "task_status": "metadata_only",
+      "run_meta_sha256": "b5c0307b09e7613e611f37e2a41e75be58f88b9ab1c3a920ace8898994e02761",
+      "selected": {
+        "step": 20000,
+        "checkpoint": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_2tgt_sample/s44/ckpts/step20000"
+      },
+      "score": {
+        "step": 20000,
+        "creativity": 0.1171875,
+        "test_validity": 0.12255859375,
+        "model_dir": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_2tgt_sample/s44/ckpts/step20000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "score_sha256": "bd02cd6d28e7a91de40f1a6a56437cae9cdb7b07d590f75eeda20bc9c8c92cad"
+      },
+      "checkpoint": {
+        "path": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_2tgt_sample/s44/ckpts/step20000",
+        "status": "matched_selection",
+        "hashes": {
+          "status": "missing",
+          "files": {}
+        }
+      },
+      "rescore_meta": null,
+      "reusable_formal_result": false,
+      "limitation": "legacy score lacks task/evaluator/probe identity; retained for evidence, not formal reuse",
+      "evaluator_source_sha256": "1d507c254def44ad054edddbc58e877b85339d3e9dd4942e15bf93a98477ec0d"
+    },
+    {
+      "run": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed/s42",
+      "label": "ntp_fixed",
+      "seed": 42,
+      "task": "line",
+      "task_status": "metadata_only",
+      "run_meta_sha256": "9993398dd862c7b2e91635e21b4375b0bb019f560ddb5e20ff139bfbbcf67709",
+      "selected": {
+        "step": 25000,
+        "checkpoint": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed/s42/ckpts/step25000"
+      },
+      "score": {
+        "step": 25000,
+        "creativity": 0.16455078125,
+        "test_validity": 0.16943359375,
+        "model_dir": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed/s42/ckpts/step25000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "score_sha256": "fd182f56816a67273f679c843f8a6b7de41a9ee4138c05530b74a8eaf2c5e7ae"
+      },
+      "checkpoint": {
+        "path": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed/s42/ckpts/step25000",
+        "status": "matched_selection",
+        "hashes": {
+          "status": "missing",
+          "files": {}
+        }
+      },
+      "rescore_meta": null,
+      "reusable_formal_result": false,
+      "limitation": "legacy score lacks task/evaluator/probe identity; retained for evidence, not formal reuse",
+      "evaluator_source_sha256": "1d507c254def44ad054edddbc58e877b85339d3e9dd4942e15bf93a98477ec0d"
+    },
+    {
+      "run": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed/s43",
+      "label": "ntp_fixed",
+      "seed": 43,
+      "task": "line",
+      "task_status": "metadata_only",
+      "run_meta_sha256": "0a8e62bbaa8502722924f6c15b1f0467ff30c1e70b159da93c3389a50bebf28c",
+      "selected": {
+        "step": 30000,
+        "checkpoint": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed/s43/ckpts/step30000"
+      },
+      "score": {
+        "step": 30000,
+        "creativity": 0.14697265625,
+        "test_validity": 0.15087890625,
+        "model_dir": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed/s43/ckpts/step30000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "score_sha256": "c1fd6f14cee45aa9624fd2254ee172ed6d5962282eaaa82662556cedb1311704"
+      },
+      "checkpoint": {
+        "path": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed/s43/ckpts/step30000",
+        "status": "matched_selection",
+        "hashes": {
+          "status": "missing",
+          "files": {}
+        }
+      },
+      "rescore_meta": null,
+      "reusable_formal_result": false,
+      "limitation": "legacy score lacks task/evaluator/probe identity; retained for evidence, not formal reuse",
+      "evaluator_source_sha256": "1d507c254def44ad054edddbc58e877b85339d3e9dd4942e15bf93a98477ec0d"
+    },
+    {
+      "run": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed/s44",
+      "label": "ntp_fixed",
+      "seed": 44,
+      "task": "line",
+      "task_status": "metadata_only",
+      "run_meta_sha256": "64a68c7e649da42f59de592126a039848115196d88c692bc754edb5c52eec862",
+      "selected": {
+        "step": 30000,
+        "checkpoint": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed/s44/ckpts/step30000"
+      },
+      "score": {
+        "step": 30000,
+        "creativity": 0.154296875,
+        "test_validity": 0.1552734375,
+        "model_dir": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed/s44/ckpts/step30000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "score_sha256": "b53178fadafbff6cff0a6c009875ca8a8719c07ed42fbdd78d65377a53d8e19b"
+      },
+      "checkpoint": {
+        "path": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed/s44/ckpts/step30000",
+        "status": "matched_selection",
+        "hashes": {
+          "status": "missing",
+          "files": {}
+        }
+      },
+      "rescore_meta": null,
+      "reusable_formal_result": false,
+      "limitation": "legacy score lacks task/evaluator/probe identity; retained for evidence, not formal reuse",
+      "evaluator_source_sha256": "1d507c254def44ad054edddbc58e877b85339d3e9dd4942e15bf93a98477ec0d"
+    },
+    {
+      "run": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed_2hash/s42",
+      "label": "ntp_fixed_2hash",
+      "seed": 42,
+      "task": "line",
+      "task_status": "metadata_only",
+      "run_meta_sha256": "66ec78cc2491609632583d1080685d0a308eeaebfedb8b6414e5e9be4ae7f5de",
+      "selected": {
+        "step": 20000,
+        "checkpoint": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed_2hash/s42/ckpts/step20000"
+      },
+      "score": {
+        "step": 20000,
+        "creativity": 0.181640625,
+        "test_validity": 0.18798828125,
+        "model_dir": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed_2hash/s42/ckpts/step20000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "score_sha256": "72e4a98621964baed8d5ad4a8e91d2a9d67ab56fc00342e00ab40dccb5038767"
+      },
+      "checkpoint": {
+        "path": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed_2hash/s42/ckpts/step20000",
+        "status": "matched_selection",
+        "hashes": {
+          "status": "missing",
+          "files": {}
+        }
+      },
+      "rescore_meta": null,
+      "reusable_formal_result": false,
+      "limitation": "legacy score lacks task/evaluator/probe identity; retained for evidence, not formal reuse",
+      "evaluator_source_sha256": "1d507c254def44ad054edddbc58e877b85339d3e9dd4942e15bf93a98477ec0d"
+    },
+    {
+      "run": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed_2hash/s43",
+      "label": "ntp_fixed_2hash",
+      "seed": 43,
+      "task": "line",
+      "task_status": "metadata_only",
+      "run_meta_sha256": "b826ba0c2b3850521fca6dee89669822de5ae3a859fae20b9adb407ca8778d0a",
+      "selected": {
+        "step": 15000,
+        "checkpoint": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed_2hash/s43/ckpts/step15000"
+      },
+      "score": {
+        "step": 15000,
+        "creativity": 0.21337890625,
+        "test_validity": 0.216796875,
+        "model_dir": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed_2hash/s43/ckpts/step15000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "score_sha256": "f3864254d753aef5ceeb6200bc6fc8e92acdd05c02fb4876824c7b661bc3a02e"
+      },
+      "checkpoint": {
+        "path": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed_2hash/s43/ckpts/step15000",
+        "status": "matched_selection",
+        "hashes": {
+          "status": "missing",
+          "files": {}
+        }
+      },
+      "rescore_meta": null,
+      "reusable_formal_result": false,
+      "limitation": "legacy score lacks task/evaluator/probe identity; retained for evidence, not formal reuse",
+      "evaluator_source_sha256": "1d507c254def44ad054edddbc58e877b85339d3e9dd4942e15bf93a98477ec0d"
+    },
+    {
+      "run": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed_2hash/s44",
+      "label": "ntp_fixed_2hash",
+      "seed": 44,
+      "task": "line",
+      "task_status": "metadata_only",
+      "run_meta_sha256": "9c616b15dcd387e4d1effbc1b8ecf041f9c990ed8f10bda722c50b83e3c96299",
+      "selected": {
+        "step": 30000,
+        "checkpoint": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed_2hash/s44/ckpts/step30000"
+      },
+      "score": {
+        "step": 30000,
+        "creativity": 0.173828125,
+        "test_validity": 0.20654296875,
+        "model_dir": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed_2hash/s44/ckpts/step30000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "score_sha256": "0b4cff0d816b01fafb4325c5a902fbb53ca8f0cb23ed9f6c732401a55456a5fe"
+      },
+      "checkpoint": {
+        "path": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed_2hash/s44/ckpts/step30000",
+        "status": "matched_selection",
+        "hashes": {
+          "status": "missing",
+          "files": {}
+        }
+      },
+      "rescore_meta": null,
+      "reusable_formal_result": false,
+      "limitation": "legacy score lacks task/evaluator/probe identity; retained for evidence, not formal reuse",
+      "evaluator_source_sha256": "1d507c254def44ad054edddbc58e877b85339d3e9dd4942e15bf93a98477ec0d"
+    },
+    {
+      "run": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed_b128/s42",
+      "label": "ntp_fixed_b128",
+      "seed": 42,
+      "task": "line",
+      "task_status": "metadata_only",
+      "run_meta_sha256": "ae4d9b73533babfa25eeefd0bc60c3363283c2ee405c03a9f0aec2ae8bb527ab",
+      "selected": {
+        "step": 30000,
+        "checkpoint": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed_b128/s42/ckpts/step30000"
+      },
+      "score": {
+        "step": 30000,
+        "creativity": 0.162109375,
+        "test_validity": 0.16845703125,
+        "model_dir": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed_b128/s42/ckpts/step30000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "score_sha256": "f7b7093e508608bc39cfd195431dc8eb3232ec81b3240e2535fc24f2264ea59e"
+      },
+      "checkpoint": {
+        "path": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed_b128/s42/ckpts/step30000",
+        "status": "matched_selection",
+        "hashes": {
+          "status": "missing",
+          "files": {}
+        }
+      },
+      "rescore_meta": null,
+      "reusable_formal_result": false,
+      "limitation": "legacy score lacks task/evaluator/probe identity; retained for evidence, not formal reuse",
+      "evaluator_source_sha256": "1d507c254def44ad054edddbc58e877b85339d3e9dd4942e15bf93a98477ec0d"
+    },
+    {
+      "run": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed_b128/s43",
+      "label": "ntp_fixed_b128",
+      "seed": 43,
+      "task": "line",
+      "task_status": "metadata_only",
+      "run_meta_sha256": "4e5c2f8922e50f2373b9a82792184be04818e2bf9a5941e7239b85fe9aebbf8d",
+      "selected": {
+        "step": 15000,
+        "checkpoint": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed_b128/s43/ckpts/step15000"
+      },
+      "score": {
+        "step": 15000,
+        "creativity": 0.14501953125,
+        "test_validity": 0.14892578125,
+        "model_dir": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed_b128/s43/ckpts/step15000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "score_sha256": "7157aec18fef337e72b0d13a06e23d63e2556ea644e5393e1cc44db9a09a3095"
+      },
+      "checkpoint": {
+        "path": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed_b128/s43/ckpts/step15000",
+        "status": "matched_selection",
+        "hashes": {
+          "status": "missing",
+          "files": {}
+        }
+      },
+      "rescore_meta": null,
+      "reusable_formal_result": false,
+      "limitation": "legacy score lacks task/evaluator/probe identity; retained for evidence, not formal reuse",
+      "evaluator_source_sha256": "1d507c254def44ad054edddbc58e877b85339d3e9dd4942e15bf93a98477ec0d"
+    },
+    {
+      "run": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed_b128/s44",
+      "label": "ntp_fixed_b128",
+      "seed": 44,
+      "task": "line",
+      "task_status": "metadata_only",
+      "run_meta_sha256": "f46d9c30b6bb009d0d426d49932ae0e4146e30f2c5d3f7967f8e058a0317b67f",
+      "selected": {
+        "step": 20000,
+        "checkpoint": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed_b128/s44/ckpts/step20000"
+      },
+      "score": {
+        "step": 20000,
+        "creativity": 0.16455078125,
+        "test_validity": 0.16943359375,
+        "model_dir": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed_b128/s44/ckpts/step20000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "score_sha256": "9a492dc96dbf4b753567ebd7e4605092babeaa36547de46cffecf8891a75f45a"
+      },
+      "checkpoint": {
+        "path": "E:/KM/meta-method/.p6_stage_1791568478/runs/line-phase1/ntp_fixed_b128/s44/ckpts/step20000",
+        "status": "matched_selection",
+        "hashes": {
+          "status": "missing",
+          "files": {}
+        }
+      },
+      "rescore_meta": null,
+      "reusable_formal_result": false,
+      "limitation": "legacy score lacks task/evaluator/probe identity; retained for evidence, not formal reuse",
+      "evaluator_source_sha256": "1d507c254def44ad054edddbc58e877b85339d3e9dd4942e15bf93a98477ec0d"
+    }
+  ]
+}

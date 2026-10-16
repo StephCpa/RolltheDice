@@ -4,7 +4,12 @@
 # （幂等：throughput.json 存在即跳过）→ 重跑 heldout+report 纳入 C 运行。
 # 日志：runs/phasec.out
 set -u
-export HF_ENDPOINT=https://hf-mirror.com CUDA_VISIBLE_DEVICES=4 PYTHONUNBUFFERED=1 PRUNE=1
+TASK="${TASK:-}"
+if [ "$TASK" != "circle" ]; then
+  echo "TASK=circle is required for this legacy Phase C launcher; refusing an implicit or mismatched task" >&2
+  exit 2
+fi
+export HF_ENDPOINT=https://hf-mirror.com CUDA_VISIBLE_DEVICES=4 PYTHONUNBUFFERED=1 TASK
 cd ~/P6-Roll_the_dice
 LOG=runs/phasec.out
 echo "=== phaseC prep $(date) ===" >> $LOG
@@ -35,7 +40,7 @@ run () {
   mkdir -p $out
   echo "[run ] $label s$seed $(date +%H:%M)" >> $LOG
   python code/train.py --arm "$arm" --label "$label" --seed "$seed" --out "$out" \
-    --model gpt2 --task circle --data_dir data/circle.10.9.10.10000 \
+    --model gpt2 --task "$TASK" --data_dir data/circle.10.9.10.10000 \
     --steps 40000 --eval_every 5000 --ckpt_every 5000 --save_final \
     --churn_dump $out/churn.jsonl "$@" > $out/train.log 2>&1 \
     || echo "[FAIL] $label s$seed" >> $LOG

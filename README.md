@@ -23,8 +23,12 @@ python code/train.py --arm ntp_fixed --task circle \
   --data_dir data/circle.10.9.10.10000 --out runs/x --steps 40000 --save_final
 python code/make_heldout.py --data_dir data/circle.10.9.10.10000 --n 2048   # 留出探针集（与全部已用 hash 不相交）
 python code/rescore.py --model_dir runs/x/final_model --data_dir data/circle.10.9.10.10000 \
-  --probe_file data/circle.10.9.10.10000/heldout.json --out runs/x/heldout   # 重评 / 留出评测
-bash code/run_stage0b.sh B        # 阶段 0b：A|B|lock|intervene|C|replay|diag|heldout|report
+  --task circle --probe_file data/circle.10.9.10.10000/heldout.json \
+  --out runs/x/heldout --step 40000   # 重评 / 留出评测
+TASK=circle bash code/run_stage0b.sh B        # 阶段 0b：A|B|lock|intervene|C|replay|diag|select|heldout|report
+# selection 生成与正式留出评价分开；heldout 只读已有 selection.tsv
+TASK=circle bash code/run_stage0b.sh select
+TASK=circle bash code/run_stage0b.sh heldout
 ```
 
 臂：`ntp_noseed`（无种子）｜`ntp_fixed`（固定配对，原论文设定）｜`ntp_randperm`（持久种子集＋每轮随机双射，G1 对照）｜`tl_hybrid`（原 teacherless 1:3 混合）｜`setc_m4`（集合耦合原型）｜`tl_fixed_m4` / `tl_randperm_m4`（与 setc 同目标、同算力、同批组织，仅配对规则为恒等 / 随机——分离"最优配对"效应的等算力对照）。另有 `ntp_fixed_grouped`（组批组织版 ntp_fixed，流水线自检）。组级臂可用 `--pair_rule/--tl_target/--ntp_lambda/--mtp_weight` 覆盖预设：`setc_m4 --ntp_lambda 1` 精确重建偏差版 v1（匹配 TL / 名义 NTP），`setc_m4 --tl_target nominal` 为反向组合。干预与回放：`--state_at`/`--resume_from`（逐位续训）、`--lock_at`（冻结-锁定）、`--pairing_file`（π* 回放；`runs/*/setc_m4*/pistar_final.json` 已从 churn 导出）、`--ckpt_every`（检查点选择）。其他开关：`--random_tiebreak`、`--regroup`、`--m 64 --groups_per_step 1`（整批匹配）、`--deterministic`。训练语义对照原论文代码快照 `chenwu98/algorithmic-creativity@7176dc7` 逐条重实现（该栈依赖 2021 版 transformers，无法在现代 Python 运行）。

@@ -2,6 +2,12 @@
 
 只新增、不覆盖。每个运行目录包含：`run_meta.json`（臂、数据、超参、环境、启动时间）、`train.log`、`scores.jsonl`（逐次评价：train_memorization / test_seen / test_validity / test_unseen / n_unique_valid / n_unique_valid_novel）、`throughput.json`（每步秒数）、`final_model/`（末模型+tokenizer）、setc 臂另有 `churn.jsonl`（每次组访问的 π* 与代价）。
 
+正式重评必须显式传 `--task` 和 `--step`；`--task` 要与最近的 `run_meta.json` 一致，
+`--step` 要与 `ckpts/stepN` 或 `run_meta.steps` 一致。`rescore.py` 会把 checkpoint、
+数据、probe、评价器版本和源码哈希写入 `rescore_meta.json`；已有 scores 缺少该身份文件或
+身份冲突时拒绝复用和覆盖。`report.py --emit_selection` 默认不覆盖既有选择清单，正式
+`heldout` 阶段只读冻结的 `selection.tsv`。
+
 ## 20261009-circle-10k —— 首轮 10k 步（已中止的中间版本）
 
 五臂各 10k 步。结果：ntp_noseed 在 10k 步全指标为 0；抽样检查显示输出格式完全正确、贪心锁定同一"双环"（度数全 2 但不连通）结构——属训练量不足（原配置 40k 步、warmup 2000，10k 仅 1/4 训练量）而非实现错误。据此中止其余臂的 10k 版本，改跑完整 40k（见下）。10k 目录保留作轨迹与吞吐记录。

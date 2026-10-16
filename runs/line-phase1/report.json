@@ -1,0 +1,1930 @@
+{
+  "primary": "creativity",
+  "ref": "ntp_fixed",
+  "margin": 0.03,
+  "min_seeds": 3,
+  "tasks": [
+    "line"
+  ],
+  "data_dirs": [
+    "data/line.12.9.10.10000",
+    "data/line.12.9.10.10000.dup2"
+  ],
+  "selection_file": "runs/line-phase1/selection.tsv",
+  "selection_sha256": "1981dd65adade12e6fd10bb4b8d902260274e4e8eb5a8c37a2348447985ab355",
+  "aggregate": {
+    "ntp_2tgt": {
+      "n_runs": 3,
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "sel_step": [
+        35000,
+        20000,
+        40000
+      ],
+      "dev_sel": {
+        "mean": 0.23177083333333334,
+        "se": 0.009389456446520807,
+        "n": 3
+      },
+      "heldout_sel": {
+        "mean": 0.16910807291666666,
+        "se": 0.0042691657059257815,
+        "n": 3
+      },
+      "validity_sel": {
+        "mean": 0.1845703125,
+        "se": 0.004430552600526107,
+        "n": 3
+      },
+      "memo_own_sel": {
+        "mean": 0.3984375,
+        "se": 0.05083130545818525,
+        "n": 3
+      },
+      "endpoint": {
+        "mean": 0.18229166666666666,
+        "se": 0.02899877272307303,
+        "n": 3
+      },
+      "peak": {
+        "mean": 0.23177083333333334,
+        "se": 0.009389456446520807,
+        "n": 3
+      },
+      "auc": {
+        "mean": 0.12611607142857142,
+        "se": 0.004646575891665471,
+        "n": 3
+      },
+      "derived": false
+    },
+    "ntp_2tgt_sample": {
+      "n_runs": 3,
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "sel_step": [
+        35000,
+        35000,
+        20000
+      ],
+      "dev_sel": {
+        "mean": 0.21354166666666666,
+        "se": 0.017076662823703126,
+        "n": 3
+      },
+      "heldout_sel": {
+        "mean": 0.15950520833333334,
+        "se": 0.02334633510381031,
+        "n": 3
+      },
+      "validity_sel": {
+        "mean": 0.16471354166666666,
+        "se": 0.023213196240991132,
+        "n": 3
+      },
+      "memo_own_sel": {
+        "mean": 0.3333333333333333,
+        "se": 0.16290098096909805,
+        "n": 3
+      },
+      "endpoint": {
+        "mean": 0.1640625,
+        "se": 0.004510548978043952,
+        "n": 3
+      },
+      "peak": {
+        "mean": 0.21354166666666666,
+        "se": 0.017076662823703126,
+        "n": 3
+      },
+      "auc": {
+        "mean": 0.11551339285714286,
+        "se": 0.009175120874359025,
+        "n": 3
+      },
+      "derived": false
+    },
+    "ntp_fixed": {
+      "n_runs": 3,
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "sel_step": [
+        25000,
+        30000,
+        30000
+      ],
+      "dev_sel": {
+        "mean": 0.17708333333333334,
+        "se": 0.006889977372564038,
+        "n": 3
+      },
+      "heldout_sel": {
+        "mean": 0.1552734375,
+        "se": 0.00509780591255398,
+        "n": 3
+      },
+      "validity_sel": {
+        "mean": 0.15852864583333334,
+        "se": 0.005598106615208281,
+        "n": 3
+      },
+      "memo_own_sel": {
+        "mean": 1.0,
+        "se": 0.0,
+        "n": 3
+      },
+      "endpoint": {
+        "mean": 0.15104166666666666,
+        "se": 0.002604166666666667,
+        "n": 3
+      },
+      "peak": {
+        "mean": 0.17708333333333334,
+        "se": 0.006889977372564038,
+        "n": 3
+      },
+      "auc": {
+        "mean": 0.14174107142857142,
+        "se": 0.0053621783130206775,
+        "n": 3
+      },
+      "derived": false
+    },
+    "ntp_fixed_2hash": {
+      "n_runs": 3,
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "sel_step": [
+        20000,
+        15000,
+        30000
+      ],
+      "dev_sel": {
+        "mean": 0.22916666666666666,
+        "se": 0.018778912893041615,
+        "n": 3
+      },
+      "heldout_sel": {
+        "mean": 0.18961588541666666,
+        "se": 0.012093657544440056,
+        "n": 3
+      },
+      "validity_sel": {
+        "mean": 0.20377604166666666,
+        "se": 0.008430612523743403,
+        "n": 3
+      },
+      "memo_own_sel": {
+        "mean": 0.9557291666666666,
+        "se": 0.044270833333333336,
+        "n": 3
+      },
+      "endpoint": {
+        "mean": 0.15625,
+        "se": 0.011933790872280834,
+        "n": 3
+      },
+      "peak": {
+        "mean": 0.22916666666666666,
+        "se": 0.018778912893041615,
+        "n": 3
+      },
+      "auc": {
+        "mean": 0.1555059523809524,
+        "se": 0.005961093883542428,
+        "n": 3
+      },
+      "derived": false
+    },
+    "ntp_fixed_b128": {
+      "n_runs": 3,
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "sel_step": [
+        30000,
+        15000,
+        20000
+      ],
+      "dev_sel": {
+        "mean": 0.20052083333333334,
+        "se": 0.014499386361536517,
+        "n": 3
+      },
+      "heldout_sel": {
+        "mean": 0.1572265625,
+        "se": 0.006144070992245077,
+        "n": 3
+      },
+      "validity_sel": {
+        "mean": 0.16227213541666666,
+        "se": 0.0066791290783473935,
+        "n": 3
+      },
+      "memo_own_sel": {
+        "mean": 1.0,
+        "se": 0.0,
+        "n": 3
+      },
+      "endpoint": {
+        "mean": 0.125,
+        "se": 0.004510548978043952,
+        "n": 3
+      },
+      "peak": {
+        "mean": 0.20052083333333334,
+        "se": 0.014499386361536517,
+        "n": 3
+      },
+      "auc": {
+        "mean": 0.1488095238095238,
+        "se": 0.0052381427977413455,
+        "n": 3
+      },
+      "derived": false
+    }
+  },
+  "verdicts": {
+    "ntp_2tgt": {
+      "n_pairs": 3,
+      "mean_diff": 0.013834635416666666,
+      "min_diff": 0.00634765625,
+      "per_seed": [
+        0.0078125,
+        0.02734375,
+        0.00634765625
+      ],
+      "sources": [
+        "heldout"
+      ],
+      "verdict": "FAIL"
+    },
+    "ntp_2tgt_sample": {
+      "n_pairs": 3,
+      "mean_diff": 0.004231770833333333,
+      "min_diff": -0.037109375,
+      "per_seed": [
+        -0.0009765625,
+        0.05078125,
+        -0.037109375
+      ],
+      "sources": [
+        "heldout"
+      ],
+      "verdict": "FAIL"
+    },
+    "ntp_fixed_2hash": {
+      "n_pairs": 3,
+      "mean_diff": 0.034342447916666664,
+      "min_diff": 0.01708984375,
+      "per_seed": [
+        0.01708984375,
+        0.06640625,
+        0.01953125
+      ],
+      "sources": [
+        "heldout"
+      ],
+      "verdict": "PASS"
+    },
+    "ntp_fixed_b128": {
+      "n_pairs": 3,
+      "mean_diff": 0.001953125,
+      "min_diff": -0.00244140625,
+      "per_seed": [
+        -0.00244140625,
+        -0.001953125,
+        0.01025390625
+      ],
+      "sources": [
+        "heldout"
+      ],
+      "verdict": "FAIL"
+    }
+  },
+  "runs": [
+    {
+      "run": "runs/line-phase1/ntp_2tgt/s42",
+      "label": "ntp_2tgt",
+      "seed": 42,
+      "arm": "ntp_fixed_grouped",
+      "task": "line",
+      "data_dir": "data/line.12.9.10.10000",
+      "training_git_commit": "7e39cc4cf0d3b21514a635be5b36f2c69314d261",
+      "group_cfg": {
+        "pair_rule": "multi",
+        "tl_target": "nominal",
+        "ntp_lambda": 0.0,
+        "mtp_weight": 0.0,
+        "lock_at": -1,
+        "n_targets": 2,
+        "target_mode": "weighted"
+      },
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.203125,
+          "endpoint_step": 40000,
+          "peak": 0.25,
+          "peak_step": 35000,
+          "auc_mean": 0.13504464285714285
+        },
+        "test_validity": {
+          "endpoint": 0.21875,
+          "endpoint_step": 40000,
+          "peak": 0.25,
+          "peak_step": 35000,
+          "auc_mean": 0.13839285714285715
+        },
+        "test_novel_valid": {
+          "endpoint": 0.203125,
+          "endpoint_step": 40000,
+          "peak": 0.25,
+          "peak_step": 35000,
+          "auc_mean": 0.13504464285714285
+        },
+        "memo_own": {
+          "endpoint": 0.4453125,
+          "endpoint_step": 40000,
+          "peak": 0.5390625,
+          "peak_step": 25000,
+          "auc_mean": 0.24497767857142858
+        },
+        "train_seen": {
+          "endpoint": 0.9921875,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 35000,
+          "auc_mean": 0.5083705357142857
+        },
+        "train_memorization": {
+          "endpoint": 0.546875,
+          "endpoint_step": 40000,
+          "peak": 0.5546875,
+          "peak_step": 35000,
+          "auc_mean": 0.2622767857142857
+        },
+        "nll_own": {
+          "endpoint": 0.028887602034956217,
+          "endpoint_step": 40000,
+          "peak": 1.6585623621940613,
+          "peak_step": 10000,
+          "auc_mean": 0.6318459293605494
+        },
+        "nll_nominal": {
+          "endpoint": 0.029708391521126032,
+          "endpoint_step": 40000,
+          "peak": 1.6592111885547638,
+          "peak_step": 10000,
+          "auc_mean": 0.6334856213403067
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 35000,
+        "ckpt_dir": "runs/line-phase1/ntp_2tgt/s42/ckpts/step35000",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.25,
+          "test_validity": 0.25,
+          "test_novel_valid": 0.25,
+          "memo_own": 0.4453125,
+          "train_seen": 1.0,
+          "train_memorization": 0.5546875,
+          "nll_own": 0.03030567103996873,
+          "nll_nominal": 0.030696524772793055
+        },
+        "selection_manifest": "runs/line-phase1/selection.tsv"
+      },
+      "heldout": {
+        "creativity": 0.17236328125,
+        "test_validity": 0.193359375,
+        "test_novel_valid": 0.17236328125,
+        "memo_own": 0.4453125,
+        "train_seen": 1.0,
+        "train_memorization": 0.5546875,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      },
+      "heldout_identity": {
+        "step": 35000,
+        "model_dir": "runs/line-phase1/ntp_2tgt/s42/ckpts/step35000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "n_test_gen": 2048,
+        "n_train_gen": 128
+      }
+    },
+    {
+      "run": "runs/line-phase1/ntp_2tgt/s43",
+      "label": "ntp_2tgt",
+      "seed": 43,
+      "arm": "ntp_fixed_grouped",
+      "task": "line",
+      "data_dir": "data/line.12.9.10.10000",
+      "training_git_commit": "7e39cc4cf0d3b21514a635be5b36f2c69314d261",
+      "group_cfg": {
+        "pair_rule": "multi",
+        "tl_target": "nominal",
+        "ntp_lambda": 0.0,
+        "mtp_weight": 0.0,
+        "lock_at": -1,
+        "n_targets": 2,
+        "target_mode": "weighted"
+      },
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.125,
+          "endpoint_step": 40000,
+          "peak": 0.2265625,
+          "peak_step": 20000,
+          "auc_mean": 0.12388392857142858
+        },
+        "test_validity": {
+          "endpoint": 0.15625,
+          "endpoint_step": 40000,
+          "peak": 0.2265625,
+          "peak_step": 20000,
+          "auc_mean": 0.13392857142857142
+        },
+        "test_novel_valid": {
+          "endpoint": 0.125,
+          "endpoint_step": 40000,
+          "peak": 0.2265625,
+          "peak_step": 20000,
+          "auc_mean": 0.12388392857142858
+        },
+        "memo_own": {
+          "endpoint": 0.5,
+          "endpoint_step": 40000,
+          "peak": 0.5,
+          "peak_step": 40000,
+          "auc_mean": 0.28125
+        },
+        "train_seen": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 30000,
+          "auc_mean": 0.5892857142857143
+        },
+        "train_memorization": {
+          "endpoint": 0.5,
+          "endpoint_step": 40000,
+          "peak": 0.5390625,
+          "peak_step": 30000,
+          "auc_mean": 0.30691964285714285
+        },
+        "nll_own": {
+          "endpoint": 0.02678975136950612,
+          "endpoint_step": 40000,
+          "peak": 1.6609288156032562,
+          "peak_step": 5000,
+          "auc_mean": 0.5263929417955556
+        },
+        "nll_nominal": {
+          "endpoint": 0.031284614466130733,
+          "endpoint_step": 40000,
+          "peak": 1.661210060119629,
+          "peak_step": 5000,
+          "auc_mean": 0.5260491941257247
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 20000,
+        "ckpt_dir": "runs/line-phase1/ntp_2tgt/s43/ckpts/step20000",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.2265625,
+          "test_validity": 0.2265625,
+          "test_novel_valid": 0.2265625,
+          "memo_own": 0.296875,
+          "train_seen": 0.640625,
+          "train_memorization": 0.3359375,
+          "nll_own": 0.11479618027806282,
+          "nll_nominal": 0.1218518353998661
+        },
+        "selection_manifest": "runs/line-phase1/selection.tsv"
+      },
+      "heldout": {
+        "creativity": 0.17431640625,
+        "test_validity": 0.18115234375,
+        "test_novel_valid": 0.17431640625,
+        "memo_own": 0.296875,
+        "train_seen": 0.640625,
+        "train_memorization": 0.3359375,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      },
+      "heldout_identity": {
+        "step": 20000,
+        "model_dir": "runs/line-phase1/ntp_2tgt/s43/ckpts/step20000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "n_test_gen": 2048,
+        "n_train_gen": 128
+      }
+    },
+    {
+      "run": "runs/line-phase1/ntp_2tgt/s44",
+      "label": "ntp_2tgt",
+      "seed": 44,
+      "arm": "ntp_fixed_grouped",
+      "task": "line",
+      "data_dir": "data/line.12.9.10.10000",
+      "training_git_commit": "7e39cc4cf0d3b21514a635be5b36f2c69314d261",
+      "group_cfg": {
+        "pair_rule": "multi",
+        "tl_target": "nominal",
+        "ntp_lambda": 0.0,
+        "mtp_weight": 0.0,
+        "lock_at": -1,
+        "n_targets": 2,
+        "target_mode": "weighted"
+      },
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.21875,
+          "endpoint_step": 40000,
+          "peak": 0.21875,
+          "peak_step": 40000,
+          "auc_mean": 0.11941964285714286
+        },
+        "test_validity": {
+          "endpoint": 0.2265625,
+          "endpoint_step": 40000,
+          "peak": 0.2265625,
+          "peak_step": 40000,
+          "auc_mean": 0.12332589285714286
+        },
+        "test_novel_valid": {
+          "endpoint": 0.21875,
+          "endpoint_step": 40000,
+          "peak": 0.21875,
+          "peak_step": 40000,
+          "auc_mean": 0.11941964285714286
+        },
+        "memo_own": {
+          "endpoint": 0.453125,
+          "endpoint_step": 40000,
+          "peak": 0.4921875,
+          "peak_step": 25000,
+          "auc_mean": 0.28125
+        },
+        "train_seen": {
+          "endpoint": 0.9921875,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 30000,
+          "auc_mean": 0.5887276785714286
+        },
+        "train_memorization": {
+          "endpoint": 0.5390625,
+          "endpoint_step": 40000,
+          "peak": 0.5390625,
+          "peak_step": 40000,
+          "auc_mean": 0.30747767857142855
+        },
+        "nll_own": {
+          "endpoint": 0.02938491152599454,
+          "endpoint_step": 40000,
+          "peak": 1.6608308851718903,
+          "peak_step": 5000,
+          "auc_mean": 0.524167280943532
+        },
+        "nll_nominal": {
+          "endpoint": 0.02918619243428111,
+          "endpoint_step": 40000,
+          "peak": 1.659353256225586,
+          "peak_step": 5000,
+          "auc_mean": 0.5238587830016124
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 40000,
+        "ckpt_dir": "runs/line-phase1/ntp_2tgt/s44/ckpts/step40000",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.21875,
+          "test_validity": 0.2265625,
+          "test_novel_valid": 0.21875,
+          "memo_own": 0.453125,
+          "train_seen": 0.9921875,
+          "train_memorization": 0.5390625,
+          "nll_own": 0.02938491152599454,
+          "nll_nominal": 0.02918619243428111
+        },
+        "selection_manifest": "runs/line-phase1/selection.tsv"
+      },
+      "heldout": {
+        "creativity": 0.16064453125,
+        "test_validity": 0.17919921875,
+        "test_novel_valid": 0.16064453125,
+        "memo_own": 0.453125,
+        "train_seen": 0.9921875,
+        "train_memorization": 0.5390625,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      },
+      "heldout_identity": {
+        "step": 40000,
+        "model_dir": "runs/line-phase1/ntp_2tgt/s44/ckpts/step40000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "n_test_gen": 2048,
+        "n_train_gen": 128
+      }
+    },
+    {
+      "run": "runs/line-phase1/ntp_2tgt_sample/s42",
+      "label": "ntp_2tgt_sample",
+      "seed": 42,
+      "arm": "ntp_fixed_grouped",
+      "task": "line",
+      "data_dir": "data/line.12.9.10.10000",
+      "training_git_commit": "7e39cc4cf0d3b21514a635be5b36f2c69314d261",
+      "group_cfg": {
+        "pair_rule": "multi",
+        "tl_target": "nominal",
+        "ntp_lambda": 0.0,
+        "mtp_weight": 0.0,
+        "lock_at": -1,
+        "n_targets": 2,
+        "target_mode": "sample"
+      },
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.15625,
+          "endpoint_step": 40000,
+          "peak": 0.1796875,
+          "peak_step": 35000,
+          "auc_mean": 0.09821428571428571
+        },
+        "test_validity": {
+          "endpoint": 0.1640625,
+          "endpoint_step": 40000,
+          "peak": 0.1875,
+          "peak_step": 35000,
+          "auc_mean": 0.10323660714285714
+        },
+        "test_novel_valid": {
+          "endpoint": 0.15625,
+          "endpoint_step": 40000,
+          "peak": 0.1796875,
+          "peak_step": 35000,
+          "auc_mean": 0.09821428571428571
+        },
+        "memo_own": {
+          "endpoint": 0.40625,
+          "endpoint_step": 40000,
+          "peak": 0.484375,
+          "peak_step": 35000,
+          "auc_mean": 0.21651785714285715
+        },
+        "train_seen": {
+          "endpoint": 0.984375,
+          "endpoint_step": 40000,
+          "peak": 0.984375,
+          "peak_step": 35000,
+          "auc_mean": 0.46763392857142855
+        },
+        "train_memorization": {
+          "endpoint": 0.578125,
+          "endpoint_step": 40000,
+          "peak": 0.578125,
+          "peak_step": 40000,
+          "auc_mean": 0.25
+        },
+        "nll_own": {
+          "endpoint": 0.03596400050446391,
+          "endpoint_step": 40000,
+          "peak": 1.6583644151687622,
+          "peak_step": 5000,
+          "auc_mean": 0.605119684411745
+        },
+        "nll_nominal": {
+          "endpoint": 0.03737386502325535,
+          "endpoint_step": 40000,
+          "peak": 1.6589205861091614,
+          "peak_step": 5000,
+          "auc_mean": 0.6045640911906958
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 35000,
+        "ckpt_dir": "runs/line-phase1/ntp_2tgt_sample/s42/ckpts/step35000",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.1796875,
+          "test_validity": 0.1875,
+          "test_novel_valid": 0.1796875,
+          "memo_own": 0.484375,
+          "train_seen": 0.984375,
+          "train_memorization": 0.5,
+          "nll_own": 0.04275763127952814,
+          "nll_nominal": 0.03701448626816273
+        },
+        "selection_manifest": "runs/line-phase1/selection.tsv"
+      },
+      "heldout": {
+        "creativity": 0.16357421875,
+        "test_validity": 0.1689453125,
+        "test_novel_valid": 0.1640625,
+        "memo_own": 0.484375,
+        "train_seen": 0.984375,
+        "train_memorization": 0.5,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      },
+      "heldout_identity": {
+        "step": 35000,
+        "model_dir": "runs/line-phase1/ntp_2tgt_sample/s42/ckpts/step35000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "n_test_gen": 2048,
+        "n_train_gen": 128
+      }
+    },
+    {
+      "run": "runs/line-phase1/ntp_2tgt_sample/s43",
+      "label": "ntp_2tgt_sample",
+      "seed": 43,
+      "arm": "ntp_fixed_grouped",
+      "task": "line",
+      "data_dir": "data/line.12.9.10.10000",
+      "training_git_commit": "7e39cc4cf0d3b21514a635be5b36f2c69314d261",
+      "group_cfg": {
+        "pair_rule": "multi",
+        "tl_target": "nominal",
+        "ntp_lambda": 0.0,
+        "mtp_weight": 0.0,
+        "lock_at": -1,
+        "n_targets": 2,
+        "target_mode": "sample"
+      },
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.171875,
+          "endpoint_step": 40000,
+          "peak": 0.234375,
+          "peak_step": 35000,
+          "auc_mean": 0.12946428571428573
+        },
+        "test_validity": {
+          "endpoint": 0.1796875,
+          "endpoint_step": 40000,
+          "peak": 0.234375,
+          "peak_step": 35000,
+          "auc_mean": 0.13448660714285715
+        },
+        "test_novel_valid": {
+          "endpoint": 0.171875,
+          "endpoint_step": 40000,
+          "peak": 0.234375,
+          "peak_step": 35000,
+          "auc_mean": 0.12946428571428573
+        },
+        "memo_own": {
+          "endpoint": 0.546875,
+          "endpoint_step": 40000,
+          "peak": 0.546875,
+          "peak_step": 40000,
+          "auc_mean": 0.2578125
+        },
+        "train_seen": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 40000,
+          "auc_mean": 0.5066964285714286
+        },
+        "train_memorization": {
+          "endpoint": 0.453125,
+          "endpoint_step": 40000,
+          "peak": 0.484375,
+          "peak_step": 30000,
+          "auc_mean": 0.24776785714285715
+        },
+        "nll_own": {
+          "endpoint": 0.03200377058237791,
+          "endpoint_step": 40000,
+          "peak": 1.659613311290741,
+          "peak_step": 5000,
+          "auc_mean": 0.5536601635893541
+        },
+        "nll_nominal": {
+          "endpoint": 0.03765648417174816,
+          "endpoint_step": 40000,
+          "peak": 1.6597849428653717,
+          "peak_step": 5000,
+          "auc_mean": 0.5521615043814693
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 35000,
+        "ckpt_dir": "runs/line-phase1/ntp_2tgt_sample/s43/ckpts/step35000",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.234375,
+          "test_validity": 0.234375,
+          "test_novel_valid": 0.234375,
+          "memo_own": 0.5078125,
+          "train_seen": 0.9921875,
+          "train_memorization": 0.484375,
+          "nll_own": 0.034373932518064976,
+          "nll_nominal": 0.03629129473119974
+        },
+        "selection_manifest": "runs/line-phase1/selection.tsv"
+      },
+      "heldout": {
+        "creativity": 0.19775390625,
+        "test_validity": 0.20263671875,
+        "test_novel_valid": 0.19775390625,
+        "memo_own": 0.5078125,
+        "train_seen": 0.9921875,
+        "train_memorization": 0.484375,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      },
+      "heldout_identity": {
+        "step": 35000,
+        "model_dir": "runs/line-phase1/ntp_2tgt_sample/s43/ckpts/step35000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "n_test_gen": 2048,
+        "n_train_gen": 128
+      }
+    },
+    {
+      "run": "runs/line-phase1/ntp_2tgt_sample/s44",
+      "label": "ntp_2tgt_sample",
+      "seed": 44,
+      "arm": "ntp_fixed_grouped",
+      "task": "line",
+      "data_dir": "data/line.12.9.10.10000",
+      "training_git_commit": "7e39cc4cf0d3b21514a635be5b36f2c69314d261",
+      "group_cfg": {
+        "pair_rule": "multi",
+        "tl_target": "nominal",
+        "ntp_lambda": 0.0,
+        "mtp_weight": 0.0,
+        "lock_at": -1,
+        "n_targets": 2,
+        "target_mode": "sample"
+      },
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.1640625,
+          "endpoint_step": 40000,
+          "peak": 0.2265625,
+          "peak_step": 20000,
+          "auc_mean": 0.11886160714285714
+        },
+        "test_validity": {
+          "endpoint": 0.1640625,
+          "endpoint_step": 40000,
+          "peak": 0.2265625,
+          "peak_step": 20000,
+          "auc_mean": 0.11886160714285714
+        },
+        "test_novel_valid": {
+          "endpoint": 0.1640625,
+          "endpoint_step": 40000,
+          "peak": 0.2265625,
+          "peak_step": 20000,
+          "auc_mean": 0.11886160714285714
+        },
+        "memo_own": {
+          "endpoint": 0.484375,
+          "endpoint_step": 40000,
+          "peak": 0.5546875,
+          "peak_step": 35000,
+          "auc_mean": 0.21205357142857142
+        },
+        "train_seen": {
+          "endpoint": 0.9921875,
+          "endpoint_step": 40000,
+          "peak": 0.9921875,
+          "peak_step": 35000,
+          "auc_mean": 0.43470982142857145
+        },
+        "train_memorization": {
+          "endpoint": 0.5078125,
+          "endpoint_step": 40000,
+          "peak": 0.53125,
+          "peak_step": 30000,
+          "auc_mean": 0.22042410714285715
+        },
+        "nll_own": {
+          "endpoint": 0.03994762524962425,
+          "endpoint_step": 40000,
+          "peak": 1.6596007943153381,
+          "peak_step": 10000,
+          "auc_mean": 0.668986003579838
+        },
+        "nll_nominal": {
+          "endpoint": 0.03346998617053032,
+          "endpoint_step": 40000,
+          "peak": 1.6589894890785217,
+          "peak_step": 5000,
+          "auc_mean": 0.6728931983400669
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 20000,
+        "ckpt_dir": "runs/line-phase1/ntp_2tgt_sample/s44/ckpts/step20000",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.2265625,
+          "test_validity": 0.2265625,
+          "test_novel_valid": 0.2265625,
+          "memo_own": 0.0078125,
+          "train_seen": 0.0078125,
+          "train_memorization": 0.0,
+          "nll_own": 0.614873394370079,
+          "nll_nominal": 0.6307988911867142
+        },
+        "selection_manifest": "runs/line-phase1/selection.tsv"
+      },
+      "heldout": {
+        "creativity": 0.1171875,
+        "test_validity": 0.12255859375,
+        "test_novel_valid": 0.1171875,
+        "memo_own": 0.0078125,
+        "train_seen": 0.0078125,
+        "train_memorization": 0.0,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      },
+      "heldout_identity": {
+        "step": 20000,
+        "model_dir": "runs/line-phase1/ntp_2tgt_sample/s44/ckpts/step20000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "n_test_gen": 2048,
+        "n_train_gen": 128
+      }
+    },
+    {
+      "run": "runs/line-phase1/ntp_fixed/s42",
+      "label": "ntp_fixed",
+      "seed": 42,
+      "arm": "ntp_fixed",
+      "task": "line",
+      "data_dir": "data/line.12.9.10.10000",
+      "training_git_commit": "7e39cc4cf0d3b21514a635be5b36f2c69314d261",
+      "group_cfg": null,
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.1484375,
+          "endpoint_step": 40000,
+          "peak": 0.1875,
+          "peak_step": 25000,
+          "auc_mean": 0.14564732142857142
+        },
+        "test_validity": {
+          "endpoint": 0.15625,
+          "endpoint_step": 40000,
+          "peak": 0.1875,
+          "peak_step": 20000,
+          "auc_mean": 0.15178571428571427
+        },
+        "test_novel_valid": {
+          "endpoint": 0.1484375,
+          "endpoint_step": 40000,
+          "peak": 0.1875,
+          "peak_step": 25000,
+          "auc_mean": 0.14564732142857142
+        },
+        "memo_own": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 20000,
+          "auc_mean": 0.7790178571428571
+        },
+        "train_seen": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 20000,
+          "auc_mean": 0.7801339285714286
+        },
+        "train_memorization": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 20000,
+          "auc_mean": 0.7790178571428571
+        },
+        "nll_own": {
+          "endpoint": 3.2338210758098285e-05,
+          "endpoint_step": 40000,
+          "peak": 1.6572254002094269,
+          "peak_step": 5000,
+          "auc_mean": 0.1614393702551849
+        },
+        "nll_nominal": {
+          "endpoint": 3.2338210758098285e-05,
+          "endpoint_step": 40000,
+          "peak": 1.6572254002094269,
+          "peak_step": 5000,
+          "auc_mean": 0.1614393702551849
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 25000,
+        "ckpt_dir": "runs/line-phase1/ntp_fixed/s42/ckpts/step25000",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.1875,
+          "test_validity": 0.1875,
+          "test_novel_valid": 0.1875,
+          "memo_own": 1.0,
+          "train_seen": 1.0,
+          "train_memorization": 1.0,
+          "nll_own": 0.0007519347273046151,
+          "nll_nominal": 0.0007519347273046151
+        },
+        "selection_manifest": "runs/line-phase1/selection.tsv"
+      },
+      "heldout": {
+        "creativity": 0.16455078125,
+        "test_validity": 0.16943359375,
+        "test_novel_valid": 0.16455078125,
+        "memo_own": 1.0,
+        "train_seen": 1.0,
+        "train_memorization": 1.0,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      },
+      "heldout_identity": {
+        "step": 25000,
+        "model_dir": "runs/line-phase1/ntp_fixed/s42/ckpts/step25000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "n_test_gen": 2048,
+        "n_train_gen": 128
+      }
+    },
+    {
+      "run": "runs/line-phase1/ntp_fixed/s43",
+      "label": "ntp_fixed",
+      "seed": 43,
+      "arm": "ntp_fixed",
+      "task": "line",
+      "data_dir": "data/line.12.9.10.10000",
+      "training_git_commit": "7e39cc4cf0d3b21514a635be5b36f2c69314d261",
+      "group_cfg": null,
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.15625,
+          "endpoint_step": 40000,
+          "peak": 0.1796875,
+          "peak_step": 30000,
+          "auc_mean": 0.1484375
+        },
+        "test_validity": {
+          "endpoint": 0.1640625,
+          "endpoint_step": 40000,
+          "peak": 0.2109375,
+          "peak_step": 30000,
+          "auc_mean": 0.15457589285714285
+        },
+        "test_novel_valid": {
+          "endpoint": 0.15625,
+          "endpoint_step": 40000,
+          "peak": 0.1796875,
+          "peak_step": 30000,
+          "auc_mean": 0.1484375
+        },
+        "memo_own": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 25000,
+          "auc_mean": 0.7756696428571429
+        },
+        "train_seen": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 25000,
+          "auc_mean": 0.7767857142857143
+        },
+        "train_memorization": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 25000,
+          "auc_mean": 0.7756696428571429
+        },
+        "nll_own": {
+          "endpoint": 0.00010991534509230405,
+          "endpoint_step": 40000,
+          "peak": 1.6562562584877014,
+          "peak_step": 5000,
+          "auc_mean": 0.18437122692025046
+        },
+        "nll_nominal": {
+          "endpoint": 0.00010991534509230405,
+          "endpoint_step": 40000,
+          "peak": 1.6562562584877014,
+          "peak_step": 5000,
+          "auc_mean": 0.18437122692025046
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 30000,
+        "ckpt_dir": "runs/line-phase1/ntp_fixed/s43/ckpts/step30000",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.1796875,
+          "test_validity": 0.2109375,
+          "test_novel_valid": 0.1796875,
+          "memo_own": 1.0,
+          "train_seen": 1.0,
+          "train_memorization": 1.0,
+          "nll_own": 0.00017759874754119664,
+          "nll_nominal": 0.00017759874754119664
+        },
+        "selection_manifest": "runs/line-phase1/selection.tsv"
+      },
+      "heldout": {
+        "creativity": 0.14697265625,
+        "test_validity": 0.15087890625,
+        "test_novel_valid": 0.14697265625,
+        "memo_own": 1.0,
+        "train_seen": 1.0,
+        "train_memorization": 1.0,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      },
+      "heldout_identity": {
+        "step": 30000,
+        "model_dir": "runs/line-phase1/ntp_fixed/s43/ckpts/step30000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "n_test_gen": 2048,
+        "n_train_gen": 128
+      }
+    },
+    {
+      "run": "runs/line-phase1/ntp_fixed/s44",
+      "label": "ntp_fixed",
+      "seed": 44,
+      "arm": "ntp_fixed",
+      "task": "line",
+      "data_dir": "data/line.12.9.10.10000",
+      "training_git_commit": "7e39cc4cf0d3b21514a635be5b36f2c69314d261",
+      "group_cfg": null,
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.1484375,
+          "endpoint_step": 40000,
+          "peak": 0.1640625,
+          "peak_step": 30000,
+          "auc_mean": 0.13113839285714285
+        },
+        "test_validity": {
+          "endpoint": 0.1484375,
+          "endpoint_step": 40000,
+          "peak": 0.1640625,
+          "peak_step": 30000,
+          "auc_mean": 0.13225446428571427
+        },
+        "test_novel_valid": {
+          "endpoint": 0.1484375,
+          "endpoint_step": 40000,
+          "peak": 0.1640625,
+          "peak_step": 30000,
+          "auc_mean": 0.13113839285714285
+        },
+        "memo_own": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 20000,
+          "auc_mean": 0.7622767857142857
+        },
+        "train_seen": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 20000,
+          "auc_mean": 0.7633928571428571
+        },
+        "train_memorization": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 20000,
+          "auc_mean": 0.7622767857142857
+        },
+        "nll_own": {
+          "endpoint": 0.00011438609089964302,
+          "endpoint_step": 40000,
+          "peak": 1.6593390703201294,
+          "peak_step": 5000,
+          "auc_mean": 0.17292794301166786
+        },
+        "nll_nominal": {
+          "endpoint": 0.00011438609089964302,
+          "endpoint_step": 40000,
+          "peak": 1.6593390703201294,
+          "peak_step": 5000,
+          "auc_mean": 0.17292794301166786
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 30000,
+        "ckpt_dir": "runs/line-phase1/ntp_fixed/s44/ckpts/step30000",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.1640625,
+          "test_validity": 0.1640625,
+          "test_novel_valid": 0.1640625,
+          "memo_own": 1.0,
+          "train_seen": 1.0,
+          "train_memorization": 1.0,
+          "nll_own": 0.00017526952797197737,
+          "nll_nominal": 0.00017526952797197737
+        },
+        "selection_manifest": "runs/line-phase1/selection.tsv"
+      },
+      "heldout": {
+        "creativity": 0.154296875,
+        "test_validity": 0.1552734375,
+        "test_novel_valid": 0.154296875,
+        "memo_own": 1.0,
+        "train_seen": 1.0,
+        "train_memorization": 1.0,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      },
+      "heldout_identity": {
+        "step": 30000,
+        "model_dir": "runs/line-phase1/ntp_fixed/s44/ckpts/step30000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "n_test_gen": 2048,
+        "n_train_gen": 128
+      }
+    },
+    {
+      "run": "runs/line-phase1/ntp_fixed_2hash/s42",
+      "label": "ntp_fixed_2hash",
+      "seed": 42,
+      "arm": "ntp_fixed",
+      "task": "line",
+      "data_dir": "data/line.12.9.10.10000.dup2",
+      "training_git_commit": "7e39cc4cf0d3b21514a635be5b36f2c69314d261",
+      "group_cfg": null,
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.1640625,
+          "endpoint_step": 40000,
+          "peak": 0.203125,
+          "peak_step": 20000,
+          "auc_mean": 0.15011160714285715
+        },
+        "test_validity": {
+          "endpoint": 0.1640625,
+          "endpoint_step": 40000,
+          "peak": 0.203125,
+          "peak_step": 20000,
+          "auc_mean": 0.15345982142857142
+        },
+        "test_novel_valid": {
+          "endpoint": 0.1640625,
+          "endpoint_step": 40000,
+          "peak": 0.203125,
+          "peak_step": 20000,
+          "auc_mean": 0.15011160714285715
+        },
+        "memo_own": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 20000,
+          "auc_mean": 0.7198660714285714
+        },
+        "train_seen": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 20000,
+          "auc_mean": 0.7209821428571429
+        },
+        "train_memorization": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 20000,
+          "auc_mean": 0.7198660714285714
+        },
+        "nll_own": {
+          "endpoint": 3.321199847050593e-05,
+          "endpoint_step": 40000,
+          "peak": 1.6580171287059784,
+          "peak_step": 5000,
+          "auc_mean": 0.31360323768879944
+        },
+        "nll_nominal": {
+          "endpoint": 3.321199847050593e-05,
+          "endpoint_step": 40000,
+          "peak": 1.6580171287059784,
+          "peak_step": 5000,
+          "auc_mean": 0.31360323768879944
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 20000,
+        "ckpt_dir": "runs/line-phase1/ntp_fixed_2hash/s42/ckpts/step20000",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.203125,
+          "test_validity": 0.203125,
+          "test_novel_valid": 0.203125,
+          "memo_own": 1.0,
+          "train_seen": 1.0,
+          "train_memorization": 1.0,
+          "nll_own": 0.005330367130227387,
+          "nll_nominal": 0.005330367130227387
+        },
+        "selection_manifest": "runs/line-phase1/selection.tsv"
+      },
+      "heldout": {
+        "creativity": 0.181640625,
+        "test_validity": 0.18798828125,
+        "test_novel_valid": 0.18310546875,
+        "memo_own": null,
+        "train_seen": 1.0,
+        "train_memorization": 1.0,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      },
+      "heldout_identity": {
+        "step": 20000,
+        "model_dir": "runs/line-phase1/ntp_fixed_2hash/s42/ckpts/step20000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "n_test_gen": 2048,
+        "n_train_gen": 128
+      }
+    },
+    {
+      "run": "runs/line-phase1/ntp_fixed_2hash/s43",
+      "label": "ntp_fixed_2hash",
+      "seed": 43,
+      "arm": "ntp_fixed",
+      "task": "line",
+      "data_dir": "data/line.12.9.10.10000.dup2",
+      "training_git_commit": "7e39cc4cf0d3b21514a635be5b36f2c69314d261",
+      "group_cfg": null,
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.1328125,
+          "endpoint_step": 40000,
+          "peak": 0.21875,
+          "peak_step": 15000,
+          "auc_mean": 0.14899553571428573
+        },
+        "test_validity": {
+          "endpoint": 0.1640625,
+          "endpoint_step": 40000,
+          "peak": 0.2265625,
+          "peak_step": 15000,
+          "auc_mean": 0.16015625
+        },
+        "test_novel_valid": {
+          "endpoint": 0.1328125,
+          "endpoint_step": 40000,
+          "peak": 0.21875,
+          "peak_step": 15000,
+          "auc_mean": 0.14899553571428573
+        },
+        "memo_own": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 25000,
+          "auc_mean": 0.765625
+        },
+        "train_seen": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 25000,
+          "auc_mean": 0.7667410714285714
+        },
+        "train_memorization": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 25000,
+          "auc_mean": 0.765625
+        },
+        "nll_own": {
+          "endpoint": 1.1087757457062253e-05,
+          "endpoint_step": 40000,
+          "peak": 1.658862680196762,
+          "peak_step": 5000,
+          "auc_mean": 0.25548021155335776
+        },
+        "nll_nominal": {
+          "endpoint": 1.1087757457062253e-05,
+          "endpoint_step": 40000,
+          "peak": 1.658862680196762,
+          "peak_step": 5000,
+          "auc_mean": 0.25548021155335776
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 15000,
+        "ckpt_dir": "runs/line-phase1/ntp_fixed_2hash/s43/ckpts/step15000",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.21875,
+          "test_validity": 0.2265625,
+          "test_novel_valid": 0.21875,
+          "memo_own": 0.8671875,
+          "train_seen": 0.8671875,
+          "train_memorization": 0.8671875,
+          "nll_own": 0.035871608182787895,
+          "nll_nominal": 0.035871608182787895
+        },
+        "selection_manifest": "runs/line-phase1/selection.tsv"
+      },
+      "heldout": {
+        "creativity": 0.21337890625,
+        "test_validity": 0.216796875,
+        "test_novel_valid": 0.21337890625,
+        "memo_own": null,
+        "train_seen": 0.8671875,
+        "train_memorization": 0.8671875,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      },
+      "heldout_identity": {
+        "step": 15000,
+        "model_dir": "runs/line-phase1/ntp_fixed_2hash/s43/ckpts/step15000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "n_test_gen": 2048,
+        "n_train_gen": 128
+      }
+    },
+    {
+      "run": "runs/line-phase1/ntp_fixed_2hash/s44",
+      "label": "ntp_fixed_2hash",
+      "seed": 44,
+      "arm": "ntp_fixed",
+      "task": "line",
+      "data_dir": "data/line.12.9.10.10000.dup2",
+      "training_git_commit": "7e39cc4cf0d3b21514a635be5b36f2c69314d261",
+      "group_cfg": null,
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.171875,
+          "endpoint_step": 40000,
+          "peak": 0.265625,
+          "peak_step": 30000,
+          "auc_mean": 0.16741071428571427
+        },
+        "test_validity": {
+          "endpoint": 0.234375,
+          "endpoint_step": 40000,
+          "peak": 0.28125,
+          "peak_step": 30000,
+          "auc_mean": 0.1953125
+        },
+        "test_novel_valid": {
+          "endpoint": 0.171875,
+          "endpoint_step": 40000,
+          "peak": 0.265625,
+          "peak_step": 30000,
+          "auc_mean": 0.16741071428571427
+        },
+        "memo_own": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 20000,
+          "auc_mean": 0.7712053571428571
+        },
+        "train_seen": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 20000,
+          "auc_mean": 0.7712053571428571
+        },
+        "train_memorization": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 20000,
+          "auc_mean": 0.7712053571428571
+        },
+        "nll_own": {
+          "endpoint": 2.6639171437636833e-05,
+          "endpoint_step": 40000,
+          "peak": 1.65702486038208,
+          "peak_step": 5000,
+          "auc_mean": 0.25697413032287386
+        },
+        "nll_nominal": {
+          "endpoint": 2.6639171437636833e-05,
+          "endpoint_step": 40000,
+          "peak": 1.65702486038208,
+          "peak_step": 5000,
+          "auc_mean": 0.25697413032287386
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 30000,
+        "ckpt_dir": "runs/line-phase1/ntp_fixed_2hash/s44/ckpts/step30000",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.265625,
+          "test_validity": 0.28125,
+          "test_novel_valid": 0.265625,
+          "memo_own": 1.0,
+          "train_seen": 1.0,
+          "train_memorization": 1.0,
+          "nll_own": 6.019086231390247e-05,
+          "nll_nominal": 6.019086231390247e-05
+        },
+        "selection_manifest": "runs/line-phase1/selection.tsv"
+      },
+      "heldout": {
+        "creativity": 0.173828125,
+        "test_validity": 0.20654296875,
+        "test_novel_valid": 0.173828125,
+        "memo_own": null,
+        "train_seen": 1.0,
+        "train_memorization": 1.0,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      },
+      "heldout_identity": {
+        "step": 30000,
+        "model_dir": "runs/line-phase1/ntp_fixed_2hash/s44/ckpts/step30000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "n_test_gen": 2048,
+        "n_train_gen": 128
+      }
+    },
+    {
+      "run": "runs/line-phase1/ntp_fixed_b128/s42",
+      "label": "ntp_fixed_b128",
+      "seed": 42,
+      "arm": "ntp_fixed",
+      "task": "line",
+      "data_dir": "data/line.12.9.10.10000",
+      "training_git_commit": "7e39cc4cf0d3b21514a635be5b36f2c69314d261",
+      "group_cfg": null,
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.125,
+          "endpoint_step": 40000,
+          "peak": 0.2109375,
+          "peak_step": 30000,
+          "auc_mean": 0.15066964285714285
+        },
+        "test_validity": {
+          "endpoint": 0.125,
+          "endpoint_step": 40000,
+          "peak": 0.21875,
+          "peak_step": 30000,
+          "auc_mean": 0.15290178571428573
+        },
+        "test_novel_valid": {
+          "endpoint": 0.125,
+          "endpoint_step": 40000,
+          "peak": 0.2109375,
+          "peak_step": 30000,
+          "auc_mean": 0.15066964285714285
+        },
+        "memo_own": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 15000,
+          "auc_mean": 0.9140625
+        },
+        "train_seen": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 15000,
+          "auc_mean": 0.9151785714285714
+        },
+        "train_memorization": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 15000,
+          "auc_mean": 0.9140625
+        },
+        "nll_own": {
+          "endpoint": 5.8921330889916135e-06,
+          "endpoint_step": 40000,
+          "peak": 1.6574046313762665,
+          "peak_step": 5000,
+          "auc_mean": 0.12201199581103594
+        },
+        "nll_nominal": {
+          "endpoint": 5.8921330889916135e-06,
+          "endpoint_step": 40000,
+          "peak": 1.6574046313762665,
+          "peak_step": 5000,
+          "auc_mean": 0.12201199581103594
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 30000,
+        "ckpt_dir": "runs/line-phase1/ntp_fixed_b128/s42/ckpts/step30000",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.2109375,
+          "test_validity": 0.21875,
+          "test_novel_valid": 0.2109375,
+          "memo_own": 1.0,
+          "train_seen": 1.0,
+          "train_memorization": 1.0,
+          "nll_own": 1.28953855664804e-05,
+          "nll_nominal": 1.28953855664804e-05
+        },
+        "selection_manifest": "runs/line-phase1/selection.tsv"
+      },
+      "heldout": {
+        "creativity": 0.162109375,
+        "test_validity": 0.16845703125,
+        "test_novel_valid": 0.162109375,
+        "memo_own": 1.0,
+        "train_seen": 1.0,
+        "train_memorization": 1.0,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      },
+      "heldout_identity": {
+        "step": 30000,
+        "model_dir": "runs/line-phase1/ntp_fixed_b128/s42/ckpts/step30000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "n_test_gen": 2048,
+        "n_train_gen": 128
+      }
+    },
+    {
+      "run": "runs/line-phase1/ntp_fixed_b128/s43",
+      "label": "ntp_fixed_b128",
+      "seed": 43,
+      "arm": "ntp_fixed",
+      "task": "line",
+      "data_dir": "data/line.12.9.10.10000",
+      "training_git_commit": "7e39cc4cf0d3b21514a635be5b36f2c69314d261",
+      "group_cfg": null,
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.1171875,
+          "endpoint_step": 40000,
+          "peak": 0.171875,
+          "peak_step": 15000,
+          "auc_mean": 0.13895089285714285
+        },
+        "test_validity": {
+          "endpoint": 0.140625,
+          "endpoint_step": 40000,
+          "peak": 0.171875,
+          "peak_step": 15000,
+          "auc_mean": 0.14174107142857142
+        },
+        "test_novel_valid": {
+          "endpoint": 0.1171875,
+          "endpoint_step": 40000,
+          "peak": 0.171875,
+          "peak_step": 15000,
+          "auc_mean": 0.13895089285714285
+        },
+        "memo_own": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 15000,
+          "auc_mean": 0.8136160714285714
+        },
+        "train_seen": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 15000,
+          "auc_mean": 0.8169642857142857
+        },
+        "train_memorization": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 15000,
+          "auc_mean": 0.8136160714285714
+        },
+        "nll_own": {
+          "endpoint": 2.9481877845682902e-06,
+          "endpoint_step": 40000,
+          "peak": 1.6575947701931,
+          "peak_step": 5000,
+          "auc_mean": 0.14242308794579067
+        },
+        "nll_nominal": {
+          "endpoint": 2.9481877845682902e-06,
+          "endpoint_step": 40000,
+          "peak": 1.6575947701931,
+          "peak_step": 5000,
+          "auc_mean": 0.14242308794579067
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 15000,
+        "ckpt_dir": "runs/line-phase1/ntp_fixed_b128/s43/ckpts/step15000",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.171875,
+          "test_validity": 0.171875,
+          "test_novel_valid": 0.171875,
+          "memo_own": 1.0,
+          "train_seen": 1.0,
+          "train_memorization": 1.0,
+          "nll_own": 0.001231781003298238,
+          "nll_nominal": 0.001231781003298238
+        },
+        "selection_manifest": "runs/line-phase1/selection.tsv"
+      },
+      "heldout": {
+        "creativity": 0.14501953125,
+        "test_validity": 0.14892578125,
+        "test_novel_valid": 0.14501953125,
+        "memo_own": 1.0,
+        "train_seen": 1.0,
+        "train_memorization": 1.0,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      },
+      "heldout_identity": {
+        "step": 15000,
+        "model_dir": "runs/line-phase1/ntp_fixed_b128/s43/ckpts/step15000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "n_test_gen": 2048,
+        "n_train_gen": 128
+      }
+    },
+    {
+      "run": "runs/line-phase1/ntp_fixed_b128/s44",
+      "label": "ntp_fixed_b128",
+      "seed": 44,
+      "arm": "ntp_fixed",
+      "task": "line",
+      "data_dir": "data/line.12.9.10.10000",
+      "training_git_commit": "7e39cc4cf0d3b21514a635be5b36f2c69314d261",
+      "group_cfg": null,
+      "steps": 40000,
+      "traj": {
+        "creativity": {
+          "endpoint": 0.1328125,
+          "endpoint_step": 40000,
+          "peak": 0.21875,
+          "peak_step": 20000,
+          "auc_mean": 0.15680803571428573
+        },
+        "test_validity": {
+          "endpoint": 0.1328125,
+          "endpoint_step": 40000,
+          "peak": 0.2265625,
+          "peak_step": 20000,
+          "auc_mean": 0.16015625
+        },
+        "test_novel_valid": {
+          "endpoint": 0.1328125,
+          "endpoint_step": 40000,
+          "peak": 0.21875,
+          "peak_step": 20000,
+          "auc_mean": 0.15680803571428573
+        },
+        "memo_own": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 15000,
+          "auc_mean": 0.9185267857142857
+        },
+        "train_seen": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 15000,
+          "auc_mean": 0.9185267857142857
+        },
+        "train_memorization": {
+          "endpoint": 1.0,
+          "endpoint_step": 40000,
+          "peak": 1.0,
+          "peak_step": 15000,
+          "auc_mean": 0.9185267857142857
+        },
+        "nll_own": {
+          "endpoint": 3.0994760180647063e-06,
+          "endpoint_step": 40000,
+          "peak": 1.6587826013565063,
+          "peak_step": 5000,
+          "auc_mean": 0.12183155414028694
+        },
+        "nll_nominal": {
+          "endpoint": 3.0994760180647063e-06,
+          "endpoint_step": 40000,
+          "peak": 1.6587826013565063,
+          "peak_step": 5000,
+          "auc_mean": 0.12183155414028694
+        }
+      },
+      "creativity_derived": false,
+      "selected": {
+        "step": 20000,
+        "ckpt_dir": "runs/line-phase1/ntp_fixed_b128/s44/ckpts/step20000",
+        "restricted_to_ckpts": true,
+        "dev": {
+          "creativity": 0.21875,
+          "test_validity": 0.2265625,
+          "test_novel_valid": 0.21875,
+          "memo_own": 1.0,
+          "train_seen": 1.0,
+          "train_memorization": 1.0,
+          "nll_own": 3.46320407516032e-05,
+          "nll_nominal": 3.46320407516032e-05
+        },
+        "selection_manifest": "runs/line-phase1/selection.tsv"
+      },
+      "heldout": {
+        "creativity": 0.16455078125,
+        "test_validity": 0.16943359375,
+        "test_novel_valid": 0.16455078125,
+        "memo_own": 1.0,
+        "train_seen": 1.0,
+        "train_memorization": 1.0,
+        "nll_own": null,
+        "nll_nominal": null,
+        "n_test_gen": 2048
+      },
+      "heldout_identity": {
+        "step": 20000,
+        "model_dir": "runs/line-phase1/ntp_fixed_b128/s44/ckpts/step20000",
+        "probe_file": "data/line.12.9.10.10000/heldout.json",
+        "n_test_gen": 2048,
+        "n_train_gen": 128
+      }
+    }
+  ]
+}

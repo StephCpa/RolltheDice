@@ -21,6 +21,7 @@ import torch.nn.functional as F
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import diagnose  # noqa: E402
 import evaluator  # noqa: E402
+import rescore  # noqa: E402
 import train  # noqa: E402
 
 NODES = [f"<a_{i}>" for i in range(10)]
@@ -71,10 +72,78 @@ def test_evaluator_selftest():
     assert evaluator.selftest() == 0
 
 
+def test_launcher_selection_validator_syntax():
+    """The launcher embeds a Python row validator; keep its heredoc executable."""
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "run_stage0b.sh")
+    text = open(path, encoding="utf-8").read()
+    start = text.index("validate_selection_row () {")
+    body = text.index("<<'PY'\n", start) + len("<<'PY'\n")
+    end = text.index("\nPY\n", body)
+    compile(text[body:end], path + ":validate_selection_row", "exec")
+
 def test_truncate_answer():
     assert train.truncate_answer("x</a><|endoftext|><|endoftext|>") == "x</a>"
     assert train.truncate_answer("x</a>y</a>") == "x</a>"
     assert train.truncate_answer("no end") == "no end"
+
+
+def test_rescore_provenance_guards():
+    """事件 #9 防回归：任务、checkpoint、评价器和 probe 身份必须可复用地核对。"""
+    root = tempfile.mkdtemp(prefix="p6_rescore_guard_")
+    run = os.path.join(root, "run")
+    ck = os.path.join(run, "ckpts", "step5")
+    data = os.path.join(root, "data")
+    out = os.path.join(root, "heldout")
+    os.makedirs(ck)
+    os.makedirs(data)
+    json.dump({"task": "line", "steps": 5}, open(os.path.join(run, "run_meta.json"), "w"))
+    json.dump([{"input_text": "h<q>x", "target_text": "h<q>y</a>"}],
+              open(os.path.join(data, "train.json"), "w"))
+    json.dump([{"type": "test", "input_text": "h2<q>x", "target_text": "h2<q>y</a>"}],
+              open(os.path.join(data, "test.json"), "w"))
+    probe = os.path.join(root, "heldout.json")
+    json.dump([{"type": "test", "input_text": "h3<q>x", "target_text": "h3<q>y</a>"}],
+              open(probe, "w"))
+
+    try:
+        rescore.parse_args(["--model_dir", ck, "--data_dir", data, "--out", out, "--step", "5"])
+        raised = False
+    except SystemExit:
+        raised = True
+    assert raised  # 缺少任务不得静默回退 Circle
+
+    args = rescore.parse_args(["--model_dir", ck, "--data_dir", data, "--task", "line",
+                               "--probe_file", probe, "--out", out, "--step", "5"])
+    meta_path, meta = rescore.load_run_meta(ck)
+    identity = rescore.build_identity(args, ck, meta_path, meta, ([], json.load(open(probe))))
+    assert identity["task"] == "line" and identity["checkpoint_identity"]["step"] == 5
+    stray = os.path.join(root, "step5")
+    os.makedirs(stray)
+    try:
+        rescore.checkpoint_identity(stray, 5, meta)
+        raised = False
+    except SystemExit:
+        raised = True
+    assert raised  # 同名目录但不在 run/ckpts 下不得冒充选中 checkpoint
+    os.makedirs(out)
+    open(os.path.join(out, "scores.jsonl"), "w").write("{}\n")
+    try:
+        rescore.assert_metadata_compatible(out, identity)
+        raised = False
+    except SystemExit:
+        raised = True
+    assert raised  # 旧结果没有 provenance 时不得覆盖
+    json.dump(identity, open(os.path.join(out, "rescore_meta.json"), "w"))
+    assert rescore.assert_metadata_compatible(out, identity)
+
+    bad = rescore.parse_args(["--model_dir", ck, "--data_dir", data, "--task", "circle",
+                              "--out", os.path.join(root, "bad"), "--step", "5"])
+    try:
+        rescore.assert_task_matches(bad.task, meta_path, meta)
+        raised = False
+    except SystemExit:
+        raised = True
+    assert raised  # 调用方必须先发现 metadata task 冲突
 
 
 # ---------------- 组级训练步骤 ----------------
@@ -537,6 +606,15 @@ def test_report_selection_and_verdict():
     assert by["ref1"]["selected"]["step"] == 20                 # 平局取最早
     assert by["arm1"]["selected"]["step"] == 20                 # 第 10 步无检查点，不可选
     assert r["verdicts"]["arm"]["verdict"] == "PASS" and len(open(sel).readlines()) == 6
+    frozen = os.path.join(root, "frozen.tsv")
+    with open(frozen, "w") as f:
+        f.write(f"{os.path.join(root, 'arm1')}\t30\t{os.path.join(root, 'arm1', 'ckpts', 'step30')}\n")
+    report.main(["--runs", os.path.join(root, "*"), "--selection", frozen,
+                 "--json", os.path.join(root, "frozen.json")])
+    frozen_r = json.load(open(os.path.join(root, "frozen.json")))
+    frozen_arm = next(x for x in frozen_r["runs"] if x["label"] == "arm" and x["seed"] == 1)
+    assert frozen_arm["selected"]["step"] == 30
+    assert frozen_arm["selected"]["selection_manifest"].endswith("frozen.tsv")
 
 
 def test_make_heldout_disjoint():

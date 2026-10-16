@@ -13,12 +13,14 @@
 #              ntp_fixed_b128（同每步序列数）、ntp_2tgt_sample（同 ntp_fixed 算力）、ntp_fixed_2hash（每答案 2 hash，
 #              需 DATA_DUP）、ntp_k2c / ntp_k3c / ntp_k4c（循环伙伴 k=2,3,4，weighted）
 #   diag       TL/setc 运行：churn（结构级）+ 逐检查点 gap
-#   heldout    生成留出集（若无）→ 开发集选检查点 → 留出集一次性评测（PRUNE=1 删未选检查点）
+#   select     生成一次新的检查点清单（不会覆盖已有清单）
+#   heldout    只读冻结清单 → 留出集一次性评测
 #   report     汇总（参照 ntp_fixed，margin 0.03，min_seeds 3）
 # 环境变量（括号内为缺省）：PY(python) DATA(data/circle.10.9.10.10000) NOHASH(data/circle.10.9.0.10000)
 #   OUT(runs/stage0b) SRV(runs/server-circle-40k，阶段 A 的已有运行) MODEL(gpt2) STEPS(40000) EVERY(5000)
 #   STATE_AT(10000,14000,20000) LOCK_AT(14000) LOCK_LEN(2000) INTERVENE_AT(20000) SEEDS_C("43 44")
-#   HELD_N(2048) GPUS（如 "0 1 2 3"：同一阶段的运行按批轮转并行）EXTRA（附加给 train.py 的参数）
+#   TASK（必填：circle|sibling|line）HELD_N(2048) SELECTION_FILE（OUT/selection.tsv）
+#   GPUS（如 "0 1 2 3"：同一阶段的运行按批轮转并行）EXTRA（附加给 train.py 的参数）
 set -euo pipefail
 PHASE="${1:?见脚本头部用法}"
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -37,12 +39,88 @@ INTERVENE_AT="${INTERVENE_AT:-20000}"
 SEEDS_C="${SEEDS_C:-43 44}"
 EXTRA="${EXTRA:-}"
 HELD_N="${HELD_N:-2048}"
+TASK="${TASK:-}"
+SELECTION_FILE="${SELECTION_FILE:-$OUT/selection.tsv}"
+if [[ -z "$TASK" ]]; then
+  echo "[error] TASK is required (circle|sibling|line); refusing an implicit Circle task" >&2
+  exit 2
+fi
+case "$TASK" in
+  circle|sibling|line) ;;
+  *) echo "[error] unknown TASK=$TASK (expected circle|sibling|line)" >&2; exit 2 ;;
+esac
 read -r -a GPU_LIST <<< "${GPUS:-}"
 export HF_ENDPOINT="${HF_ENDPOINT:-https://hf-mirror.com}"
 C="$ROOT/code"
 HELD="$DATA/heldout.json"
 DATA_DUP="${DATA_DUP:-$DATA.dup2}"   # make_variant_data.py --mode dup_hash --k 2 的输出
 JOBS=0
+
+meta_task () {
+  local run=$1 meta="$1/run_meta.json"
+  [ -f "$meta" ] || { echo "[error] missing run metadata: $meta" >&2; return 1; }
+  "$PY" - "$meta" <<'PY'
+import json, sys
+path = sys.argv[1]
+with open(path, encoding="utf-8") as f:
+    meta = json.load(f)
+task = meta.get("task")
+if task not in {"circle", "sibling", "line"}:
+    raise SystemExit(f"missing/unknown task in {path}: {task!r}")
+print(task)
+PY
+}
+
+task_for_run () {
+  local run=$1 task
+  task="$(meta_task "$run")" || return 1
+  [ "$task" = "$TASK" ] || {
+    echo "[error] task conflict for $run: launcher TASK=$TASK, run_meta task=$task" >&2
+    return 1
+  }
+  printf '%s\n' "$task"
+}
+
+data_for_run () {
+  local run=$1 meta="$1/run_meta.json"
+  "$PY" - "$meta" "$ROOT" <<'PY'
+import json, os, sys
+with open(sys.argv[1], encoding="utf-8") as f:
+    value = json.load(f).get("data_dir")
+if not value:
+    raise SystemExit(f"missing data_dir in {sys.argv[1]}")
+if not os.path.isabs(value):
+    value = os.path.join(sys.argv[2], value)
+print(os.path.realpath(value))
+PY
+}
+
+validate_selection_row () {
+  "$PY" - "$1" "$2" "$3" <<'PY'
+import json, os, re, sys
+run, step_text, ckpt = sys.argv[1:]
+if not re.fullmatch(r"[0-9]+", step_text):
+    raise SystemExit(f"invalid selected step {step_text!r} for {run}")
+step = int(step_text)
+run = os.path.realpath(run)
+ckpt = os.path.realpath(ckpt)
+if not os.path.isdir(run) or not os.path.isfile(os.path.join(run, "run_meta.json")):
+    raise SystemExit(f"selected run has no run_meta.json: {run}")
+if not os.path.isdir(ckpt):
+    raise SystemExit(f"selected checkpoint does not exist: {ckpt}")
+step_dir = os.path.realpath(os.path.join(run, "ckpts", f"step{step}"))
+final_dir = os.path.realpath(os.path.join(run, "final_model"))
+if ckpt == step_dir:
+    raise SystemExit(0)
+if ckpt == final_dir:
+    with open(os.path.join(run, "run_meta.json"), encoding="utf-8") as f:
+        end = json.load(f).get("steps")
+    if end != step:
+        raise SystemExit(f"final_model step mismatch for {run}: selected={step}, run_meta.steps={end}")
+    raise SystemExit(0)
+raise SystemExit(f"selection checkpoint does not match run/step identity: run={run}, step={step}, ckpt={ckpt}")
+PY
+}
 
 launch () {  # 无 GPUS 时前台顺序执行；否则按 GPU 轮转后台执行，每满一批等待
   if [ ${#GPU_LIST[@]} -eq 0 ]; then "$@"; return; fi
@@ -60,7 +138,7 @@ train () {  # train <label> <seed> <arm> [train.py 参数...]
   echo "[run ] $label s$seed"
   # shellcheck disable=SC2086
   "$PY" "$C/train.py" --arm "$arm" --label "$label" --seed "$seed" --out "$out" \
-    --model "$MODEL" --task circle --data_dir "$DATA" --steps "$STEPS" \
+    --model "$MODEL" --task "$TASK" --data_dir "$DATA" --steps "$STEPS" \
     --eval_every "$EVERY" --ckpt_every "$EVERY" --save_final \
     --churn_dump "$out/churn.jsonl" "$@" $EXTRA > "$out/train.log" 2>&1 \
     || echo "[FAIL] $out（见 train.log）"
@@ -75,7 +153,7 @@ branch () {  # branch <label> <state_dir> <steps> [参数...]：从完整状态�
   echo "[run ] $label（续训自 $st 到 $steps）"
   # shellcheck disable=SC2086
   "$PY" "$C/train.py" --arm setc_m4 --label "$label" --seed 42 --out "$out" \
-    --model "$MODEL" --task circle --data_dir "$DATA" --steps "$steps" \
+    --model "$MODEL" --task "$TASK" --data_dir "$DATA" --steps "$steps" \
     --eval_every "$EVERY" --ckpt_every "$EVERY" --save_final \
     --churn_dump "$out/churn.jsonl" --resume_from "$st" "$@" $EXTRA > "$out/train.log" 2>&1 \
     || echo "[FAIL] $out（见 train.log）"
@@ -91,17 +169,21 @@ phase_A () {
   for arm in ntp_fixed_v2 ntp_randperm_v2 tl_hybrid_v2 setc_m4_v2; do
     local md="$SRV/$arm/final_model"
     [ -d "$md" ] || { echo "[miss] $md"; continue; }
+    local run="$SRV/$arm" task
+    task="$(task_for_run "$run")"
     local pf=()
     [ -f "$SRV/$arm/pistar_final.json" ] && pf=(--pairing_file "$SRV/$arm/pistar_final.json")
-    try "$PY" "$C/rescore.py" --model_dir "$md" --data_dir "$DATA" --out "$A/$arm/dev" \
+    try "$PY" "$C/rescore.py" --model_dir "$md" --data_dir "$DATA" --task "$task" --out "$A/$arm/dev" \
       --n_test 128 --step 40000 "${pf[@]}"
-    try "$PY" "$C/rescore.py" --model_dir "$md" --data_dir "$DATA" --out "$A/$arm/heldout" \
+    try "$PY" "$C/rescore.py" --model_dir "$md" --data_dir "$DATA" --task "$task" --out "$A/$arm/heldout" \
       --probe_file "$HELD" --step 40000 "${pf[@]}"
   done
   if [ -d "$SRV/ntp_noseed_v2/final_model" ]; then
+    local task
+    task="$(task_for_run "$SRV/ntp_noseed_v2")"
     for T in 0.5 1.0; do
-      try "$PY" "$C/rescore.py" --model_dir "$SRV/ntp_noseed_v2/final_model" --data_dir "$NOHASH" \
-        --out "$A/ntp_noseed_v2/T$T" --n_test 1024 --sample --temp "$T"
+      try "$PY" "$C/rescore.py" --model_dir "$SRV/ntp_noseed_v2/final_model" --data_dir "$NOHASH" --task "$task" \
+        --out "$A/ntp_noseed_v2/T$T" --n_test 1024 --sample --temp "$T" --step 40000
     done
   fi
   [ -d "$SRV/ntp_fixed_v2/final_model" ] && try "$PY" "$C/diagnose.py" --mode gap \
@@ -115,8 +197,10 @@ phase_A () {
   if [ -d "$SRV/tl_hybrid_v2/final_model" ]; then
     try "$PY" "$C/diagnose.py" --mode readout --model_dir "$SRV/tl_hybrid_v2/final_model" \
       --data_dir "$DATA" --out "$A/tl_hybrid_v2_readout.json"
+    local task
+    task="$(task_for_run "$SRV/tl_hybrid_v2")"
     try "$PY" "$C/rescore.py" --model_dir "$SRV/tl_hybrid_v2/final_model" --data_dir "$DATA" \
-      --out "$A/tl_hybrid_v2/T1.0" --n_test 128 --sample --temp 1.0
+      --task "$task" --out "$A/tl_hybrid_v2/T1.0" --n_test 128 --sample --temp 1.0 --step 40000
   fi
 }
 
@@ -210,23 +294,64 @@ phase_diag () {
   done
 }
 
-phase_heldout () {
+phase_select () {
   heldout_file
-  "$PY" "$C/report.py" --runs "$OUT/*/s*" --label_by dir --emit_selection "$OUT/selection.tsv" > /dev/null
-  while IFS=$'\t' read -r run step ck; do
-    if [ -f "$run/heldout/scores.jsonl" ] && grep -q "\"step\": $step[,}]" "$run/heldout/scores.jsonl"; then
-      echo "[skip] $run 留出集 @ $step"; continue
-    fi
-    echo "[held] $run @ $step"
-    # 用该运行自己的训练数据目录（变体数据的 seen/memo 判定依赖其 train.json）；留出探针统一用 $HELD
-    local ddir
-    ddir=$("$PY" -c "import json,sys; print(json.load(open(sys.argv[1]))['data_dir'])" "$run/run_meta.json" 2>/dev/null || echo "$DATA")
-    "$PY" "$C/rescore.py" --model_dir "$ck" --data_dir "$ddir" --probe_file "$HELD" \
-      --out "$run/heldout" --step "$step" > "$run/heldout.log" 2>&1 || echo "[FAIL] $run（见 heldout.log）"
-    if [ "${PRUNE:-0}" = 1 ] && [ -d "$run/ckpts" ]; then
-      find "$run/ckpts" -mindepth 1 -maxdepth 1 -type d ! -name "step$step" -exec rm -rf {} +
-    fi
-  done < "$OUT/selection.tsv"
+  if [ -e "$SELECTION_FILE" ]; then
+    echo "[error] selection file already exists: $SELECTION_FILE" >&2
+    echo "        frozen selection is read-only; choose a new SELECTION_FILE to generate another list" >&2
+    return 2
+  fi
+  mkdir -p "$(dirname "$SELECTION_FILE")"
+  "$PY" "$C/report.py" --runs "$OUT/*/s*" --label_by dir --emit_selection "$SELECTION_FILE" > /dev/null
+  echo "[select] wrote new selection manifest: $SELECTION_FILE"
+}
+
+phase_heldout () {
+  [ -f "$SELECTION_FILE" ] || {
+    echo "[error] no frozen selection manifest: $SELECTION_FILE" >&2
+    echo "        run phase 'select' first; formal evaluation never creates or replaces it" >&2
+    return 2
+  }
+  heldout_file
+  local selection_sha
+  selection_sha=$("$PY" - "$SELECTION_FILE" <<'PY'
+import hashlib, sys
+h = hashlib.sha256()
+with open(sys.argv[1], "rb") as f:
+    for chunk in iter(lambda: f.read(1024 * 1024), b""):
+        h.update(chunk)
+print(h.hexdigest())
+PY
+  )
+  while IFS=$'\t' read -r run step ck extra; do
+    [ -z "$run$step$ck$extra" ] && continue
+    [ -z "$extra" ] || { echo "[error] malformed selection row (expected 3 columns): $run" >&2; return 1; }
+    validate_selection_row "$run" "$step" "$ck"
+    local task ddir
+    task="$(task_for_run "$run")"
+    ddir="$(data_for_run "$run")"
+    [ -d "$ddir" ] || { echo "[error] run data_dir does not exist: $ddir" >&2; return 1; }
+    echo "[held] $run @ $step ($task)"
+    # 该运行自己的 train.json 定义 seen/memo；留出探针统一来自冻结 $HELD。
+    # rescore.py 会对已有输出校验同一任务、checkpoint、评价器和探针身份，
+    # 任何缺失/冲突的旧结果都会报错而不覆盖。
+    "$PY" "$C/rescore.py" --model_dir "$ck" --data_dir "$ddir" --task "$task" \
+      --probe_file "$HELD" --out "$run/heldout" --step "$step" > "$run/heldout.log" 2>&1
+  done < "$SELECTION_FILE"
+  local selection_sha_after
+  selection_sha_after=$("$PY" - "$SELECTION_FILE" <<'PY'
+import hashlib, sys
+h = hashlib.sha256()
+with open(sys.argv[1], "rb") as f:
+    for chunk in iter(lambda: f.read(1024 * 1024), b""):
+        h.update(chunk)
+print(h.hexdigest())
+PY
+  )
+  [ "$selection_sha" = "$selection_sha_after" ] || {
+    echo "[error] frozen selection manifest changed during evaluation: $SELECTION_FILE" >&2
+    return 1
+  }
 }
 
 phase_report () {
@@ -239,6 +364,6 @@ case "$PHASE" in
   C) phase_C ;; replay) phase_replay ;; conflict) phase_conflict ;; conflict_unif) phase_conflict_unif ;;
   multiplicity) phase_multiplicity ;;
   diag) phase_diag ;;
-  heldout) phase_heldout ;; report) phase_report ;;
+  select) phase_select ;; heldout) phase_heldout ;; report) phase_report ;;
   *) echo "未知阶段：$PHASE"; exit 2 ;;
 esac

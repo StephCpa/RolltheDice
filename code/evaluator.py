@@ -16,6 +16,12 @@ import os
 import sys
 
 
+# Stable identity recorded by rescore.py.  Keep this separate from the source
+# hash: the hash detects an uncommitted edit, while this label identifies the
+# evaluator contract used in a result package.
+EVALUATOR_VERSION = "p6-evaluator-v2"
+
+
 def complete(s):
     if not s.endswith(">"):
         s += ">"

@@ -102,6 +102,9 @@ A6000 实测（`runs/server-circle-40k/*/throughput.json`）：NTP 臂 ≈1 h/40
 阶段 A ≈1 h；B ≈11.5 h（6 臂 ≈10 h + 锁定 0.3 h + 干预 1 h）；C ≈29 h（C1：2 种子 ×（1+2+2+2）h + setc_M05 3×2 h ≈20 h；C2：3 种子 ×（2+1）h ≈9 h）。合计 ≈41 GPU·时 < 余额 ≈48；若 B 的决策表指向停止，C 不执行。
 存储：检查点 fp32 ≈0.5 GB × 8/运行；`run_stage0b.sh heldout` 完成留出评测后可 `PRUNE=1` 只保留选中检查点与 final_model。
 
+> 维护修订（2026-10-16）：当前 launcher 已移除 `PRUNE` 删除路径；正式 `heldout` 只读冻结
+> selection manifest，不删除 checkpoint。上行保留为旧计划记录，不作为当前操作指令。
+
 ## 6. 明确推迟（评审共识）
 m=8、Sinkhorn / Gumbel 扰动匹配、`--regroup`、新鲜种子（IMLE 式）臂、更大模型——均在 B/C 指明"匹配本身"有作用之后再议；
 代码均已就绪（`--m`、`--regroup`、`--random_tiebreak`）但不在本轮运行。

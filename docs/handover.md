@@ -1,7 +1,7 @@
 # P6 项目交接文档
 
 > 项目：Roll the dice 后续研究——配对多样性监督对种子条件生成的影响
-> 交接日期：2026-10-16 · 交接人：ZCode（执行端）· 状态：等审阅方确认事件 #9 修复结果后定方向
+> 交接日期：2026-10-16 · 交接人：ZCode（执行端）· 状态：事件 #9 修正已接受；Line 主检验已结束，2hash 进入独立确认候选阶段
 
 ---
 
@@ -9,19 +9,19 @@
 
 **核心发现**（当前最可信的一句话）：
 
-> 在受控多解任务上，改变训练时 hash→答案的监督配对图结构（而不只是推理时多样化），
-> 能稳定提升未见种子上的新颖生成——其中**"同一答案挂多个 hash 入口"（ntp_fixed_2hash）**
-> 是两个任务上唯一都通过预注册门槛的配方；最初提出的集合耦合方法（动态 Hungarian 匹配
-> ＋teacherless）的两个核心组件均被证明非必要。
+> 在当前已测试的配方、任务配置和评价程序中，改变训练时 hash→答案的监督配对图结构
+> 显示出未见种子生成增益；**"同一答案挂多个 hash 入口"（ntp_fixed_2hash）**
+> 在 Circle 与修复后的 Line 上均达到项目门槛，因此进入独立确认候选阶段。最初提出的
+> 集合耦合方法（动态 Hungarian 匹配＋teacherless）的两个核心组件均被证明非必要。
 
 **当前最大风险**：Line 任务的留出评价链曾因两个 bug（评价器用错任务＋加载终点模型而非
 选中检查点）产出错误结论；已修复重评，但**修正后主 recipe（ntp_2tgt）未通过 Line 门槛**
 ——跨任务迁移主张已从"已确认"降级为"待定"。
 
-**下一步候选**（按优先级，待审阅方拍板）：
-1. ntp_fixed_2hash 的独立确认预注册（两任务上唯一一致信号）
-2. Sibling 任务配置核对＋复现
-3. 论文骨架起草（素材已足，Line 图表标"评价修复后重出"）
+**当前执行顺序**：
+1. 完成发布收尾与评价身份登记（不重跑模型）；
+2. 按配置审计结果冻结 Sibling 的数据、知识图、模型初始化和评价协议；
+3. 仅在门禁通过后预注册并运行 fixed／b128／2hash 三臂确认；scale 继续延期。
 
 ---
 
@@ -86,7 +86,7 @@ arXiv:2504.15266)：在受控任务（Circle/Line Construction, Sibling/Triangle
 | 配方 | Line 留出 | Δ vs fixed | 判定 |
 |---|---|---|---|
 | ntp_fixed | 0.155 | — | — |
-| b128 | 0.157 | +0.002 | 无增益 |
+| b128 | 0.157 | +0.002 | 平均差约 +0.002，未达到项目门槛 |
 | **ntp_2tgt（预指定主 recipe）** | 0.169 | **+0.014** | **未过门**（3/3 正但 <0.03） |
 | ntp_2tgt_sample | 0.160 | 高方差 | 不稳 |
 | **ntp_fixed_2hash** | **0.190** | **+0.034** | **PASS（辅助臂）** |
@@ -123,7 +123,7 @@ arXiv:2504.15266)：在受控任务（Circle/Line Construction, Sibling/Triangle
 |---|---|
 | `code/train.py` | 统一训练器：五预设臂（ntp_fixed / setc_m4 / tl_fixed_m4 等）＋ `--pair_rule multi` k 目标＋ `--target_mode weighted/sample`＋`--fixed_pairing random/derangement/cycle`＋`--lock_at`＋`--pairing_file` 回放＋全状态断点续训 |
 | `code/evaluator.py` | 三任务（circle/sibling/line）有效性＋seen＋creativity（canonical 去重＋raw 双口径）；`--selftest` 35+ 用例 |
-| `code/rescore.py` | 留出集重评（**事件 #9 后已含 --task line**）；保存原始预测 `preds_stepN.jsonl` |
+| `code/rescore.py` | 留出集重评（**事件 #9 后 task 必须显式传入**）；核对 checkpoint/probe 身份并保存原始预测 `preds_stepN.jsonl` |
 | `code/report.py` | 聚合＋按种子配对差＋预注册 verdicts（margin/min_seeds 可配）；`--label_by dir` 防标签污染 |
 | `code/datagen.py` | 固定种子数据生成（circle/sibling/line，含 path_mode） |
 | `code/make_variant_data.py` | dup_hash 变异（2hash 臂的数据） |
@@ -136,7 +136,7 @@ arXiv:2504.15266)：在受控任务（Circle/Line Construction, Sibling/Triangle
 1. 训练时每 5k 步评开发集（128 test 探针，greedy）；
 2. 训练完生成留出集（`make_heldout.py`，2048 全新 hash，排除训练/开发已用，SHA256 存档）；
 3. 开发集最高 creativity 的检查点选中（并列取早），`selection.tsv` 冻结落盘；
-4. 选中检查点→留出集一次评价（`rescore.py --task <task> --model_dir ckpts/stepN`）；
+4. 选中检查点→留出集一次评价（`rescore.py --task <task> --model_dir ckpts/stepN --step N`）；
 5. `report.py --ref ntp_fixed --margin 0.03 --min_seeds 3` 出机器 verdicts。
 
 ---
@@ -170,29 +170,35 @@ SSH 配置均在 `~/.ssh/config`（跳板机 118.252.19.90:1722，间歇性断�
 
 ## 6. 接手后最优先的三件事
 
-### ① 确认事件 #9 修复结果并更新方向判定
+### ① 事件 #9 修复结果（已接受）
 
 - 核对 `runs/line-phase1/*/s*/heldout/scores.jsonl`（修正版）与 `heldout_wrong_circle_final/`（事件证据）；
 - 确认修正后判定：主 recipe 2tgt 未过门（+0.014），2hash 辅助臂过门（+0.034）；
-- 决定下一步方向（见下表）。
+- 项目负责人已接受该判定：不再为 `ntp_2tgt` 追加 Line 追门槛；保留 2hash 为下一轮独立确认候选。
 
 ### ② 若确认 2hash 为下一候选：起草预注册修订
 
-2hash 是两任务上唯一一致达标的配方（Circle +0.079、Line +0.034），但其增益机制
+2hash 在当前已测试配置中同时达到两任务门槛（Circle +0.079、Line +0.034），但其增益机制
 （更多训练 hash？更多配对数？答案多入口本身？）尚未与 b128 完全分离——Circle 上
 2hash−b128=+0.076（同 128 序列纯 NTP），这是正面对照，但 Line 上 2hash−b128=+0.032，
 幅度不一致。预注册应指定 2hash vs b128 为主比较。
 
-### ③ Sibling 配置核对（Phase 1 第三任务，暂缓中）
+### ③ Sibling 配置核对（已完成静态核对，训练仍暂缓）
 
 审阅方指示：先核对原论文/脚本/当前实现的数据规模差异（原 `sibling.5.500` vs 我们
 datagen 的 `10.1000`）、初始化、训练步数（原 800k 步），**不直接沿用旧上限核价**。
+
+核对记录见 [`docs/sibling-config-audit-20261016.md`](sibling-config-audit-20261016.md)。
+记录确认：官方可追溯 artifact 为 `sibling.5.500.10.50000`；当前本地 `10×1000`
+数据不能由现有 `datagen.py` 再生，且缺少原评价所需的完整知识图。原始脚本的
+8-layer fresh-init／800k 与当前 P6 trainer 的 pretrained GPT-2 配置也不能混用。
+在数据、知识图、初始化、步数和评价身份全部冻结前，不启动九个 Sibling 运行。
 
 ---
 
 ## 7. 常见陷阱（接手者必读）
 
-1. **`--step` 只是标签**——rescore.py 的实际模型由 `--model_dir` 决定（事件 #9 根因）。
+1. **旧版 `--step` 只是标签**——事件 #9 的实际模型由 `--model_dir` 决定；当前 rescore.py 要求它与 `ckpts/stepN` 或终点身份一致。
 2. **新任务必须同步三处**：`datagen.py` 生成＋`evaluator.py` 有效性＋`train.py` 和 `rescore.py`
    的 `--task` choices——漏一处就会静默用默认任务评价（事件 #9 根因）。
 3. **报告聚合用 `--label_by dir`**——不用会按 run_meta 标签聚合，unif/derangement 变体会混入。
@@ -235,4 +241,26 @@ RolltheDice/
 
 ---
 
-*本文档由执行端生成于 2026-10-16，对应 main@`1f967d4`。如有疑问请对照仓库原始文件而非仅依赖本文档摘要。*
+## 10. 发布收尾记录（2026-10-16）
+
+本轮已完成且均为 development 记录：
+
+1. [`runs/line-phase1/report.md`](../runs/line-phase1/report.md) 与 [`report.json`](../runs/line-phase1/report.json)
+   按冻结 [`selection.tsv`](../runs/line-phase1/selection.tsv) 从现有 15 条修正后的 Line 留出记录重出；`ntp_2tgt` 为 FAIL（均值 +0.013835），
+   `ntp_fixed_2hash` 为 PASS（均值 +0.034342）。没有重新生成模型输出。
+2. 旧的 Circle 规则／`final_model` 报告保存在
+   [`report_event9_void_circle_final.md`](../runs/line-phase1/report_event9_void_circle_final.md)，明确标记为作废历史版本。
+3. [`code/index_evaluation_identity.py`](../code/index_evaluation_identity.py) 生成只读身份索引
+   [`evaluation_identity_20261016.json`](../runs/line-phase1/evaluation_identity_20261016.json)；
+   缺少 `rescore_meta.json` 的旧 scores 只保留作证据，不自动升级为可复用的正式结果。
+4. `rescore.py` 现在要求显式 `--task` 与一致的 checkpoint 身份；`run_stage0b.sh` 的
+   `select` 与 `heldout` 分离，正式评价只读冻结清单并核对任务、模型目录、评价器和探针身份。
+
+## 11. 当前门禁后的下一步
+
+下一轮只保留 `ntp_fixed`、`ntp_fixed_b128`、`ntp_fixed_2hash` 三臂和三个预先冻结的训练种子；
+核心比较为 `2hash−b128`，同时报告 `2hash−fixed`。不加入 `2tgt`、sample、k 扫描、
+Hungarian、teacherless、新正则或 scale。上述内容是设计约束，不是已经产生的实验结果。
+
+*本文档由执行端生成于 2026-10-16，对应 main@`1f967d4`；本轮状态修订与收尾记录追加于同日。
+如有疑问请对照仓库原始文件和增补记录，而非仅依赖本文档摘要。*

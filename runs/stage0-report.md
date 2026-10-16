@@ -522,3 +522,47 @@ k=2 三种子均值最高"。C/V 分化（0.622/0.480/0.354）保留为观察，
   未过门；辅助臂结果单独报告，不替换候选"；
 - 跨任务扩展（Sibling/scale）继续暂缓，等审阅方对修复结果确认后再定；
 - 论文骨架同步起草中，Line 图表标"评价修复后重出，主 recipe 增益变窄"。
+
+---
+
+# 增补 14（2026-10-16）：发布收尾与 Sibling 配置核对
+
+## 处置范围
+
+项目负责人接受增补 13 的修正判定：本轮 `ntp_2tgt` Line 主检验结束（均值
+`+0.013835`，未过 `0.03` 门槛），不再追加 Line 运行追门槛；`ntp_fixed_2hash`
+保留为辅助臂，并提升为下一轮独立确认的主候选。以下动作只处理已有记录和防回归入口，
+没有读取服务器权重、重新生成模型输出或启动 Sibling／scale。
+
+## Line 发布入口
+
+1. 从已有 15 条修正后的 `heldout/scores.jsonl` 和冻结选择表重出
+   `runs/line-phase1/report.md` 与 `report.json`。修正后的机器裁决为：
+   `ntp_2tgt` FAIL（`+0.013835`，三种子均正但未达门槛），
+   `ntp_fixed_2hash` PASS（`+0.034342`，三种子均正），`b128` 均值约 `+0.002` 未过门。
+2. 旧的 Circle 规则／`final_model` 报告另存为
+   `report_event9_void_circle_final.md`，明确标记作废，不覆盖原始事件证据。
+3. 新增 `code/index_evaluation_identity.py`，只读登记运行元数据、选择表、score 哈希、
+   checkpoint 可见性和评价器源码哈希。现有修正 score 缺少本轮 `rescore_meta.json`，
+   因此索引将其保留为证据而不宣称可复用正式结果；这是本地缺少服务器权重／探针的限制，
+   不是重新评价请求。
+
+## 防回归入口
+
+- `rescore.py` 要求显式 `--task` 与 `--step`，并核对最近的 `run_meta.json`、
+  `ckpts/stepN`／`final_model`、评价器版本与源码哈希、数据和 probe 身份；已有无身份
+  记录或身份冲突时拒绝覆盖。
+- `run_stage0b.sh` 要求 `TASK`，将 `select` 和 `heldout` 分开；正式留出评价只读冻结
+  `selection.tsv`，逐行核对运行、任务、checkpoint 和 `data_dir`，并对选择表做前后 SHA 检查。
+- `code/report.py` 统一 Windows／POSIX 目录标签，并在报告 JSON/Markdown 中保留任务、数据、
+  checkpoint 和 probe 身份字段。
+
+## Sibling 静态配置核对
+
+核对记录见 `docs/sibling-config-audit-20261016.md`。当前结论是：官方可追溯数据 artifact
+为 `sibling.5.500.10.50000`；本地 `10×1000` 数据无法由当前 `datagen.py` 再生，且当前
+train-derived graph 缺少原评价所需的完整知识图边。上游 NTP 还是 8-layer fresh-init／
+800k steps，而当前 P6 trainer 是 pretrained GPT-2；两套配置必须先择一冻结，不能混跑。
+
+下一阶段设计只保留 `ntp_fixed`、`ntp_fixed_b128`、`ntp_fixed_2hash` 三臂和三个冻结种子，
+核心比较为 `2hash−b128`，同时报告 `2hash−fixed`。此段是配置约束，不是 Sibling 结果。

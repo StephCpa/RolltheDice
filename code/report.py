@@ -13,18 +13,57 @@
 用法：
   python code/report.py --runs "runs/stage0b/*/*" --emit_selection sel.tsv          # 第 1 步：选检查点
   （对 sel.tsv 每行跑 rescore.py --probe_file heldout.json --out <run>/heldout --step <step>）
-  python code/report.py --runs "runs/stage0b/*/*" --ref ntp_fixed --margin 0.03 --out report.md
+  python code/report.py --runs "runs/stage0b/*/*" --selection sel.tsv \
+      --ref ntp_fixed --margin 0.03 --out report.md
 """
 import argparse
 import glob
+import hashlib
 import json
 import os
 import re
+import sys
 
 import numpy as np
 
 SUMMARY_METRICS = ["creativity", "test_validity", "test_novel_valid", "memo_own",
                    "train_seen", "train_memorization", "nll_own", "nll_nominal"]
+
+
+def display_path(path):
+    """Return a portable path for reports and JSON manifests."""
+    return os.path.normpath(path).replace("\\", "/")
+
+
+def sha256_file(path):
+    if not path or not os.path.isfile(path):
+        return None
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def load_selection(path):
+    """Read a frozen selection manifest without requiring checkpoints locally."""
+    if not path:
+        return {}
+    result = {}
+    with open(path, encoding="utf-8") as f:
+        for lineno, line in enumerate(f, 1):
+            if not line.strip():
+                continue
+            fields = line.rstrip("\n").split("\t")
+            if len(fields) != 3:
+                raise SystemExit(f"selection manifest line {lineno} must have 3 tab-separated fields")
+            run, step, ckpt = fields
+            if not re.fullmatch(r"[0-9]+", step):
+                raise SystemExit(f"selection manifest line {lineno} has invalid step {step!r}")
+            result[os.path.realpath(os.path.abspath(run))] = {
+                "step": int(step), "ckpt_dir": display_path(ckpt)
+            }
+    return result
 
 
 def load_rows(path, n_test_default):
@@ -105,18 +144,34 @@ def discover(specs):
     return list(dict.fromkeys(runs))
 
 
-def summarize_run(run, args):
+def summarize_run(run, args, frozen_selection=None):
     meta = json.load(open(os.path.join(run, "run_meta.json"), encoding="utf-8"))
     n_test = (meta.get("n_probes") or 256) // 2
     rows = load_rows(os.path.join(run, "scores.jsonl"), n_test)
     if args.label_by == "dir":
-        parts = run.rstrip("/").split("/")
-        # <标签>/s<种子> 布局取上一级目录名；否则取运行目录名
-        label = parts[-2] if re.fullmatch(r"s\d+", parts[-1]) and len(parts) > 1 else parts[-1]
+        # <标签>/s<种子> 布局取上一级目录名；否则取运行目录名。
+        # glob 在 Windows 返回反斜杠路径；使用 os.path 而不是手工 split，
+        # 否则 --label_by dir 会把每个运行误当成一个标签，无法配对裁决。
+        norm_run = os.path.normpath(run)
+        run_name = os.path.basename(norm_run)
+        parent_name = os.path.basename(os.path.dirname(norm_run))
+        label = parent_name if re.fullmatch(r"s\d+", run_name) else run_name
     else:
         label = meta.get("label") or meta.get("arm")
     sel = select_checkpoint(run, rows, args.primary, meta.get("steps"))
-    out = {"run": run, "label": label, "seed": meta.get("seed"), "arm": meta.get("arm"),
+    frozen = (frozen_selection or {}).get(os.path.realpath(os.path.abspath(run)))
+    if frozen:
+        selected_row = next((r for r in rows if r.get("step") == frozen["step"]), None)
+        if selected_row is None:
+            raise SystemExit(
+                f"selection manifest step {frozen['step']} has no matching score row for {run}"
+            )
+        sel = {"step": frozen["step"], "ckpt_dir": frozen["ckpt_dir"],
+               "dev": selected_row, "no_ckpt": not os.path.isdir(frozen["ckpt_dir"]),
+               "candidates": 1, "restricted_to_ckpts": True}
+    out = {"run": display_path(run), "label": label, "seed": meta.get("seed"), "arm": meta.get("arm"),
+           "task": meta.get("task"), "data_dir": meta.get("data_dir"),
+           "training_git_commit": meta.get("git_commit"),
            "group_cfg": meta.get("group_cfg"), "steps": meta.get("steps"),
            "traj": {m: traj_summary(rows, m) for m in SUMMARY_METRICS},
            "creativity_derived": any(r.get("creativity_derived") for r in rows)}
@@ -124,8 +179,17 @@ def summarize_run(run, args):
         out["selected"] = {"step": sel["step"], "ckpt_dir": sel["ckpt_dir"],
                            "restricted_to_ckpts": sel["restricted_to_ckpts"],
                            "dev": {m: sel["dev"].get(m) for m in SUMMARY_METRICS}}
+        if frozen:
+            out["selected"]["selection_manifest"] = display_path(args.selection)
         h = heldout_row(run, args.heldout_name, sel["step"])
         out["heldout"] = {m: h.get(m) for m in SUMMARY_METRICS + ["n_test_gen"]} if h else None
+        if h:
+            # Keep score provenance alongside the aggregate metrics.  The
+            # corrected Line rows identify the actual checkpoint and probe;
+            # step alone is only a label and is insufficient for replay.
+            out["heldout_identity"] = {
+                k: h.get(k) for k in ("step", "model_dir", "probe_file", "n_test_gen", "n_train_gen")
+            }
     return out
 
 
@@ -165,13 +229,18 @@ def main(argv=None):
     ap.add_argument("--margin", type=float, default=0.03)
     ap.add_argument("--min_seeds", type=int, default=3)
     ap.add_argument("--emit_selection", default=None, help="写出 run\\tstep\\tckpt_dir（供留出评测）")
+    ap.add_argument("--selection", default=None,
+                    help="读取冻结 run\\tstep\\tckpt_dir 清单；报告按清单步数而非重新选择")
+    ap.add_argument("--overwrite_selection", action="store_true",
+                    help="显式允许替换已有 selection manifest（默认拒绝，冻结清单只读）")
     ap.add_argument("--allow_duplicates", action="store_true",
                     help="允许同一标签下出现重复种子（默认报错：防止不同规格的运行混入同一标签）")
     ap.add_argument("--out", default=None, help="Markdown 报告")
     ap.add_argument("--json", default=None)
     args = ap.parse_args(argv)
 
-    runs = [summarize_run(r, args) for r in discover(args.runs)]
+    frozen_selection = load_selection(args.selection) if args.selection else {}
+    runs = [summarize_run(r, args, frozen_selection) for r in discover(args.runs)]
     seen_ls = {}
     for rs in runs:
         seen_ls.setdefault((rs["label"], rs["seed"]), []).append(rs["run"])
@@ -180,6 +249,11 @@ def main(argv=None):
         raise SystemExit("同一标签下有重复种子（多半是不同规格的运行共用了标签；改标签或用 --label_by dir）：\n" +
                          "\n".join(f"  {k}: {v}" for k, v in dups.items()))
     if args.emit_selection:
+        if os.path.exists(args.emit_selection) and not args.overwrite_selection:
+            raise SystemExit(
+                f"selection manifest already exists: {args.emit_selection}; "
+                "choose a new path or pass --overwrite_selection explicitly"
+            )
         with open(args.emit_selection, "w", encoding="utf-8") as f:
             for rs in runs:
                 if rs.get("selected") and rs["selected"]["ckpt_dir"]:
@@ -229,14 +303,20 @@ def main(argv=None):
                              "verdict": "PASS" if passed else
                              ("INSUFFICIENT" if not (ok_n and heldout_only) else "FAIL")}
 
+    tasks = sorted({rs.get("task") for rs in runs if rs.get("task")})
+    data_dirs = sorted({rs.get("data_dir") for rs in runs if rs.get("data_dir")})
     res = {"primary": args.primary, "ref": args.ref, "margin": args.margin,
-           "min_seeds": args.min_seeds, "aggregate": agg, "verdicts": verdicts, "runs": runs}
+           "min_seeds": args.min_seeds, "tasks": tasks, "data_dirs": data_dirs,
+           "selection_file": display_path(args.selection) if args.selection else None,
+           "selection_sha256": sha256_file(args.selection),
+           "aggregate": agg, "verdicts": verdicts, "runs": runs}
     if args.json:
         with open(args.json, "w", encoding="utf-8") as f:
             json.dump(res, f, indent=2, ensure_ascii=False)
 
+    task_note = ", ".join(tasks) if tasks else "未记录"
     lines = [f"# 汇总（主指标 {args.primary}；参照 {args.ref or '—'}；margin {args.margin}；"
-             f"min_seeds {args.min_seeds}）", "",
+             f"min_seeds {args.min_seeds}）", "", f"评价任务：{task_note}", "",
              "| 标签 | 种子 | 选中步 | 开发集@选中 | 留出集@选中 | validity@选中 | memo_own@选中 | 终点 | 峰值 | 轨迹均值 | Δ vs 参照（均值 / 最小） | 判定 |",
              "|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for lab in labels:
@@ -262,7 +342,16 @@ def main(argv=None):
     if args.out:
         with open(args.out, "w", encoding="utf-8") as f:
             f.write(md)
-    print(md)
+    # Windows PowerShell can expose a GBK stdout even though report files are
+    # UTF-8.  Keep the CLI/report tests usable without requiring callers to
+    # set PYTHONIOENCODING explicitly.
+    try:
+        print(md)
+    except UnicodeEncodeError:
+        stream = getattr(sys.stdout, "buffer", None)
+        if stream is None:
+            raise
+        stream.write(md.encode("utf-8"))
 
 
 if __name__ == "__main__":
