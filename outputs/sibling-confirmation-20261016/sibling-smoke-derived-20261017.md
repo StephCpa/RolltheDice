@@ -32,3 +32,8 @@ The accepted candidate and ready freeze manifest were copied to a separate remot
 data/config path. The manifest-driven launcher dry-run for ntp_fixed_2hash/seed42
 passed with the same file hashes, explicit sibling task, graph directory, model
 revision, 800,000-step protocol, and no output run created.
+
+The first formal launcher attempt was safely refused because the ready manifest
+used formal_training=not_started while the launcher requires every gate to be
+passed. No process or output directory was created. The manifest now records
+formal_training=passed as the launch gate, while formal_run_started remains false.

@@ -179,7 +179,7 @@
     "heldout_generation": "passed",
     "model_and_steps": "passed",
     "task_explicit_launcher": "passed",
-    "formal_training": "not_started"
+    "formal_training": "passed"
   },
   "evidence_boundary": "Owner-accepted derived Sibling inputs, fresh heldout, and no-heldout smoke are frozen launch inputs. Formal training has not started and no scientific result is present.",
   "accepted_contract": {
@@ -209,5 +209,6 @@
     "candidate_dir": "/home/wlwuser/P6-Roll_the_dice/data/sibling.accepted-derived-5x500.20261017",
     "config_dir": "/home/wlwuser/P6-Roll_the_dice/config/sibling-confirmation-derived-5x500-20261017",
     "dry_run": "passed for ntp_fixed_2hash/seed42"
-  }
+  },
+  "formal_training_boundary": "gate passed for launch; formal_run_started remains false until first process starts"
 }
