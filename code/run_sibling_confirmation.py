@@ -70,6 +70,26 @@ def check_candidate(candidate: Path, base: Path, variant: Path, graph: Path, *, 
         vm = json.load(f)
     if vm.get("mode") != "dup_hash" or vm.get("k") != 2:
         raise SystemExit(f"unexpected 2hash variant metadata: {vm}")
+    expected = cm.get("files", {})
+    actual_roots = {"base": base, "graph": graph}
+    for rel, info in expected.items():
+        top, name = rel.split("/", 1)
+        path = actual_roots[top] / name
+        actual = sha256(path)
+        if actual != info.get("sha256"):
+            raise SystemExit(f"candidate SHA mismatch for {rel}: {actual} != {info.get('sha256')}")
+    base_rows = load_rows(base / "train.json")
+    variant_rows = load_rows(variant / "train.json")
+    if vm.get("n_train_base") != len(base_rows) or vm.get("n_train_out") != len(variant_rows):
+        raise SystemExit(f"variant row-count mismatch: metadata={vm}, actual={len(base_rows)}/{len(variant_rows)}")
+    base_hashes = {r["input_text"].split("<q>", 1)[0] for r in base_rows}
+    variant_hashes = {r["input_text"].split("<q>", 1)[0] for r in variant_rows}
+    if len(base_hashes) != len(base_rows) or len(variant_hashes) != len(variant_rows):
+        raise SystemExit("base or variant train has duplicate hash inputs")
+    if not base_hashes < variant_hashes or base_hashes & (variant_hashes - base_hashes):
+        raise SystemExit("2hash variant is not a strict disjoint extension of base train hashes")
+    if sha256(variant / "train.json") != vm.get("train_sha256"):
+        raise SystemExit("variant.json train_sha256 does not match variant train.json")
     return cm
 
 
