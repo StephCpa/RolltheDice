@@ -220,7 +220,7 @@ class Evaluator:
                     acc["test_unseen"].append(0 if sv == 1 else (1 if vd == 1 else 0))
                     if vd == 1:
                         ans = pred.split("<q>")[1].split("</a>")[0]
-                        key = circle_canonicalize(ans) if self.task == "circle" else ans
+                        key = circle_canonicalize(ans) if self.task in ("circle", "line") else ans
                         valid_answers.add(key)
                         raw_valid.add(ans)
                         if sv == 0:
@@ -237,6 +237,7 @@ class Evaluator:
             "test_validity": sum(acc["test_validity"]) / n_test,
             "test_unseen": sum(acc["test_unseen"]) / n_test,
             "n_unique_valid": len(valid_answers),
+            "n_unique_valid_raw": len(raw_valid),
             "n_unique_valid_novel": len(valid_novel_answers),
         }
         out.update({

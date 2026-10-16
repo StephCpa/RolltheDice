@@ -33,7 +33,7 @@ def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--model_dir", required=True)
     ap.add_argument("--data_dir", required=True)
-    ap.add_argument("--task", choices=["circle", "sibling"], default="circle")
+    ap.add_argument("--task", choices=["circle", "sibling", "line"], default="circle")
     ap.add_argument("--out", required=True)
     ap.add_argument("--probe_file", default=None,
                     help="测试探针来源（缺省 data_dir/test.json 的 type=test 条目）")
