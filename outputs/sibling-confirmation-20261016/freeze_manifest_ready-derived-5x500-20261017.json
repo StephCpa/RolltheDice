@@ -1,0 +1,213 @@
+{
+  "schema_version": "p6-sibling-confirmation-ready-v1-derived-5x500",
+  "created_at": "2026-10-17",
+  "status": "ready_for_formal_run",
+  "development": true,
+  "formal_run_started": false,
+  "formal_results_present": false,
+  "scale_started": false,
+  "decision": {
+    "accepted_candidate": "ntp_fixed_2hash",
+    "superseded_main_test": "ntp_2tgt Line main test",
+    "next_question": "在训练答案集合不增加的情况下，为每个答案增加固定随机入口，是否优于固定配对和纯 batch 对照？",
+    "primary_comparison": "ntp_fixed_2hash - ntp_fixed_b128",
+    "secondary_comparison": "ntp_fixed_2hash - ntp_fixed"
+  },
+  "protocol": {
+    "task": "sibling",
+    "profile": "p6_same_system_confirmation",
+    "model": {
+      "name": "gpt2",
+      "initialization": "current P6 code/train.py pretrained GPT-2",
+      "upstream_deviation": "does not claim upstream 8-layer fresh-init reproduction"
+    },
+    "sequence_length": 128,
+    "block_size": 128,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0,
+    "warmup_steps": 2000,
+    "schedule": "constant_schedule_with_warmup",
+    "planned_steps": 800000,
+    "planned_steps_status": "proposed_inherited_sibling_ntp_budget",
+    "eval_every": 20000,
+    "checkpoint_every": 20000,
+    "selection": "development-only highest canonical creativity; ties choose earliest step; selection.tsv is read-only during formal evaluation",
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "data_contract": "owner-accepted derived 5x500 candidate; not upstream official graph"
+  },
+  "data": {
+    "artifact_name": "sibling.derived-5x500.20261017",
+    "source": "ChenWu98/sibling.5.500.10.50000",
+    "source_revision": "edb56d3aba44007a926f1b3535812009b28934e4",
+    "local_snapshot_status": "accepted_derived_candidate",
+    "required_splits": [
+      "train",
+      "valid",
+      "test",
+      "heldout"
+    ],
+    "required_graph_files": [
+      "entities_b1_dict.json",
+      "entities_b2_dict.json"
+    ],
+    "graph_policy": "complete graph files are required; evaluator must not silently fall back to train-derived edges",
+    "data_generation": "do not use current datagen.py output as an equivalent artifact until its sampling contract is reconciled",
+    "candidate_manifest": "E:\\KM\\meta-method\\.p6_stage_1791568478\\outputs\\sibling-confirmation-20261016\\accepted-derived-5x500-20261017\\candidate_manifest.json",
+    "base_data": "E:\\KM\\meta-method\\.p6_stage_1791568478\\outputs\\sibling-confirmation-20261016\\accepted-derived-5x500-20261017\\base",
+    "variant_data": "E:\\KM\\meta-method\\.p6_stage_1791568478\\outputs\\sibling-confirmation-20261016\\accepted-derived-5x500-20261017\\dup_hash_k2",
+    "graph_dir": "E:\\KM\\meta-method\\.p6_stage_1791568478\\outputs\\sibling-confirmation-20261016\\accepted-derived-5x500-20261017\\graph",
+    "heldout_file": "E:\\KM\\meta-method\\.p6_stage_1791568478\\outputs\\sibling-confirmation-20261016\\accepted-derived-5x500-20261017\\fresh-heldout-20261017.json",
+    "heldout_sha256": "edcdd3baa2dbe0067f0cb3a24cd60a7a7c84f3203bd640d625111ad42b95686a",
+    "graph_is_official": false
+  },
+  "arms": [
+    {
+      "name": "ntp_fixed",
+      "role": "original one-to-one reference",
+      "batch_sequences": 64,
+      "data_variant": "base"
+    },
+    {
+      "name": "ntp_fixed_b128",
+      "role": "fixed-pairing sequence-count control",
+      "batch_sequences": 128,
+      "data_variant": "base"
+    },
+    {
+      "name": "ntp_fixed_2hash",
+      "role": "fixed additional hash entry per answer",
+      "batch_sequences": 128,
+      "data_variant": "dup_hash_k2",
+      "variant_seed": 20261012,
+      "variant_contract": "each new hash has exactly one target; new hashes disjoint from base train/valid/test/heldout; valid/test/heldout copied byte-for-byte"
+    }
+  ],
+  "run_manifest": [
+    {
+      "arm": "ntp_fixed",
+      "seed": 42,
+      "batch_sequences": 64
+    },
+    {
+      "arm": "ntp_fixed",
+      "seed": 43,
+      "batch_sequences": 64
+    },
+    {
+      "arm": "ntp_fixed",
+      "seed": 44,
+      "batch_sequences": 64
+    },
+    {
+      "arm": "ntp_fixed_b128",
+      "seed": 42,
+      "batch_sequences": 128
+    },
+    {
+      "arm": "ntp_fixed_b128",
+      "seed": 43,
+      "batch_sequences": 128
+    },
+    {
+      "arm": "ntp_fixed_b128",
+      "seed": 44,
+      "batch_sequences": 128
+    },
+    {
+      "arm": "ntp_fixed_2hash",
+      "seed": 42,
+      "batch_sequences": 128
+    },
+    {
+      "arm": "ntp_fixed_2hash",
+      "seed": 43,
+      "batch_sequences": 128
+    },
+    {
+      "arm": "ntp_fixed_2hash",
+      "seed": 44,
+      "batch_sequences": 128
+    }
+  ],
+  "evaluation": {
+    "primary_metric": "canonical_creativity",
+    "graph_schema_version": "p6-sibling-complete-v1",
+    "auxiliary_metrics": [
+      "validity",
+      "unique_novel",
+      "train_seen",
+      "train_memorization",
+      "creativity_raw"
+    ],
+    "heldout_policy": "new hash probe generated after data freeze; one-shot readout; no tuning after readout",
+    "candidate_gate": {
+      "mean_margin": 0.03,
+      "all_seed_margins_positive": true,
+      "status": "proposed_inherited_project_gate; confirm scale before formal readout"
+    },
+    "identity_fields": [
+      "task",
+      "checkpoint",
+      "step",
+      "run_meta_sha256",
+      "data_sha256",
+      "graph_sha256",
+      "graph_schema_version",
+      "probe_sha256",
+      "evaluator_version",
+      "evaluator_source_sha256"
+    ]
+  },
+  "excluded_from_this_round": [
+    "ntp_2tgt",
+    "sample",
+    "k_scan",
+    "Hungarian",
+    "teacherless",
+    "new_regularizers",
+    "larger_model",
+    "scale"
+  ],
+  "gates": {
+    "data_snapshot": "passed",
+    "complete_knowledge_graph": "passed",
+    "variant_sha_and_disjointness": "passed",
+    "heldout_generation": "passed",
+    "model_and_steps": "passed",
+    "task_explicit_launcher": "passed",
+    "formal_training": "not_started"
+  },
+  "evidence_boundary": "Owner-accepted derived Sibling inputs, fresh heldout, and no-heldout smoke are frozen launch inputs. Formal training has not started and no scientific result is present.",
+  "accepted_contract": {
+    "decision": "accept derived-5x500 as the project Sibling confirmation protocol",
+    "accepted_at": "2026-10-17",
+    "candidate_dir": "E:\\KM\\meta-method\\.p6_stage_1791568478\\outputs\\sibling-confirmation-20261016\\accepted-derived-5x500-20261017",
+    "source_revision": "edb56d3aba44007a926f1b3535812009b28934e4",
+    "derived_graph": true,
+    "derived_graph_rule": "contiguous a_i to b1_j/b2_j blocks from the upstream sibling notebook, num_a=5, num_b_per_a=500",
+    "heldout_policy": "one fresh hash set generated after acceptance and data freeze; no tuning after readout",
+    "heldout_file": "E:\\KM\\meta-method\\.p6_stage_1791568478\\outputs\\sibling-confirmation-20261016\\accepted-derived-5x500-20261017\\fresh-heldout-20261017.json",
+    "heldout_rows": 2048,
+    "heldout_sha256": "edcdd3baa2dbe0067f0cb3a24cd60a7a7c84f3203bd640d625111ad42b95686a"
+  },
+  "next_gate": "throughput_smoke",
+  "ready_gate": {
+    "smoke_run": "runs/icml2027-dev-20261017/sibling-smoke-derived/ntp_fixed/s42",
+    "smoke_steps": 8,
+    "smoke_gpu": "NVIDIA RTX A6000",
+    "smoke_run_meta_sha256": "99cf47721a49a271f15423837f11f196bd804c13f554d2eae9a3c982d75c8011",
+    "smoke_throughput_sha256": "90406c45a4018ebeafc894d4bbb81775141e44ee5896f65dd82347dc776ca",
+    "smoke_scores_sha256": "85a656b208cefd8f561f2f3251aa2d432b2062b0614aa591ad27db728788ddaa",
+    "smoke_evidence_boundary": "engineering only; zero validity at 8 steps is not a scientific result"
+  },
+  "remote_deployment": {
+    "host": "gpu-gfkd",
+    "candidate_dir": "/home/wlwuser/P6-Roll_the_dice/data/sibling.accepted-derived-5x500.20261017",
+    "config_dir": "/home/wlwuser/P6-Roll_the_dice/config/sibling-confirmation-derived-5x500-20261017",
+    "dry_run": "passed for ntp_fixed_2hash/seed42"
+  }
+}
