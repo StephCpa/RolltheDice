@@ -74,3 +74,12 @@ configuration/tokenizer identities. The built-in step-5000 scores are engineerin
 only: they use the training launch probe settings and are not the fresh heldout endpoint.
 They currently contain zero valid generated answers at this early checkpoint, so no effect
 claim is made from them.
+
+## checkpoint I/O observation
+
+During the 15k checkpoint, the three processes shared the `/home/wlwuser` ext4 volume and
+entered `balance_dirty_pages`/filesystem waits while writing their approximately 480 MB model
+files. The `2hash` checkpoint completed first and its process resumed training at step 16,500;
+the fixed and b128 processes were still writing their 15k weights at the last check. This is
+an infrastructure throughput observation only. No process was interrupted and no partial
+checkpoint is eligible for scoring.
