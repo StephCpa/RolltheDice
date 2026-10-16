@@ -12,7 +12,8 @@
 | `env312/Scripts/python.exe code/evaluator.py --selftest` | PASS | 评价器工程自检；不是 Sibling 结果 |
 | `env312/Scripts/python.exe code/test_pipeline.py` | PASS (`ALL OK`) | 现有微型流水线语义回归；不是前瞻有效性证据 |
 | `env312/Scripts/python.exe -m py_compile code/validate_sibling_manifest.py` | PASS | 新增结构检查脚本语法检查 |
-| 临时微型 GPT-2 + 临时数据，`train.py --task sibling --arm ntp_fixed --steps 2` | PASS | 仅确认显式 Sibling 任务接口能启动并完成 2 步；数据是工程 fixture，不是 Sibling 数据或结果 |
+| `bash -n code/run_stage0b.sh` 与 `py_compile`（evaluator/train/rescore/test） | PASS | launcher、显式图加载和身份字段语法检查 |
+| 临时微型 GPT-2 + 临时数据 + 两个临时图 JSON，`train.py --task sibling --sibling_graph_dir ... --steps 2` | PASS | 确认显式图目录能进入训练评价循环并写入图文件 SHA；fixture 不是 Sibling 数据或结果 |
 
 ## 根仓库约定检查
 
@@ -24,4 +25,4 @@
 
 这些失败不涉及本准备包的 JSON、TSV、验证脚本或 P6 训练/评价代码；提交前以完整日志和当前仓库状态复核。
 
-上述 Sibling 接口 smoke 没有清除完整知识图、官方数据快照或正式步数门禁；它只证明当前 trainer 能接收显式 `task=sibling` 参数并完成临时工程 fixture 的最小循环。
+上述 Sibling 接口 smoke 没有清除完整知识图、官方数据快照或正式步数门禁；它只证明当前 trainer 能接收显式 `task=sibling` 加完整图目录并完成临时工程 fixture 的最小循环。

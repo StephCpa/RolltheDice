@@ -422,7 +422,8 @@ def truncate_answer(s):
 
 
 def run_eval(model, tok, probes, raw, task, out_dir, step, device, n_samples, temp, eos,
-             save_preds=True, do_sample=None, own_targets=None, extra=None):
+             save_preds=True, do_sample=None, own_targets=None, extra=None,
+             sibling_graph=None):
     """do_sample=None 时沿用原逻辑（n_samples>1 才采样，否则 greedy）。
     own_targets: {训练探针 input_text: 本臂实际训练配对的 target_text}（用于 memo_own）。
     extra: 并入该行 scores 的附加字段（如 nll_own）。"""
@@ -462,7 +463,7 @@ def run_eval(model, tok, probes, raw, task, out_dir, step, device, n_samples, te
                                    ensure_ascii=False) + "\n")
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     from evaluator import Evaluator
-    scores = Evaluator(task, raw).eval_items(items, n_gen=n_samples)
+    scores = Evaluator(task, raw, sibling_graph=sibling_graph).eval_items(items, n_gen=n_samples)
     if extra:
         scores.update(extra)
     scores["step"] = step
@@ -524,6 +525,8 @@ def parse_args(argv=None):
                     choices=["ntp_noseed", "ntp_fixed", "tl_hybrid", *GROUP_ARMS])
     ap.add_argument("--data_dir", required=True)
     ap.add_argument("--task", choices=["circle", "sibling", "line"], default="circle")
+    ap.add_argument("--sibling_graph_dir", default=None,
+                    help="完整 Sibling graph JSON 目录；task=sibling 时必填")
     ap.add_argument("--out", required=True)
     ap.add_argument("--label", default=None, help="运行标签（汇总报告按此分组，默认=arm）")
     ap.add_argument("--model", default="gpt2")
@@ -577,6 +580,10 @@ def parse_args(argv=None):
     ap.add_argument("--no_save_preds", action="store_true",
                     help="不保存每次评价的原始生成 preds_step*.jsonl")
     args = ap.parse_args(argv)
+    if args.task == "sibling" and not args.sibling_graph_dir:
+        ap.error("task=sibling requires --sibling_graph_dir with both complete graph JSON files")
+    if args.task != "sibling" and args.sibling_graph_dir:
+        ap.error("--sibling_graph_dir is only valid with task=sibling")
     is_group = args.arm in GROUP_ARMS
     if not is_group:
         for k in ("pair_rule", "tl_target", "ntp_lambda", "mtp_weight", "lock_at",
@@ -645,6 +652,19 @@ def main(argv=None):
 
     with open(os.path.join(args.data_dir, "train.json"), encoding="utf-8") as f:
         raw = json.load(f)
+    sibling_graph = None
+    graph_meta = None
+    if args.task == "sibling":
+        from evaluator import load_sibling_graph
+        try:
+            sibling_graph = load_sibling_graph(args.sibling_graph_dir)
+        except ValueError as exc:
+            raise SystemExit(f"[error] {exc}") from exc
+        graph_meta = {
+            "dir": os.path.realpath(os.path.abspath(args.sibling_graph_dir)),
+            "files": {name: sha256_of(os.path.join(args.sibling_graph_dir, name))
+                      for name in ("entities_b1_dict.json", "entities_b2_dict.json")},
+        }
     exs = encode_raw(raw, tok)
     n = len(exs)
     R = load_pairing(args.pairing_file, n) if args.pairing_file else list(range(n))
@@ -673,6 +693,7 @@ def main(argv=None):
             "pairing_file": args.pairing_file, "fixed_pairing": args.fixed_pairing,
             "fixed_seed": args.fixed_seed,
             "pairing_sha256": sha256_of(args.pairing_file) if args.pairing_file else None,
+            "sibling_graph": graph_meta,
             "resume_from": args.resume_from, "resume_step": state["step"] if state else None,
             "ckpt_every": args.ckpt_every, "state_at": args.state_at,
             "deterministic": args.deterministic, "n_probes": len(probes),
@@ -719,7 +740,7 @@ def main(argv=None):
                            for p in tr_p if p["input_text"] in text2idx}
         run_eval(model, tok, probes, raw, args.task, args.out, step, device,
                  args.n_samples_probe, args.sample_temp, eos, save_preds,
-                 own_targets=own_targets, extra=extra)
+                 own_targets=own_targets, extra=extra, sibling_graph=sibling_graph)
 
     def log_window(lr):
         if not win["loss"]:

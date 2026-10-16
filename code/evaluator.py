@@ -142,8 +142,40 @@ def build_sibling_graph(train_sequences):
     return b1_dict, b2_dict
 
 
+def load_sibling_graph(graph_dir):
+    """Load the complete Sibling graph from explicit JSON artifacts.
+
+    The train-derived graph remains available for legacy unit fixtures, but
+    formal Sibling entry points must pass this explicit graph and record its
+    identity.  Values are normalized to sets so evaluation is independent of
+    JSON list order.
+    """
+    if not graph_dir:
+        raise ValueError("Sibling evaluation requires an explicit graph directory")
+    paths = {name: os.path.join(graph_dir, name) for name in
+             ("entities_b1_dict.json", "entities_b2_dict.json")}
+    data = {}
+    for kind, path in paths.items():
+        try:
+            with open(path, encoding="utf-8") as f:
+                obj = json.load(f)
+        except (OSError, json.JSONDecodeError) as exc:
+            raise ValueError(f"cannot load Sibling graph artifact {path}: {exc}") from exc
+        if not isinstance(obj, dict):
+            raise ValueError(f"Sibling graph artifact {path} must contain an object")
+        normalized = {}
+        for a, values in obj.items():
+            if not isinstance(values, list) or not all(isinstance(v, str) for v in values):
+                raise ValueError(f"Sibling graph artifact {path} has invalid values for {a!r}")
+            normalized[complete(a)] = {complete(v) for v in values}
+        data[kind] = normalized
+    if set(data["entities_b1_dict.json"]) != set(data["entities_b2_dict.json"]):
+        raise ValueError("Sibling b1/b2 graph artifacts have different parent keys")
+    return data["entities_b1_dict.json"], data["entities_b2_dict.json"]
+
+
 class Evaluator:
-    def __init__(self, task, train_sequences):
+    def __init__(self, task, train_sequences, sibling_graph=None):
         self.task = task
         if task in ("circle", "line"):
             # line 与 circle 同用首次出现重标定规范化（函数任务无关，见 circle_canonicalize）
@@ -153,7 +185,10 @@ class Evaluator:
                 if c is not None:
                     self.train_answers.add(c)
         else:
-            self.b1_dict, self.b2_dict = build_sibling_graph(train_sequences)
+            if sibling_graph is None:
+                self.b1_dict, self.b2_dict = build_sibling_graph(train_sequences)
+            else:
+                self.b1_dict, self.b2_dict = sibling_graph
             self.train_answers = set(
                 s["target_text"].split("<q>")[1].split("</a>")[0] for s in train_sequences)
 

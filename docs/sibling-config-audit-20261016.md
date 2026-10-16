@@ -98,3 +98,10 @@
 - [ ] launcher 显式传 `--task sibling`，正式评价不自动生成新的 selection.tsv；结果复用检查任务、模型目录、评价器、探针和图身份。
 
 本记录只冻结核对结果和阻断条件，不替代用户对两套上游配置的研究决策，也不构成 Sibling 已运行或有效性通过的声明。
+
+## 5. 门禁实现追加记录（2026-10-16）
+
+针对 §4 的任务/知识图门禁，新增了显式 `load_sibling_graph()` 接口，并将完整图目录及两
+个文件 SHA 写入 `run_meta.json`/`rescore_meta.json`；`task=sibling` 缺少图目录时，
+`train.py`、`rescore.py` 和 `run_stage0b.sh` 在启动前报错。用临时微型 fixture 完成了
+接口 smoke，未使用官方数据、未生成正式权重，也未清除本记录中数据快照和步数门禁。

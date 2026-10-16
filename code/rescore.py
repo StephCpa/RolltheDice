@@ -17,7 +17,7 @@ import sys
 import torch
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from evaluator import EVALUATOR_VERSION  # noqa: E402
+from evaluator import EVALUATOR_VERSION, load_sibling_graph  # noqa: E402
 from train import load_pairing, run_eval  # noqa: E402
 
 
@@ -123,6 +123,19 @@ def build_identity(args, model_dir, run_meta_path, run_meta, probe):
     if not os.path.isfile(ppath):
         raise SystemExit(f"[error] probe file does not exist: {ppath}")
     data_train = os.path.join(args.data_dir, "train.json")
+    graph_meta = None
+    if args.task == "sibling":
+        if not args.sibling_graph_dir:
+            raise SystemExit("[error] task=sibling requires --sibling_graph_dir")
+        try:
+            load_sibling_graph(args.sibling_graph_dir)
+        except ValueError as exc:
+            raise SystemExit(f"[error] {exc}") from exc
+        graph_meta = {
+            "dir": canonical(args.sibling_graph_dir),
+            "files": {name: sha256_file(os.path.join(args.sibling_graph_dir, name))
+                      for name in ("entities_b1_dict.json", "entities_b2_dict.json")},
+        }
     return {
         "schema_version": META_SCHEMA_VERSION,
         "task": args.task,
@@ -140,6 +153,7 @@ def build_identity(args, model_dir, run_meta_path, run_meta, probe):
         "evaluator_sha256": sha256_file(ev_path),
         "n_train_probes": len(probe[0]),
         "n_test_probes": len(probe[1]),
+        "sibling_graph": graph_meta,
     }
 
 
@@ -181,6 +195,8 @@ def parse_args(argv=None):
     ap.add_argument("--data_dir", required=True)
     ap.add_argument("--task", choices=TASKS, required=True,
                     help="任务身份；必须与最近的 run_meta.json 一致")
+    ap.add_argument("--sibling_graph_dir", default=None,
+                    help="完整 Sibling graph JSON 目录；task=sibling 时必填")
     ap.add_argument("--out", required=True)
     ap.add_argument("--probe_file", default=None,
                     help="测试探针来源（缺省 data_dir/test.json 的 type=test 条目）")
@@ -197,7 +213,12 @@ def parse_args(argv=None):
     ap.add_argument("--step", type=int, required=True,
                     help="选择标签；必须与 ckpts/stepN 或 run_meta.steps 一致")
     ap.add_argument("--seed", type=int, default=0)
-    return ap.parse_args(argv)
+    args = ap.parse_args(argv)
+    if args.task == "sibling" and not args.sibling_graph_dir:
+        ap.error("task=sibling requires --sibling_graph_dir with both complete graph JSON files")
+    if args.task != "sibling" and args.sibling_graph_dir:
+        ap.error("--sibling_graph_dir is only valid with task=sibling")
+    return args
 
 
 def main(argv=None):
@@ -231,6 +252,10 @@ def main(argv=None):
     tok.pad_token = tok.eos_token
     model = GPT2LMHeadModel.from_pretrained(args.model_dir).to(device)
 
+    sibling_graph = None
+    if args.task == "sibling":
+        sibling_graph = load_sibling_graph(args.sibling_graph_dir)
+
     pf = args.pairing_file
     if pf is None and os.path.exists(os.path.join(args.model_dir, "pairing.json")):
         pf = os.path.join(args.model_dir, "pairing.json")
@@ -258,7 +283,8 @@ def main(argv=None):
                     "probe_file": identity["probe_file"],
                     "task": args.task,
                     "checkpoint_identity": identity["checkpoint_identity"],
-                    "evaluator_version": EVALUATOR_VERSION})
+                    "evaluator_version": EVALUATOR_VERSION},
+             sibling_graph=sibling_graph)
     return 0
 
 

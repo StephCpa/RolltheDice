@@ -275,9 +275,9 @@ Hungarian、teacherless、新正则或 scale。上述内容是设计约束，不
 
 配置包当前状态是 `blocked_pending_artifacts`，只表示待补齐的启动门禁，不表示任何
 Sibling 结果。数据快照、完整 `entities_b1_dict.json`/`entities_b2_dict.json`、2hash
-变体 SHA、不相交性、同系统步数核价和显式 `task=sibling` 启动接口完成前，不得启动九个
-正式运行。`code/validate_sibling_manifest.py` 只做结构检查；它不会训练、读权重或裁决
-科学结果。
+变体 SHA、不相交性和同系统步数核价完成前，不得启动九个正式运行。`train.py`、`rescore.py`
+和 `run_stage0b.sh` 现在要求 Sibling 显式提供完整图目录并把图文件 SHA 写入身份；
+`code/validate_sibling_manifest.py` 只做结构检查，不会训练、读权重或裁决科学结果。
 
 本次工程 smoke 只验证现有评价器和训练流水线回归，不属于 Sibling 证据。scale、旧主候选
 `ntp_2tgt` 追门槛以及额外臂继续暂停。

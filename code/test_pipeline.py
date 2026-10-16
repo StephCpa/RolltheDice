@@ -146,6 +146,25 @@ def test_rescore_provenance_guards():
     assert raised  # 调用方必须先发现 metadata task 冲突
 
 
+def test_sibling_graph_requires_explicit_complete_artifacts():
+    """事件 #9 后的 Sibling 门禁：正式入口不得从 train.json 静默补图。"""
+    import evaluator as evmod
+    root = tempfile.mkdtemp(prefix="p6_sibling_graph_")
+    with open(os.path.join(root, "entities_b1_dict.json"), "w", encoding="utf-8") as f:
+        json.dump({"<a_0>": ["<b1_0>"]}, f)
+    with open(os.path.join(root, "entities_b2_dict.json"), "w", encoding="utf-8") as f:
+        json.dump({"<a_0>": ["<b2_0>"]}, f)
+    b1, b2 = evmod.load_sibling_graph(root)
+    assert b1["<a_0>"] == {"<b1_0>"} and b2["<a_0>"] == {"<b2_0>"}
+    try:
+        train.parse_args(["--arm", "ntp_fixed", "--data_dir", root, "--out", root,
+                          "--task", "sibling"])
+        raised = False
+    except SystemExit:
+        raised = True
+    assert raised
+
+
 # ---------------- 组级训练步骤 ----------------
 
 def test_group_step_pairing_semantics():

@@ -19,7 +19,8 @@
 # 环境变量（括号内为缺省）：PY(python) DATA(data/circle.10.9.10.10000) NOHASH(data/circle.10.9.0.10000)
 #   OUT(runs/stage0b) SRV(runs/server-circle-40k，阶段 A 的已有运行) MODEL(gpt2) STEPS(40000) EVERY(5000)
 #   STATE_AT(10000,14000,20000) LOCK_AT(14000) LOCK_LEN(2000) INTERVENE_AT(20000) SEEDS_C("43 44")
-#   TASK（必填：circle|sibling|line）HELD_N(2048) SELECTION_FILE（OUT/selection.tsv）
+#   TASK（必填：circle|sibling|line）SIBLING_GRAPH_DIR（TASK=sibling 时必填）
+#   HELD_N(2048) SELECTION_FILE（OUT/selection.tsv）
 #   GPUS（如 "0 1 2 3"：同一阶段的运行按批轮转并行）EXTRA（附加给 train.py 的参数）
 set -euo pipefail
 PHASE="${1:?见脚本头部用法}"
@@ -40,6 +41,7 @@ SEEDS_C="${SEEDS_C:-43 44}"
 EXTRA="${EXTRA:-}"
 HELD_N="${HELD_N:-2048}"
 TASK="${TASK:-}"
+SIBLING_GRAPH_DIR="${SIBLING_GRAPH_DIR:-}"
 SELECTION_FILE="${SELECTION_FILE:-$OUT/selection.tsv}"
 if [[ -z "$TASK" ]]; then
   echo "[error] TASK is required (circle|sibling|line); refusing an implicit Circle task" >&2
@@ -49,6 +51,20 @@ case "$TASK" in
   circle|sibling|line) ;;
   *) echo "[error] unknown TASK=$TASK (expected circle|sibling|line)" >&2; exit 2 ;;
 esac
+SIBLING_GRAPH_ARGS=()
+if [[ "$TASK" = sibling ]]; then
+  if [[ -z "$SIBLING_GRAPH_DIR" ]]; then
+    echo "[error] TASK=sibling requires SIBLING_GRAPH_DIR with both complete graph JSON files" >&2
+    exit 2
+  fi
+  [ -f "$SIBLING_GRAPH_DIR/entities_b1_dict.json" ] || {
+    echo "[error] missing $SIBLING_GRAPH_DIR/entities_b1_dict.json" >&2; exit 2;
+  }
+  [ -f "$SIBLING_GRAPH_DIR/entities_b2_dict.json" ] || {
+    echo "[error] missing $SIBLING_GRAPH_DIR/entities_b2_dict.json" >&2; exit 2;
+  }
+  SIBLING_GRAPH_ARGS=(--sibling_graph_dir "$SIBLING_GRAPH_DIR")
+fi
 read -r -a GPU_LIST <<< "${GPUS:-}"
 export HF_ENDPOINT="${HF_ENDPOINT:-https://hf-mirror.com}"
 C="$ROOT/code"
@@ -140,7 +156,7 @@ train () {  # train <label> <seed> <arm> [train.py 参数...]
   "$PY" "$C/train.py" --arm "$arm" --label "$label" --seed "$seed" --out "$out" \
     --model "$MODEL" --task "$TASK" --data_dir "$DATA" --steps "$STEPS" \
     --eval_every "$EVERY" --ckpt_every "$EVERY" --save_final \
-    --churn_dump "$out/churn.jsonl" "$@" $EXTRA > "$out/train.log" 2>&1 \
+    --churn_dump "$out/churn.jsonl" "${SIBLING_GRAPH_ARGS[@]}" "$@" $EXTRA > "$out/train.log" 2>&1 \
     || echo "[FAIL] $out（见 train.log）"
 }
 
@@ -155,7 +171,7 @@ branch () {  # branch <label> <state_dir> <steps> [参数...]：从完整状态�
   "$PY" "$C/train.py" --arm setc_m4 --label "$label" --seed 42 --out "$out" \
     --model "$MODEL" --task "$TASK" --data_dir "$DATA" --steps "$steps" \
     --eval_every "$EVERY" --ckpt_every "$EVERY" --save_final \
-    --churn_dump "$out/churn.jsonl" --resume_from "$st" "$@" $EXTRA > "$out/train.log" 2>&1 \
+    --churn_dump "$out/churn.jsonl" "${SIBLING_GRAPH_ARGS[@]}" --resume_from "$st" "$@" $EXTRA > "$out/train.log" 2>&1 \
     || echo "[FAIL] $out（见 train.log）"
 }
 
@@ -173,16 +189,16 @@ phase_A () {
     task="$(task_for_run "$run")"
     local pf=()
     [ -f "$SRV/$arm/pistar_final.json" ] && pf=(--pairing_file "$SRV/$arm/pistar_final.json")
-    try "$PY" "$C/rescore.py" --model_dir "$md" --data_dir "$DATA" --task "$task" --out "$A/$arm/dev" \
+    try "$PY" "$C/rescore.py" --model_dir "$md" --data_dir "$DATA" --task "$task" "${SIBLING_GRAPH_ARGS[@]}" --out "$A/$arm/dev" \
       --n_test 128 --step 40000 "${pf[@]}"
-    try "$PY" "$C/rescore.py" --model_dir "$md" --data_dir "$DATA" --task "$task" --out "$A/$arm/heldout" \
+    try "$PY" "$C/rescore.py" --model_dir "$md" --data_dir "$DATA" --task "$task" "${SIBLING_GRAPH_ARGS[@]}" --out "$A/$arm/heldout" \
       --probe_file "$HELD" --step 40000 "${pf[@]}"
   done
   if [ -d "$SRV/ntp_noseed_v2/final_model" ]; then
     local task
     task="$(task_for_run "$SRV/ntp_noseed_v2")"
     for T in 0.5 1.0; do
-      try "$PY" "$C/rescore.py" --model_dir "$SRV/ntp_noseed_v2/final_model" --data_dir "$NOHASH" --task "$task" \
+      try "$PY" "$C/rescore.py" --model_dir "$SRV/ntp_noseed_v2/final_model" --data_dir "$NOHASH" --task "$task" "${SIBLING_GRAPH_ARGS[@]}" \
         --out "$A/ntp_noseed_v2/T$T" --n_test 1024 --sample --temp "$T" --step 40000
     done
   fi
@@ -200,7 +216,7 @@ phase_A () {
     local task
     task="$(task_for_run "$SRV/tl_hybrid_v2")"
     try "$PY" "$C/rescore.py" --model_dir "$SRV/tl_hybrid_v2/final_model" --data_dir "$DATA" \
-      --task "$task" --out "$A/tl_hybrid_v2/T1.0" --n_test 128 --sample --temp 1.0 --step 40000
+      --task "$task" "${SIBLING_GRAPH_ARGS[@]}" --out "$A/tl_hybrid_v2/T1.0" --n_test 128 --sample --temp 1.0 --step 40000
   fi
 }
 
@@ -335,7 +351,7 @@ PY
     # 该运行自己的 train.json 定义 seen/memo；留出探针统一来自冻结 $HELD。
     # rescore.py 会对已有输出校验同一任务、checkpoint、评价器和探针身份，
     # 任何缺失/冲突的旧结果都会报错而不覆盖。
-    "$PY" "$C/rescore.py" --model_dir "$ck" --data_dir "$ddir" --task "$task" \
+    "$PY" "$C/rescore.py" --model_dir "$ck" --data_dir "$ddir" --task "$task" "${SIBLING_GRAPH_ARGS[@]}" \
       --probe_file "$HELD" --out "$run/heldout" --step "$step" > "$run/heldout.log" 2>&1
   done < "$SELECTION_FILE"
   local selection_sha_after
