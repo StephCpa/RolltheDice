@@ -83,16 +83,23 @@ Vaishnavh Nagarajan, Chen Henry Wu, Charles Ding, Aditi Raghunathan · **ICML 20
 
 关键机制发现（增补 9 独立核验）：**ntp_2tgt 仍完整记住每对答案**（memo_sum=1.000 全检查点）——种子仍是查表键，只是指向一个**答案集合**而非单点；改变的是"查什么"，不是"能否查"。
 
-### Phase 1：跨任务验证（2026-10-15 ～ 10-16，Line Construction）
+### Phase 1：跨任务验证（2026-10-15 ～ 10-16，Line Construction；事件 #9 修复后数字）
 
-| 配方 | 留出 creativity（Line） | Δ vs fixed |
-|---|---|---|
-| ntp_fixed | 0.053 | — |
-| b128 | 0.074 | +0.021（不稳） |
-| **ntp_2tgt** | **0.087** | **+0.035（3/3 正，PASS）** |
-| sample / 2hash | 0.113 | +0.060（3/3 正，反超 2tgt） |
+> ⚠️ 首次报告的 Line 数字因评价链错误作废（Circle 规则评 Line ＋ 加载终点模型而非选中检查点，
+> 详见增补 13）；下表为按冻结选择清单、task=line 重评后的修正读数。
 
-**增益迁移成立**，但最优形式任务依赖（Circle 上 2tgt 最高，Line 上 sample/2hash 并列最高）——配对多样性增益稳健，最优具体形式不普适。
+| 配方 | 留出 creativity（Line） | Δ vs fixed | 判定 |
+|---|---|---|---|
+| ntp_fixed | 0.155 | — | — |
+| b128 | 0.157 | +0.002 | 无增益（与 Circle 一致） |
+| ntp_2tgt（预指定主 recipe） | 0.169 | +0.014（3/3 正但 <0.03） | **未过门** |
+| ntp_2tgt_sample | 0.160 | 高方差 | 不稳 |
+| **ntp_fixed_2hash** | **0.190** | **+0.034（3/3 正，≥0.03）** | **PASS（辅助臂）** |
+
+**修正后的跨任务图景**：预指定主 recipe（2tgt）在 Line 上增益收窄至 +0.014、未达门槛；
+但 2hash（答案多入口、每 hash 单目标）在**两个任务上均稳定达标**（Circle +0.079、Line +0.034）
+——这是当前唯一跨任务一致的信号，值得下一轮预注册独立确认。按纪律不因辅助臂过门
+替换预指定候选，Line 迁移问题以"主 recipe 未过、多入口变体过"的形态记录。
 
 ---
 
@@ -128,12 +135,12 @@ Vaishnavh Nagarajan, Chen Henry Wu, Charles Ding, Aditi Raghunathan · **ICML 20
 
 ## 附录：关键数字速查
 
-| 比较 | Circle | Line |
+| 比较 | Circle | Line（修复后） |
 |---|---|---|
-| ntp_2tgt vs fixed | +0.132（PASS） | +0.035（PASS） |
-| sample vs fixed | +0.066（PASS） | +0.060（PASS） |
-| 2hash vs fixed | +0.079（PASS） | +0.060（PASS） |
-| b128 vs fixed | +0.003（FAIL） | +0.021（不稳） |
+| ntp_2tgt vs fixed | +0.132（PASS） | +0.014（未过门） |
+| sample vs fixed | +0.066（PASS） | 高方差（不稳） |
+| 2hash vs fixed | +0.079（PASS） | **+0.034（PASS）** |
+| b128 vs fixed | +0.003（FAIL） | +0.002（无增益） |
 | k=3 vs fixed | +0.038（不稳） | — |
 | k=4 vs fixed | +0.014（FAIL） | — |
 
