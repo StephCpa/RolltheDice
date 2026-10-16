@@ -1,0 +1,9 @@
+{
+  "mode": "dup_hash",
+  "k": 2,
+  "base_dir": "outputs\\sibling-confirmation-20261016\\candidate-public-5x500-20261017\\base",
+  "seed": 20261012,
+  "n_train_base": 50000,
+  "n_train_out": 100000,
+  "train_sha256": "fee377335f284b829987ba9ee9ca61590a560d288b7fc77ce176b0373e7c77a4"
+}

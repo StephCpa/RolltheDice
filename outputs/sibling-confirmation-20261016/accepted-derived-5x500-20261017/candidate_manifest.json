@@ -1,0 +1,64 @@
+{
+  "record_type": "development_sibling_public_candidate",
+  "formal_use": "accepted_by_owner",
+  "source": {
+    "dataset": "ChenWu98/sibling.5.500.10.50000",
+    "revision": "edb56d3aba44007a926f1b3535812009b28934e4",
+    "train_parquet": {
+      "path": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\sibling-public-probe-20261017\\train.parquet",
+      "sha256": "2e12567550368a892f56b240bdfb6d819dee93ef2b0f27aa7b96a9b00c6d6ffb"
+    },
+    "valid_parquet": {
+      "path": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\sibling-public-probe-20261017\\valid.parquet",
+      "sha256": "3c252eb8d1e6243d6826fb307cd887d7798893e3a509c9ce73377369829ff1c3"
+    }
+  },
+  "dimensions": {
+    "num_a": 5,
+    "num_b_per_a": 500,
+    "hash_length": 10
+  },
+  "derived": {
+    "test_policy": "3000 seeded train rows tagged train plus public valid rows tagged test",
+    "test_seed": 20261017,
+    "graph_policy": "contiguous block mapping from upstream sibling.ipynb applied to 5x500",
+    "graph_is_official": false,
+    "input_hashes_in_train_valid": 53000
+  },
+  "files": {
+    "base/train.json": {
+      "rows": 50000,
+      "sha256": "8fe58f245af1efea6c996fca09ef3151017b10e92b8d8f3568f4e10fba0c8b04"
+    },
+    "base/valid.json": {
+      "rows": 3000,
+      "sha256": "6ce723f717f51d8f31250bd120362a23f31ae4985ee967ec9f47c89a46f8296a"
+    },
+    "base/test.json": {
+      "rows": 6000,
+      "sha256": "34700619ddbe06594d8c52ce9c53d37307a335204bd3339cd00621b7ee4baa47"
+    },
+    "base/vocab.json": {
+      "rows": 5011,
+      "sha256": "253cda9246a5ec206656bedad428d5b6129d996f8b4fd7b6be3d47e2e36b153a"
+    },
+    "graph/entities_b1_dict.json": {
+      "keys": 5,
+      "sha256": "9977d5b45a5692d8af63e1c7b33745e7b0ec498ce287748f4ea00650399a346d"
+    },
+    "graph/entities_b2_dict.json": {
+      "keys": 5,
+      "sha256": "7c66efda12ea3adee6a0d83788f06ae096ca56df3582bd3a4b7d093deb089f41"
+    }
+  },
+  "owner_acceptance": {
+    "accepted_at": "2026-10-17",
+    "decision": "accept derived-5x500 as the project Sibling confirmation protocol",
+    "heldout_policy": "generate one fresh heldout after acceptance and freeze; no tuning after readout",
+    "heldout_file": "fresh-heldout-20261017.json",
+    "heldout_seed": 2026101701,
+    "heldout_rows": 2048,
+    "heldout_sha256": "edcdd3baa2dbe0067f0cb3a24cd60a7a7c84f3203bd640d625111ad42b95686a",
+    "excluded_hashes": 103000
+  }
+}
