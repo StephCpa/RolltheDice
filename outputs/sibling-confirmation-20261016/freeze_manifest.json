@@ -95,7 +95,7 @@
     "complete_knowledge_graph": "pending",
     "model_and_steps": "proposed_pending_throughput_smoke",
     "variant_sha_and_disjointness": "pending",
-    "task_explicit_launcher": "implemented_pending_integration_smoke",
+    "task_explicit_launcher": "passed_engineering_smoke",
     "formal_training": "blocked"
   },
   "evidence_boundary": "This is a development configuration proposal and launch gate. It contains no Sibling training output, heldout score, or scientific confirmation."

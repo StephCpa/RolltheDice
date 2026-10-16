@@ -8,6 +8,6 @@
 
 三臂是 `ntp_fixed`（64 序列/步）、`ntp_fixed_b128`（128 序列/步）和 `ntp_fixed_2hash`（`dup_hash(k=2)`、128 序列/步），种子为 42、43、44。主比较是 `2hash − b128`，同时报告 `2hash − fixed`。不加入 `2tgt`、sample、k 扫描、Hungarian、teacherless、新正则或 scale。
 
-启动前必须补齐：官方 `sibling.5.500.10.50000` 的本地快照及 SHA、`entities_b1_dict.json`/`entities_b2_dict.json` 完整知识图、2hash 变体的不相交性和 SHA、任务显式传递，以及无留出确定性 smoke/吞吐记录。任何 smoke 输出只能作为工程门禁证据，不能写成 Sibling 有效性证据。
+启动前必须补齐：官方 `sibling.5.500.10.50000` 的本地快照及 SHA、`entities_b1_dict.json`/`entities_b2_dict.json` 完整知识图、2hash 变体的不相交性和 SHA，以及无留出确定性 smoke/吞吐记录。任务显式传递已经通过工程 smoke；任何 smoke 输出只能作为工程门禁证据，不能写成 Sibling 有效性证据。
 
 本轮只读探针确认了 HF public artifact 的 revision、train/valid parquet SHA 和字段；探针记录见 [`public-artifact-probe-20261016.json`](public-artifact-probe-20261016.json)。该公开 data example 没有完整知识图或 test/heldout 文件，因此不能直接作为正式评价输入。
