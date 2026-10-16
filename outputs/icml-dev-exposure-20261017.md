@@ -37,6 +37,30 @@
 
 ## 当前状态
 
-数据生成命令已在远程成功完成。随后远程 SSH 出现连接/握手超时，尚未启动训练、未生成
-完整曝光控制训练或 heldout 预测，也没有改变任何已有运行。上面的 smoke 是唯一新增的
-远程运行，仍属于 development。
+数据生成命令已在远程成功完成。随后曾短暂启动三条 `s42` 工程试跑：`ntp_fixed`
+batch 64、`ntp_fixed` batch 128，以及 `dup2` batch 128。它们误用了已训练的
+`stage0b/ntp_fixed/s42/final_model`，分别只推进到约 500--1500 steps；审计发现服务器
+已有完整离线 `gpt2` 快照
+`/home/wlwuser/.cache/huggingface/hub/models--gpt2/snapshots/607a30d783dfa663caf39e06633721d8c4cfcd7e`，
+故三条试跑已由操作者终止，输出不得评分或复用，只保留为吞吐和显存工程记录。
+
+下一次启动必须让全部臂使用同一份不可变的离线 `gpt2` 快照，并在 `run_meta.json` 中记录
+模型配置与权重身份。当前没有完整曝光控制训练或 heldout 预测，所有新增运行仍属于
+development。
+
+## corrected development launch
+
+At 04:28--04:30 CST, the following three development runs were relaunched from the same
+offline snapshot (no heldout score is available yet):
+
+| run | data | batch | GPU | remote output |
+|---|---|---:|---:|---|
+| fixed s42 | base | 64 | 5 | `exposure-gpt2/ntp_fixed/s42` |
+| fixed-b128 s42 | base | 128 | 6 | `exposure-gpt2/ntp_fixed_b128/s42` |
+| 2hash s42 | `dup2` | 128 | 7 | `exposure-gpt2/ntp_fixed_2hash/s42` |
+
+The snapshot is `gpt2-local-snapshot-607a30d7`; its `model.safetensors` SHA256 is
+`248dfc3911869ec493c76e65bf2fcf7f615828b0254c12b473182f0f81d3a707`. Each run uses
+40,000 steps, warmup 2,000, seed 42, evaluation/checkpoint interval 5,000, and 128 probes.
+The three runs are still engineering-stage development runs. Their outputs require a fresh
+selection and heldout protocol before any scientific comparison.
