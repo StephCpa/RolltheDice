@@ -105,3 +105,12 @@
 个文件 SHA 写入 `run_meta.json`/`rescore_meta.json`；`task=sibling` 缺少图目录时，
 `train.py`、`rescore.py` 和 `run_stage0b.sh` 在启动前报错。用临时微型 fixture 完成了
 接口 smoke，未使用官方数据、未生成正式权重，也未清除本记录中数据快照和步数门禁。
+
+## 6. 公开 artifact 只读探针追加记录（2026-10-16）
+
+通过 HF dataset API、文件树和 rows viewer 做了只读核验，并临时下载了两个 public parquet
+以记录字节身份；原始 parquet 未提交到公开仓库。文件 SHA、字节数、字段、split 行数和
+“缺少图/test/heldout”的边界见
+[`outputs/sibling-confirmation-20261016/public-artifact-probe-20261016.json`](../outputs/sibling-confirmation-20261016/public-artifact-probe-20261016.json)。
+该动作只固定了公开 data example 的输入/目标 artifact 身份，不把它升级为完整 Sibling
+正式数据包；完整图仍须从获准的 notebook/再生源单独冻结并与数据建立对应记录。

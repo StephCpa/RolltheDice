@@ -156,6 +156,20 @@ def test_sibling_graph_requires_explicit_complete_artifacts():
         json.dump({"<a_0>": ["<b2_0>"]}, f)
     b1, b2 = evmod.load_sibling_graph(root)
     assert b1["<a_0>"] == {"<b1_0>"} and b2["<a_0>"] == {"<b2_0>"}
+    # The formal graph schema is family-specific; malformed or duplicated
+    # entries must fail before any evaluation can consume them.
+    bad_graph = os.path.join(root, "bad")
+    os.makedirs(bad_graph)
+    with open(os.path.join(bad_graph, "entities_b1_dict.json"), "w", encoding="utf-8") as f:
+        json.dump({"<a_0>": ["<b2_0>"]}, f)
+    with open(os.path.join(bad_graph, "entities_b2_dict.json"), "w", encoding="utf-8") as f:
+        json.dump({"<a_0>": ["<b2_0>"]}, f)
+    try:
+        evmod.load_sibling_graph(bad_graph)
+        raised = False
+    except ValueError:
+        raised = True
+    assert raised
     try:
         train.parse_args(["--arm", "ntp_fixed", "--data_dir", root, "--out", root,
                           "--task", "sibling"])

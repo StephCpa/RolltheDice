@@ -655,12 +655,13 @@ def main(argv=None):
     sibling_graph = None
     graph_meta = None
     if args.task == "sibling":
-        from evaluator import load_sibling_graph
+        from evaluator import SIBLING_GRAPH_SCHEMA_VERSION, load_sibling_graph
         try:
             sibling_graph = load_sibling_graph(args.sibling_graph_dir)
         except ValueError as exc:
             raise SystemExit(f"[error] {exc}") from exc
         graph_meta = {
+            "schema_version": SIBLING_GRAPH_SCHEMA_VERSION,
             "dir": os.path.realpath(os.path.abspath(args.sibling_graph_dir)),
             "files": {name: sha256_of(os.path.join(args.sibling_graph_dir, name))
                       for name in ("entities_b1_dict.json", "entities_b2_dict.json")},

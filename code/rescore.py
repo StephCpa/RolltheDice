@@ -17,7 +17,7 @@ import sys
 import torch
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from evaluator import EVALUATOR_VERSION, load_sibling_graph  # noqa: E402
+from evaluator import EVALUATOR_VERSION, SIBLING_GRAPH_SCHEMA_VERSION, load_sibling_graph  # noqa: E402
 from train import load_pairing, run_eval  # noqa: E402
 
 
@@ -132,6 +132,7 @@ def build_identity(args, model_dir, run_meta_path, run_meta, probe):
         except ValueError as exc:
             raise SystemExit(f"[error] {exc}") from exc
         graph_meta = {
+            "schema_version": SIBLING_GRAPH_SCHEMA_VERSION,
             "dir": canonical(args.sibling_graph_dir),
             "files": {name: sha256_file(os.path.join(args.sibling_graph_dir, name))
                       for name in ("entities_b1_dict.json", "entities_b2_dict.json")},

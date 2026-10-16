@@ -14,6 +14,8 @@
 | `env312/Scripts/python.exe -m py_compile code/validate_sibling_manifest.py` | PASS | 新增结构检查脚本语法检查 |
 | `bash -n code/run_stage0b.sh` 与 `py_compile`（evaluator/train/rescore/test） | PASS | launcher、显式图加载和身份字段语法检查 |
 | 临时微型 GPT-2 + 临时数据 + 两个临时图 JSON，`train.py --task sibling --sibling_graph_dir ... --steps 2` | PASS | 确认显式图目录能进入训练评价循环并写入图文件 SHA；fixture 不是 Sibling 数据或结果 |
+| 显式图 schema 回归 | PASS | 拒绝空图、跨 b1/b2 家族值、重复值和不一致 parent keys |
+| HF public artifact 只读探针 | PASS（边界明确） | 固定 train/valid parquet 的 revision、SHA 和字段；确认没有 graph/test/heldout，故不解除正式门禁 |
 
 ## 根仓库约定检查
 

@@ -79,6 +79,7 @@
   ],
   "evaluation": {
     "primary_metric": "canonical_creativity",
+    "graph_schema_version": "p6-sibling-complete-v1",
     "auxiliary_metrics": ["validity", "unique_novel", "train_seen", "train_memorization", "creativity_raw"],
     "heldout_policy": "new hash probe generated after data freeze; one-shot readout; no tuning after readout",
     "candidate_gate": {
@@ -86,7 +87,7 @@
       "all_seed_margins_positive": true,
       "status": "proposed_inherited_project_gate; confirm scale before formal readout"
     },
-    "identity_fields": ["task", "checkpoint", "step", "run_meta_sha256", "data_sha256", "graph_sha256", "probe_sha256", "evaluator_version", "evaluator_source_sha256"]
+    "identity_fields": ["task", "checkpoint", "step", "run_meta_sha256", "data_sha256", "graph_sha256", "graph_schema_version", "probe_sha256", "evaluator_version", "evaluator_source_sha256"]
   },
   "excluded_from_this_round": ["ntp_2tgt", "sample", "k_scan", "Hungarian", "teacherless", "new_regularizers", "larger_model", "scale"],
   "gates": {

@@ -14,12 +14,14 @@ import argparse
 import json
 import os
 import sys
+import re
 
 
 # Stable identity recorded by rescore.py.  Keep this separate from the source
 # hash: the hash detects an uncommitted edit, while this label identifies the
 # evaluator contract used in a result package.
 EVALUATOR_VERSION = "p6-evaluator-v2"
+SIBLING_GRAPH_SCHEMA_VERSION = "p6-sibling-complete-v1"
 
 
 def complete(s):
@@ -155,6 +157,11 @@ def load_sibling_graph(graph_dir):
     paths = {name: os.path.join(graph_dir, name) for name in
              ("entities_b1_dict.json", "entities_b2_dict.json")}
     data = {}
+    parent_re = re.compile(r"^<a_[0-9]+>$")
+    value_re = {
+        "entities_b1_dict.json": re.compile(r"^<b1_[0-9]+>$"),
+        "entities_b2_dict.json": re.compile(r"^<b2_[0-9]+>$"),
+    }
     for kind, path in paths.items():
         try:
             with open(path, encoding="utf-8") as f:
@@ -163,11 +170,19 @@ def load_sibling_graph(graph_dir):
             raise ValueError(f"cannot load Sibling graph artifact {path}: {exc}") from exc
         if not isinstance(obj, dict):
             raise ValueError(f"Sibling graph artifact {path} must contain an object")
+        if not obj:
+            raise ValueError(f"Sibling graph artifact {path} must not be empty")
         normalized = {}
         for a, values in obj.items():
-            if not isinstance(values, list) or not all(isinstance(v, str) for v in values):
+            if not isinstance(a, str) or not parent_re.fullmatch(a):
+                raise ValueError(f"Sibling graph artifact {path} has invalid parent key {a!r}")
+            if not isinstance(values, list) or not values or not all(isinstance(v, str) for v in values):
                 raise ValueError(f"Sibling graph artifact {path} has invalid values for {a!r}")
-            normalized[complete(a)] = {complete(v) for v in values}
+            if len(set(values)) != len(values):
+                raise ValueError(f"Sibling graph artifact {path} has duplicate values for {a!r}")
+            if not all(value_re[kind].fullmatch(v) for v in values):
+                raise ValueError(f"Sibling graph artifact {path} has values outside its b-family for {a!r}")
+            normalized[a] = set(values)
         data[kind] = normalized
     if set(data["entities_b1_dict.json"]) != set(data["entities_b2_dict.json"]):
         raise ValueError("Sibling b1/b2 graph artifacts have different parent keys")
