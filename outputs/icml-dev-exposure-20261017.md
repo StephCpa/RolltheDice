@@ -64,3 +64,13 @@ The snapshot is `gpt2-local-snapshot-607a30d7`; its `model.safetensors` SHA256 i
 40,000 steps, warmup 2,000, seed 42, evaluation/checkpoint interval 5,000, and 128 probes.
 The three runs are still engineering-stage development runs. Their outputs require a fresh
 selection and heldout protocol before any scientific comparison.
+
+## first checkpoint gate
+
+At 04:50 CST the three `s42` runs were verified alive on GPUs 5--7. Each has a complete
+`ckpts/step5000/` directory, `preds_step5000.jsonl`, `scores.jsonl`, and `run_meta.json`.
+The three `run_meta.json` files point to the same offline GPT-2 snapshot and record the same
+configuration/tokenizer identities. The built-in step-5000 scores are engineering diagnostics
+only: they use the training launch probe settings and are not the fresh heldout endpoint.
+They currently contain zero valid generated answers at this early checkpoint, so no effect
+claim is made from them.
