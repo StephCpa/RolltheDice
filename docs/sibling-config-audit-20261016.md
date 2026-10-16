@@ -9,7 +9,7 @@
 
 | 来源 | 定位 | 核验动作 |
 |---|---|---|
-| P6 canonical repo | `main@f089a51` | 读取 `docs/handover.md`、`plan/icml2027-plan.md`、`code/datagen.py`、`code/evaluator.py`、`code/train.py`；检查 Sibling 配置和当前 launcher/评价接口。 |
+| P6 canonical repo | `main@bd06348` | 读取 `docs/handover.md`、`plan/icml2027-plan.md`、`code/datagen.py`、`code/evaluator.py`、`code/train.py`；检查 Sibling 配置和当前 launcher/评价接口。 |
 | 上游代码快照 | `external/algorithmic-creativity`（P6 数据目录随附的快照；P6 代码注释标为 `@7176dc7`） | 对照 `sibling-discovery/ntp/sibling.ipynb`、`sibling_no_hash.ipynb`、`teacherless/sibling_hybrid.ipynb`、`ntp/train.sh`、`ntp/run_train.sh`、`ntp/run_eval.sh`。 |
 | 公开数据元信息 | [ChenWu98/sibling.5.500.10.50000](https://huggingface.co/datasets/ChenWu98/sibling.5.500.10.50000)；上游 [README](https://github.com/chenwu98/algorithmic-creativity) | 核对数据集名称、论文链接、split 行数和 README 的示例链接。 |
 | 当前本地数据 | `P6-Roll_the_dice/data/sibling.10.1000.*.50000` | 读取 JSON 行数、实体编号范围、hash 唯一性和 SHA-256；不修改文件。 |

@@ -145,7 +145,7 @@ arXiv:2504.15266)：在受控任务（Circle/Line Construction, Sibling/Triangle
 
 ### 5.1 仓库（https://github.com/StephCpa/RolltheDice）
 
-- **main** 最新：`f089a51`（Line 发布收尾、评价身份门禁、Sibling 配置准备包和公开 artifact 探针已入库）
+- **main** 最新：`bd06348`（Line 发布收尾、评价身份门禁、Sibling 配置准备包和公开 artifact 探针已入库）
 - 分支 `claude/zen-bohr-gq1si2`：合作者（另一位 AI）的工具链贡献，已全部合入 main
 - 关键路径：`runs/stage0-report.md`（全部增补1–13）、`docs/work-summary.md`（面向阅读的总结）、
   `plan/`（已签协议与修订）、`runs/line-phase1/`（最新一组实验＋修复后 heldout 分数）
@@ -263,7 +263,7 @@ RolltheDice/
 核心比较为 `2hash−b128`，同时报告 `2hash−fixed`。不加入 `2tgt`、sample、k 扫描、
 Hungarian、teacherless、新正则或 scale。上述内容是设计约束，不是已经产生的实验结果。
 
-*本文档由执行端生成于 2026-10-16，对应发布提交 main@`f089a51`；此前提交号保留在历史记录中。
+*本文档由执行端生成于 2026-10-16，对应发布提交 main@`bd06348`；此前提交号保留在历史记录中。
 如有疑问请对照仓库原始文件和增补记录，而非仅依赖本文档摘要。*
 
 ## 12. Sibling 确认准备包（2026-10-16）
@@ -283,4 +283,4 @@ Sibling 结果。数据快照、完整 `entities_b1_dict.json`/`entities_b2_dict
 本次工程 smoke 只验证现有评价器和训练流水线回归，不属于 Sibling 证据。scale、旧主候选
 `ntp_2tgt` 追门槛以及额外臂继续暂停。
 
-*本节的准备包、公开 artifact 探针与 smoke 记录已发布于 main@`f089a51`；此前段落中的旧提交号保留为历史定位。*
+*本节的准备包、公开 artifact 探针与 smoke 记录已发布于 main@`bd06348`；此前段落中的旧提交号保留为历史定位。*
