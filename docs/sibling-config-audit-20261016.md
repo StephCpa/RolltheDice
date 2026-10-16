@@ -114,3 +114,16 @@
 [`outputs/sibling-confirmation-20261016/public-artifact-probe-20261016.json`](../outputs/sibling-confirmation-20261016/public-artifact-probe-20261016.json)。
 该动作只固定了公开 data example 的输入/目标 artifact 身份，不把它升级为完整 Sibling
 正式数据包；完整图仍须从获准的 notebook/再生源单独冻结并与数据建立对应记录。
+
+## 7. 知识图来源边界追加记录（2026-10-16）
+
+继续逐单元检查随仓库保留的上游 notebook 后，确认 `sibling-discovery/ntp/sibling.ipynb`
+的 `build_dataset()` 先构造 `<a_i>`、`<b1_j>`、`<b2_j>`，再按
+`i * num_b_per_a + j` 的连续块写出 `entities_b1_dict`/`entities_b2_dict`；同一 notebook
+当前常量是 `NUM_A=10`、`NUM_B_PER_A=1000`，并在 downsampling 单元格把两份 dict 写入
+数据目录。`sibling_no_hash.ipynb` 与 teacherless notebook 使用 `5×500` 线索，但本次
+检查到的相关单元没有同等的完整图文件输出。
+
+因此，不能把 `10×1000` notebook 的图直接配给公开的 `5×500` data example，也不能把
+按同一块规则自行合成的图标记为官方完整图。正式门禁仍要求获准的 `5×500` 再生源同时
+冻结数据与两份 graph JSON，或由项目负责人明确批准“派生图是本轮评价口径”并登记其适用边界。
