@@ -27,7 +27,16 @@
 `2hash` 与 `repeat2` 的差异用于区分“新增 hash 入口”与“相同边重复曝光”。此 staging
 比较尚未预注册为正式结果；在 GPU 调度安全且补充协议签署前，不得报告 PASS/FAIL。
 
+## 工程 smoke
+
+在 GPU5 上用缓存的远程 GPT-2 checkpoint（`runs/stage0b/ntp_fixed/s42/final_model`）完成了
+`repeat2` 的 2-step、batch 4、4 probes smoke。`run_meta.json`、`scores.jsonl`、
+`throughput.json` 和 480 MB 的 `final_model` 均生成；训练器、tokenizer、CUDA、数据变体和
+保存路径均可工作。该输出位于远程 `runs/icml2027-dev-20261017/smoke/trace_s42/`，
+只验证工程链路；2-step 的全零 test creativity 不作科学解释，也不计入论文结果。
+
 ## 当前状态
 
 数据生成命令已在远程成功完成。随后远程 SSH 出现连接/握手超时，尚未启动训练、未生成
-checkpoint、未生成 heldout 预测，也没有改变任何已有运行。
+完整曝光控制训练或 heldout 预测，也没有改变任何已有运行。上面的 smoke 是唯一新增的
+远程运行，仍属于 development。
