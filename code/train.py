@@ -173,6 +173,33 @@ def sha256_of(path):
     return h.hexdigest()
 
 
+def sha256_text(value):
+    return hashlib.sha256(value.encode("utf-8")).hexdigest()
+
+
+def model_identity(model, tok, model_ref, model_revision):
+    """Content identities for the initialization artifact used by a run.
+
+    ``model_ref`` alone is not sufficient because a mutable hub name can point
+    at a different revision.  The serialized config and tokenizer vocab are
+    recorded even when the caller cannot provide a hub revision.
+    """
+    vocab_json = json.dumps(tok.get_vocab(), sort_keys=True, ensure_ascii=False,
+                            separators=(",", ":"))
+    try:
+        tokenizer_json = tok.backend_tokenizer.to_str()
+    except Exception:  # noqa: BLE001 - older tokenizer backends may not expose it
+        tokenizer_json = ""
+    return {
+        "reference": model_ref,
+        "revision": model_revision,
+        "config_sha256": sha256_text(model.config.to_json_string()),
+        "tokenizer_vocab_sha256": sha256_text(vocab_json),
+        "tokenizer_backend_sha256": sha256_text(tokenizer_json),
+        "embedding_size": int(model.get_input_embeddings().weight.shape[0]),
+    }
+
+
 # ---------------- 组级步骤 ----------------
 
 @dataclass
@@ -530,6 +557,8 @@ def parse_args(argv=None):
     ap.add_argument("--out", required=True)
     ap.add_argument("--label", default=None, help="运行标签（汇总报告按此分组，默认=arm）")
     ap.add_argument("--model", default="gpt2")
+    ap.add_argument("--model_revision", default=None,
+                    help="pinned model revision or local artifact identity label")
     ap.add_argument("--steps", type=int, default=10000)
     ap.add_argument("--bs", type=int, default=64)
     ap.add_argument("--lr", type=float, default=1e-4)
@@ -689,6 +718,7 @@ def main(argv=None):
             "data_dir": args.data_dir,
             "steps": args.steps, "bs": args.bs, "lr": args.lr, "seed": args.seed,
             "m": args.m, "groups_per_step": args.groups_per_step, "model": args.model,
+            "model_identity": model_identity(model, tok, args.model, args.model_revision),
             "group_cfg": asdict(cfg) if cfg else None,
             "random_tiebreak": args.random_tiebreak, "regroup": args.regroup,
             "pairing_file": args.pairing_file, "fixed_pairing": args.fixed_pairing,

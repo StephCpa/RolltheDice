@@ -116,6 +116,7 @@ def main() -> None:
     ap.add_argument("--arm", choices=sorted(RUNS), required=True)
     ap.add_argument("--seed", type=int, required=True)
     ap.add_argument("--model", default="gpt2")
+    ap.add_argument("--model-revision", default=None)
     ap.add_argument("--out-root", required=True, type=Path)
     ap.add_argument("--train-script", default=str(Path(__file__).with_name("train.py")))
     ap.add_argument("--steps", type=int, default=None)
@@ -141,6 +142,8 @@ def main() -> None:
         bad = [k for k, v in gates.items() if v != "passed"]
         if bad:
             raise SystemExit(f"formal start refused; gates not passed: {bad}")
+        if not args.model_revision:
+            raise SystemExit("formal start requires --model-revision")
 
     mode, batch = RUNS[args.arm]
     data_dir = args.base_data if mode == "base" else args.variant_data
@@ -155,6 +158,8 @@ def main() -> None:
            "--warmup", str(fm["protocol"]["warmup_steps"]), "--seed", str(args.seed),
            "--eval_every", str(eval_every), "--ckpt_every", str(ckpt_every),
            "--n_probes", str(args.n_probes), "--save_final"]
+    if args.model_revision:
+        cmd += ["--model_revision", args.model_revision]
     summary = {
         "arm": args.arm,
         "seed": args.seed,
@@ -164,6 +169,7 @@ def main() -> None:
         "data_files": {p.name: sha256(p) for p in required_files(data_dir)},
         "graph_files": {p.name: sha256(p) for p in required_files(args.graph_dir, graph=True)},
         "candidate_source_revision": candidate["source"]["revision"],
+        "model_revision": args.model_revision,
         "command": cmd,
         "cuda_visible_devices": args.cuda_visible_devices,
         "mode": "dry-run" if args.dry_run else "start",

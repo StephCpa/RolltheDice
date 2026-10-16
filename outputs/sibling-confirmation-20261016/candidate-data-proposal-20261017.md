@@ -45,3 +45,7 @@ The manifest-driven entry point is `code/run_sibling_confirmation.py`. It can
 produce a dry-run command for one exact arm/seed. Formal start requires the
 freeze status and all artifact gates to be explicitly changed; it never
 auto-selects GPUs or creates extra arms.
+
+The training metadata now records a model revision label plus content hashes
+for the serialized model config and tokenizer. Formal start will require that
+revision label instead of relying on the mutable `gpt2` name alone.
