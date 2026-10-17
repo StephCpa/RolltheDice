@@ -36,9 +36,13 @@
 
 Gate A 通过后，才可以把“固定多入口在两个任务上可复现”作为主结果。若只在一个任务通过，论文必须把适用边界写进主结论。
 
-### Gate B：最小曝光控制
+### Gate B：监督图 factorial（替代原曝光控制）
 
-在 Gate A 之后执行 `repeat_rows_k2`：保持 hash→answer 边和唯一边数不变，每个训练行重复两次，使训练序列数与 `2hash` 对齐。该对照只检验重复曝光能否解释收益，不扩展候选网格。
+原计划的 `repeat_rows_k2` 已判定与 `ntp_fixed_b128` 的均匀行采样等价，不能提供独立识别，因此由
+`plan/icml2027-graph-factorial-amendment-20261017.md` supersede。Gate A 停止后，再按该开发记录冻结
+Circle/Line 的 `G12`、`G14`、`G22`、`fresh20k` 四个新单元（每单元三种子）。它比较答案侧多入口、
+额外 hash/行数和 target-side multiplicity；G12/G14 同时把 validity 与 test_seen 作为共同主诊断，避免
+将缩小训练答案集合造成的机械性 novel 增长误读成收益。
 
 ### Gate C：规模点
 
