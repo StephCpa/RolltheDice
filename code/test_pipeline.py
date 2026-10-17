@@ -817,6 +817,45 @@ def test_make_variant_dup_hash():
     _main(os.path.join(env["root"], "dup_run"), "--arm", "ntp_fixed", "--data_dir", out, steps=2)
 
 
+def test_make_variant_graph():
+    import collections
+    import make_variant_data
+    env = e2e_env()
+    base = json.load(open(os.path.join(env["data"], "train.json")))
+    n = len(base)
+    ans = lambda s: s["target_text"].split("<q>", 1)[1]               # noqa: E731
+    out11 = os.path.join(env["root"], "g11")
+    make_variant_data.main(["--base_dir", env["data"], "--out", out11, "--mode", "graph"])
+    assert json.load(open(os.path.join(out11, "train.json"))) == base  # (1,1) 全量 = 基础数据
+    probes = json.load(open(os.path.join(env["data"], "test.json")))
+    test_hashes = {p["input_text"] for p in probes if p.get("type") == "test"}
+    for dh, dy, nh in ((1, 2, n), (2, 2, n), (1, 1, 2 * n)):
+        out = os.path.join(env["root"], f"g{dh}{dy}_{nh}")
+        args = ["--base_dir", env["data"], "--out", out, "--mode", "graph", "--n_hashes", str(nh),
+                "--hash_degree", str(dh), "--answer_degree", str(dy)]
+        if nh * dh // dy > n:                                          # 答案不够 → 必须给 answer_pool
+            pool = os.path.join(env["root"], "pool.json")
+            json.dump([{"input_text": "x<q>", "target_text": "x<q>" + ans(s)[::-1] + str(i)}
+                       for i, s in enumerate(base)], open(pool, "w"))
+            args += ["--answer_pool", pool]
+        make_variant_data.main(args)
+        rows = json.load(open(os.path.join(out, "train.json")))
+        hdeg = collections.Counter(r["input_text"] for r in rows)
+        adeg = collections.Counter(ans(r) for r in rows)
+        assert set(hdeg.values()) == {dh} and set(adeg.values()) == {dy} and len(hdeg) == nh
+        assert len({(r["input_text"], r["target_text"]) for r in rows}) == len(rows)  # 无重边
+        assert not (set(hdeg) & test_hashes)
+        first = {}
+        for r in rows:
+            first.setdefault(r["input_text"], r["target_text"])
+        tr = [p for p in json.load(open(os.path.join(out, "test.json"))) if p.get("type") == "train"]
+        assert tr and all(first[p["input_text"]] == p["target_text"] for p in tr)
+        meta = json.load(open(os.path.join(out, "variant.json")))
+        assert meta["n_answers"] == nh * dh // dy and meta["n_edges"] == len(rows)
+    _main(os.path.join(env["root"], "graph_run"), "--arm", "ntp_fixed",
+          "--data_dir", os.path.join(env["root"], f"g22_{n}"), steps=2)  # 同一 hash 多行：训练器不计 memo_own
+
+
 def test_report_duplicate_guard_and_dir_label():
     import report
     root = tempfile.mkdtemp(prefix="p6_dup_")
