@@ -3,9 +3,9 @@ set -euo pipefail
 
 ROOT="${ROOT:-/home/lzn/P6-Roll_the_dice}"
 PY="${PY:-/home/lzn/brainstate_runtime/bin/python3}"
-CODE="$ROOT/code"
+CODE="$ROOT/code-v1274bde/code"
 DATA_ROOT="$ROOT/data/circle-graph-factorial-development-20261017"
-OUT_ROOT="$ROOT/runs/icml2027-graph-factorial-circle-20261018"
+OUT_ROOT="${OUT_ROOT:-$ROOT/runs/icml2027-graph-factorial-circle-20261018-v2}"
 MODEL="${MODEL:-$ROOT/models/gpt2/607a30d783dfa663caf39e06633721c8d4cfcd7e}"
 MODEL_REVISION="gpt2-local-snapshot-607a30d7"
 
