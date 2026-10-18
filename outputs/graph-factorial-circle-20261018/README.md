@@ -6,6 +6,10 @@ four graph cells × three seeds, using `ntp_fixed`, batch 128, 40,000 steps.
 
 The run is independent of the still-running Sibling Gate A and will not use
 Sibling intermediate results to change its design. Outputs are append-only
-under a new run root. Checkpoint selection and held-out scoring remain separate
-actions; no held-out result exists at freeze time.
+under a new run root. The first launcher attempt (`...-20261018`) stopped
+before training because the copied server code lacked the frozen
+`--model_revision` argument; its logs are retained as an engineering
+preflight record. The formal queue uses code snapshot `1274bde` under
+`code-v1274bde` and root `...-20261018-v2`. Checkpoint selection and held-out
+scoring remain separate actions; no held-out result exists at freeze time.
 
