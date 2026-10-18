@@ -2,10 +2,10 @@
 set -euo pipefail
 
 ROOT="${ROOT:-/home/lzn/P6-Roll_the_dice}"
-PY="${PY:-/home/lzn/brainstate_runtime/bin/python3}"
+PY="${PY:-/home/lzn/envs/dllm_cf_l40_py312/bin/python}"
 CODE="$ROOT/code-v1274bde/code"
 DATA_ROOT="$ROOT/data/circle-graph-factorial-development-20261017"
-OUT_ROOT="${OUT_ROOT:-$ROOT/runs/icml2027-graph-factorial-circle-20261018-v2}"
+OUT_ROOT="${OUT_ROOT:-$ROOT/runs/icml2027-graph-factorial-circle-20261018-v3}"
 MODEL="${MODEL:-$ROOT/models/gpt2/607a30d783dfa663caf39e06633721c8d4cfcd7e}"
 MODEL_REVISION="gpt2-local-snapshot-607a30d7"
 
