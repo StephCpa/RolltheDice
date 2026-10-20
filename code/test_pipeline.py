@@ -856,6 +856,39 @@ def test_make_variant_graph():
           "--data_dir", os.path.join(env["root"], f"g22_{n}"), steps=2)  # 同一 hash 多行：训练器不计 memo_own
 
 
+def test_coverage_space_and_copy_ratio():
+    import itertools
+    import coverage
+    # 结构空间：n 节点有向环/路径、边序任意 → 按首次出现重标定的轨道数 = (n-1)!（穷举核对）
+    from datagen import circle_form, path_form
+    for form in (circle_form, path_form):
+        rows = [form("h", list(p)) for p in itertools.permutations([f"<a_{i}>" for i in range(5)])
+                for _ in range(3)]
+        S, T, n = coverage.structure_space("circle", rows)
+        assert (S, n) == (24, 5) and T <= S
+    b1 = {"<a_0>": {"<b1_0>", "<b1_1>"}, "<a_1>": {"<b1_2>"}}
+    b2 = {"<a_0>": {"<b2_0>"}, "<a_1>": {"<b2_1>", "<b2_2>", "<b2_3>"}}
+    sib = [{"input_text": "h<q>", "target_text": "h<q><b1_0><b2_0><a_0></a>"}] * 2
+    assert coverage.structure_space("sibling", sib, (b1, b2)) == (5, 1, None)
+    # 复制倍率与参照覆盖率下的 creativity：V=0.4、seen=0.1、c=T/S
+    root = tempfile.mkdtemp(prefix="p6_cov_")
+    data = os.path.join(root, "data")
+    os.makedirs(data)
+    rows = [circle_form(f"h{i}", [f"<a_{j}>" for j in p]) for i, p in
+            enumerate(itertools.permutations(range(4)))]
+    json.dump(rows, open(os.path.join(data, "train.json"), "w"))
+    run = os.path.join(root, "armX", "s42")
+    os.makedirs(os.path.join(run, "heldout"))
+    json.dump({"task": "circle", "seed": 42, "data_dir": data}, open(os.path.join(run, "run_meta.json"), "w"))
+    open(os.path.join(run, "heldout", "scores.jsonl"), "w").write(json.dumps(
+        {"test_validity": 0.4, "test_seen": 0.1, "creativity": 0.3, "step": 10}) + "\n")
+    r = coverage.analyse_run(run)
+    S, T, _ = coverage.structure_space("circle", rows)
+    assert r["label"] == "armX" and r["S"] == 6 and abs(r["coverage"] - T / S) < 1e-12
+    assert abs(r["copy_ratio"] - 0.25 / (T / S)) < 1e-12 and abs(r["uniqueness"] - 1.0) < 1e-12
+    assert abs(coverage.at_coverage(r, 0.1) - 0.4 * (1 - 0.1 * r["copy_ratio"])) < 1e-12
+
+
 def test_report_duplicate_guard_and_dir_label():
     import report
     root = tempfile.mkdtemp(prefix="p6_dup_")
