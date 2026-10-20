@@ -1,0 +1,25 @@
+{
+  "status": "frozen-development-run",
+  "date": "2026-10-18",
+  "task": "circle",
+  "model_revision": "gpt2-local-snapshot-607a30d7",
+  "model_snapshot": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+  "objective": "ntp_fixed",
+  "code_commit": "1274bde",
+  "out_root": "runs/icml2027-graph-factorial-circle-20261018-v3",
+  "runtime_environment": "/home/lzn/envs/dllm_cf_l40_py312/bin/python",
+  "steps": 40000,
+  "batch_size": 128,
+  "warmup": 2000,
+  "eval_every": 5000,
+  "ckpt_every": 5000,
+  "n_probes": 256,
+  "seeds": [42, 43, 44],
+  "cells": ["G12", "G14", "G22", "fresh20k"],
+  "base_data": "data/circle.10.9.10.10000",
+  "data_root": "data/circle-graph-factorial-development-20261017",
+  "heldout_policy": "use each variant's copied heldout.json; select checkpoints from dev scores before heldout scoring",
+  "evaluation_policy": "task identity, checkpoint identity, evaluator version, probe identity and data SHA must be recorded; no result may be used to alter this manifest",
+  "scientific_status": "No result yet; this manifest authorizes training only. It is not a PASS/FAIL decision."
+}
+

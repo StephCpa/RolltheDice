@@ -1,0 +1,14 @@
+cell	seed	data_dir	out_dir	status
+G12	42	data/circle-graph-factorial-development-20261017/G12	runs/icml2027-graph-factorial-circle-20261018-v3/G12__seed42	planned
+G12	43	data/circle-graph-factorial-development-20261017/G12	runs/icml2027-graph-factorial-circle-20261018-v3/G12__seed43	planned
+G12	44	data/circle-graph-factorial-development-20261017/G12	runs/icml2027-graph-factorial-circle-20261018-v3/G12__seed44	planned
+G14	42	data/circle-graph-factorial-development-20261017/G14	runs/icml2027-graph-factorial-circle-20261018-v3/G14__seed42	planned
+G14	43	data/circle-graph-factorial-development-20261017/G14__seed43	planned
+G14	44	data/circle-graph-factorial-development-20261017/G14	runs/icml2027-graph-factorial-circle-20261018-v3/G14__seed44	planned
+G22	42	data/circle-graph-factorial-development-20261017/G22	runs/icml2027-graph-factorial-circle-20261018-v3/G22__seed42	planned
+G22	43	data/circle-graph-factorial-development-20261017/G22	runs/icml2027-graph-factorial-circle-20261018-v3/G22__seed43	planned
+G22	44	data/circle-graph-factorial-development-20261017/G22	runs/icml2027-graph-factorial-circle-20261018-v3/G22__seed44	planned
+fresh20k	42	data/circle-graph-factorial-development-20261017/fresh20k	runs/icml2027-graph-factorial-circle-20261018-v3/fresh20k__seed42	planned
+fresh20k	43	data/circle-graph-factorial-development-20261017/fresh20k	runs/icml2027-graph-factorial-circle-20261018-v3/fresh20k__seed43	planned
+fresh20k	44	data/circle-graph-factorial-development-20261017/fresh20k	runs/icml2027-graph-factorial-circle-20261018-v3/fresh20k__seed44	planned
+
